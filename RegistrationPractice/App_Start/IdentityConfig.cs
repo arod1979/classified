@@ -11,17 +11,87 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using RegistrationPractice.Models;
+using System.Net.Http;
+using System.Net.Mail;
+using System.Text;
+using System.Net.Mime;
+using System.Net;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace RegistrationPractice
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            //return Task.FromResult(0);
+            //return Task.Factory.StartNew(() =>
+            //{
+            //    SendMail(message);
+            //});
+            await SendMail(message);
+            //await Execute(message);
+        } 
+        
+        
+
+
+        private async Task Execute(IdentityMessage message)
+        {
+
+
+            //var apiKey = "y8S:HJaP6!WL3w/";
+            var apiKey = "asdfsdf";
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("test@example.com", "Example User");
+            var subject = message.Subject;
+            var to = new EmailAddress(message.Destination);
+            var plainTextContent = string.Format("Please click on this link to {0}:{1}", message.Subject, message.Body);
+            var htmlContent = "Please confirm your account by clicking on this link: <a href=\"" + message.Body +
+                "\">link</a><br/>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
         }
+
+        private async Task SendMail(IdentityMessage message)
+
+        {
+            string text = string.Format("Please click on this link to {0}:{1}", message.Subject, message.Body);
+            string html = "Please confirm your account by clicking on this link: <a href=\"" + message.Body +
+                "\">link</a><br/>";
+            html += HttpUtility.HtmlEncode(@"Or copy the following link to your browser:" + message.Body);
+
+            try
+            {
+                var client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("allanrodkin@gmail.com", "V1l0l5a4ayr"),
+                    EnableSsl = true
+                };
+
+
+                await client.SendMailAsync("admin@domain.com", message.Destination, message.Subject, message.Body);
+                Console.WriteLine("Sent");
+                //Console.ReadLine();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+
+
+
+
     }
+    
+
+
 
     public class SmsService : IIdentityMessageService
     {
@@ -31,6 +101,9 @@ namespace RegistrationPractice
             return Task.FromResult(0);
         }
     }
+
+    
+
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
