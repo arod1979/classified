@@ -62,12 +62,13 @@ namespace RegistrationPractice
             string html = "Please confirm your account by clicking on this link: <a href=\"" + message.Body +
                 "\">link</a><br/>";
             html += HttpUtility.HtmlEncode(@"Or copy the following link to your browser:" + message.Body);
-
+            string password = System.Configuration.ConfigurationManager.AppSettings["emailpassword"];
             try
             {
                 var client = new SmtpClient("smtp.gmail.com", 587)
                 {
-                    Credentials = new NetworkCredential("allanrodkin@gmail.com", "V1l0l5a4ayr"),
+                    
+                Credentials = new NetworkCredential("allanrodkin@gmail.com", password),
                     EnableSsl = true
                 };
 

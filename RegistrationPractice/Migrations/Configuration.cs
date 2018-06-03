@@ -4,20 +4,28 @@ namespace RegistrationPractice.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using RegistrationPractice.Entities;
 
     internal sealed class Configuration : DbMigrationsConfiguration<RegistrationPractice.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(RegistrationPractice.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Locations.AddOrUpdate(x => x.Id,
+            new Location() { LocationText ="winnipeg"},
+            new Location() { LocationText = "toronto" }
+            );
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+
+            context.Categories.AddOrUpdate(x => x.Id,
+            new Category() { CategoryText = "pet" },
+            new Category() { CategoryText = "vehicle" }
+            );
         }
     }
 }
