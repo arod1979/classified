@@ -201,8 +201,10 @@
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageEntity.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserManager.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Location.cs" />
@@ -212,9 +214,46 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperMethods\GlobalControllerMethods.cs" />
     <Compile Include="Migrations\201806022115389_newitem.cs" />
     <Compile Include="Migrations\201806022115389_newitem.Designer.cs">
       <DependentUpon>201806022115389_newitem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806040016062_adminuser.cs" />
+    <Compile Include="Migrations\201806040016062_adminuser.Designer.cs">
+      <DependentUpon>201806040016062_adminuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806041738160_imageinitem.cs" />
+    <Compile Include="Migrations\201806041738160_imageinitem.Designer.cs">
+      <DependentUpon>201806041738160_imageinitem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806041747562_image.cs" />
+    <Compile Include="Migrations\201806041747562_image.Designer.cs">
+      <DependentUpon>201806041747562_image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806060008242_new.cs" />
+    <Compile Include="Migrations\201806060008242_new.Designer.cs">
+      <DependentUpon>201806060008242_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806062221499_123.cs" />
+    <Compile Include="Migrations\201806062221499_123.Designer.cs">
+      <DependentUpon>201806062221499_123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806071821240_1234.cs" />
+    <Compile Include="Migrations\201806071821240_1234.Designer.cs">
+      <DependentUpon>201806071821240_1234.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806071826471_982.cs" />
+    <Compile Include="Migrations\201806071826471_982.Designer.cs">
+      <DependentUpon>201806071826471_982.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806071848459_removal.cs" />
+    <Compile Include="Migrations\201806071848459_removal.Designer.cs">
+      <DependentUpon>201806071848459_removal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806071917215_applicationuserid.cs" />
+    <Compile Include="Migrations\201806071917215_applicationuserid.Designer.cs">
+      <DependentUpon>201806071917215_applicationuserid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -302,11 +341,13 @@
     <Content Include="Views\Items\Details.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\Items\UserPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Controllers\" />
     <Folder Include="Areas\admin\Models\" />
+    <Folder Include="photos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -324,6 +365,33 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806022115389_newitem.resx">
       <DependentUpon>201806022115389_newitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806040016062_adminuser.resx">
+      <DependentUpon>201806040016062_adminuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041738160_imageinitem.resx">
+      <DependentUpon>201806041738160_imageinitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041747562_image.resx">
+      <DependentUpon>201806041747562_image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806060008242_new.resx">
+      <DependentUpon>201806060008242_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806062221499_123.resx">
+      <DependentUpon>201806062221499_123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806071821240_1234.resx">
+      <DependentUpon>201806071821240_1234.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806071826471_982.resx">
+      <DependentUpon>201806071826471_982.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806071848459_removal.resx">
+      <DependentUpon>201806071848459_removal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806071917215_applicationuserid.resx">
+      <DependentUpon>201806071917215_applicationuserid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

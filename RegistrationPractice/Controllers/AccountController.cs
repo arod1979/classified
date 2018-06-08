@@ -95,6 +95,10 @@ namespace RegistrationPractice.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    //allan rodkin
+                    string currentUserId = User.Identity.GetUserId();
+                    Session.Add("CurrentUser", currentUserId);
+                    //allan rodkin
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -416,6 +420,8 @@ namespace RegistrationPractice.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session.Add("CurrentUser", "");
+            //allan rodkin
             return RedirectToAction("Index", "Home");
         }
 

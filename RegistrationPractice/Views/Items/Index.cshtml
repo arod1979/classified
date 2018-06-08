@@ -38,6 +38,19 @@
         <th>
             @Html.DisplayNameFor(model => model.Returned)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imageURL)
+         
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imageTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayItem)
+        </th>
         <th></th>
     </tr>
 
@@ -69,6 +82,16 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Returned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUserId)
+        </td>
+        <td>
+            <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)"/>
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayItem)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

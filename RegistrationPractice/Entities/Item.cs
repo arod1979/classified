@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using RegistrationPractice.Models;
 
 namespace RegistrationPractice.Entities
 {
@@ -26,17 +27,27 @@ namespace RegistrationPractice.Entities
         public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
 
-        public virtual DateTime CreationDate { get; set; }
+        public virtual DateTime? CreationDate { get; set; }
 
         public string EmailRelayAddress { get; set; }
 
-        public int Reward { get; set; }
+        public int? Reward { get; set; }
 
         public string AdditionalNotes { get; set; }
 
-        public int Visits { get; set; }
+        public int? Visits { get; set; }
 
-        public bool Returned { get; set; }
+        public bool? Returned { get; set; }
+
+        public int? ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public string imageURL { get; set; }
+
+        public string imageTitle { get; set; }
+
+        [Display(Name = "Display profile Image")]
+        public bool? DisplayItem { get; set; }
 
 
     }

@@ -8,12 +8,14 @@ namespace RegistrationPractice.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
 
         }
 
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -21,7 +23,7 @@ namespace RegistrationPractice.Controllers
             return View();
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
