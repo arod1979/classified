@@ -21,6 +21,7 @@ namespace RegistrationPractice.Controllers
         
 
         // GET: Items
+        [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
             var items = db.Items.Include(i => i.Category).Include(i => i.Location);
@@ -31,9 +32,9 @@ namespace RegistrationPractice.Controllers
         //allan rodkin
         public async Task<ActionResult> UserPosts()
         {
-            string userid = (string)(Session["CurrentUser"]);
-            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userid);
-            var items = db.Items.Where(x => x.ApplicationUser.Id == userid);
+            string useremail = (string)(Session["CurrentUserEmail"]);
+            User.Identity.GetUserId();
+            var items = db.Items.Where(x => x.ApplicationUser.Email == useremail);
             return View(await items.ToListAsync());
         }
 
@@ -55,9 +56,22 @@ namespace RegistrationPractice.Controllers
         // GET: Items/Create
         public ActionResult Create()
         {
+            Item item = new Item();
+
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
-            return View();
+
+            //allan rodkin. this should be replaced with session variable
+            string currentUserId = User.Identity.GetUserId();
+            item.ApplicationUserId = currentUserId;
+            //
+
+            item.CreationDate = System.DateTime.Now;
+            item.Visits = 0;
+            item.Returned = false;
+           
+
+            return View("Create", item);
         }
 
         // POST: Items/Create
@@ -67,8 +81,8 @@ namespace RegistrationPractice.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,Reward,AdditionalNotes,Visits,Returned,ApplicationUserId,imageURL,imageTitle,DisplayItem")] Item item, HttpPostedFileBase files)
         {
-            
 
+            
             if (ModelState.IsValid)
             {
 

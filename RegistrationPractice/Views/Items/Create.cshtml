@@ -98,10 +98,28 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @*@Html.EditorFor(model => model.imageURL, new { htmlAttributes = new { @class = "form-control" } })*@
-            <input type="file" name="files" id="files" multiple="multiple" />
+            <div class="btn btn-primary">
+                <input type="file" name="files" id="files" multiple="multiple" file-upload />
+            </div>
+            
             @Html.ValidationMessageFor(model => model.imageURL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2">image preview</label>
+        </div>
+            <div class="col-md-2">
+            <div img-preview class="thumbnail" style="display:none">
+                <img class="img-responsive" target-img />
+                <div class="caption">
+                    <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
+                    <p img-description></p>
+                </div>
+            </div>
         </div>
     </div>
 

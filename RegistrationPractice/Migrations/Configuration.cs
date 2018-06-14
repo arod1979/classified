@@ -21,16 +21,16 @@ namespace RegistrationPractice.Migrations
 
         protected override void Seed(RegistrationPractice.Models.ApplicationDbContext context)
         {
-            context.Locations.AddOrUpdate(x => x.Id,
-            new Location() { LocationText ="winnipeg"},
-            new Location() { LocationText = "toronto" }
-            );
+            //context.Locations.AddOrUpdate(x => x.Id,
+            //new Location() { LocationText ="winnipeg"},
+            //new Location() { LocationText = "toronto" }
+            //);
 
 
-            context.Categories.AddOrUpdate(x => x.Id,
-            new Category() { CategoryText = "pet" },
-            new Category() { CategoryText = "vehicle" }
-            );
+            //context.Categories.AddOrUpdate(x => x.Id,
+            //new Category() { CategoryText = "pet" },
+            //new Category() { CategoryText = "vehicle" }
+            //);
 
             //if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             //{

@@ -28,6 +28,9 @@ namespace RegistrationPractice
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
                       "~/Scripts/AdminMenu.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/previewimage").Include(
+                      "~/Scripts/PreviewImage.js"));
         }
     }
 }

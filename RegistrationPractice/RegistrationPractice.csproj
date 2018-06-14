@@ -255,6 +255,18 @@
     <Compile Include="Migrations\201806071917215_applicationuserid.Designer.cs">
       <DependentUpon>201806071917215_applicationuserid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806120321375_applicationuser.cs" />
+    <Compile Include="Migrations\201806120321375_applicationuser.Designer.cs">
+      <DependentUpon>201806120321375_applicationuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806121616382_time.cs" />
+    <Compile Include="Migrations\201806121616382_time.Designer.cs">
+      <DependentUpon>201806121616382_time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806121622591_time1.cs" />
+    <Compile Include="Migrations\201806121622591_time1.Designer.cs">
+      <DependentUpon>201806121622591_time1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -291,6 +303,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\PreviewImage.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -392,6 +405,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806071917215_applicationuserid.resx">
       <DependentUpon>201806071917215_applicationuserid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120321375_applicationuser.resx">
+      <DependentUpon>201806120321375_applicationuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121616382_time.resx">
+      <DependentUpon>201806121616382_time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121622591_time1.resx">
+      <DependentUpon>201806121622591_time1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -74,6 +74,8 @@ namespace RegistrationPractice.Controllers
             }
 
             // Require the user to have a confirmed email before they can log on.
+
+
             var user = await UserManager.FindByNameAsync(model.Email);
             if (user != null)
             {
@@ -96,8 +98,8 @@ namespace RegistrationPractice.Controllers
             {
                 case SignInStatus.Success:
                     //allan rodkin
-                    string currentUserId = User.Identity.GetUserId();
-                    Session.Add("CurrentUser", currentUserId);
+                    string currentUserEmail = model.Email;
+                    Session.Add("CurrentUserEmail", currentUserEmail);
                     //allan rodkin
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -420,9 +422,9 @@ namespace RegistrationPractice.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            Session.Add("CurrentUser", "");
+            Session.Add("CurrentUserEmail", "");
             //allan rodkin
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Items");
         }
 
         //
@@ -479,7 +481,8 @@ namespace RegistrationPractice.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            //allan Rodkin
+            return RedirectToAction("Index", "Items");
         }
 
         private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
