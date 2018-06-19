@@ -6,6 +6,14 @@
 
 <h2>Lost Items</h2>
 
+@using (Html.BeginForm())
+{
+    <p>
+        Search Term: @Html.TextBox("searchTerm")
+        <input type="submit" value="Search" />
+    </p>
+}
+<div search-form></div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

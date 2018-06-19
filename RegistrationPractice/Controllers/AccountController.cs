@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RegistrationPractice.Models;
+using CaptchaMvc.HtmlHelpers;
 
 namespace RegistrationPractice.Controllers
 {
@@ -171,12 +172,20 @@ namespace RegistrationPractice.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (!this.IsCaptchaValid(""))
+            {
+                ModelState.AddModelError("captchavalidation", "captcha data incorrect");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    
+                    
+                    
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

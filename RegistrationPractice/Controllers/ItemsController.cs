@@ -12,19 +12,35 @@ using RegistrationPractice.Models;
 using System.IO;
 using RegistrationPractice.HelperMethods;
 using Microsoft.AspNet.Identity;
+using Profanity.Logic;
+using PagedList;
 
 namespace RegistrationPractice.Controllers
 {
     public class ItemsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
+        private readonly ProfanityFilter pf = new ProfanityFilter(new List<string>
+            {
+                "bad",
+                "ugly",
+                "danger"
+            });
 
         // GET: Items
         [AllowAnonymous]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string searchTerm, int? page)
         {
+            
             var items = db.Items.Include(i => i.Category).Include(i => i.Location);
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                items = items.Where(i => i.Description.ToUpper().Contains(searchTerm.ToUpper())
+                || i.AdditionalNotes.ToUpper().Contains(searchTerm.ToUpper())
+                );
+                   
+                
+            }
             return View(await items.ToListAsync());
         }
 
@@ -52,6 +68,17 @@ namespace RegistrationPractice.Controllers
             }
             return View(item);
         }
+        
+        //allan rodkin
+        public ActionResult Search()
+        {
+            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
+            ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
+            return View();
+        }
+
+
+
 
         // GET: Items/Create
         public ActionResult Create()
@@ -74,6 +101,8 @@ namespace RegistrationPractice.Controllers
             return View("Create", item);
         }
 
+        
+
         // POST: Items/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -85,6 +114,12 @@ namespace RegistrationPractice.Controllers
             
             if (ModelState.IsValid)
             {
+                //profanity check
+                bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description);
+                if (textContainsProfanity)
+                {
+                    item.Description = pf.CleanTextProfanity(item.Description);
+                }
 
                 //allan rodkin image code
                 if (files!=null)
