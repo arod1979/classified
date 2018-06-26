@@ -208,16 +208,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Classes\ProfanityFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageEntity.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\UserManager.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\Test.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ProfanityExtension.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
@@ -277,6 +280,102 @@
     <Compile Include="Migrations\201806121622591_time1.Designer.cs">
       <DependentUpon>201806121622591_time1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806201905187_update.cs" />
+    <Compile Include="Migrations\201806201905187_update.Designer.cs">
+      <DependentUpon>201806201905187_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211938157_noreward.cs" />
+    <Compile Include="Migrations\201806211938157_noreward.Designer.cs">
+      <DependentUpon>201806211938157_noreward.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211946059_reward_currency.cs" />
+    <Compile Include="Migrations\201806211946059_reward_currency.Designer.cs">
+      <DependentUpon>201806211946059_reward_currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211949170_reward123.cs" />
+    <Compile Include="Migrations\201806211949170_reward123.Designer.cs">
+      <DependentUpon>201806211949170_reward123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211952208_reward666.cs" />
+    <Compile Include="Migrations\201806211952208_reward666.Designer.cs">
+      <DependentUpon>201806211952208_reward666.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211958084_reward999.cs" />
+    <Compile Include="Migrations\201806211958084_reward999.Designer.cs">
+      <DependentUpon>201806211958084_reward999.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212006095_reward1000.cs" />
+    <Compile Include="Migrations\201806212006095_reward1000.Designer.cs">
+      <DependentUpon>201806212006095_reward1000.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212012087_reward10001.cs" />
+    <Compile Include="Migrations\201806212012087_reward10001.Designer.cs">
+      <DependentUpon>201806212012087_reward10001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212014357_reward10001234.cs" />
+    <Compile Include="Migrations\201806212014357_reward10001234.Designer.cs">
+      <DependentUpon>201806212014357_reward10001234.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212021533_reward100012343423.cs" />
+    <Compile Include="Migrations\201806212021533_reward100012343423.Designer.cs">
+      <DependentUpon>201806212021533_reward100012343423.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212025394_reward10001234342367.cs" />
+    <Compile Include="Migrations\201806212025394_reward10001234342367.Designer.cs">
+      <DependentUpon>201806212025394_reward10001234342367.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212034373_currency123.cs" />
+    <Compile Include="Migrations\201806212034373_currency123.Designer.cs">
+      <DependentUpon>201806212034373_currency123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212038188_ItemReward.cs" />
+    <Compile Include="Migrations\201806212038188_ItemReward.Designer.cs">
+      <DependentUpon>201806212038188_ItemReward.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212051589_ItemRewardValidation.cs" />
+    <Compile Include="Migrations\201806212051589_ItemRewardValidation.Designer.cs">
+      <DependentUpon>201806212051589_ItemRewardValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806212105018_ItemRewardRequired.cs" />
+    <Compile Include="Migrations\201806212105018_ItemRewardRequired.Designer.cs">
+      <DependentUpon>201806212105018_ItemRewardRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806222008128_useremail.cs" />
+    <Compile Include="Migrations\201806222008128_useremail.Designer.cs">
+      <DependentUpon>201806222008128_useremail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806222054506_applicationuserid1.cs" />
+    <Compile Include="Migrations\201806222054506_applicationuserid1.Designer.cs">
+      <DependentUpon>201806222054506_applicationuserid1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806222109259_applicationuserid123.cs" />
+    <Compile Include="Migrations\201806222109259_applicationuserid123.Designer.cs">
+      <DependentUpon>201806222109259_applicationuserid123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806241558122_auid.cs" />
+    <Compile Include="Migrations\201806241558122_auid.Designer.cs">
+      <DependentUpon>201806241558122_auid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251457348_apid.cs" />
+    <Compile Include="Migrations\201806251457348_apid.Designer.cs">
+      <DependentUpon>201806251457348_apid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251632591_abasdfwee.cs" />
+    <Compile Include="Migrations\201806251632591_abasdfwee.Designer.cs">
+      <DependentUpon>201806251632591_abasdfwee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251853480_asdfasdf.cs" />
+    <Compile Include="Migrations\201806251853480_asdfasdf.Designer.cs">
+      <DependentUpon>201806251853480_asdfasdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806260325485_help.cs" />
+    <Compile Include="Migrations\201806260325485_help.Designer.cs">
+      <DependentUpon>201806260325485_help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806260327403_help1.cs" />
+    <Compile Include="Migrations\201806260327403_help1.Designer.cs">
+      <DependentUpon>201806260327403_help1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -303,6 +402,7 @@
     </Content>
     <Content Include="Areas\admin\Views\web.config" />
     <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -366,6 +466,12 @@
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Items\UserPosts.cshtml" />
     <Content Include="Views\Shared\_SearchFormPartial.cshtml" />
+    <Content Include="Views\Tests\Create.cshtml" />
+    <Content Include="Views\Tests\Delete.cshtml" />
+    <Content Include="Views\Tests\Details.cshtml" />
+    <Content Include="Views\Tests\Edit.cshtml" />
+    <Content Include="Views\Tests\Index.cshtml" />
+    <Content Include="Views\Account\ConfirmEmailInstructions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,12 +532,78 @@
     <EmbeddedResource Include="Migrations\201806121622591_time1.resx">
       <DependentUpon>201806121622591_time1.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Profanity-master\Profanity.Logic\Profanity.Logic.csproj">
-      <Project>{d6fe490e-cb93-423e-9f31-abd3ce9d2d8e}</Project>
-      <Name>Profanity.Logic</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201806201905187_update.resx">
+      <DependentUpon>201806201905187_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211938157_noreward.resx">
+      <DependentUpon>201806211938157_noreward.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211946059_reward_currency.resx">
+      <DependentUpon>201806211946059_reward_currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211949170_reward123.resx">
+      <DependentUpon>201806211949170_reward123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211952208_reward666.resx">
+      <DependentUpon>201806211952208_reward666.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211958084_reward999.resx">
+      <DependentUpon>201806211958084_reward999.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212006095_reward1000.resx">
+      <DependentUpon>201806212006095_reward1000.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212012087_reward10001.resx">
+      <DependentUpon>201806212012087_reward10001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212014357_reward10001234.resx">
+      <DependentUpon>201806212014357_reward10001234.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212021533_reward100012343423.resx">
+      <DependentUpon>201806212021533_reward100012343423.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212025394_reward10001234342367.resx">
+      <DependentUpon>201806212025394_reward10001234342367.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212034373_currency123.resx">
+      <DependentUpon>201806212034373_currency123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212038188_ItemReward.resx">
+      <DependentUpon>201806212038188_ItemReward.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212051589_ItemRewardValidation.resx">
+      <DependentUpon>201806212051589_ItemRewardValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212105018_ItemRewardRequired.resx">
+      <DependentUpon>201806212105018_ItemRewardRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806222008128_useremail.resx">
+      <DependentUpon>201806222008128_useremail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806222054506_applicationuserid1.resx">
+      <DependentUpon>201806222054506_applicationuserid1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806222109259_applicationuserid123.resx">
+      <DependentUpon>201806222109259_applicationuserid123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806241558122_auid.resx">
+      <DependentUpon>201806241558122_auid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251457348_apid.resx">
+      <DependentUpon>201806251457348_apid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251632591_abasdfwee.resx">
+      <DependentUpon>201806251632591_abasdfwee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251853480_asdfasdf.resx">
+      <DependentUpon>201806251853480_asdfasdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806260325485_help.resx">
+      <DependentUpon>201806260325485_help.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806260327403_help1.resx">
+      <DependentUpon>201806260327403_help1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

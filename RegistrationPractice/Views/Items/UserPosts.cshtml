@@ -38,9 +38,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Returned)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ApplicationUserId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.imageURL)
 
@@ -84,9 +84,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Returned)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.ApplicationUserId)
-            </td>
+            </td>*@
             <td>
                 <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
             </td>

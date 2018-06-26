@@ -22,7 +22,7 @@ namespace RegistrationPractice.Migrations
         protected override void Seed(RegistrationPractice.Models.ApplicationDbContext context)
         {
             //context.Locations.AddOrUpdate(x => x.Id,
-            //new Location() { LocationText ="winnipeg"},
+            //new Location() { LocationText = "winnipeg" },
             //new Location() { LocationText = "toronto" }
             //);
 

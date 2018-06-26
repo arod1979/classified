@@ -12,7 +12,7 @@ using RegistrationPractice.Models;
 using System.IO;
 using RegistrationPractice.HelperMethods;
 using Microsoft.AspNet.Identity;
-using Profanity.Logic;
+using Classes.Profanity.Logic;
 using PagedList;
 
 namespace RegistrationPractice.Controllers
@@ -46,11 +46,11 @@ namespace RegistrationPractice.Controllers
 
         // GET: UserItems
         //allan rodkin
+        
         public async Task<ActionResult> UserPosts()
         {
-            string useremail = (string)(Session["CurrentUserEmail"]);
-            User.Identity.GetUserId();
-            var items = db.Items.Where(x => x.ApplicationUser.Email == useremail);
+            string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
+            var items = db.Items.Where(i => i.UserEmail == useremail);
             return View(await items.ToListAsync());
         }
 
@@ -77,7 +77,7 @@ namespace RegistrationPractice.Controllers
             return View();
         }
 
-
+        
 
 
         // GET: Items/Create
@@ -89,13 +89,14 @@ namespace RegistrationPractice.Controllers
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
 
             //allan rodkin. this should be replaced with session variable
-            string currentUserId = User.Identity.GetUserId();
-            item.ApplicationUserId = currentUserId;
+            string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
+            item.UserEmail = useremail;
             //
-
+            item.EmailRelayAddress = "";
             item.CreationDate = System.DateTime.Now;
             item.Visits = 0;
             item.Returned = false;
+            item.DisplayItem = false;
            
 
             return View("Create", item);
@@ -111,7 +112,19 @@ namespace RegistrationPractice.Controllers
         public async Task<ActionResult> Create([Bind(Include = "Id,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,Reward,AdditionalNotes,Visits,Returned,ApplicationUserId,imageURL,imageTitle,DisplayItem")] Item item, HttpPostedFileBase files)
         {
 
-            
+            //try
+            //{
+                
+            //    var user = await UserManager.FindByNameAsync(User.Identity.GetUserId());
+            //    ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userid );
+            //    item.ApplicationUser = currentUser;
+            //}
+            //catch (Exception e)
+            //{
+
+            //}
+            ////item.ApplicationUser = currentUser;
+
             if (ModelState.IsValid)
             {
                 //profanity check
@@ -121,10 +134,14 @@ namespace RegistrationPractice.Controllers
                     item.Description = pf.CleanTextProfanity(item.Description);
                 }
 
+                string email = (string)(Session["CurrentUserEmail"]);
+
+
+
                 //allan rodkin image code
                 if (files!=null)
-                { 
-                    string time = DateTime.UtcNow.ToString();
+                {
+                                        string time = DateTime.UtcNow.ToString();
                     time = time.Replace(" ", "-");
                     time = time.Replace(":", "-");
                     time = time.Replace("/", "-");

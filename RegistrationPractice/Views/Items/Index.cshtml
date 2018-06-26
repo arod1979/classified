@@ -28,14 +28,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CreationDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EmailRelayAddress)
-        </th>
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.Reward)
+            @Html.DisplayNameFor(model => model.ItemReward)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AdditionalNotes)
@@ -73,14 +73,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.EmailRelayAddress)
-        </td>
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.Reward)
+            @Html.DisplayFor(modelItem => item.ItemReward)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AdditionalNotes)
@@ -95,9 +95,9 @@
             @Html.DisplayFor(modelItem => item.ApplicationUserId)
         </td>*@
         <td>
-            <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)"/>
+            <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
         </td>
-        
+
         @*<td>
             @Html.DisplayFor(modelItem => item.DisplayItem)
         </td>*@

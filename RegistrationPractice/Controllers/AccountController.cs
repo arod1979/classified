@@ -100,7 +100,7 @@ namespace RegistrationPractice.Controllers
                 case SignInStatus.Success:
                     //allan rodkin
                     string currentUserEmail = model.Email;
-                    Session.Add("CurrentUserEmail", currentUserEmail);
+                    System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
                     //allan rodkin
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -183,25 +183,29 @@ namespace RegistrationPractice.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    
-                    
-                    
+
+
+
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
+
+
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id); 
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
 
 
                     ViewBag.Message = "Please check your email to confirm you account";
 
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    
 
-                    return View("_ConfirmEmailInstructions");
+                    return View("ConfirmEmailInstructions");
+                    //return View("ConfirmEmail");
                     //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
