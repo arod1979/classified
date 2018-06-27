@@ -23,9 +23,56 @@ namespace RegistrationPractice.Entities
         [DisplayName("Please return for free!")]
         public bool NoReward { get; set; }
 
+
         [Required]
-        [DataType(DataType.Currency)]
-        public float Reward { get; set; }
+        [DisplayName("Item Reward")]
+        [DataType(dataType: DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:C0}", ApplyFormatInEditMode = true)]
+        public decimal? ItemReward { get; set; }
+
+
+        [MaxLength(25)]
+        [Required]
+        public string Description { get; set; }
+
+        [DisplayName("Location")]
+        public int LocationID { get; set; }
+        public virtual Location Location { get; set; }
+
+        [DisplayName("Category")]
+        public int CategoryID { get; set; }
+
+        public virtual Category Category { get; set; }
+
+        public virtual DateTime CreationDate { get; set; } = System.DateTime.Now;
+
+        public string EmailRelayAddress { get; set; }
+
+        [Required]
+        [DataType(DataType.MultilineText)]
+        public string AdditionalNotes { get; set; }
+
+        public int Visits { get; set; }
+
+        public bool Returned { get; set; }
+
+        public string OwnerUserEmail { get; set; }
+
+        //public virtual ApplicationUser ApplicationUser { get; set; }
+
+        //public string ApplicationUserId { get; set; }
+
+        [DisplayName("Image")]
+        public string imageURL { get; set; }
+
+        public string imageTitle { get; set; }
+
+        [Display(Name = "Display profile Image")]
+        public bool? HideItem { get; set; }
+
+
+
+
 
     }
 }

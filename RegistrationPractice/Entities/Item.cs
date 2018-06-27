@@ -25,12 +25,12 @@ namespace RegistrationPractice.Entities
         [DisplayName("Please return for free!")]
         public bool NoReward { get; set; }
 
-        
-        public int? Reward { get; set; }
 
         [Required]
-        [DataType(DataType.Currency)]
-        public float ItemReward { get; set; }
+        [DisplayName("Item Reward")]
+        [DataType(dataType: DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
+        public decimal? ItemReward { get; set; }
 
 
         [MaxLength(25)]
@@ -46,7 +46,7 @@ namespace RegistrationPractice.Entities
 
         public virtual Category Category { get; set; }
 
-        public virtual DateTime CreationDate { get; set; }
+        public virtual DateTime CreationDate { get; set; } = System.DateTime.Now;
 
         public string EmailRelayAddress { get; set; }
 
@@ -58,20 +58,21 @@ namespace RegistrationPractice.Entities
 
         public bool Returned { get; set; }
 
-        public string UserEmail { get; set; }
+        public string OwnerUserEmail { get; set; }
 
         //public virtual ApplicationUser ApplicationUser { get; set; }
 
         //public string ApplicationUserId { get; set; }
 
+        [DisplayName("Image")]
         public string imageURL { get; set; }
 
         public string imageTitle { get; set; }
 
         [Display(Name = "Display profile Image")]
-        public bool? DisplayItem { get; set; }
+        public bool? HideItem { get; set; }
 
-        public int goat { get; set; }
+        
 
 
     }

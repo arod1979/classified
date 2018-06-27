@@ -1,11 +1,19 @@
-﻿@model IEnumerable<RegistrationPractice.Entities.Test>
+﻿@model IEnumerable<RegistrationPractice.Entities.Item>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lost Items";
 }
 
-<h2>Index</h2>
+<h2>Lost Items</h2>
 
+@using (Html.BeginForm())
+{
+    <p>
+        Search Term: @Html.TextBox("searchTerm")
+        <input type="submit" value="Search" />
+    </p>
+}
+<div search-form></div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -18,22 +26,16 @@
             @Html.DisplayNameFor(model => model.Location.LocationText)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LostOrFoundItem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NoReward)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemReward)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CreationDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EmailRelayAddress)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.ItemReward)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AdditionalNotes)
@@ -41,21 +43,22 @@
         <th>
             @Html.DisplayNameFor(model => model.Visits)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Returned)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerUserEmail)
-        </th>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.imageURL)
+         
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.imageTitle)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HideItem)
-        </th>
+            @Html.DisplayNameFor(model => model.DisplayItem)
+        </th>*@
         <th></th>
     </tr>
 
@@ -68,22 +71,16 @@
             @Html.DisplayFor(modelItem => item.Location.LocationText)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LostOrFoundItem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoReward)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemReward)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.EmailRelayAddress)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemReward)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AdditionalNotes)
@@ -91,25 +88,23 @@
         <td>
             @Html.DisplayFor(modelItem => item.Visits)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Returned)
-        </td>
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ApplicationUserId)
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.OwnerUserEmail)
+            <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
         </td>
+
+        @*<td>
+            @Html.DisplayFor(modelItem => item.DisplayItem)
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.imageURL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imageTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HideItem)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
         </td>
     </tr>
 }

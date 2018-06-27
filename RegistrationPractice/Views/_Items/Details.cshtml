@@ -1,4 +1,4 @@
-﻿@model RegistrationPractice.Entities.Test
+﻿@model RegistrationPractice.Entities.Item
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Test</h4>
+    <h4>Item</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -24,30 +24,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Location.LocationText)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LostOrFoundItem)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LostOrFoundItem)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NoReward)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NoReward)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemReward)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemReward)
         </dd>
 
         <dt>
@@ -75,6 +51,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Reward)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reward)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.AdditionalNotes)
         </dt>
 
@@ -99,11 +83,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OwnerUserEmail)
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OwnerUserEmail)
+            @Html.DisplayFor(model => model.ApplicationUserId)
         </dd>
 
         <dt>
@@ -123,11 +107,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HideItem)
+            @Html.DisplayNameFor(model => model.DisplayItem)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HideItem)
+            @Html.DisplayFor(model => model.DisplayItem)
         </dd>
 
     </dl>

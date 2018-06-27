@@ -1,4 +1,9 @@
 ﻿$(function () {
+
+
+
+
+
     $('[file-upload]').change(function () {
         var File = this.files;
 
@@ -6,6 +11,11 @@
             ReadImage(File[0])
         }
     })
+
+    if ($('[img-preview]').hasClass("show-img"))
+        {
+        ReadImage()
+    }
 
     
 });

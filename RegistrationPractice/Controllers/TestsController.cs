@@ -19,7 +19,8 @@ namespace RegistrationPractice.Controllers
         // GET: Tests
         public async Task<ActionResult> Index()
         {
-            return View(await db.Tests.ToListAsync());
+            var tests = db.Tests.Include(t => t.Category).Include(t => t.Location);
+            return View(await tests.ToListAsync());
         }
 
         // GET: Tests/Details/5
@@ -40,6 +41,8 @@ namespace RegistrationPractice.Controllers
         // GET: Tests/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
+            ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
             return View();
         }
 
@@ -48,7 +51,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,LostOrFoundItem,NoReward,Reward")] Test test)
+        public async Task<ActionResult> Create([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem")] Test test)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +60,8 @@ namespace RegistrationPractice.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", test.CategoryID);
+            ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", test.LocationID);
             return View(test);
         }
 
@@ -72,6 +77,8 @@ namespace RegistrationPractice.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", test.CategoryID);
+            ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", test.LocationID);
             return View(test);
         }
 
@@ -80,7 +87,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,LostOrFoundItem,NoReward,Reward")] Test test)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem")] Test test)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +95,8 @@ namespace RegistrationPractice.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", test.CategoryID);
+            ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", test.LocationID);
             return View(test);
         }
 

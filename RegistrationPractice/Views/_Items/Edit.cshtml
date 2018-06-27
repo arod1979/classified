@@ -1,4 +1,4 @@
-﻿@model RegistrationPractice.Entities.Test
+﻿@model RegistrationPractice.Entities.Item
 
 @{
     ViewBag.Title = "Edit";
@@ -11,38 +11,10 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Test</h4>
+        <h4>Item</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LostOrFoundItem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.LostOrFoundItem)
-                    @Html.ValidationMessageFor(model => model.LostOrFoundItem, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NoReward, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.NoReward)
-                    @Html.ValidationMessageFor(model => model.NoReward, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ItemReward, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -85,6 +57,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Reward, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Reward, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Reward, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.AdditionalNotes, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control" } })
@@ -111,10 +91,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OwnerUserEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ApplicationUserId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OwnerUserEmail, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OwnerUserEmail, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ApplicationUserId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ApplicationUserId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -135,11 +115,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HideItem, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DisplayItem, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.HideItem)
-                    @Html.ValidationMessageFor(model => model.HideItem, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.DisplayItem)
+                    @Html.ValidationMessageFor(model => model.DisplayItem, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
