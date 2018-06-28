@@ -12,10 +12,7 @@
         }
     })
 
-    if ($('[img-preview]').hasClass("show-img"))
-        {
-        ReadImage()
-    }
+    
 
     
 });
@@ -27,14 +24,14 @@ var ReadImage = function (file) {
     reader.onload = function (_file) {
         image.src = _file.target.result;
         image.onload = function () {
-            var height = this.height;
-            var width = this.width;
-            var type = file.type;
-            var size = ~~(file.size / 1024) + "KB";
+            //var height = this.height;
+            //var width = this.width;
+            //var type = file.type;
+            //var size = ~~(file.size / 1024) + "KB";
 
             $('[target-img]').attr('src', _file.target.result);
-            $('[img-description]').text("Size: " + size + ", Height:" + height
-                + ", Width:" + width);
+            //$('[img-description]').text("Size: " + size + ", Height:" + height
+            //    + ", Width:" + width);
             $('[img-preview]').show();
         }
     }

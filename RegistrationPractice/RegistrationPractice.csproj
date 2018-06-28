@@ -248,7 +248,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageEntity.cs" />
-    <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\_ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -441,6 +440,10 @@
     <Compile Include="Migrations\201806270033362_test1235.Designer.cs">
       <DependentUpon>201806270033362_test1235.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806281932523_location.cs" />
+    <Compile Include="Migrations\201806281932523_location.Designer.cs">
+      <DependentUpon>201806281932523_location.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -532,16 +535,21 @@
     <Content Include="Views\_Items\UserPosts.cshtml" />
     <Content Include="Views\Shared\_SearchFormPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmailInstructions.cshtml" />
-    <Content Include="Views\Items\Create.cshtml" />
-    <Content Include="Views\Items\Delete.cshtml" />
-    <Content Include="Views\Items\Details.cshtml" />
-    <Content Include="Views\Items\Edit.cshtml" />
-    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\2_Items\Create.cshtml" />
+    <Content Include="Views\2_Items\Delete.cshtml" />
+    <Content Include="Views\2_Items\Details.cshtml" />
+    <Content Include="Views\2_Items\Edit.cshtml" />
+    <Content Include="Views\2_Items\Index.cshtml" />
     <Content Include="Views\Tests\Create.cshtml" />
     <Content Include="Views\Tests\Delete.cshtml" />
     <Content Include="Views\Tests\Details.cshtml" />
     <Content Include="Views\Tests\Edit.cshtml" />
     <Content Include="Views\Tests\Index.cshtml" />
+    <Content Include="Views\Items\Create.cshtml" />
+    <Content Include="Views\Items\Delete.cshtml" />
+    <Content Include="Views\Items\Details.cshtml" />
+    <Content Include="Views\Items\Edit.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -694,6 +702,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806270033362_test1235.resx">
       <DependentUpon>201806270033362_test1235.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806281932523_location.resx">
+      <DependentUpon>201806281932523_location.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

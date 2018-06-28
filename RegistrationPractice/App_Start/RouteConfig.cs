@@ -18,6 +18,12 @@ namespace RegistrationPractice
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Items", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "EditItem",
+                url: "Items/Edit/{id}",
+                defaults: new { controller = "Items", action = "Edit", id="" }
+            );
         }
     }
 }
