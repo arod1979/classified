@@ -528,19 +528,8 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\_Items\Create.cshtml" />
-    <Content Include="Views\_Items\Delete.cshtml" />
-    <Content Include="Views\_Items\Details.cshtml" />
-    <Content Include="Views\_Items\Edit.cshtml" />
-    <Content Include="Views\_Items\Index.cshtml" />
-    <Content Include="Views\_Items\UserPosts.cshtml" />
     <Content Include="Views\Shared\_SearchFormPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmailInstructions.cshtml" />
-    <Content Include="Views\2_Items\Create.cshtml" />
-    <Content Include="Views\2_Items\Delete.cshtml" />
-    <Content Include="Views\2_Items\Details.cshtml" />
-    <Content Include="Views\2_Items\Edit.cshtml" />
-    <Content Include="Views\2_Items\Index.cshtml" />
     <Content Include="Views\Tests\Create.cshtml" />
     <Content Include="Views\Tests\Delete.cshtml" />
     <Content Include="Views\Tests\Details.cshtml" />
@@ -551,6 +540,8 @@
     <Content Include="Views\Items\Details.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\Items\UserPosts.cshtml" />
+    <Content Include="Views\Items\Profanity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
