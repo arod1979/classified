@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RegistrationPractice.Models;
 using CaptchaMvc.HtmlHelpers;
+using System.Text.RegularExpressions;
 
 namespace RegistrationPractice.Controllers
 {
@@ -165,6 +166,19 @@ namespace RegistrationPractice.Controllers
             return View();
         }
 
+       
+
+        public static string ReplacePotentiallyDangerousSymbols(string unvalidatedValue, string valueToReplace = "")
+        {
+            if (!string.IsNullOrEmpty(unvalidatedValue))
+            {
+                //The regular expression made as result of this ASP.NET method analyzing: CrossSiteScriptingValidation.IsDangerousString http://referencesource.microsoft.com/#System.Web/CrossSiteScriptingValidation.cs,3c599cea73c5293b
+                unvalidatedValue = Regex.Replace(unvalidatedValue,
+                    "(\\<+[a-z!/\\?])|(&\\#)",
+                    new MatchEvaluator((m) => { return m.Value.Replace("<", valueToReplace).Replace("&#", valueToReplace); }), RegexOptions.IgnoreCase);
+            }
+            return unvalidatedValue;
+        }
         //
         // POST: /Account/Register
         [HttpPost]
@@ -195,7 +209,7 @@ namespace RegistrationPractice.Controllers
 
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id); 
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", AccountController.ReplacePotentiallyDangerousSymbols("Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>"));
                     //string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
 
