@@ -33,6 +33,13 @@
                 </div>
             </div>
         </div>*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.PostType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PostTypeId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PostType, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.ItemReward, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -50,13 +57,13 @@
         </div>
     </div>
 
-    
-    
-    
+
+
+
     <div class="form-group">
         @Html.LabelFor(model => model.LocationID, "LocationID", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("LocationId", null , htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownList("LocationId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
         </div>
     </div>

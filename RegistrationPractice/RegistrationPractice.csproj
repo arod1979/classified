@@ -257,6 +257,7 @@
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\PostType.cs" />
     <Compile Include="Entities\Test.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ProfanityExtension.cs" />
@@ -444,6 +445,10 @@
     <Compile Include="Migrations\201806281932523_location.cs" />
     <Compile Include="Migrations\201806281932523_location.Designer.cs">
       <DependentUpon>201806281932523_location.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807011749092_posttype.cs" />
+    <Compile Include="Migrations\201807011749092_posttype.Designer.cs">
+      <DependentUpon>201807011749092_posttype.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -697,6 +702,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806281932523_location.resx">
       <DependentUpon>201806281932523_location.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807011749092_posttype.resx">
+      <DependentUpon>201807011749092_posttype.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

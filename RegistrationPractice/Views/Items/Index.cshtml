@@ -10,12 +10,14 @@
    
 
     <form method="get">
+        What Happened? : @Html.DropDownList("PostTypeId", null, htmlAttributes: new { @class = "form-control" })
         Location: @Html.DropDownList("LocationId", null, htmlAttributes: new { @class = "form-control" })
         Category: @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
-        Search Text:@Html.TextBox("SearchTerm", null, new { autocomplete = "off", tabindex = 1, maxlength = "60",  @class = "form-control" })
+        Search Text:@Html.TextBox("SearchTerm", null, new { autocomplete = "off", tabindex = 1, maxlength = "60", @class = "form-control" })
 
 
-        <input type="submit" value="Search" />
+        <input type="submit" name="search" value="Search" />
+        <input type="submit" name="cancel" value="Cancel" />
     </form>
 </div>
 
@@ -26,6 +28,10 @@
         <div class="container">
             <table class="table">
                 <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostType.PostTypeText)
+                    </th>
+                    
                     <th>
                         @Html.DisplayNameFor(model => model.Category.CategoryText)
                     </th>
@@ -77,6 +83,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.PostType.PostTypeText)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Category.CategoryText)
                         </td>

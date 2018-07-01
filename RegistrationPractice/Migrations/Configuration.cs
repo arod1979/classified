@@ -21,17 +21,31 @@ namespace RegistrationPractice.Migrations
 
         protected override void Seed(RegistrationPractice.Models.ApplicationDbContext context)
         {
-            context.Locations.AddOrUpdate(x => x.Id,
-            new Location() { LocationText = "winnipeg" },
-            new Location() { LocationText = "toronto" }
+            //context.Locations.AddOrUpdate(x => x.Id,
+            //new Location() { LocationText = "winnipeg" },
+            //new Location() { LocationText = "toronto" },
+            //new Location() { LocationText = "vancouver" },
+            //new Location() { LocationText = "calgary" },
+            //new Location() { LocationText = "edmonton" }
+
+            //);
+
+
+            //context.Categories.AddOrUpdate(x => x.Id,
+            //new Category() { CategoryText = "pet" },
+            //new Category() { CategoryText = "vehicle" },
+            //new Category() { CategoryText = "electronics" },
+            //new Category() { CategoryText = "bikes" },
+            //new Category() { CategoryText = "phones" },
+            //new Category() { CategoryText = "personal items" }
+
+            //);
+
+            context.PostTypes.AddOrUpdate(x => x.Id,
+            new PostType() { PostTypeText = "lost" },
+            new PostType() { PostTypeText = "found" },
+            new PostType() { PostTypeText = "stolen" }
             );
-
-
-            context.Categories.AddOrUpdate(x => x.Id,
-            new Category() { CategoryText = "pet" },
-            new Category() { CategoryText = "vehicle" }
-            );
-
             //if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             //{
             //    var store = new RoleStore<IdentityRole>(context);

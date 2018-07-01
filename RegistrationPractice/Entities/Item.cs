@@ -17,8 +17,10 @@ namespace RegistrationPractice.Entities
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Lost Item/Found Item")]
+        [DisplayName("What Happened?")]
         public bool LostOrFoundItem { get; set; }
+
+        
         
 
         [Required]
@@ -36,6 +38,12 @@ namespace RegistrationPractice.Entities
         [MaxLength(25)]
         [Required]
         public string Description { get; set; }
+
+        [Required]
+        [DisplayName("What Happened")]
+        public int PostTypeID { get; set; }
+        public virtual PostType PostType { get; set; }
+
 
         [DisplayName("Location")]
         public int LocationID { get; set; }

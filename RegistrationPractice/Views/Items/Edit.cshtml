@@ -16,6 +16,8 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.OwnerUserEmail)
+    @Html.HiddenFor(model => model.PostTypeID)
+
 
     @*<div class="form-group">
             @Html.LabelFor(model => model.LostOrFoundItem, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -36,6 +38,15 @@
                 </div>
             </div>
         </div>*@
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PostTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Model.PostType.PostTypeText
+            @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.ItemReward, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -132,20 +143,20 @@
         </div>
     </div>
 
-    @if (ViewBag.ImageUrl !=null)
+    @if (ViewBag.ImageUrl != null)
     {
-     
-    <div class="form-group">
-        <div class="col-md-2 col-md-offset-2">
-            <div img-preview class="thumbnail">
-                <img class="img-responsive" src="@ViewBag.ImageUrl" target-img />
-                <div class="caption">
-                    <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
-                    <p img-description></p>
+
+        <div class="form-group">
+            <div class="col-md-2 col-md-offset-2">
+                <div img-preview class="thumbnail">
+                    <img class="img-responsive" src="@ViewBag.ImageUrl" target-img />
+                    <div class="caption">
+                        <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
+                        <p img-description></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     }
 
 

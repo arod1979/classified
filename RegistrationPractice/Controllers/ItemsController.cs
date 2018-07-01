@@ -1281,31 +1281,39 @@ namespace RegistrationPractice.Controllers
         }
 
         // GET: Items
-        public async Task<ActionResult> Index(string SearchTerm, int? LocationId, int? CategoryId)
+        [AllowAnonymous]
+        public async Task<ActionResult> Index(string SearchTerm, int? LocationId, int? CategoryId, int? PostTypeId, string cancel)
         {
             var items = db.Items.Include(i => i.Category).Include(i => i.Location);
-            if (!String.IsNullOrEmpty(SearchTerm))
-
+            if (string.IsNullOrEmpty(cancel))
             {
-                items = items.Where(i => i.Description.ToUpper().Contains(SearchTerm.ToUpper())
-                || i.AdditionalNotes.ToUpper().Contains(SearchTerm.ToUpper())
-            );
-            }
 
-            if (LocationId.HasValue)
-            {
-                items = items.Where(i => i.LocationID == LocationId);
-            }
-            if (CategoryId.HasValue)
-            {
-                items = items.Where(i => i.CategoryID == CategoryId);
-            }
+                if (!String.IsNullOrEmpty(SearchTerm))
 
+                {
+                    items = items.Where(i => i.Description.ToUpper().Contains(SearchTerm.ToUpper())
+                    || i.AdditionalNotes.ToUpper().Contains(SearchTerm.ToUpper())
+                );
+                }
+
+                if (LocationId.HasValue)
+                {
+                    items = items.Where(i => i.LocationID == LocationId);
+                }
+                if (CategoryId.HasValue)
+                {
+                    items = items.Where(i => i.CategoryID == CategoryId);
+                }
+                if (PostTypeId.HasValue)
+                {
+                    items = items.Where(i => i.PostTypeID == PostTypeId);
+                }
+            }
 
 
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
-
+            ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
             return View(await items.ToListAsync());
         }
 
@@ -1317,6 +1325,8 @@ namespace RegistrationPractice.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Item item = await db.Items.FindAsync(id);
+            
+
             item.Visits++;
             db.Entry(item).State = EntityState.Modified;
             await db.SaveChangesAsync();
@@ -1335,6 +1345,7 @@ namespace RegistrationPractice.Controllers
 
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
+            ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
 
             //allan rodkin. this should be replaced with session variable
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
@@ -1355,7 +1366,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem")] Item item, HttpPostedFileBase files)
+        public async Task<ActionResult> Create([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID")] Item item, HttpPostedFileBase files)
         {
             if (ModelState.IsValid)
             {
@@ -1399,6 +1410,7 @@ namespace RegistrationPractice.Controllers
 
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", item.CategoryID);
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", item.LocationID);
+            ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText", item.PostTypeID);
             return View(item);
         }
 
@@ -1425,7 +1437,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem")] Item item, HttpPostedFileBase files)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files)
         {
             if (ModelState.IsValid)
             {
