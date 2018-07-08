@@ -1,9 +1,5 @@
 ﻿$(function () {
 
-
-
-
-
     $('[file-upload]').change(function () {
         var File = this.files;
 
@@ -20,6 +16,12 @@
 var ReadImage = function (file) {
     var reader = new FileReader;
     var image = new Image;
+    
+    image.addEventListener('error', imagenotfound);
+    var imagenotfound = function () {
+        alert("imagenotfound");
+    };
+
     reader.readAsDataURL(file);
     reader.onload = function (_file) {
         image.src = _file.target.result;

@@ -34,7 +34,7 @@
             </div>
         </div>*@
     <div class="form-group">
-        @Html.LabelFor(model => model.PostType, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.PostType, "What Happened?", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("PostTypeId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.PostType, "", new { @class = "text-danger" })
@@ -53,6 +53,7 @@
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -61,7 +62,7 @@
 
 
     <div class="form-group">
-        @Html.LabelFor(model => model.LocationID, "LocationID", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.LocationID, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("LocationId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
@@ -69,7 +70,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.CategoryID, "CategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
@@ -126,15 +127,17 @@
             </div>
         </div>*@
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-group upload-file-interface">
+        @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2 " }) 
+        
         <div class="col-md-4">
             @*@Html.EditorFor(model => model.imageURL, new { htmlAttributes = new { @class = "form-control" } })*@
             <div class="btn btn-primary">
-                <input type="file" name="files" id="files" multiple="multiple" file-upload />
+                <input type="file" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
             </div>
+            <div>.jpg,.png (5MB MAX)</div>
 
-            @Html.ValidationMessageFor(model => model.imageURL, "", new { @class = "text-danger" })
+            <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
         </div>
     </div>
 

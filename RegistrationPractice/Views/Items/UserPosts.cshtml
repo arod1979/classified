@@ -11,6 +11,9 @@
         <table class="table">
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.PostType.PostTypeText)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Category.CategoryText)
                 </th>
                 <th>
@@ -65,66 +68,69 @@
 
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryText)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location.LocationText)
-                </td>
-                @*
-                <td>
-                    @Html.DisplayFor(modelItem => item.LostOrFoundItem)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NoReward)
-                </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.ItemReward)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreationDate)
-                </td>
-                @*
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmailRelayAddress)
-                </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.AdditionalNotes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Visits)
-                </td>
-                @*
-                <td>
-                    @Html.DisplayFor(modelItem => item.Returned)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OwnerUserEmail)
-                </td>*@
-                @*
-                <td>
-                    Html.DisplayFor(modelItem => item.imageURL)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.imageTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HideItem)
-                </td>*@
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostType.PostTypeText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location.LocationText)
+                    </td>
+                    @*
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LostOrFoundItem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoReward)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemReward)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    @*
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailRelayAddress)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AdditionalNotes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Visits)
+                    </td>
+                    @*
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Returned)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OwnerUserEmail)
+                    </td>*@
+                    @*
+                    <td>
+                        Html.DisplayFor(modelItem => item.imageURL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imageTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HideItem)
+                    </td>*@
 
-                <td>
-                    <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
+                    <td>
+                        <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
             }
 
         </table>

@@ -41,11 +41,11 @@ namespace RegistrationPractice.Migrations
 
             //);
 
-            context.PostTypes.AddOrUpdate(x => x.Id,
-            new PostType() { PostTypeText = "lost" },
-            new PostType() { PostTypeText = "found" },
-            new PostType() { PostTypeText = "stolen" }
-            );
+            //context.PostTypes.AddOrUpdate(x => x.Id,
+            //new PostType() { PostTypeText = "lost" },
+            //new PostType() { PostTypeText = "found" },
+            //new PostType() { PostTypeText = "stolen" }
+            //);
             //if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             //{
             //    var store = new RoleStore<IdentityRole>(context);

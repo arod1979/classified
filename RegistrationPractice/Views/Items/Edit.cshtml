@@ -17,6 +17,9 @@
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.OwnerUserEmail)
     @Html.HiddenFor(model => model.PostTypeID)
+    @*@Html.HiddenFor(model => model.PostType.PostTypeText)*@
+    
+
 
 
     @*<div class="form-group">
@@ -136,9 +139,9 @@
         <div class="col-md-4">
             @*@Html.EditorFor(model => model.imageURL, new { htmlAttributes = new { @class = "form-control" } })*@
             <div class="btn btn-primary">
-                <input type="file" name="files" id="files" multiple="multiple" file-upload />
+                <input type="file" name="files" id="files" multiple="multiple" file-upload accept=".jpg,.jpeg,.png" />
             </div>
-
+            <div>.jpg,.png (5MB MAX)</div>
             @Html.ValidationMessageFor(model => model.imageURL, "", new { @class = "text-danger" })
         </div>
     </div>

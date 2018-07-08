@@ -209,7 +209,8 @@ namespace RegistrationPractice.Controllers
 
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id); 
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", AccountController.ReplacePotentiallyDangerousSymbols("Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>"));
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", AccountController.ReplacePotentiallyDangerousSymbols("Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>"));
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account by clicking link.", AccountController.ReplacePotentiallyDangerousSymbols(callbackUrl));
                     //string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
 
@@ -270,7 +271,8 @@ namespace RegistrationPractice.Controllers
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                await UserManager.SendEmailAsync(user.Id, "Reset Password By Clicking This Link", callbackUrl);
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
