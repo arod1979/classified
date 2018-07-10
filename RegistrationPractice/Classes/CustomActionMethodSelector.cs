@@ -64,7 +64,9 @@ namespace RegistrationPractice.Classes
     /// /// </returns>    
     public override bool IsValidForRequest(ControllerContext controllerContext, MethodInfo methodInfo)
     {
-        if (controllerContext == null)
+            
+
+            if (controllerContext == null)
         {
             throw new ArgumentNullException("controllerContext");
         }

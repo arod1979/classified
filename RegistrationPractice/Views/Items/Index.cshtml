@@ -4,6 +4,9 @@
     ViewBag.Title = "Index";
 }
 
+@ViewBag.Message
+@TempData["Message"]
+
 <h2>Index And Search</h2>
 <div id="searchParameters" style="width:778px;background:#FFFFFF;padding:10px; border:1px solid #000000">
 
@@ -32,6 +35,9 @@
 <div class="container">
     <table class="table">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerUserEmail)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.PostType.PostTypeText)
             </th>
@@ -88,6 +94,9 @@
                 {
         <tr>
             <td>
+                @Html.DisplayFor(model => item.OwnerUserEmail)
+            </td>
+            <td>
                 @Html.DisplayFor(model => item.PostType.PostTypeText)
             </td>
             <td>
@@ -141,9 +150,9 @@
                 <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>
         </tr>
                 }

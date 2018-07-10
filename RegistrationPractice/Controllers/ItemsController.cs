@@ -57,12 +57,17 @@ namespace RegistrationPractice.Controllers
 
                 if (LocationId.HasValue)
                 {
-                    items = items.Where(i => i.LocationID == LocationId);
+                   
+
+                    items = from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist;
+                    int count = (from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist).Count();
+
                 }
                 
                 if (PostTypeId.HasValue)
                 {
-                    items = items.Where(i => i.PostTypeID == PostTypeId);
+                    items = from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist;
+                    int count = (from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist).Count();
                 }
 
                 if (categoryfilter != null)
@@ -117,17 +122,19 @@ namespace RegistrationPractice.Controllers
 
             //allan rodkin. this should be replaced with session variable
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
-            string logfilepath = String.Format("{0}/{1}", servername, "log.txt");
+           
+            
             if (useremail == null)
             {
                 try
                 {
-                    System.IO.File.WriteAllText(logfilepath, "No user email for post");
+                    var path = Server.MapPath(@"~/log.txt");
+                    System.IO.File.WriteAllText(path, "No user email for post");
                     return RedirectToAction("Login", "Account", null);
                 }
                 catch (Exception e)
                 {
-
+                    
                 }
             }
 
@@ -202,15 +209,7 @@ namespace RegistrationPractice.Controllers
                     return View("Profanity");
                 }
 
-                //string email = (string)(Session["UserEmail"]);
-                //item.OwnerUserEmail = email;
-
-
-
-
-                
-                    //
-                
+               
 
                 db.Items.Add(item);
                 await db.SaveChangesAsync();
@@ -224,15 +223,28 @@ namespace RegistrationPractice.Controllers
         }
 
         // GET: Items/Edit/5
-        [RequiresRouteValuesAttribute("id")]
+        
         public async Task<ActionResult> Edit(int? id)
         {
+            
+            string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
+
+            Item item = await db.Items.FindAsync(id);
+
+
+            if (item!=null && useremail != null && useremail != item.OwnerUserEmail)
+            {
+                TempData["Message"] = "You do not have permission to modify this post.";
+                return RedirectToAction("Index", "Items", null);
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
 
-            Item item = await db.Items.FindAsync(id);
+            
             if (item == null)
             {
                 return HttpNotFound();
@@ -248,6 +260,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult> Edit([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files)
         {
 
@@ -294,6 +307,7 @@ namespace RegistrationPractice.Controllers
             
             if (ModelState.IsValid)
             {
+                db.Entry(item).State = EntityState.Modified;
                 //profanity check
                 bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description);
                 if (textContainsProfanity)
@@ -311,6 +325,8 @@ namespace RegistrationPractice.Controllers
                 item.PostType = new PostType();
                 item.PostType.PostTypeText = db.PostTypes.SingleOrDefault(pt => pt.Id == item.PostTypeID).PostTypeText;
 
+
+                
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -322,14 +338,24 @@ namespace RegistrationPractice.Controllers
         }
 
         // GET: Items/Delete/5
-        [RequiresRouteValuesAttribute("id")]
+        
         public async Task<ActionResult> Delete(int? id)
         {
+            string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
+
+            Item item = await db.Items.FindAsync(id);
+
+            if (item != null && useremail != null && useremail != item.OwnerUserEmail)
+            {
+                TempData["Message"] = "You do not have permission to modify this post.";
+                return RedirectToAction("Index", "Items", null);
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = await db.Items.FindAsync(id);
+            
             if (item == null)
             {
                 return HttpNotFound();
