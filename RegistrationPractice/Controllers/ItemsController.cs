@@ -41,7 +41,7 @@ namespace RegistrationPractice.Controllers
 
         // GET: Items
         [AllowAnonymous]
-        public async Task<ActionResult> Index(string categoryfilter, string SearchTerm, int? LocationId, int? CategoryId, int? PostTypeId, string cancel)
+        public async Task<ActionResult> Index(string city, string categoryfilter, string SearchTerm, int? LocationId, int? CategoryId, int? PostTypeId, string cancel)
         {
             var items = db.Items.Include(i => i.Category).Include(i => i.Location);
             if (string.IsNullOrEmpty(cancel))
@@ -81,6 +81,16 @@ namespace RegistrationPractice.Controllers
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
             ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
             return View(await items.ToListAsync());
+        }
+
+
+        // GET: Items
+        [AllowAnonymous]
+        public ViewResult CountryIndex(string countryname)
+        {
+            ViewBag.country = "canada";
+            
+            return View();
         }
 
         // GET: Items/Details/5
@@ -201,7 +211,7 @@ namespace RegistrationPractice.Controllers
             if (ModelState.IsValid)
             {
                 //profanity check
-                bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description);
+                bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description) || pf.ValidateTextContainsProfanity(item.AdditionalNotes);
                 if (textContainsProfanity)
                 {
                     //item.Description = pf.CleanTextProfanity(item.Description);
@@ -309,7 +319,7 @@ namespace RegistrationPractice.Controllers
             {
                 db.Entry(item).State = EntityState.Modified;
                 //profanity check
-                bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description);
+                bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description) || pf.ValidateTextContainsProfanity(item.AdditionalNotes);
                 if (textContainsProfanity)
                 {
                     //item.Description = pf.CleanTextProfanity(item.Description);

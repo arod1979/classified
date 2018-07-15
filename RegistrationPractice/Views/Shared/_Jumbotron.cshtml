@@ -1,0 +1,120 @@
+﻿
+
+@using System.Web;
+@using Microsoft.AspNet.Identity
+
+
+
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Comfortaa'>
+</head>
+<body>
+
+    @*<nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-center">
+                        <li class="nav-item">
+                            <a href="#" class="awolr-logo">AwolR</a>
+
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        @Html.Partial("_AdminMenuPartial")
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </nav>*@
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-center">
+                    <li class="nav-item">
+                        <a href="#" class="navbar-brand awolr-logo">AwolR</a>
+                    </li>
+                </ul>
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        @Html.Partial("_AdminMenuPartial")
+                    </ul>
+                }
+                @Html.Partial("_LoginPartial")
+
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </nav>
+    @System.Web.HttpContext.Current.Session["UserEmail"];
+    <img src="~/pictures/awolrlogo.png.gif" style="display: block;
+
+                    margin-left: auto;
+                  margin-right: auto;" />
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+    <div class="bottom-footer">
+
+
+        <a href="login1.php">
+            <?php if(!empty($user)): ?>Logged in as <?= $user['email']; ?>/Log out
+            <?php else: ?>Log In<?php endif; ?>
+        </a>&nbsp;&nbsp;&nbsp;
+
+
+
+        <a href="faqs.php">FAQs</a>&nbsp;&nbsp;&nbsp;
+        <a href="privacy.php">Privacy</a>&nbsp;&nbsp;&nbsp;
+        <!--<a href="rewards.php">Monetary Rewards</a>&nbsp;&nbsp;&nbsp;-->
+        <a href="contactus.php">Contact Us</a>&nbsp;&nbsp;&nbsp;
+        <a href="usa/USA.php">USA</a>
+
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/admin")
+    @Scripts.Render("~/bundles/previewimage")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

@@ -13,6 +13,9 @@ namespace RegistrationPractice
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            
+
+
             routes.MapRoute(
                 name: "ItemDetails",
                 url: "Items/Details/{id}",
@@ -37,9 +40,15 @@ namespace RegistrationPractice
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Items", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{countryname}",
+                defaults: new { controller = "Items", action = "CountryIndex", countryname = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Items", action = "Index", id = UrlParameter.Optional }
+            //);
 
 
         }

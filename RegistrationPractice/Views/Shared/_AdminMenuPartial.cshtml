@@ -1,10 +1,21 @@
-﻿<li id="apple" class="dropdown" data-admin-menu>
+﻿@using Microsoft.AspNet.Identity
+
+<li id="apple" class="dropdown" data-admin-menu>
     <a href="#">
-        Admin
+        MyAwolr
         <span class="glyphicon glyphicon-chevron-down"></span>
     </a>
-        <ul class="dropdown-menu" role="menu">
-            <li>apple pie</li>
-        </ul>
-    
+    <ul class="dropdown-menu" role="menu">
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        <li>@Html.ActionLink("Add AWOLR Item", "Create", "Items")</li>
+        <li>@Html.ActionLink("My AWOLR Items", "UserPosts", "Items")</li>
+        @if (Request.IsAuthenticated)
+        {
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+        }
+    </ul>
+
 </li>

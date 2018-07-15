@@ -460,6 +460,10 @@
     <Compile Include="Migrations\201807061726146_returningidtoint.Designer.cs">
       <DependentUpon>201807061726146_returningidtoint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807150106439_founddate.cs" />
+    <Compile Include="Migrations\201807150106439_founddate.Designer.cs">
+      <DependentUpon>201807150106439_founddate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -472,11 +476,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\layout-styles.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="css\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="log.txt" />
     <Content Include="pictures\awolrlogo.png.gif" />
     <Content Include="Scripts\AdminMenu.js" />
@@ -561,6 +569,9 @@
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Items\UserPosts.cshtml" />
     <Content Include="Views\Items\Profanity.cshtml" />
+    <Content Include="Views\Shared\_Jumbotron.cshtml" />
+    <Content Include="Views\Shared\bootstrap.cshtml" />
+    <Content Include="Views\Items\countryindex.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -728,6 +739,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807061726146_returningidtoint.resx">
       <DependentUpon>201807061726146_returningidtoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807150106439_founddate.resx">
+      <DependentUpon>201807150106439_founddate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

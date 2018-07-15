@@ -1,0 +1,32 @@
+﻿<h1 class="city">Find Your Stuff</h1>
+@if (ViewBag.country == "canada")
+{
+    <img src="~/pictures/mapofcanada.png" />
+    <h1 class="lfs">Select Your City</h1>
+    <div class="cities">
+
+
+
+        @Html.ActionLink("Victoria", "Index", new { city = "Victoria" }),
+
+        @Html.ActionLink("Vancouver",  "Index", new { city = "Vancouver" }),
+        <br>
+        @Html.ActionLink("Edmonton",  "Index", new { city = "Edmonton" }),
+        @Html.ActionLink("Calgary",  "Index", new { city = "Calgary" }),
+        <br>
+        @Html.ActionLink("Regina",  "Index", new { city = "Regina" }),
+        @Html.ActionLink("Saskatoon",  "Index", new { city = "Saskatoon" }),
+        <br>
+        @Html.ActionLink("Brandon",  "Index", new { city = "Brandon" }),
+        @Html.ActionLink("Winnipeg",  "Index", new { city = "Winnipeg" }),
+        <br>
+
+        @Html.ActionLink("Thunder Bay",  "Index", new { city = "Thunder Bay" }),
+        @Html.ActionLink("Toronto",  "Index", new { city = "Toronto" }),
+    </div>
+}
+else if (ViewBag.country == "usa")
+{
+     
+}
+

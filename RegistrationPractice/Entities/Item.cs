@@ -44,6 +44,9 @@ namespace RegistrationPractice.Entities
         public int PostTypeID { get; set; }
         public virtual PostType PostType { get; set; }
 
+        [Required]
+        [DisplayName("What Day Did You Find it")]
+        public virtual DateTime FoundDate { get; set; } = System.DateTime.Now;
 
         [DisplayName("Location")]
         public int LocationID { get; set; }
