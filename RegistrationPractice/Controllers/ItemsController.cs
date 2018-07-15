@@ -15,6 +15,8 @@ using Microsoft.AspNet.Identity;
 using Classes.Profanity.Logic;
 using PagedList;
 using RegistrationPractice.Classes;
+using RegistrationPractice.Classes.Globals;
+using RegistrationPractice.Classes.ViewModels;
 
 namespace RegistrationPractice.Controllers
 {
@@ -39,9 +41,10 @@ namespace RegistrationPractice.Controllers
             return View(await items.ToListAsync());
         }
 
-        // GET: Items
+
+        //allan rodkin
         [AllowAnonymous]
-        public async Task<ActionResult> Index(string city, string categoryfilter, string SearchTerm, int? LocationId, int? CategoryId, int? PostTypeId, string cancel)
+        public async Task<ActionResult> Index(string categoryfilter, string SearchTerm, int? LocationId, int? CategoryId, int? PostTypeId, string cancel)
         {
             var items = db.Items.Include(i => i.Category).Include(i => i.Location);
             if (string.IsNullOrEmpty(cancel))
@@ -57,13 +60,13 @@ namespace RegistrationPractice.Controllers
 
                 if (LocationId.HasValue)
                 {
-                   
+
 
                     items = from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist;
                     int count = (from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist).Count();
 
                 }
-                
+
                 if (PostTypeId.HasValue)
                 {
                     items = from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist;
@@ -81,6 +84,28 @@ namespace RegistrationPractice.Controllers
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
             ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
             return View(await items.ToListAsync());
+        }
+
+
+        // GET: Items
+        [AllowAnonymous]
+        public async Task<ActionResult> CityIndex(string city) ////candidate for dependancy injection
+        {
+
+            ViewBag.city = city;
+            var items = db.Items.Include(i => i.Category).Include(i => i.Location);
+            
+            var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city).Id;
+            var stolenitems = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.stolendbid && si.LocationID == cityid) select (Item)si).ToList<Item>();
+            var founditems = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.founddbid && si.LocationID == cityid) select (Item)si).ToList<Item>();
+            var lostitems = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.lostdbid && si.LocationID == cityid) select (Item)si).ToList<Item>();
+            VMCityItems vmcityitems = new VMCityItems{ LostItems = lostitems, FoundItems = founditems, StolenItems = stolenitems };
+
+
+            //ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
+            //ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
+            //ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
+            return View(vmcityitems);
         }
 
 

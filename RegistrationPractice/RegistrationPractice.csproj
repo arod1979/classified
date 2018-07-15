@@ -245,6 +245,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Classes\CustomActionMethodSelector.cs" />
+    <Compile Include="Classes\GlobalVariables.cs" />
     <Compile Include="Classes\ProfanityFilter.cs" />
     <Compile Include="Classes\WriteToLogFile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -470,6 +471,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\VMCityItems.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -571,7 +573,8 @@
     <Content Include="Views\Items\Profanity.cshtml" />
     <Content Include="Views\Shared\_Jumbotron.cshtml" />
     <Content Include="Views\Shared\bootstrap.cshtml" />
-    <Content Include="Views\Items\countryindex.cshtml" />
+    <Content Include="Views\Items\Countryindex.cshtml" />
+    <Content Include="Views\Items\cityindex.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -13,53 +13,38 @@ namespace RegistrationPractice.Entities
     [Table("Item")]
     public class Item
     {
+        //necessary fields
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        [Required]
-        [DisplayName("What Happened?")]
-        public bool LostOrFoundItem { get; set; }
-
-        
-        
-
-        [Required]
-        [DisplayName("Please return for free!")]
-        public bool NoReward { get; set; }
-
-
-        [Required]
-        [DisplayName("Item Reward")]
-        [DataType(dataType: DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
-        public decimal? ItemReward { get; set; }
-
 
         [MaxLength(25)]
         [Required]
         public string Description { get; set; }
 
-        [Required]
         [DisplayName("What Happened")]
-        public int PostTypeID { get; set; }
+        public int? PostTypeID { get; set; }
         public virtual PostType PostType { get; set; }
-
-        [Required]
-        [DisplayName("What Day Did You Find it")]
-        public virtual DateTime FoundDate { get; set; } = System.DateTime.Now;
 
         [DisplayName("Location")]
         public int LocationID { get; set; }
         public virtual Location Location { get; set; }
 
-        [DisplayName("Category")]
-        public int CategoryID { get; set; }
-
-        public virtual Category Category { get; set; }
+        [Required]
+        [DisplayName("Item Reward")]
+        [DataType(dataType: DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
+        public decimal ItemReward { get; set; }
+        
+        [Required]
+        [DisplayName("What Day Did You Find it")]
+        public virtual DateTime FoundDate { get; set; } = System.DateTime.Now;
 
         public virtual DateTime CreationDate { get; set; } = System.DateTime.Now;
 
-        public string EmailRelayAddress { get; set; }
+        [DisplayName("Category")]
+        public int? CategoryID { get; set; }
+        public virtual Category Category { get; set; }
 
         [Required]
         [DataType(DataType.MultilineText)]
@@ -69,11 +54,16 @@ namespace RegistrationPractice.Entities
 
         public bool Returned { get; set; }
 
+
+       
+
+        public string EmailRelayAddress { get; set; }
+
+        
+
         public string OwnerUserEmail { get; set; }
 
-        //public virtual ApplicationUser ApplicationUser { get; set; }
-
-        //public string ApplicationUserId { get; set; }
+       
 
         [DisplayName("Image")]
         public string imageURL { get; set; }
