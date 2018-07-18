@@ -31,6 +31,12 @@ namespace RegistrationPractice.Entities
         public virtual Location Location { get; set; }
 
         [Required]
+        [DisplayName("Lost Location")]
+        public string LostLocation { get; set; }
+
+
+
+        [Required]
         [DisplayName("Item Reward")]
         [DataType(dataType: DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
@@ -38,6 +44,8 @@ namespace RegistrationPractice.Entities
         
         [Required]
         [DisplayName("What Day Did You Find it")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime FoundDate { get; set; } = System.DateTime.Now;
 
         public virtual DateTime CreationDate { get; set; } = System.DateTime.Now;

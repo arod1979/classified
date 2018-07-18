@@ -244,6 +244,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Classes\canadian_cities.cs" />
     <Compile Include="Classes\CustomActionMethodSelector.cs" />
     <Compile Include="Classes\GlobalVariables.cs" />
     <Compile Include="Classes\ProfanityFilter.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ProfanityExtension.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
+    <Compile Include="Filters\CheckURLParameters.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -465,6 +467,10 @@
     <Compile Include="Migrations\201807150106439_founddate.Designer.cs">
       <DependentUpon>201807150106439_founddate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807181730209_lostlocation.cs" />
+    <Compile Include="Migrations\201807181730209_lostlocation.Designer.cs">
+      <DependentUpon>201807181730209_lostlocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -575,6 +581,7 @@
     <Content Include="Views\Shared\bootstrap.cshtml" />
     <Content Include="Views\Items\Countryindex.cshtml" />
     <Content Include="Views\Items\cityindex.cshtml" />
+    <Content Include="Views\Items\Invalidcity.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -745,6 +752,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807150106439_founddate.resx">
       <DependentUpon>201807150106439_founddate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807181730209_lostlocation.resx">
+      <DependentUpon>201807181730209_lostlocation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

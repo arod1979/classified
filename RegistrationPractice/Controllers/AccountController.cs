@@ -453,7 +453,7 @@ namespace RegistrationPractice.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session.Add("CurrentUserEmail", "");
             //allan rodkin
-            return RedirectToAction("Index", "Items");
+            return RedirectToAction("Index", "countryindex");
         }
 
         //
@@ -511,7 +511,7 @@ namespace RegistrationPractice.Controllers
                 return Redirect(returnUrl);
             }
             //allan Rodkin
-            return RedirectToAction("Index", "Items");
+            return RedirectToAction("countryindex", "Items");
         }
 
         private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)

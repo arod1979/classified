@@ -32,23 +32,36 @@ namespace RegistrationPractice
             );
 
 
+           
             routes.MapRoute(
-                name: "PostEditItem",
-                url: "Items/Edit/",
-                defaults: new { controller = "Items", action = "Edit" }
+            name: "CityIndex",
+                url: "Items/{country}/{province}/cityindex/{city}",
+                defaults: new { controller = "Items", action = "cityindex" }
             );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{countryname}",
-                defaults: new { controller = "Items", action = "CountryIndex", countryname = UrlParameter.Optional }
+            name: "CityIndexDetailsView",
+                url: "Items/{country}/{province}/cityindex/{city}/{posttypefilter}",
+                defaults: new { controller = "Items", action = "cityindex" }
+            );
+
+            routes.MapRoute(
+            name: "CityIndexPost",
+                url: "Items/{country}/{province}/cityindex/{city}/{posttypefilter}/create",
+                defaults: new { controller = "Items", action = "create" }
             );
 
             //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Items", action = "Index", id = UrlParameter.Optional }
+            //    name: "CountryIndex",
+            //    url: "Items/countryindex/{id}",
+            //    defaults: new { controller = "Items", action = "countryindex" }
             //);
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Items", action = "countryindex", country = "canada" }
+            );
 
 
         }

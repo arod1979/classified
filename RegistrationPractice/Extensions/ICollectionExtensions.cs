@@ -6,18 +6,20 @@ using System.Web.Mvc;
 
 namespace RegistrationPractice.Extensions
 {
-    public static class ICollectionExtensions
-    {
-        public static IEnumerable<SelectListItem> ToSelectListItem<T> (
-            this ICollection<T> items, int selectedvalue)
-        {
-            return from item in items
-                   select new SelectListItem
-                   {
-                       Text = item.GetPropertyValue("Title"),
-                       Value = item.GetPropertyValue("Id"),
-                       Selected = item.GetPropertyValue("Id").Equals(selectedvalue.ToString())
-                   };
-        }
-    }
+    //public static class ICollectionExtensions
+    //{
+    //    public static IEnumerable<SelectListItem> ToSelectListItem<T> (
+    //        this ICollection<T> items, int selectedvalue)
+    //    {
+    //        return from item in items
+    //               select new SelectListItem
+    //               {
+    //                   Text = item.GetPropertyValue("Title"),
+    //                   Value = item.GetPropertyValue("Id"),
+    //                   Selected = item.GetPropertyValue("Id").Equals(selectedvalue.ToString())
+    //               };
+    //    }
+    //}
+
+    
 }

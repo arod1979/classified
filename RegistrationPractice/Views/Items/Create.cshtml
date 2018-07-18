@@ -4,134 +4,61 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
+<h1 class="city">@ViewBag.city_province</h1>
 @using (Html.BeginForm("Create", "Items", FormMethod.Post, new { enctype = "multipart/form-data", @class = "simpleform" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Item</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.LostOrFoundItem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.LostOrFoundItem)
-                    @Html.ValidationMessageFor(model => model.LostOrFoundItem, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NoReward, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.NoReward)
-                    @Html.ValidationMessageFor(model => model.NoReward, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.PostType, "What Happened?", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("PostTypeId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PostType, "", new { @class = "text-danger" })
-        </div>
+    <h1>
+        @ViewBag.posttype Form
+    </h1>
+
+    <p>
+        <strong>Note:</strong> When posting, keep it simple and to the point.
+    </p>
+
+    <br>
+    <div class="www">
+        @Html.EditorFor(model => model.Description, new { placeholder = "What did you lose?" })
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ItemReward, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
-        </div>
+    <br>
+    <br>
+    <div class="www">
+        @Html.EditorFor(model => model.LostLocation, new { placeholder = "Where did you lose it?" })
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
+    <br>
+    <br />
+    <div class="www">
+        @Html.EditorFor(model => model.FoundDate, new { placeholder = "Which Month, Day, Year?" })
     </div>
-
-
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.LocationID, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("LocationId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
-        </div>
+    <br>
+    <br />
+    <div class="www">
+        @Html.EditorFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?" })
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
-        </div>
+    <br>
+    <br />
+    <div class="www">
+        @Html.EditorFor(model => model.ItemReward, new { placeholder = "ex. color, model, distinct markins, etc?" })
     </div>
+    <br>
+    <br />
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.CreationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreationDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.EmailRelayAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmailRelayAddress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmailRelayAddress, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.AdditionalNotes, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Visits, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Visits, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Visits, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Returned, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Returned)
-                    @Html.ValidationMessageFor(model => model.Returned, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.OwnerUserEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OwnerUserEmail, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OwnerUserEmail, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
     <div class="form-group upload-file-interface">
-        @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2 " }) 
-        
+        @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2 " })
+
         <div class="col-md-4">
-            @*@Html.EditorFor(model => model.imageURL, new { htmlAttributes = new { @class = "form-control" } })*@
+
             <div class="btn btn-primary">
                 <input type="file" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
             </div>
@@ -140,7 +67,6 @@
             <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-md-2 col-md-offset-2">
             <div img-preview class="thumbnail" style="display:none">
@@ -152,34 +78,117 @@
             </div>
         </div>
     </div>
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.imageTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.imageTitle, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.imageTitle, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.HideItem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.HideItem)
-                    @Html.ValidationMessageFor(model => model.HideItem, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>*@
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
+    <br>
+    <br>
+    <div class="www">
+        <input type="submit" />
     </div>
-</div>
-    @Html.HiddenFor(item=>item.OwnerUserEmail)
+    <br>
+    <br />
 }
+@Html.DisplayText("You must login to post")
+@Html.HiddenFor(item => item.OwnerUserEmail)
+@Html.HiddenFor(item => item.LocationID)*@
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+<div class="form-horizontal">
+
+                    <h4>Item</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PostType, "What Happened?", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("PostTypeId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.PostType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ItemReward, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LocationID, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("LocationId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdditionalNotes, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group upload-file-interface">
+                        @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2 " })
+
+                        <div class="col-md-4">
+
+                            <div class="btn btn-primary">
+                                <input type="file" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
+                            </div>
+                            <div>.jpg,.png (5MB MAX)</div>
+
+                            <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <div img-preview class="thumbnail" style="display:none">
+                                <img class="img-responsive" target-img />
+                                <div class="caption">
+                                    <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
+                                    <p img-description></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                    @Html.HiddenFor(item=>item.OwnerUserEmail)
+        }
+
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+    </div>

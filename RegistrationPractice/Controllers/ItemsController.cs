@@ -17,14 +17,15 @@ using PagedList;
 using RegistrationPractice.Classes;
 using RegistrationPractice.Classes.Globals;
 using RegistrationPractice.Classes.ViewModels;
+using RegistrationPractice.Filters;
 
 namespace RegistrationPractice.Controllers
 {
     public class ItemsController : Controller
     {
-        
+
         private static string servername = System.Configuration.ConfigurationManager.AppSettings["servername"];
-        
+
 
         private ApplicationDbContext db = new ApplicationDbContext();
         private readonly ProfanityFilter pf = new ProfanityFilter(new List<string>
@@ -89,29 +90,61 @@ namespace RegistrationPractice.Controllers
 
         // GET: Items
         [AllowAnonymous]
-        public async Task<ActionResult> CityIndex(string city) ////candidate for dependancy injection
+        [CheckURLParameters(6)]
+        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string action) ////candidate for dependancy injection
         {
+            string country_abbreviation = null;
+            if (country.ToLower() == "canada") country_abbreviation = "CD";
+                else country = "US";
 
-            ViewBag.city = city;
-            var items = db.Items.Include(i => i.Category).Include(i => i.Location);
+            string key = string.Format("{0}_{1}", province, country_abbreviation);
             
-            var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city).Id;
-            var stolenitems = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.stolendbid && si.LocationID == cityid) select (Item)si).ToList<Item>();
-            var founditems = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.founddbid && si.LocationID == cityid) select (Item)si).ToList<Item>();
-            var lostitems = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.lostdbid && si.LocationID == cityid) select (Item)si).ToList<Item>();
-            VMCityItems vmcityitems = new VMCityItems{ LostItems = lostitems, FoundItems = founditems, StolenItems = stolenitems };
+            var list = CityListing.canadian_cities.Where(entry => entry.Key == key).SingleOrDefault();
+            bool validcity = list.Value.Contains(city.ToLower());
+            if (!validcity)
+                return View("invalidcity");
 
+            IQueryable<Item> items=null;
+            ViewBag.country = country;
+            ViewBag.province = province;
+            ViewBag.city = city;
+            ViewBag.city_province = string.Format("{0},{1}", city, province);
 
-            //ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
-            //ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
-            //ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
-            return View(vmcityitems);
+            if (action.ToLower() == "post")
+                return View("Create");
+
+            if (posttypefilter != null)
+            {
+                ViewBag.detailsview = true;
+                ////var items = db.Items.Include(i => i.Category).Include(i => i.Location);
+                var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city).Id;
+
+                if (posttypefilter == "stolen")
+                {
+                    items = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.stolendbid && si.LocationID == cityid) select (Item)si);
+                }
+                if (posttypefilter == "lost")
+                {
+                    items = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.lostdbid && si.LocationID == cityid) select (Item)si);
+                }
+                if (posttypefilter == "found")
+                {
+                    items = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.founddbid && si.LocationID == cityid) select (Item)si);
+                }
+                return View(await items.ToListAsync());
+            }
+            else
+            {
+                ViewBag.detailsview = false;
+                return View();
+            }
+            
         }
 
 
         // GET: Items
         [AllowAnonymous]
-        public ViewResult CountryIndex(string countryname)
+        public ViewResult CountryIndex(string countryname="canada")
         {
             ViewBag.country = "canada";
             
@@ -146,14 +179,34 @@ namespace RegistrationPractice.Controllers
         }
 
         // GET: Items/Create
-        public ActionResult Create()
+        [CheckURLParameters(6)]
+        public ActionResult Create(string country, string province, string city, string posttypefilter, string action) ////candidate for dependancy injection
         {
 
             Item item = new Item();
-
+            item.LocationID = RegistrationPractice.Classes.Globals.PostTypeDBIDs.GetCityPrimaryKey(city);
+            ViewBag.city_province = string.Format("{0},{1}", city, province);
+            //This functionality may be returend
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
+            ViewBag.posttype = posttypefilter.ToUpper();
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
+
+
+            // This value should be implemented with generic repository
             ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
+            switch (posttypefilter.ToLower())
+            {
+                case "stolen":
+                    item.PostTypeID = RegistrationPractice.Classes.Globals.PostTypeDBIDs.stolendbid;
+                    break;
+                case "found":
+                    item.PostTypeID = RegistrationPractice.Classes.Globals.PostTypeDBIDs.founddbid;
+                    break;
+                case "lost":
+                    item.PostTypeID = RegistrationPractice.Classes.Globals.PostTypeDBIDs.lostdbid;
+                    break;
+            }
+
 
             //allan rodkin. this should be replaced with session variable
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
@@ -191,7 +244,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID")] Item item, HttpPostedFileBase files)
+        public async Task<ActionResult> Create([Bind(Include = "LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID")] Item item, HttpPostedFileBase files)
         {
 
             //allan rodkin image code

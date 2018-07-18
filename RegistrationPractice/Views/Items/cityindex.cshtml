@@ -1,42 +1,64 @@
-﻿@model RegistrationPractice.Classes.ViewModels.VMCityItems
+﻿@model IEnumerable<RegistrationPractice.Entities.Item>
+
+
 @{
     ViewBag.Title = "cityindex";
     Layout = "~/Views/Shared/_Jumbotron.cshtml";
 }
 
-<h1 class="city">@ViewBag.city</h1>
-<br>
+@if (!ViewBag.detailsview)
+{
+    <h1 class="city">@ViewBag.city_province</h1>
+    <br>
 
-<h1 class="lfs">Lost</h1>
-<div class="text">
+    <h1 class="lfs">Lost</h1>
+    <div class="text">
+        <li>
+
+            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost">All</a> lost items
+        </li>
+        <br>
+        <li>
+            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost/create">Post</a> something you've lost
+        </li>
+    </div>
+
+    <h1 class="lfs">Found</h1>
+    <div class="text">
+        <li>
+            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found">All</a> found items
+        </li>
+
+        <br />
+
+        <li>
+            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found/create">Post</a>something you've found
+        </li>
+
+    </div>
+
+
+    <h1 class="lfs">Stolen</h1>
     <li>
-        <a href="victoria-ali.php">All</a> lost items
+        <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen">All</a> stolen items
+    </li>
+
+    <br />
+
+    <li>
+        <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a>something that was stolen
     </li>
     <br>
-    <li>
-        <a href="victoria-pl.php">Post</a> something you've lost
-    </li>
-</div>
+}
+else
+{
+    int count = 0;
+    foreach (RegistrationPractice.Entities.Item item in Model)
+    {
 
-<h1 class="lfs">Found</h1>
-<div class="text">
-    <li>
-        <a href="victoria-afi.php">All</strong></a> found items
-    </li>
-    <br>
-    <li>
-        <a href="victoria-pf.php">Post</a> something you've found
-    </li>
-</div>
-
-<h1 class="lfs">Stolen</h1>
-<div class="text">
-    <li>
-        <a href="victoria-asi.php">All</a> stolen items
-    </li>
-    <br>
-    <li>
-        <a href="victoria-ps.php">Post</a> something that was stolen from you
-    </li>
-</div>
-<br>
+    }
+    if (count == 0)
+    {
+        <h1 class="lfs">There are no postings in this category.</h1>
+    }
+}
