@@ -55,10 +55,10 @@ else
     int count = 0;
     foreach (RegistrationPractice.Entities.Item item in Model)
     {
-
+        count++;
     }
-    if (count == 0)
-    {
-        <h1 class="lfs">There are no postings in this category.</h1>
-    }
+    
+    
+        <h1 class="lfs">There are @count postings in this category.</h1>
+    
 }

@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+                $("#FoundDate").datepicker();
+    
     $('[file-upload]').change(function () {
         var File = this.files;
 
@@ -9,6 +11,8 @@
     });
 
     
+  
+       
 
     
 });

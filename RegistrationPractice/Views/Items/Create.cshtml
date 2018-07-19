@@ -5,70 +5,152 @@
 }
 
 
+
 <h1 class="city">@ViewBag.city_province</h1>
-@using (Html.BeginForm("Create", "Items", FormMethod.Post, new { enctype = "multipart/form-data", @class = "simpleform" }))
-{
-    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    @using (Html.BeginForm("Create", "Items", FormMethod.Post, new { enctype = "multipart/form-data", @class = "simpleform" }))
+    {
+        @Html.AntiForgeryToken()
 
-    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-    @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
-    @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger" })
-    @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
-    @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
-
-    <h1>
-        @ViewBag.posttype Form
-    </h1>
-
-    <p>
-        <strong>Note:</strong> When posting, keep it simple and to the point.
-    </p>
-
-    <br>
-    <div class="www">
-        @Html.EditorFor(model => model.Description, new { placeholder = "What did you lose?" })
-    </div>
-    <br>
-    <br>
-    <div class="www">
-        @Html.EditorFor(model => model.LostLocation, new { placeholder = "Where did you lose it?" })
-    </div>
-    <br>
-    <br />
-    <div class="www">
-        @Html.EditorFor(model => model.FoundDate, new { placeholder = "Which Month, Day, Year?" })
-    </div>
-    <br>
-    <br />
-    <div class="www">
-        @Html.EditorFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?" })
-    </div>
-    <br>
-    <br />
-    <div class="www">
-        @Html.EditorFor(model => model.ItemReward, new { placeholder = "ex. color, model, distinct markins, etc?" })
-    </div>
-    <br>
-    <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
 
-    <div class="form-group upload-file-interface">
-        @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2 " })
 
-        <div class="col-md-4">
+        <h1>
+            @ViewBag.posttype Form
+        </h1>
 
-            <div class="btn btn-primary">
-                <input type="file" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
+        <p>
+            <strong>Note:</strong> When posting, keep it simple and to the point.
+        </p>
+
+        <br>
+        if (ViewBag.posttype == "Lost")
+        {
+            <div class="www">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you lose?" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
             </div>
-            <div>.jpg,.png (5MB MAX)</div>
+            <br>
+            <br>
+            <div class="www">
+                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where did you lose it?" } })
+                @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+            <div class="www">
+                <input type="text" id="FoundDate" placeholder = "Which Month, Day, Year?" />
+                @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
+                @*@Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield",type="date" })*@
+            </div>
+            <br>
+            <br />
+            <div class="www">
+                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input" } })
+                @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+            <div class="www">
+                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20" } })
+                @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+        }
+        if (ViewBag.posttype == "Found")
+        {
+            <div class="www">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you find?" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br>
+            <div class="www">
+                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where did you find it?" } })
+                @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+            <div class="www">
+                @Html.EditorFor(model => model.FoundDate)
+                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+            <div class="www">
+                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?" } })
+                @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+            @Html.HiddenFor(item => item.ItemReward)
 
-            <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
+        }
+
+        if (ViewBag.posttype == "Stolen")
+        {
+            <div class="www">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What was stolen?" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br>
+            <div class="www">
+                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where was it stolen from?" } })
+                @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+            <div class="www">
+                @Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })
+                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+            <div class="www">
+                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?" } })
+                @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+            <div class="www">
+                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20" } })
+                @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br />
+        }
+
+        <div class="form-group upload-file-interface">
+            @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2 " })
+
+            <div class="col-md-4">
+
+                <div class="btn btn-primary">
+                    <input type="file" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
+                </div>
+                <div>.jpg,.png (5MB MAX)</div>
+
+                <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-2 col-md-offset-2">
+        @*<div class="form-group">
+                <div class="col-md-2 col-md-offset-2">
+                    <div img-preview class="thumbnail" style="display:none">
+                        <img class="img-responsive" target-img />
+                        <div class="caption">
+                            <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
+                            <p img-description></p>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <div class="www">
             <div img-preview class="thumbnail" style="display:none">
                 <img class="img-responsive" target-img />
                 <div class="caption">
@@ -77,21 +159,36 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <br>
-    <div class="www">
-        <input type="submit" />
-    </div>
-    <br>
-    <br />
-}
-@Html.DisplayText("You must login to post")
-@Html.HiddenFor(item => item.OwnerUserEmail)
-@Html.HiddenFor(item => item.LocationID)*@
+
+        <br>
+        <br>
+        @Html.HiddenFor(item => item.OwnerUserEmail)
+        @Html.HiddenFor(item => item.LocationID)
+        @Html.HiddenFor(item => item.Country)
+        @Html.HiddenFor(item => item.City)
+        @Html.HiddenFor(item => item.PostTypeID)
 
 
-<div class="form-horizontal">
+
+
+        <input type="hidden" value="@ViewBag.Province" name="province" />
+        <input type="hidden" value="@ViewBag.PostType" name="posttypefilter" />
+
+
+        <div class="www">
+            <input type="submit" />
+        </div>
+        <br>
+        <br />
+        @Html.DisplayText("You must login to post")
+    }
+</div>
+
+
+
+
+
+@*<div class="form-horizontal">
 
                     <h4>Item</h4>
                     <hr />
@@ -191,4 +288,4 @@
 
         <div>
             @Html.ActionLink("Back to List", "Index")
-    </div>
+    </div>*@

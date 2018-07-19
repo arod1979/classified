@@ -34,13 +34,21 @@ namespace RegistrationPractice.Entities
         [DisplayName("Lost Location")]
         public string LostLocation { get; set; }
 
-
+        [Required]
+        [DisplayName("Country")]
+        public string Country { get; set; }
 
         [Required]
+        [DisplayName("City")]
+        public string City { get; set; }
+
+        [Required]
+
+        [Range(20, 1000)]
         [DisplayName("Item Reward")]
         [DataType(dataType: DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
-        public decimal ItemReward { get; set; }
+        public decimal ItemReward { get; set; } = 20;
         
         [Required]
         [DisplayName("What Day Did You Find it")]
@@ -55,15 +63,14 @@ namespace RegistrationPractice.Entities
         public virtual Category Category { get; set; }
 
         [Required]
-        [DataType(DataType.MultilineText)]
+      
         public string AdditionalNotes { get; set; }
 
         public int Visits { get; set; }
 
         public bool Returned { get; set; }
 
-
-       
+         
 
         public string EmailRelayAddress { get; set; }
 
