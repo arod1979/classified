@@ -51,6 +51,12 @@ namespace RegistrationPractice
                 defaults: new { controller = "Items", action = "create" }
             );
 
+            routes.MapRoute(
+            name: "FilterCityIndexPost",
+                url: "Items/{country}/{province}/cityindex/{city}/{posttypefilter}/{search}",
+                defaults: new { controller = "Items", action = "cityindex" }
+            );
+
             //routes.MapRoute(
             //    name: "CountryIndex",
             //    url: "Items/countryindex/{id}",

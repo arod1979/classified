@@ -453,13 +453,31 @@ namespace RegistrationPractice.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session.Add("CurrentUserEmail", "");
             //allan rodkin
-            return RedirectToAction("Index", "countryindex");
+            return RedirectToAction("countryindex", "items");
         }
 
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult FAQ()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Contact()
         {
             return View();
         }

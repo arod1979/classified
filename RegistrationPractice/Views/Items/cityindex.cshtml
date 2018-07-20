@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RegistrationPractice.Entities.Item>
+﻿@model List<RegistrationPractice.Entities.Item>
 
 
 @{
@@ -6,11 +6,12 @@
     Layout = "~/Views/Shared/_Jumbotron.cshtml";
 }
 
+<br>
 @if (!ViewBag.detailsview)
 {
-    <h1 class="city">@ViewBag.city_province</h1>
-    <br>
 
+
+    <h1 class="city">@ViewBag.city_province</h1>
     <h1 class="lfs">Lost</h1>
     <div class="text">
         <li>
@@ -39,26 +40,54 @@
 
 
     <h1 class="lfs">Stolen</h1>
-    <li>
-        <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen">All</a> stolen items
-    </li>
+    <div class="text">
+        <li>
+            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen">All</a> stolen items
+        </li>
 
-    <br />
+        <br />
 
-    <li>
-        <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a>something that was stolen
-    </li>
-    <br>
-}
-else
-{
-    int count = 0;
-    foreach (RegistrationPractice.Entities.Item item in Model)
-    {
-        count++;
+        <li>
+            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a>something that was stolen
+        </li>
+        <br>
+    </div>
     }
-    
-    
-        <h1 class="lfs">There are @count postings in this category.</h1>
-    
-}
+            else
+            {
+            <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
+            <h1>All @ViewBag.PostType Items</h1>
+            <h1 class="lfs">There are @Model.Count postings in this category.</h1>
+            <form method="get" action="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/@ViewBag.PostType">
+                <input type="text" class="itemsearchbox" name="search" placeholder="Item Description" maxlength="30" required="">
+                <input type="submit" value="Search">
+            </form>
+
+            foreach (RegistrationPractice.Entities.Item item in Model)
+            {
+            <div class="lostitems">
+
+                <strong>What:</strong>@item.Description <br /><br />
+
+
+                <strong>Where:</strong>@item.LostLocation<br /><br />
+
+                <strong>When:</strong>@item.FoundDate.ToShortDateString()<br><br>
+
+                <strong>Description:</strong>@item.AdditionalNotes		<br><br>
+
+                <strong>Reward $</strong>@item.ItemReward<br><br>
+
+                @if (item.imageURL != null)
+                {
+                    <img style="max-height:250px;max-width:250px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
+                }
+            </div>
+            }
+
+
+
+
+
+
+            }

@@ -91,32 +91,42 @@ namespace RegistrationPractice.Controllers
         // GET: Items
         [AllowAnonymous]
         [CheckURLParameters(6)]
-        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string action) ////candidate for dependancy injection
+        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string action, string search) ////candidate for dependancy injection
         {
             string country_abbreviation = null;
             if (country.ToLower() == "canada") country_abbreviation = "CD";
-                else country = "US";
+            else country = "US";
 
             string key = string.Format("{0}_{1}", province, country_abbreviation);
-            
+
             var list = CityListing.canadian_cities.Where(entry => entry.Key == key).SingleOrDefault();
             bool validcity = list.Value.Contains(city.ToLower());
             if (!validcity)
+            {
+                ViewBag.Message = "Invalid City/Locale";
                 return View("invalidcity");
+            }
 
-            IQueryable<Item> items=null;
+            IQueryable<Item> items = null;
             ViewBag.country = country;
             ViewBag.province = province;
             ViewBag.city = city;
             ViewBag.city_province = string.Format("{0},{1}", city, province);
+            ViewBag.PostType = posttypefilter;
 
             if (action.ToLower() == "post")
                 return View("Create");
 
-            
+
             if (posttypefilter != null)
-                
             {
+                if (!RegistrationPractice.Classes.Globals.PostTypeDBIDs.posttypes.Contains(posttypefilter))
+                {
+                    ViewBag.Message = "Invalid Search Type";
+                    return View("invalidcity");
+                }
+
+
                 posttypefilter = posttypefilter.ToLower();
                 ViewBag.detailsview = true;
                 ////var items = db.Items.Include(i => i.Category).Include(i => i.Location);
@@ -134,6 +144,10 @@ namespace RegistrationPractice.Controllers
                 {
                     items = (from si in db.Items.Where(si => si.PostTypeID == PostTypeDBIDs.founddbid && si.LocationID == cityid) select (Item)si);
                 }
+                if (search != null)
+                {
+                    items = items.Where(i => (i.Description.ToLower().Contains(search.ToLower()) || i.AdditionalNotes.ToLower().Contains(search.ToLower())));
+                }
                 return View(await items.ToListAsync());
             }
             else
@@ -149,8 +163,11 @@ namespace RegistrationPractice.Controllers
         [AllowAnonymous]
         public ViewResult CountryIndex(string countryname="canada")
         {
+            if (countryname=="canada")
             ViewBag.country = "canada";
-            
+            else
+                ViewBag.country = "usa";
+
             return View();
         }
 
@@ -261,7 +278,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID")] Item item, HttpPostedFileBase files, FormCollection formcollection)
+        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate")] Item item, HttpPostedFileBase files, FormCollection formcollection)
         {
             
             
@@ -326,7 +343,7 @@ namespace RegistrationPractice.Controllers
 
                 
                 
-                string route = string.Format("{0}/{1}/cityindex/{2}/{3}", item.Country, province, item.City.ToLower(), posttypefilter);
+                string route = string.Format("{0}/{1}/cityindex/{2}/{3}", item.Country, province, item.City, posttypefilter);
                 return RedirectToAction(route);
                     
 

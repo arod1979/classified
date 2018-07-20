@@ -46,9 +46,10 @@ namespace RegistrationPractice.Entities
 
         [Range(20, 1000)]
         [DisplayName("Item Reward")]
-        [DataType(dataType: DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
-        public decimal ItemReward { get; set; } = 20;
+        //[DataType(dataType: DataType.Currency)]
+        //[DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#.#}")]
+        public decimal ItemReward { get; set; }
         
         [Required]
         [DisplayName("What Day Did You Find it")]

@@ -20,6 +20,8 @@ namespace RegistrationPractice.Classes.Globals
         {
             return db.Locations.Where(loc => loc.LocationText == city).SingleOrDefault().Id;
         }
+
+        public static string[] posttypes = { "lost", "Lost", "stolen", "Stolen", "found", "Found" };
     }
 
     public static class CityListing

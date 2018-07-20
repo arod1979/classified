@@ -6,9 +6,9 @@
         <span class="glyphicon glyphicon-chevron-down"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-        <li>@Html.ActionLink("About", "About", "Home")</li>
+        @*<li>@Html.ActionLink("About", "About", "Home")</li>
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        <li>@Html.ActionLink("Add AWOLR Item", "Create", "Items")</li>
+        <li>@Html.ActionLink("Add AWOLR Item", "Create", "Items")</li>*@
         <li>@Html.ActionLink("My AWOLR Items", "UserPosts", "Items")</li>
         @if (Request.IsAuthenticated)
         {

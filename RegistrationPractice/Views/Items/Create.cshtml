@@ -43,9 +43,9 @@
             <br>
             <br />
             <div class="www">
-                <input type="text" id="FoundDate" placeholder = "Which Month, Day, Year?" />
+                <input type="text" name="FoundDate" id="FoundDate" placeholder = "When was this lost? @System.DateTime.Now.ToShortDateString()" />
                 @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
-                @*@Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield",type="date" })*@
+                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield",type="date" })
             </div>
             <br>
             <br />
@@ -77,13 +77,13 @@
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.FoundDate)
+                <input type="text" name="FoundDate" id="FoundDate" placeholder="When was this lost? @System.DateTime.Now.ToShortDateString()" />
                 @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger" })
             </div>
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?" } })
+                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", name="FoundDate" } })
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
             <br>
@@ -107,7 +107,8 @@
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })
+                <input type="text" name="FoundDate" id="FoundDate" placeholder="When was this lost? @System.DateTime.Now.ToShortDateString()" />
+                @*<input type="text" id="FoundDate" placeholder="When was this stolen? @System.DateTime.Now.ToShortDateString()" />*@
                 @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger" })
             </div>
             <br>

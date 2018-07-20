@@ -67,7 +67,7 @@
 
                 <ul class="nav navbar-nav navbar-center">
                     <li class="nav-item">
-                        <a href="#" class="navbar-brand awolr-logo">AwolR</a>
+                        <a href="~/items/countryindex" class="navbar-brand awolr-logo">AwolR</a>
                     </li>
                 </ul>
                 @if (Request.IsAuthenticated)
@@ -84,10 +84,13 @@
         <!--/.container-fluid -->
     </nav>
     @System.Web.HttpContext.Current.Session["UserEmail"];
-    <img src="~/pictures/awolrlogo.png.gif" style="display: block;
+    
+   
+        <img src="~/pictures/awolrlogo.png.gif" style="display: block;
 
                     margin-left: auto;
                   margin-right: auto;" />
+    
 
 
 
@@ -99,18 +102,16 @@
     <div class="bottom-footer">
 
 
-        <a href="login1.php">
-            <?php if(!empty($user)): ?>Logged in as <?= $user['email']; ?>/Log out
-            <?php else: ?>Log In<?php endif; ?>
-        </a>&nbsp;&nbsp;&nbsp;
 
 
 
-        <a href="faqs.php">FAQs</a>&nbsp;&nbsp;&nbsp;
-        <a href="privacy.php">Privacy</a>&nbsp;&nbsp;&nbsp;
-        <!--<a href="rewards.php">Monetary Rewards</a>&nbsp;&nbsp;&nbsp;-->
-        <a href="contactus.php">Contact Us</a>&nbsp;&nbsp;&nbsp;
-        <a href="usa/USA.php">USA</a>
+        @Html.ActionLink("FAQ", "FAQ", "Account") |
+        @Html.ActionLink("Privacy", "Privacy", "Account") |
+        @Html.ActionLink("Contact Us", "ContactUs", "Account") |
+        <a href="~/Items/CountryIndex/?countryname=usa">USA</a>
+
+
+        
 
     </div>
 

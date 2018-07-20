@@ -548,6 +548,7 @@
     <Content Include="HtmlPage1.html" />
     <Content Include="log.txt" />
     <Content Include="pictures\awolrlogo.png.gif" />
+    <Content Include="pictures\awolrusa.png" />
     <Content Include="Scripts\AdminMenu.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
