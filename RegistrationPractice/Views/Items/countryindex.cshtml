@@ -1,7 +1,12 @@
 ﻿<h1 class="city">Find Your Stuff</h1>
 @if (ViewBag.country == "canada")
 {
-    <img src="~/pictures/mapofcanada.png" />
+
+    <br />
+    <br />
+    <img src="~/pictures/colors3-CA-fys.png" />
+
+
     <h1 class="lfs">Select Your City</h1>
     <div class="cities">
 
@@ -37,12 +42,18 @@
             @Html.ActionLink("Thunder Bay", "Canada/ON/CityIndex/Thunder Bay")
         </li>
         <li>@Html.ActionLink("Toronto", "Canada/ON/CityIndex/Toronto")</li>
+
     </div>
 }
 else if (ViewBag.country == "usa")
 {
-   
-    <img src="~/pictures/awolrusa.png" />
+
+
+
+    <br />
+    <br />
+
+    <img src="~/pictures/colors2-usa-fys.png" />
     <h1>Coming Soon!</h1>
 }
 

@@ -10,7 +10,8 @@
         }
     });
 
-    
+  
+      
   
        
 
@@ -18,6 +19,10 @@
 });
 
 var ReadImage = function (file) {
+
+    var s = document.getElementById('UpdatedActionsFileUpload');
+    s.value = 'ReverseDelete';
+
     var reader = new FileReader;
     var image = new Image;
     
@@ -46,5 +51,12 @@ var ReadImage = function (file) {
 var ClearPreview = function () {
     $('[file-upload]').val('');
     $('[img-description]').text('');
+    
+    $('#img-preview').css({ "visibility": "visible" });
+
     $('[img-preview]').hide();
+    var s = document.getElementById('UpdatedActionsFileUpload');
+    s.value = 'Delete';
+
+    
 };

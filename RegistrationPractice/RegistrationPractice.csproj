@@ -546,9 +546,14 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="HtmlPage1.html" />
+    <Content Include="html\HtmlPage1.html" />
     <Content Include="log.txt" />
     <Content Include="pictures\awolrlogo.png.gif" />
     <Content Include="pictures\awolrusa.png" />
+    <Content Include="photos\colors2-usa-fys.png" />
+    <Content Include="photos\colors3-CA-fys.png" />
+    <Content Include="pictures\colors2-usa-fys.png" />
+    <Content Include="pictures\colors3-CA-fys.png" />
     <Content Include="Scripts\AdminMenu.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -638,6 +643,9 @@
     <Content Include="Views\Items\Countryindex.cshtml" />
     <Content Include="Views\Items\cityindex.cshtml" />
     <Content Include="Views\Items\Invalidcity.cshtml" />
+    <Content Include="Views\Account\FAQ.cshtml" />
+    <Content Include="Views\Account\Privacy.cshtml" />
+    <Content Include="Views\Account\Contact.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -646,7 +654,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Controllers\" />
     <Folder Include="Areas\admin\Models\" />
-    <Folder Include="photos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

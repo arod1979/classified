@@ -369,8 +369,8 @@ namespace RegistrationPractice.Controllers
             
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
 
-            Item item = await db.Items.FindAsync(id);
-
+            var itemlist = await (db.Items.Where(i => i.Id == id).Include("PostType").ToListAsync());
+            Item item = itemlist[0];
 
             if (item!=null && useremail != null && useremail != item.OwnerUserEmail)
             {
@@ -401,10 +401,16 @@ namespace RegistrationPractice.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         
-        public async Task<ActionResult> Edit([Bind(Include = "Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files)
+        public async Task<ActionResult> Edit([Bind(Include = "City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection)
         {
 
             //allan rodkin image code
+            string updatetoimageurl = formcollection["UpdatedActionsFileUpload"];
+            if (updatetoimageurl=="Delete")
+            {
+                item.imageURL = null;
+            }
+
             if (files != null)
             {
                 string time = DateTime.UtcNow.ToString();
@@ -461,16 +467,18 @@ namespace RegistrationPractice.Controllers
                     return View("Profanity");
                 }
 
-                //allan rodkin
-                item.PostType = new PostType();
-                item.PostType.PostTypeText = db.PostTypes.SingleOrDefault(pt => pt.Id == item.PostTypeID).PostTypeText;
+                
 
 
                 
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            
+
+            //allan rodkin
+            item.PostType = new PostType();
+            item.PostType.PostTypeText = db.PostTypes.SingleOrDefault(pt => pt.Id == item.PostTypeID).PostTypeText;
+
             ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", item.CategoryID);
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", item.LocationID);
             ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText", item.PostTypeID);
