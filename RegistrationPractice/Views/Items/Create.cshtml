@@ -29,11 +29,11 @@
         if (ViewBag.posttype == "Lost")
         {
             <div class="www">
-                <div class="form-group">
+                
                     @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you lose?" } })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
-            </div>
+           
             <br>
             <br>
             <div class="www">
