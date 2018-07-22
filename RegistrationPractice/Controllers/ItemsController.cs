@@ -472,7 +472,7 @@ namespace RegistrationPractice.Controllers
 
                 
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserPosts");
             }
 
             //allan rodkin
@@ -520,7 +520,7 @@ namespace RegistrationPractice.Controllers
             Item item = await db.Items.FindAsync(id);
             db.Items.Remove(item);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("UserPosts");
         }
 
         protected override void Dispose(bool disposing)
