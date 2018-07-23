@@ -163,10 +163,15 @@ namespace RegistrationPractice.Controllers
         [AllowAnonymous]
         public ViewResult CountryIndex(string countryname="canada")
         {
-            if (countryname=="canada")
-            ViewBag.country = "canada";
+            if (countryname == "canada")
+            {
+                ViewBag.country = "Canada";
+            }
             else
-                ViewBag.country = "usa";
+            {
+                ViewBag.country = "USA";
+            }
+                
 
             return View();
         }
@@ -200,6 +205,7 @@ namespace RegistrationPractice.Controllers
 
         // GET: Items/Create
         [CheckURLParameters(6)]
+        [AllowAnonymous]
         public ActionResult Create(string country, string province, string city, string posttypefilter, string action) ////candidate for dependancy injection
         {
 
@@ -278,6 +284,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate")] Item item, HttpPostedFileBase files, FormCollection formcollection)
         {
             

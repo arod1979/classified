@@ -23,7 +23,7 @@
         @Html.HiddenFor(item => item.CreationDate)
         @Html.HiddenFor(item => item.LocationID)
         <input type="hidden" id="UpdatedActionsFileUpload" name="UpdatedActionsFileUpload" value="none" />
-      
+
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -86,25 +86,20 @@
             @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
         </div>
-     
 
 
 
 
 
-        <div class="form-group upload-file-interface">
-            @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2 " })
 
-            <div class="col-md-4">
+       
+        <label for="files" class="custom-file-upload" style="padding:5px;">
+            Upload Image File
+        </label>
+        <input type="file" class="custom-file-upload" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
+        <div>.jpg,.png (5MB MAX)</div>
 
-                <div class="btn btn-primary">
-                    <input type="file" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
-                </div>
-                <div>.jpg,.png (5MB MAX)</div>
-
-                <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
-            </div>
-        </div>
+        <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
 
 
 
@@ -133,7 +128,7 @@
             }
             @if (ViewBag.ImageUrl != null)
             {
-                <div img-preview class="thumbnail" id="img-preview" >
+                <div img-preview class="thumbnail" id="img-preview">
 
 
 
@@ -165,7 +160,7 @@
         <br>
         <br />
 
-                        }
+    }
 </div>
 
     @*<div>

@@ -33,7 +33,7 @@
         <br />
 
         <li>
-            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found/create">Post</a>something you've found
+            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found/create">Post</a> something you've found
         </li>
 
     </div>
@@ -48,46 +48,53 @@
         <br />
 
         <li>
-            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a>something that was stolen
+            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a> something that was stolen
         </li>
         <br>
     </div>
+}
+else
+{
+    <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
+    if (@Model.Count == 0)
+    {
+        <h1>All @ViewBag.PostType Items</h1>
     }
-            else
+    else
+    {
+        <h1>@Model.Count @ViewBag.PostType Items</h1>
+    }
+
+    <form method="get" action="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/@ViewBag.PostType">
+        <input type="text" class="itemsearchbox" name="search" placeholder="Item Description" maxlength="30" required="">
+        <input type="submit" value="Search">
+    </form>
+
+    foreach (RegistrationPractice.Entities.Item item in Model)
+    {
+        <div class="lostitems">
+
+            <strong>What:</strong>@item.Description <br /><br />
+
+
+            <strong>Where:</strong>@item.LostLocation<br /><br />
+
+            <strong>When:</strong>@item.FoundDate.ToShortDateString()<br><br>
+
+            <strong>Description:</strong>@item.AdditionalNotes		<br><br>
+
+            <strong>Reward $</strong>@item.ItemReward<br><br>
+
+            @if (item.imageURL != null)
             {
-            <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
-            <h1>All @ViewBag.PostType Items</h1>
-            <h1 class="lfs">There are @Model.Count postings in this category.</h1>
-            <form method="get" action="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/@ViewBag.PostType">
-                <input type="text" class="itemsearchbox" name="search" placeholder="Item Description" maxlength="30" required="">
-                <input type="submit" value="Search">
-            </form>
-
-            foreach (RegistrationPractice.Entities.Item item in Model)
-            {
-            <div class="lostitems">
-
-                <strong>What:</strong>@item.Description <br /><br />
-
-
-                <strong>Where:</strong>@item.LostLocation<br /><br />
-
-                <strong>When:</strong>@item.FoundDate.ToShortDateString()<br><br>
-
-                <strong>Description:</strong>@item.AdditionalNotes		<br><br>
-
-                <strong>Reward $</strong>@item.ItemReward<br><br>
-
-                @if (item.imageURL != null)
-                {
-                    <img style="max-height:250px;max-width:250px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
-                }
-            </div>
+                <img  src="@Html.DisplayFor(modelItem => item.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
             }
+        </div>
+    }
 
 
 
 
 
 
-            }
+}

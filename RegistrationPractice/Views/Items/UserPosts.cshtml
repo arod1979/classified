@@ -1,137 +1,136 @@
 ﻿@model IEnumerable<RegistrationPractice.Entities.Item>
 
-    @{
+@{
     ViewBag.Title = "Index";
-    }
+}
 
-    <h2>My Lost Items</h2>
+<h2>My Lost Items</h2>
 
-    
-    <div class="container">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PostType.PostTypeText)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category.CategoryText)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Location.LocationText)
-                </th>
-                @*
-                <th>
-                    @Html.DisplayNameFor(model => model.LostOrFoundItem)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NoReward)
-                </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.ItemReward)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreationDate)
-                </th>
-                @*
-                <th>
-                    @Html.DisplayNameFor(model => model.EmailRelayAddress)
-                </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.AdditionalNotes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Visits)
-                </th>
-                @*
-                <th>
-                    @Html.DisplayNameFor(model => model.Returned)
-                </th>*@
-                @*
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerUserEmail)
-                </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.imageURL)
-                </th>
-                @*
-                <th>
-                    @Html.DisplayNameFor(model => model.imageTitle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.HideItem)
-                </th>*@
-                <th></th>
-            </tr>
 
-            @foreach (var item in Model)
+@*<div class="container">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostType.PostTypeText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location.LocationText)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ItemReward)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visits)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.imageURL)
+            </th>
+            @*
+            <th>
+                @Html.DisplayNameFor(model => model.imageTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HideItem)
+            </th>
+            <th></th>
+        </tr>*@
+
+@foreach (var item in Model)
+{
+    @*<tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostType.PostTypeText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location.LocationText)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemReward)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.AdditionalNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visits)
+        </td>
+        <td>
+            <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
+        </td>*@
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>*@
+
+        <div class="lostitems">
+
+
+
+
+
+
+
+
+
+
+
+
+            <strong>PostType:</strong> @item.PostType.PostTypeText <br /><br />
+
+            <strong>Item Location:</strong> @item.Location.LocationText <br /><br />
+
+            <strong> @Html.DisplayFor(modelItem => item.Visits)</strong>
+
+            <strong>What:</strong> @item.Description <br /><br />
+
+            <strong>Where:</strong> @item.LostLocation<br /><br />
+
+            <strong>When:</strong> @item.FoundDate.ToShortDateString()<br><br>
+
+            <strong>Description:</strong> @item.AdditionalNotes		<br><br>
+
+            <strong>Reward $</strong> @item.ItemReward<br><br>
+
+            @if (item.imageURL != null)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PostType.PostTypeText)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category.CategoryText)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Location.LocationText)
-                    </td>
-                    @*
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LostOrFoundItem)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NoReward)
-                    </td>*@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ItemReward)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreationDate)
-                    </td>
-                    @*
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EmailRelayAddress)
-                    </td>*@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AdditionalNotes)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Visits)
-                    </td>
-                    @*
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Returned)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerUserEmail)
-                    </td>*@
-                    @*
-                    <td>
-                        Html.DisplayFor(modelItem => item.imageURL)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.imageTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HideItem)
-                    </td>*@
-
-                    <td>
-                        <img style="max-height:100px;max-width:100px;" src="@Html.DisplayFor(modelItem => item.imageURL)" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
+                <img src="@Html.DisplayFor(modelItem => item.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
+                <br />
+                <br />
             }
 
-        </table>
-    </div>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </div>
+
+}
+
+@*</table>
+    </div>*@

@@ -23,6 +23,7 @@ var ReadImage = function (file) {
     var s = document.getElementById('UpdatedActionsFileUpload');
     s.value = 'ReverseDelete';
 
+   
     var reader = new FileReader;
     var image = new Image;
     

@@ -55,21 +55,29 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav navbar-center">
                     <li class="nav-item">
-                        <a href="~/items/countryindex" class="navbar-brand awolr-logo">AwolR</a>
+                        <a href="~/items/countryindex" class="navbar-center awolr-logo">AwolR</a>
+                    </li>
+
+                    <li>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
                     </li>
                 </ul>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+
+                @*<ul class="nav navbar-nav navbar-center">
+                    <li class="nav-item">
+                        <a href="~/items/countryindex" class="navbar-brand awolr-logo">AwolR</a>
+                    </li>
+                </ul>*@
                 @if (Request.IsAuthenticated)
                 {
                     <ul class="nav navbar-nav">
@@ -108,10 +116,17 @@
         @Html.ActionLink("FAQ", "FAQ", "Account") |
         @Html.ActionLink("Privacy", "Privacy", "Account") |
         @Html.ActionLink("Contact Us", "Contact", "Account") |
-        <a href="~/Items/CountryIndex/?countryname=usa">USA</a>
+        @if (ViewBag.Country == "Canada")
+        {
+            <a href="~/Items/CountryIndex/?countryname=usa">USA</a>
+        }
+
+        else
+        {
+            <a href="~/Items/CountryIndex/?countryname=canada">Canada</a>
+        }
 
 
-        
 
     </div>
 
