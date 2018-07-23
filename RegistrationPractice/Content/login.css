@@ -1,3 +1,6 @@
+
+
+
 /*fileupload*/
 .countryimage
 {
@@ -174,16 +177,12 @@ h1 {
 }
 
 
-    .simpleform {
-        border-radius: 20px;
-        margin-left: 25%;
-        margin-right: 25%;
-        border: 1px solid black;
-        background-color: #eee;
-    }
+    
 
 @media screen and (max-width: 600px) {
-
+    div.www > input.btn {
+        width: 40%
+    }
 
     .lostitems {
         border: 1px solid black;
@@ -205,6 +204,14 @@ h1 {
         font-size: 20px;
         font-family: 'Comfortaa' !important;
     }
+
+    .simpleform {
+        border-radius: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+        border: 1px solid black;
+        background-color: #eee;
+    }
 }
 
 a.awolr-logo
@@ -213,6 +220,9 @@ a.awolr-logo
 }
 
 @media screen and (min-width: 601px) {
+    
+    
+    
     .lostitems {
         border: 1px solid black;
         margin-left: 25%;
@@ -231,6 +241,14 @@ a.awolr-logo
         color: black !important;
         font-size: 70px;
         font-family: 'Comfortaa' !important;
+    }
+
+    .simpleform {
+        border-radius: 20px;
+        margin-left: 25%;
+        margin-right: 25%;
+        border: 1px solid black;
+        background-color: #eee;
     }
 }
 
