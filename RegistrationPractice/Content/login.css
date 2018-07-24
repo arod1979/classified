@@ -158,7 +158,7 @@ h1 {
 
     
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
     div.www > input.btn {
         width: 40%
     }
