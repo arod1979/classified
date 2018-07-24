@@ -89,7 +89,7 @@
         </td>
     </tr>*@
 
-        <div class="lostitems">
+<div class="lostitems">
 
 
 
@@ -102,33 +102,35 @@
 
 
 
-            <strong>PostType:</strong> @item.PostType.PostTypeText <br /><br />
+    <strong>PostType:</strong> @item.PostType.PostTypeText <br /><br />
 
-            <strong>Item Location:</strong> @item.Location.LocationText <br /><br />
+    <strong>Item Location:</strong> @item.Location.LocationText <br /><br />
 
-            <strong> @Html.DisplayFor(modelItem => item.Visits)</strong>
+    <strong>What:</strong> @item.Description <br /><br />
 
-            <strong>What:</strong> @item.Description <br /><br />
+    <strong>Where:</strong> @item.LostLocation<br /><br />
 
-            <strong>Where:</strong> @item.LostLocation<br /><br />
+    <strong>When:</strong> @item.FoundDate.ToShortDateString()<br><br>
 
-            <strong>When:</strong> @item.FoundDate.ToShortDateString()<br><br>
+    <strong>Description:</strong> @item.AdditionalNotes		<br><br>
 
-            <strong>Description:</strong> @item.AdditionalNotes		<br><br>
+    @if (item.PostType.PostTypeText!="found")
+    {
+    <strong>Reward $</strong> @item.ItemReward<br><br>
+    }
 
-            <strong>Reward $</strong> @item.ItemReward<br><br>
 
-            @if (item.imageURL != null)
-            {
-                <img src="@Html.DisplayFor(modelItem => item.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
-                <br />
-                <br />
-            }
+    @if (item.imageURL != null)
+    {
+        <img src="@Html.DisplayFor(modelItem => item.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
+        <br />
+        <br />
+    }
 
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
 
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </div>
+    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+</div>
 
 }
 
