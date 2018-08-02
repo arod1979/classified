@@ -1,23 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Web;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using RegistrationPractice.DAL;
 using RegistrationPractice.Models;
+using SimpleInjector;
+using SimpleInjector.Integration.Web;
+using SimpleInjector.Integration.Web.Mvc;
 
 namespace RegistrationPractice
 {
     public partial class Startup
     {
         // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
-        public void ConfigureAuth(IAppBuilder app)
+        public void ConfigureAuth(IAppBuilder app, Container container)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            //removed to support simpleinjector
+            //app.CreatePerOwinContext(ApplicationDbContext.Create);
+            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            //app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            app.CreatePerOwinContext(() => container.GetInstance<ApplicationUserManager>());
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -35,7 +48,7 @@ namespace RegistrationPractice
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -64,6 +77,95 @@ namespace RegistrationPractice
                 ClientId = "736503357607-pe9pcvibar5cbfr34olr0mdk9jhjbm3n.apps.googleusercontent.com",
                 ClientSecret = "53SOkhXJFgnG7IDqnbiXwOA_"
             });
+        }
+
+        public static class SimpleInjectorInitializer
+        {
+            public static Container Initialize(IAppBuilder app)
+            {
+                var container = GetInitializeContainer(app);
+
+                container.Verify();
+
+                DependencyResolver.SetResolver(
+                    new SimpleInjectorDependencyResolver(container));
+
+                return container;
+            }
+
+            public static Container GetInitializeContainer(
+                      IAppBuilder app)
+            {
+                var container = new Container();
+                container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
+                container.RegisterSingleton<IAppBuilder>(app);
+
+
+
+                container.Register<ApplicationUserManager>(Lifestyle.Scoped);
+
+                container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
+
+                container.Register<fuck, fuck2>();
+
+                container.Register<ApplicationDbContext>(()
+                  => new ApplicationDbContext(
+                   "DefaultConnection"), Lifestyle.Scoped);
+
+
+
+                container.Register<IUserStore<
+                  ApplicationUser>>(() =>
+                    new UserStore<ApplicationUser>(
+                      container.GetInstance<ApplicationDbContext>()), Lifestyle.Scoped);
+
+                container.RegisterInitializer<ApplicationUserManager>(
+                    manager => InitializeUserManager(manager, app));
+
+                container.Register<SignInManager<ApplicationUser, string>, ApplicationSignInManager>(Lifestyle.Scoped);
+
+                container.Register<IAuthenticationManager>(() =>
+    container.IsVerifying
+        ? new OwinContext(new Dictionary<string, object>()).Authentication
+        : HttpContext.Current.GetOwinContext().Authentication, Lifestyle.Scoped);
+
+
+                container.RegisterMvcControllers(
+                        Assembly.GetExecutingAssembly());
+
+                return container;
+            }
+
+            private static void InitializeUserManager(
+                ApplicationUserManager manager, IAppBuilder app)
+            {
+                manager.UserValidator =
+                 new UserValidator<ApplicationUser>(manager)
+                 {
+                     AllowOnlyAlphanumericUserNames = false,
+                     RequireUniqueEmail = true
+                 };
+
+                //Configure validation logic for passwords
+                manager.PasswordValidator = new PasswordValidator()
+                {
+                    RequiredLength = 6,
+                    RequireNonLetterOrDigit = false,
+                    RequireDigit = true,
+                    RequireLowercase = true,
+                    RequireUppercase = true,
+                };
+
+                var dataProtectionProvider =
+                     app.GetDataProtectionProvider();
+
+                if (dataProtectionProvider != null)
+                {
+                    manager.UserTokenProvider =
+                     new DataProtectorTokenProvider<ApplicationUser>(
+                      dataProtectionProvider.Create("ASP.NET Identity"));
+                }
+            }
         }
     }
 }

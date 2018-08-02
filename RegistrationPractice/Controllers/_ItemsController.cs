@@ -14,7 +14,7 @@ namespace RegistrationPractice.Controllers
 {
     public class _ItemsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
 
         // GET: Items
         public async Task<ActionResult> Index()

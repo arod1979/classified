@@ -14,7 +14,7 @@ namespace RegistrationPractice.Controllers
 {
     public class TestsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
 
         // GET: Tests
         public async Task<ActionResult> Index()

@@ -10,7 +10,9 @@ namespace RegistrationPractice
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            //ConfigureAuth(app);
+            var container = SimpleInjectorInitializer.Initialize(app);
+            ConfigureAuth(app, container);
         }
 
         // Use this method to add services to the container.

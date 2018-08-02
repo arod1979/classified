@@ -35,17 +35,18 @@ namespace RegistrationPractice.Models
         public DbSet<Location> Locations { get; set; }
         public DbSet<PostType> PostTypes { get; set; }
 
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public ApplicationDbContext(string connectionstring)
+            : base(connectionstring, throwIfV1Schema: false)
         {
             //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+        //deleted to allow simple injector work
+        //public static ApplicationDbContext Create()
+        //{
+        //    return new ApplicationDbContext();
+        //}
 
         public System.Data.Entity.DbSet<RegistrationPractice.Entities.Test> Tests { get; set; }
     }

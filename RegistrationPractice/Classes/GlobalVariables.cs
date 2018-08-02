@@ -11,7 +11,7 @@ namespace RegistrationPractice.Classes.Globals
     {
         //replace generic repository
 
-        static readonly ApplicationDbContext db = new ApplicationDbContext();
+        static readonly ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
         public static int stolendbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "stolen").Id;
         public static int lostdbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "lost").Id;
         public static int founddbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "found").Id;
