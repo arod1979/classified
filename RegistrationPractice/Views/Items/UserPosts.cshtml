@@ -104,6 +104,8 @@
 
     <strong>PostType:</strong> @item.PostType.PostTypeText <br /><br />
 
+    <strong>Category:</strong> @item.Category.CategoryText <br /><br />
+
     <strong>Item Location:</strong> @item.Location.LocationText <br /><br />
 
     <strong>What:</strong> @item.Description <br /><br />
@@ -114,9 +116,9 @@
 
     <strong>Description:</strong> @item.AdditionalNotes		<br><br>
 
-    @if (item.PostType.PostTypeText!="found")
+    @if (item.PostType.PostTypeText != "found")
     {
-    <strong>Reward $</strong> @item.ItemReward<br><br>
+        <strong>Reward $</strong> @item.ItemReward<br><br>
     }
 
 

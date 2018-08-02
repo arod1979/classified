@@ -59,11 +59,11 @@ namespace RegistrationPractice
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "736503357607-pe9pcvibar5cbfr34olr0mdk9jhjbm3n.apps.googleusercontent.com",
+                ClientSecret = "53SOkhXJFgnG7IDqnbiXwOA_"
+            });
         }
     }
 }

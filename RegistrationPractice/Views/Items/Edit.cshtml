@@ -22,19 +22,16 @@
         @Html.HiddenFor(item => item.imageURL)
         @Html.HiddenFor(item => item.CreationDate)
         @Html.HiddenFor(item => item.LocationID)
+        @Html.HiddenFor(item => item.CategoryID)
         <input type="hidden" id="UpdatedActionsFileUpload" name="UpdatedActionsFileUpload" value="none" />
-
-
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <h1>Edit Form</h1>
         <div class="www">
-
-
-
             @Model.PostType.PostTypeText
-
-
+        </div>
+        <div class="www">
+            @Model.Category.CategoryText
         </div>
 
 
@@ -92,7 +89,7 @@
 
 
 
-       
+
         <label for="files" class="custom-file-upload" style="padding:5px;">
             Upload Image File
         </label>

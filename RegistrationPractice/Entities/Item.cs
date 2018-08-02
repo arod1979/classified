@@ -59,6 +59,7 @@ namespace RegistrationPractice.Entities
 
         public virtual DateTime CreationDate { get; set; } = System.DateTime.Now;
 
+        [Required]
         [DisplayName("Category")]
         public int? CategoryID { get; set; }
         public virtual Category Category { get; set; }

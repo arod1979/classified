@@ -10,6 +10,10 @@ using System.Web.Routing;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
+using RegistrationPractice.DAL;
+using Microsoft.AspNet.Identity;
+using RegistrationPractice.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace RegistrationPractice
 {
@@ -47,18 +51,24 @@ namespace RegistrationPractice
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var container = new SimpleInjector.Container();
-            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
-            // Register your stuff here  
-            container.Register(typeof(IRepository<>), typeof(EFRepository<>).Assembly, Lifestyle.Scoped);
+            //var container = new SimpleInjector.Container();
+            //container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
+            //// Register your stuff here  
+            //container.Register(typeof(IRepository<>), typeof(EFRepository<>).Assembly, Lifestyle.Scoped);
+            ////container.Register(typeof(IUserStore<ApplicationUser>), typeof(UserStore<ApplicationUser>).Assembly, Lifestyle.Scoped);
 
-            container.Register(typeof(ApplicationUserManager));
-            container.Register(typeof(ApplicationSignInManager));
 
-            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
-            //container.RegisterMvcIntegratedFilterProvider();
-            container.Verify();
-            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+            
+            //container.Register(typeof(ApplicationUserManager));
+            //container.Register(typeof(ApplicationSignInManager));
+            //container.Register(typeof(UserStore<ApplicationUser>));
+            ////container.Register(typeof(IUserStore<ApplicationUser>));
+
+
+            //container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+
+            //container.Verify();
+            //DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
     }
 }

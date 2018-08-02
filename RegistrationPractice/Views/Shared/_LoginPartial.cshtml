@@ -16,6 +16,89 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
+        @*<li>
+        <div class="dropdown menu-item">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Dropdown
+                <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+        </li>*@
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hospital<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown dropdown-submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultants</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">Adult cardiac surgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Bariatric surgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Colorectal surgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Endocrine and thyroid surgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Head and neck cancer surgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Interventional cardiology</a>
+                        </li>
+                        <li>
+                            <a href="#">Lung Cancer</a>
+                        </li>
+                        <li>
+                            <a href="#">Neurosurgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Orthopaedic surgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Upper gastro-intestinal surgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Urological surgery</a>
+                        </li>
+                        <li>
+                            <a href="#">Vascular surgery</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Another action</a>
+                </li>
+                <li>
+                    <a href="#">Something else here</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li>
+                    <a href="#">Separated link</a>
+                </li>
+                <li>
+                    <a href="#">One more separated link</a>
+                </li>
+            </ul>
+        </li>
+
+
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

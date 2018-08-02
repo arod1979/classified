@@ -26,6 +26,26 @@
         </p>
 
         <br>
+
+        <div class="www">
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </div>
+      </div>
+
         if (ViewBag.posttype == "Lost")
         {
             <div class="www">
@@ -33,7 +53,11 @@
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you lose?" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
-
+            <br /><br />
+            <div class="www">
+                @Html.DropDownList("CategoryID")
+                @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
+            </div>
             <br>
             <br>
             <div class="www">
@@ -59,13 +83,21 @@
                 @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20" } })
                 @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
             </div>
-            
+
         }
         if (ViewBag.posttype == "Found")
         {
             <div class="www">
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you find?" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br>
+
+
+            <div class="www">
+                @Html.DropDownList("CategoryID")
+                @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
             </div>
             <br>
             <br>
@@ -85,7 +117,7 @@
                 @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", name = "FoundDate" } })
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
-           
+
             <input type="hidden" value="20" name="ItemReward" />
 
         }
@@ -95,6 +127,12 @@
             <div class="www">
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What was stolen?" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <br>
+            <div class="www">
+                @Html.DropDownList("CategoryID")
+                @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
             </div>
             <br>
             <br>
@@ -124,16 +162,16 @@
 
         }
 
-        
+
         <label for="files" class="custom-file-upload" style="padding:5px;">
             Upload Image File
         </label>
         <input type="file" class="custom-file-upload" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
-        <div>.jpg,.png (5MB MAX)</div>
+        <div>.jpg,.png(5MB MAX)</div>
 
         <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
 
-        
+
 
 
         <div class="www">
@@ -146,7 +184,7 @@
             </div>
         </div>
 
-      
+
         @Html.HiddenFor(item => item.OwnerUserEmail)
         @Html.HiddenFor(item => item.LocationID)
         @Html.HiddenFor(item => item.Country)
@@ -173,4 +211,18 @@
         @Html.DisplayText("You must login to post")
     }
 </div>
-
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div>
+</div>

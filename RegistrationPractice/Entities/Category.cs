@@ -17,5 +17,9 @@ namespace RegistrationPractice.Entities
         public string CategoryText { get; set; }
 
         public ICollection<Post> Posts { get; set; }
+
+        [DisplayName("Post Type")]
+        public int? PostTypeID { get; set; }
+        public virtual PostType PostType { get; set; }
     }
 }

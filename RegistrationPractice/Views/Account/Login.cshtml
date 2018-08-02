@@ -13,7 +13,9 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <input type="text" placeholder="Enter your email" name="email" >
+                    <label style="display:block;text-align:center;">Sign-In</label>
+
+                    <input type="text" placeholder="Enter your email" name="email">
 
                     <input type="password" placeholder="Password" name="password">
 
@@ -26,13 +28,18 @@
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
                     </p>
+                   
+
+
                 }
+                <section id="socialLoginForm">
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+
             </div>
         </section>
     
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
+       
     
 
 @section Scripts {

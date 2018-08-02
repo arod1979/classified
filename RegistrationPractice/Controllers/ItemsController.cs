@@ -18,11 +18,17 @@ using RegistrationPractice.Classes.Globals;
 using RegistrationPractice.Classes.ViewModels;
 using RegistrationPractice.Filters;
 using System.Globalization;
+using RegistrationPractice.DAL;
 
 namespace RegistrationPractice.Controllers
 {
+    [RequireHttps]
     public class ItemsController : Controller
     {
+        public ItemsController()
+        {
+
+        }
 
         private static string servername = System.Configuration.ConfigurationManager.AppSettings["servername"];
 
@@ -148,7 +154,7 @@ namespace RegistrationPractice.Controllers
                 {
                     items = items.Where(i => (i.Description.ToLower().Contains(search.ToLower()) || i.AdditionalNotes.ToLower().Contains(search.ToLower())));
                 }
-                return View(await items.ToListAsync());
+                return View(await items.Include("PostType").Include("Category").ToListAsync());
             }
             else
             {
@@ -209,29 +215,30 @@ namespace RegistrationPractice.Controllers
         public ActionResult Create(string country, string province, string city, string posttypefilter, string action) ////candidate for dependancy injection
         {
 
+            ViewBag.city_province = string.Format("{0},{1}", city, province);
+            ViewBag.Province = province;
 
             Item item = new Item();
             item.Country = country;
             item.City = city;
             item.LocationID = RegistrationPractice.Classes.Globals.PostTypeDBIDs.GetCityPrimaryKey(city);
-            ViewBag.city_province = string.Format("{0},{1}", city, province);
-            ViewBag.Province = province;
-            
+          
+            if (posttypefilter == "stolen")
+            { ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == PostTypeDBIDs.stolendbid), "Id", "CategoryText"); }
+            else
+            { ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == PostTypeDBIDs.stolendbid), "Id", "CategoryText"); }
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             posttypefilter = textInfo.ToTitleCase(posttypefilter);
 
             ViewBag.PostType = posttypefilter;
-
-
-
-            //This functionality may be returend
-            //ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
+            
+        
             //ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
-           
+
             // This value should be implemented with generic repository
             //ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText")
 
-            
+
             switch (posttypefilter)
             {
                 case "Stolen":
@@ -362,6 +369,10 @@ namespace RegistrationPractice.Controllers
             //ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText", item.PostTypeID);
             ViewBag.city_province = string.Format("{0},{1}", item.City, province);
             ViewBag.Province = province;
+            if (posttypefilter == "stolen")
+            { ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == PostTypeDBIDs.stolendbid), "Id", "CategoryText"); }
+            else
+            { ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == PostTypeDBIDs.stolendbid), "Id", "CategoryText"); }
 
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             posttypefilter = textInfo.ToTitleCase(posttypefilter);
@@ -377,7 +388,7 @@ namespace RegistrationPractice.Controllers
             
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
 
-            var itemlist = await (db.Items.Where(i => i.Id == id).Include("PostType").ToListAsync());
+            var itemlist = await (db.Items.Where(i => i.Id == id).Include("PostType").Include("Category").ToListAsync());
             Item item = itemlist[0];
 
             if (item!=null && useremail != null && useremail != item.OwnerUserEmail)

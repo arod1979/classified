@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44380</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -106,6 +106,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -257,6 +258,7 @@
     <Compile Include="Classes\CustomActionMethodSelector.cs" />
     <Compile Include="Classes\GlobalVariables.cs" />
     <Compile Include="Classes\ProfanityFilter.cs" />
+    <Compile Include="Classes\TrackLocations.cs" />
     <Compile Include="Classes\WriteToLogFile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -266,6 +268,7 @@
     <Compile Include="Controllers\_ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserManager.cs" />
+    <Compile Include="DAL\Interfaces.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Location.cs" />
@@ -492,6 +495,10 @@
     <Compile Include="Migrations\201807191923295_itemrewardlimit.Designer.cs">
       <DependentUpon>201807191923295_itemrewardlimit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807272047550_updatecategory.cs" />
+    <Compile Include="Migrations\201807272047550_updatecategory.Designer.cs">
+      <DependentUpon>201807272047550_updatecategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -574,6 +581,8 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\expandmenu.js" />
+    <Content Include="Scripts\getlocation.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -837,6 +846,9 @@
     <EmbeddedResource Include="Migrations\201807191923295_itemrewardlimit.resx">
       <DependentUpon>201807191923295_itemrewardlimit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807272047550_updatecategory.resx">
+      <DependentUpon>201807272047550_updatecategory.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -865,7 +877,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55645</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55645/</IISUrl>
+          <IISUrl>https://localhost:44380/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
