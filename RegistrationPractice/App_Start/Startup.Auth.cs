@@ -13,6 +13,7 @@ using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using RegistrationPractice.DAL;
+using RegistrationPractice.Interfaces;
 using RegistrationPractice.Models;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;

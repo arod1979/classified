@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using RegistrationPractice.Entities;
-using RegistrationPractice.Models;
 using System.IO;
-using RegistrationPractice.HelperMethods;
+using System.Globalization;
 using Microsoft.AspNet.Identity;
 using Classes.Profanity.Logic;
 using RegistrationPractice.Classes;
 using RegistrationPractice.Classes.Globals;
 using RegistrationPractice.Classes.ViewModels;
 using RegistrationPractice.Filters;
-using System.Globalization;
-using RegistrationPractice.DAL;
+using RegistrationPractice.Classes.Loggers;
+using RegistrationPractice.HelperMethods;
+using RegistrationPractice.Entities;
+using RegistrationPractice.Models;
+using RegistrationPractice.Interfaces;
 
 namespace RegistrationPractice.Controllers
 {
@@ -256,7 +257,7 @@ namespace RegistrationPractice.Controllers
             {
                 try
                 {
-                    var path = Server.MapPath(@"~/log.txt");
+                    var path = Server.MapPath(@"~/LogFiles");
                     System.IO.File.WriteAllText(path, "No user email for post");
                     return RedirectToAction("Login", "Account", null);
                 }
@@ -285,7 +286,7 @@ namespace RegistrationPractice.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate")] Item item, HttpPostedFileBase files, FormCollection formcollection)
+        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io)
         {
 
 
@@ -296,45 +297,20 @@ namespace RegistrationPractice.Controllers
             //allan rodkin image code
             if (files != null)
             {
+                string imageUrl;
+                string result = io.SaveImage(files, out imageUrl, servername);
+                item.imageURL = imageUrl;
 
-                string time = DateTime.UtcNow.ToString();
-                time = time.Replace(" ", "-");
-                time = time.Replace(":", "-");
-                time = time.Replace("/", "-");
-                try
+                if (result.Length > 0)
                 {
-
-                    string[] extensions = new string[] { ".jpg", ".png" };
-                    //throw new Exception("blah");
-                    var filename = Path.GetFileName(time + Path.GetFileName(files.FileName));
-                    var checkextension = Path.GetExtension(files.FileName).ToLower();
-                    var filesize = (files.ContentLength / 1048576);
-                    if (filesize > 5)
-                    {
-                        throw new Exception("File cannot be saved. Max file extension is 5MB");
-                    }
-                    if (!extensions.Contains(checkextension))
-                    {
-                        throw new Exception("File cannot be saved. Invalid extension.");
-                    }
-
-                    var path = Path.Combine(Server.MapPath("~/photos"), filename);
-                    string[] paths = path.Split('.');
-                    string filetype = paths[1];
-
-                    string fullpath = String.Format("{0}.{1}", paths[0], paths[1]);
-                    files.SaveAs(fullpath);
-                    item.imageURL = servername + "/photos/" + filename;
+                    ModelState.AddModelError(string.Empty, result);
                 }
-                catch (Exception e)
-                {
-                    ModelState.AddModelError(string.Empty, e.Message);
-                }
-
             }
+
+
             if (ModelState.IsValid)
             {
-                //profanity check
+
                 bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description) || pf.ValidateTextContainsProfanity(item.AdditionalNotes);
                 if (textContainsProfanity)
                 {
@@ -407,13 +383,11 @@ namespace RegistrationPractice.Controllers
             return View(item);
         }
 
-        // POST: Items/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<ActionResult> Edit([Bind(Include = "City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection)
+        public async Task<ActionResult> Edit([Bind(Include = "City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io)
         {
 
             //allan rodkin image code
@@ -425,39 +399,13 @@ namespace RegistrationPractice.Controllers
 
             if (files != null)
             {
-                string time = DateTime.UtcNow.ToString();
-                time = time.Replace(" ", "-");
-                time = time.Replace(":", "-");
-                time = time.Replace("/", "-");
-                try
+                string imageUrl;
+                string result = io.SaveImage(files, out imageUrl, servername);
+                item.imageURL = imageUrl;
+
+                if (result.Length > 0)
                 {
-
-                    string[] extensions = new string[] { ".jpg", ".png" };
-                    //throw new Exception("blah");
-                    var filename = Path.GetFileName(time + Path.GetFileName(files.FileName));
-                    var checkextension = Path.GetExtension(files.FileName).ToLower();
-                    var filesize = (files.ContentLength / 1048576);
-                    if (filesize > 5)
-                    {
-                        throw new Exception("File cannot be saved. Max file extension is 5MB");
-                    }
-                    if (!extensions.Contains(checkextension))
-                    {
-                        throw new Exception("File cannot be saved. Invalid extension.");
-                    }
-
-                    var path = Path.Combine(Server.MapPath("~/photos"), filename);
-                    string[] paths = path.Split('.');
-                    string filetype = paths[1];
-
-                    string fullpath = String.Format("{0}.{1}", paths[0], paths[1]);
-                    files.SaveAs(fullpath);
-                    string servername = System.Configuration.ConfigurationManager.AppSettings["servername"];
-                    item.imageURL = servername + "/photos/" + filename;
-                }
-                catch (Exception e)
-                {
-                    ModelState.AddModelError(string.Empty, e.Message);
+                    ModelState.AddModelError(string.Empty, result);
                 }
             }
 
@@ -478,11 +426,6 @@ namespace RegistrationPractice.Controllers
                     ViewBag.Message = "Post contains profanity. Cannot submit.";
                     return RedirectToAction("FAQ", "Account");
                 }
-
-
-
-
-
                 await db.SaveChangesAsync();
                 return RedirectToAction("UserPosts");
             }
@@ -531,8 +474,15 @@ namespace RegistrationPractice.Controllers
         {
             Item item = await db.Items.FindAsync(id);
             db.Items.Remove(item);
+            if (item.imageURL != null)
+            {
+                string path = item.imageURL;
+                System.IO.File.Delete(path);
+            }
+
             await db.SaveChangesAsync();
             return RedirectToAction("UserPosts");
+
         }
 
         protected override void Dispose(bool disposing)

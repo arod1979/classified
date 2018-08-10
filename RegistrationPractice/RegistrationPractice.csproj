@@ -254,9 +254,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
-    <Compile Include="Classes\canadian_cities.cs" />
     <Compile Include="Classes\CustomActionMethodSelector.cs" />
     <Compile Include="Classes\GlobalVariables.cs" />
+    <Compile Include="Classes\IO.cs" />
+    <Compile Include="Classes\LogToFile.cs" />
     <Compile Include="Classes\ProfanityFilter.cs" />
     <Compile Include="Classes\TrackLocations.cs" />
     <Compile Include="Classes\WriteToLogFile.cs" />
@@ -268,7 +269,7 @@
     <Compile Include="Controllers\_ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserManager.cs" />
-    <Compile Include="DAL\Interfaces.cs" />
+    <Compile Include="DAL\DALInterfaces.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Location.cs" />
@@ -283,6 +284,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HelperMethods\GlobalControllerMethods.cs" />
+    <Compile Include="Interfaces\Interfaces.cs" />
     <Compile Include="Migrations\201806022115389_newitem.cs" />
     <Compile Include="Migrations\201806022115389_newitem.Designer.cs">
       <DependentUpon>201806022115389_newitem.cs</DependentUpon>
@@ -672,6 +674,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Controllers\" />
     <Folder Include="Areas\admin\Models\" />
+    <Folder Include="LogFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
