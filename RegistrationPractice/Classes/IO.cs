@@ -4,18 +4,21 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
+using RegistrationPractice.Classes.Globals;
 
 
 namespace RegistrationPractice.Classes
 {
     public class IO_Operations
     {
+        string servername = constants.servername;
+
         public bool SaveFile()
         {
             return false;
         }
 
-        public string SaveImage(HttpPostedFileBase files, out string imageUrl, string servername)
+        public string SaveImage(HttpPostedFileBase files, out string imageUrl)
         {
             string result = String.Empty;
 
@@ -26,7 +29,6 @@ namespace RegistrationPractice.Classes
             try
             {
                 string[] extensions = new string[] { ".jpg", ".png" };
-                //throw new Exception("blah");
                 var filename = Path.GetFileName(time + Path.GetFileName(files.FileName));
                 var checkextension = Path.GetExtension(files.FileName).ToLower();
                 var filesize = (files.ContentLength / 1048576);
@@ -51,6 +53,26 @@ namespace RegistrationPractice.Classes
                 return e.Message;
             }
 
+        }
+
+        public bool DeleteImage(string imageurl)
+        {
+            try
+            {
+                string imagename = imageurl.Substring(imageurl.IndexOf("photos/") + 7);
+                var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/photos"), imagename);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                    return true;
+                }
+                return false;
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

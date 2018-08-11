@@ -44,10 +44,9 @@
 
 
 /*fileupload*/
-.countryimage
-{
+.countryimage {
     width: 75%;
-    align-content:center;
+    align-content: center;
 }
 
 
@@ -74,7 +73,7 @@
 
 
 li {
-    list-style-position:inside;
+    list-style-position: inside;
 }
 
 .red {
@@ -82,18 +81,17 @@ li {
     padding: 10px 10px 10px 10px !important;
 }
 
-body{
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Comfortaa', cursive;
-	text-align:center;
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
 }
 
-input,select {
+input, select {
     outline: none;
     padding: 10px;
     display: block;
-   
     border-radius: 3px;
     border: 1px solid #eee;
     margin: 20px auto;
@@ -103,12 +101,13 @@ input,select {
         width: 75%;
     }
 
-    
+
 
     input.left {
         width: 65%;
-        float:left;
+        float: left;
     }
+
     input.left {
         width: 65%;
         float: none;
@@ -139,58 +138,61 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover{
-	background: #00b8eb;
-}
+    input[type="submit"]:hover {
+        background: #00b8eb;
+    }
 
 input[type="file"] {
     display: none;
-    line-height:0px !important;
+    line-height: 0px !important;
 }
 
 .custom-file-upload {
-    margin-top :0px;
+    margin-top: 0px;
     border: 1px solid #ccc;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
 }
 
-.header{
-	font-size: 70px;
-	background-color: rgb(153, 213, 255);
-	border-bottom:6px solid #eee;
-	padding: 10px 0px;
-	text-align: center;
-
+.header {
+    font-size: 70px;
+    background-color: rgb(153, 213, 255);
+    border-bottom: 6px solid #eee;
+    padding: 10px 0px;
+    text-align: center;
 }
 
-.header a{
-	color: #333;
-	text-decoration: none;
-
-}
+    .header a {
+        color: #333;
+        text-decoration: none;
+    }
 
 h1 {
-	font-size: 40px;
+    font-size: 40px;
 }
 
 .bottom-footer {
-	background-color: #eee;
-	border-top: 6px solid #aaa;
-	text-align: auto;
-	padding: 10px 10px;
-
+    background-color: #eee;
+    border-top: 6px solid #aaa;
+    text-align: auto;
+    padding: 10px 10px;
 }
 
 
 .www {
-	margin: 1px 1px 1px 1px;
-	border-radius: 5px;
-	background-color: rgb(153, 213, 255);
-	border-bottom:2px solid #eee;
-	border-top: 2px solid #eee;
-   
+    margin: 1px 1px 1px 1px;
+    border-radius: 5px;
+    background-color: rgb(153, 213, 255);
+    border-bottom: 2px solid #eee;
+    border-top: 2px solid #eee;
+}
+
+.www-nobottom {
+    margin: 1px 1px 1px 1px;
+    border-radius: 5px;
+    background-color: rgb(153, 213, 255);
+    border-top: 2px solid #eee;
 }
 
 .www2 {
@@ -198,7 +200,7 @@ h1 {
 }
 
 
-    
+
 
 @media screen and (max-width: 480px) {
     div.www > input.btn {
@@ -223,10 +225,9 @@ h1 {
     }
 
     a.awolr-logo {
-        
         color: black !important;
-        float:left;
-        margin-top:10px;
+        float: left;
+        margin-top: 10px;
         font-size: 20px;
         font-family: 'Comfortaa' !important;
     }
@@ -246,7 +247,7 @@ h1 {
         background-color: yellow;
         border-bottom: 6px solid #eee;
         border-top: 6px solid #333;
-        color: #333;  
+        color: #333;
     }
 
     h1.lfs {
@@ -260,9 +261,8 @@ h1 {
     }
 }
 
-a.awolr-logo
-{
-    margin-left:5px;
+a.awolr-logo {
+    margin-left: 5px;
 }
 
 @media screen and (min-width: 601px) {
@@ -270,7 +270,7 @@ a.awolr-logo
     .menu-item {
         padding: 9px 15px 15px 15px;
     }
-    
+
     h1.lfs {
         border-radius: 20px;
         margin-left: 25%;
@@ -280,11 +280,11 @@ a.awolr-logo
         border-top: 6px solid #eee;
         color: #333;
     }
-    
+
     input.itemsearchbox {
         width: 25%;
     }
-    
+
     .lostitems {
         border: 1px solid black;
         margin-left: 25%;
@@ -298,7 +298,6 @@ a.awolr-logo
     }
 
     a.awolr-logo {
-        
         margin-top: 20px;
         color: black !important;
         font-size: 70px;
@@ -321,40 +320,37 @@ a.awolr-logo
         border-bottom: 6px solid #eee;
         border-top: 6px solid #333;
         color: #333;
-        
     }
 }
 
 
-    input[type="button"]:hover {
-        background: #00b8eb;
-    }
+input[type="button"]:hover {
+    background: #00b8eb;
+}
 
-    input[type="button"] {
-        padding: 5px;
-        color: #fff;
-        background: #0098cb;
-        width: 120px;
-        margin: 20px auto;
-        margin-top: 0px;
-        border: 0px;
-        border-radius: 3px;
-        cursor: pointer;
-    }
+input[type="button"] {
+    padding: 5px;
+    color: #fff;
+    background: #0098cb;
+    width: 120px;
+    margin: 20px auto;
+    margin-top: 0px;
+    border: 0px;
+    border-radius: 3px;
+    cursor: pointer;
+}
 
-    .cities a {
-        /*font-size: 20px;
+.cities a {
+    /*font-size: 20px;
 	color: #333;
 	background-color: red;*/
-    }
+}
 
-    .option {
-        margin-left: 25%;
-        margin-right: 25%;
-    }
+.option {
+    margin-left: 25%;
+    margin-right: 25%;
+}
 
-    .text {
-        font-size: 20px;
-    }
-
-    
+.text {
+    font-size: 20px;
+}

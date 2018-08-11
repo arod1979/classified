@@ -7,14 +7,15 @@ using System.Web;
 namespace RegistrationPractice.Classes.Globals
 {
 
-    public static class PostTypeDBIDs
+    public static class constants
     {
         //replace generic repository
 
         static readonly ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
-        public static int stolendbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "stolen").Id;
-        public static int lostdbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "lost").Id;
-        public static int founddbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "found").Id;
+        public static readonly string servername = System.Configuration.ConfigurationManager.AppSettings["servername"];
+        public static readonly int stolendbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "stolen").Id;
+        public static readonly int lostdbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "lost").Id;
+        public static readonly int founddbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "found").Id;
 
         public static int GetCityPrimaryKey(string city)
         {
@@ -26,9 +27,9 @@ namespace RegistrationPractice.Classes.Globals
 
     public static class CityListing
     {
-        
+
         public static List<KeyValuePair<string, string[]>> canadian_cities = new List<KeyValuePair<string, string[]>>();
-        
+
         static CityListing()
         {
             canadian_cities.Add(new KeyValuePair<string, string[]>("ON_CD", new string[] { "thunder bay", "toronto" }));
@@ -38,7 +39,7 @@ namespace RegistrationPractice.Classes.Globals
             canadian_cities.Add(new KeyValuePair<string, string[]>("AB_CD", new string[] { "edmonton", "calgary" }));
         }
 
-        
+
 
         //BC_CD  = KeyValuePair<string, string[]>(new string[] { "vancouver", "victoria" });
         //readonly static List<string> ON_CD = new List<string>(new string[] { "thunder bay", "toronto" });
@@ -47,5 +48,5 @@ namespace RegistrationPractice.Classes.Globals
         //readonly static List<string> AB_CD = new List<string>(new string[] { "edmonton", "calgary" });
     }
 
-        
+
 }
