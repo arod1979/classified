@@ -33,9 +33,9 @@ namespace RegistrationPractice
             //});
             await SendMail(message);
             //await Execute(message);
-        } 
-        
-        
+        }
+
+
 
 
         private async Task Execute(IdentityMessage message)
@@ -62,14 +62,15 @@ namespace RegistrationPractice
             string html = "Please confirm your account by clicking on this link: <a href=\"" + message.Body +
                 "\">link</a><br/>";
             html += HttpUtility.HtmlEncode(@"Or copy the following link to your browser:" + message.Body);
+            string email = System.Configuration.ConfigurationManager.AppSettings["email"];
             string password = System.Configuration.ConfigurationManager.AppSettings["emailpassword"];
             try
             {
                 var client = new SmtpClient("smtp.gmail.com", 587)
                 {
-                    
-                Credentials = new NetworkCredential("allanrodkin@gmail.com", password),
-                    EnableSsl = true
+
+                    Credentials = new NetworkCredential(email, password),
+                    EnableSsl = false
                 };
 
 
@@ -90,7 +91,7 @@ namespace RegistrationPractice
 
 
     }
-    
+
 
 
 
@@ -103,7 +104,7 @@ namespace RegistrationPractice
         }
     }
 
-    
+
 
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.

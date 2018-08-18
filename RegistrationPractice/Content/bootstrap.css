@@ -5552,7 +5552,7 @@ div.navbar-header {
 
         .navbar-default .navbar-nav > li > a:hover,
         .navbar-default .navbar-nav > li > a:focus {
-            color: #333;
+            /*color: #333;*/
             background-color: transparent;
         }
 
@@ -5560,7 +5560,7 @@ div.navbar-header {
     .navbar-default .navbar-nav > .active > a:hover,
     .navbar-default .navbar-nav > .active > a:focus {
         color: #555;
-        background-color: #e7e7e7;
+        background-color: transparent;
     }
 
     .navbar-default .navbar-nav > .disabled > a,
@@ -5592,7 +5592,7 @@ div.navbar-header {
     .navbar-default .navbar-nav > .open > a:hover,
     .navbar-default .navbar-nav > .open > a:focus {
         color: #555;
-        background-color: #e7e7e7;
+        background-color: transparent;
     }
 
 @media (max-width: 767px) {

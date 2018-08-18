@@ -17,12 +17,20 @@ namespace RegistrationPractice.Classes.Loggers
 
         static Logger()
         {
-            tw = TextWriter.Synchronized(File.AppendText(SPath() + "\\Log.txt"));
+
+            //tw = TextWriter.Synchronized(File.AppendText(SPath() + "\\Log.txt"));
+
+            string combinedpath = Path.Combine(System.Web.HttpContext.Current.Server.
+            MapPath(
+            String.Format("{0}{1}", "~/logfiles", SPath())
+            )
+            );
+            tw = TextWriter.Synchronized(File.AppendText(combinedpath));
         }
 
         public static string SPath()
         {
-            return ConfigurationManager.AppSettings["loggerpath"];
+            return ConfigurationManager.AppSettings["loggerpath"].ToString();
         }
 
         public static void Write(string logMessage)

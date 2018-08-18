@@ -14,6 +14,9 @@ using RegistrationPractice.DAL;
 using Microsoft.AspNet.Identity;
 using RegistrationPractice.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web.Http;
+using RegistrationPractice.App_Start;
+using RegistrationPractice.Classes;
 
 namespace RegistrationPractice
 {
@@ -44,12 +47,16 @@ namespace RegistrationPractice
         //                                               String.Empty);
         //}
 
-            protected void Application_Start()
+        protected void Application_Start()
         {
+
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            gmail.RegisterWatch();
+
 
             //var container = new SimpleInjector.Container();
             //container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
@@ -58,7 +65,7 @@ namespace RegistrationPractice
             ////container.Register(typeof(IUserStore<ApplicationUser>), typeof(UserStore<ApplicationUser>).Assembly, Lifestyle.Scoped);
 
 
-            
+
             //container.Register(typeof(ApplicationUserManager));
             //container.Register(typeof(ApplicationSignInManager));
             //container.Register(typeof(UserStore<ApplicationUser>));

@@ -23,7 +23,7 @@ using RegistrationPractice.Interfaces;
 
 namespace RegistrationPractice.Controllers
 {
-    [RequireHttps]
+
     public class ItemsController : Controller
     {
         public ItemsController()
