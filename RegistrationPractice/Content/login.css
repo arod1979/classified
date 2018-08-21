@@ -354,3 +354,9 @@ input[type="button"] {
 .text {
     font-size: 20px;
 }
+
+.citieslist {
+    padding: 5px;
+    background-color: white;
+    display: inline-block;
+}

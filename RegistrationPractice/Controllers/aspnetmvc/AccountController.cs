@@ -19,6 +19,7 @@ namespace RegistrationPractice.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
@@ -162,7 +163,7 @@ namespace RegistrationPractice.Controllers
             return View();
         }
 
-       
+
 
         public static string ReplacePotentiallyDangerousSymbols(string unvalidatedValue, string valueToReplace = "")
         {
@@ -193,7 +194,7 @@ namespace RegistrationPractice.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    
+
 
 
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -203,7 +204,7 @@ namespace RegistrationPractice.Controllers
 
 
 
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id); 
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", AccountController.ReplacePotentiallyDangerousSymbols("Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>"));
                     await UserManager.SendEmailAsync(user.Id, "Confirm your AWOLR.com account by clicking link.", AccountController.ReplacePotentiallyDangerousSymbols(callbackUrl));
@@ -213,7 +214,7 @@ namespace RegistrationPractice.Controllers
 
                     ViewBag.Message = "Please check your email to confirm you account";
 
-                    
+
 
                     return View("ConfirmEmailInstructions");
                     //return View("ConfirmEmail");

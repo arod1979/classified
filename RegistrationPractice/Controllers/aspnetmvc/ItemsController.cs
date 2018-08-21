@@ -19,17 +19,25 @@ using RegistrationPractice.Classes.Loggers;
 using RegistrationPractice.HelperMethods;
 using RegistrationPractice.Entities;
 using RegistrationPractice.Models;
-using RegistrationPractice.Interfaces;
+using RegistrationPractice.Classes.Cookies;
+using RegistrationPractice.Classes.Session;
 
 namespace RegistrationPractice.Controllers
 {
 
     public class ItemsController : Controller
     {
+        //private MyCookies mycookies;
+
+        private MySession mysession;
+        private MyCookies mycookies = new MyCookies();
+
         public ItemsController()
         {
 
         }
+
+
         private ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
         private readonly ProfanityFilter pf = new ProfanityFilter(new List<string>
         {
@@ -158,11 +166,19 @@ namespace RegistrationPractice.Controllers
 
         }
 
+        [AllowAnonymous]
+        public ViewResult Start()
+        {
+
+            return View("start");
+        }
 
         // GET: Items
         [AllowAnonymous]
         public ViewResult CountryIndex(string countryname = "canada")
         {
+            countryname = countryname.ToLower();
+
             if (countryname == "canada")
             {
                 ViewBag.country = "Canada";

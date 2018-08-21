@@ -42,6 +42,14 @@ namespace RegistrationPractice.Models
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 
+        public ApplicationDbContext()
+             : base("DefaultConnection", throwIfV1Schema: false)
+        {
+            //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            Database.SetInitializer<ApplicationDbContext>(null);
+        }
+
+
         //deleted to allow simple injector work
         //public static ApplicationDbContext Create()
         //{

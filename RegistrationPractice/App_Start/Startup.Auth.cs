@@ -15,6 +15,7 @@ using Owin;
 using RegistrationPractice.DAL;
 using RegistrationPractice.Interfaces;
 using RegistrationPractice.Models;
+using RegistrationPractice.Classes.Session;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
@@ -107,7 +108,7 @@ namespace RegistrationPractice
 
                 container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 
-                container.Register<fuck, fuck2>();
+
 
                 container.Register<ApplicationDbContext>(()
                   => new ApplicationDbContext(

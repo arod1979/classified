@@ -290,6 +290,8 @@
     <Compile Include="Classes\IO.cs" />
     <Compile Include="Classes\LogToFile.cs" />
     <Compile Include="Classes\ProfanityFilter.cs" />
+    <Compile Include="Classes\ReadCookies.cs" />
+    <Compile Include="Classes\Session.cs" />
     <Compile Include="Classes\TrackLocations.cs" />
     <Compile Include="Controllers\aspnetmvc\AccountController.cs" />
     <Compile Include="Controllers\aspnetmvc\HomeController.cs" />
@@ -619,8 +621,9 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\country.js" />
     <Content Include="Scripts\expandmenu.js" />
-    <Content Include="Scripts\getlocation.js" />
+    <Content Include="Scripts\sessionvalues.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -702,6 +705,8 @@
     <Content Include="Views\Account\FAQ.cshtml" />
     <Content Include="Views\Account\Privacy.cshtml" />
     <Content Include="Views\Account\Contact.cshtml" />
+    <Content Include="Views\public\start.cshtml" />
+    <Content Include="Views\Items\start.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -730,9 +735,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806022115389_newitem.resx">
       <DependentUpon>201806022115389_newitem.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806040016062_adminuser.resx">
       <DependentUpon>201806040016062_adminuser.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806041738160_imageinitem.resx">
       <DependentUpon>201806041738160_imageinitem.cs</DependentUpon>

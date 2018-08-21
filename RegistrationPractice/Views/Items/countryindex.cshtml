@@ -8,40 +8,49 @@
 
 
     <h1 class="lfs">Select Your City</h1>
+
     <div class="cities">
 
 
+        <ul class="citieslist">
+            <li> @Html.ActionLink("Victoria", "Canada/BC/CityIndex/Victoria")</li>
 
-        <li> @Html.ActionLink("Victoria", "Canada/BC/CityIndex/Victoria")</li>
+            <li>
+                @Html.ActionLink("Vancouver", "Canada/BC/CityIndex/Vancouver")
 
-        <li>
-            @Html.ActionLink("Vancouver", "Canada/BC/CityIndex/Vancouver")
-        </li>
-        <br>
-        <li>@Html.ActionLink("Edmonton", "Canada/AB/CityIndex/Edmonton")</li>
-        <li>
-            @Html.ActionLink("Calgary", "Canada/AB/CityIndex/Calgary")
-        </li>
-        <br>
-        <li>
-            @Html.ActionLink("Regina", "Canada/SK/CityIndex/Regina")
-        </li>
-        <li>
-            @Html.ActionLink("Saskatoon", "Canada/SK/CityIndex/Saskatoon")
-        </li>
-        <br>
-        <li>
-            @Html.ActionLink("Brandon", "Canada/MB/CityIndex/Brandon")
-        </li>
-        <li>
-            @Html.ActionLink("Winnipeg", "Canada/MB/CityIndex/Winnipeg")
-        </li>
-        <br>
+            </li>
 
-        <li>
-            @Html.ActionLink("Thunder Bay", "Canada/ON/CityIndex/Thunder Bay")
-        </li>
-        <li>@Html.ActionLink("Toronto", "Canada/ON/CityIndex/Toronto")</li>
+
+            <li>@Html.ActionLink("Edmonton", "Canada/AB/CityIndex/Edmonton")</li>
+
+            <li>
+                @Html.ActionLink("Calgary", "Canada/AB/CityIndex/Calgary")
+            </li>
+
+
+
+            <li>
+                @Html.ActionLink("Regina", "Canada/SK/CityIndex/Regina")
+            </li>
+
+
+            <li>
+                @Html.ActionLink("Saskatoon", "Canada/SK/CityIndex/Saskatoon")
+            </li>
+
+            <li>
+                @Html.ActionLink("Brandon", "Canada/MB/CityIndex/Brandon")
+            </li>
+            <li>
+                @Html.ActionLink("Winnipeg", "Canada/MB/CityIndex/Winnipeg")
+            </li>
+
+
+            <li>
+                @Html.ActionLink("Thunder Bay", "Canada/ON/CityIndex/Thunder Bay")
+            </li>
+            <li>@Html.ActionLink("Toronto", "Canada/ON/CityIndex/Toronto")</li>
+        </ul>
 
     </div>
 }

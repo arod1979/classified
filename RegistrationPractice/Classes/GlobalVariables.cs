@@ -12,14 +12,15 @@ namespace RegistrationPractice.Classes.Globals
         //replace generic repository
 
         static readonly ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
-        public static readonly string servername = System.Configuration.ConfigurationManager.AppSettings["servername"];
+        //public static readonly string servername = System.Configuration.ConfigurationManager.AppSettings["servername"];
+        public static readonly string servername = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
         public static readonly int stolendbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "stolen").Id;
         public static readonly int lostdbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "lost").Id;
         public static readonly int founddbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "found").Id;
 
         public static int GetCityPrimaryKey(string city)
         {
-            return db.Locations.Where(loc => loc.LocationText == city).SingleOrDefault().Id;
+            return db.Locations.Where(loc => loc.LocationText == city.ToLower()).SingleOrDefault().Id;
         }
 
         public static string[] posttypes = { "lost", "Lost", "stolen", "Stolen", "found", "Found" };

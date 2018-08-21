@@ -70,7 +70,7 @@ namespace RegistrationPractice
                 {
 
                     Credentials = new NetworkCredential(email, password),
-                    EnableSsl = false
+                    EnableSsl = true
                 };
 
 
@@ -152,8 +152,8 @@ namespace RegistrationPractice
         //        Subject = "Security Code",
         //        BodyFormat = "Your security code is {0}"
         //    });
-        //    manager.EmailService = new EmailService();
-        //    manager.SmsService = new SmsService();
+        //manager.EmailService = new EmailService();
+        //manager.SmsService = new SmsService();
         //    var dataProtectionProvider = options.DataProtectionProvider;
         //    if (dataProtectionProvider != null)
         //    {
@@ -170,6 +170,8 @@ namespace RegistrationPractice
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
+            userManager.EmailService = new EmailService();
+            userManager.SmsService = new SmsService();
         }
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
