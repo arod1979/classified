@@ -28,70 +28,37 @@
 
         <h1>Edit Form</h1>
         <div class="www">
-            @Model.PostType.PostTypeText
+            <b> @Model.PostType.PostTypeText </b>
         </div>
         <div class="www">
-            @Model.Category.CategoryText
+            <b>@Model.Category.CategoryText </b>
         </div>
-
-
         <div class="www">
-
-
-
-            @Model.City
-
-
-
+            <b> @Model.City </b>
         </div>
-
         <div class="www">
-
-
-
-            @Model.LostLocation
-
-
+            <b>@Model.LostLocation </b>
         </div>
-
         <div class="www">
-
-
-
-            @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { @class = "form-control" } })
+            <label>Reward</label>
+            @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { @class = "form-control labelontop" } })
             @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
-
-
         </div>
         <br /><br />
 
         <div class="www">
-
-
-
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            <label>Description</label>
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control labelontop" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-
         </div>
         <br /><br />
-
-
-
-
         <div class="www">
-
-            @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control" } })
+            <label>AdditionalNotes</label>
+            @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control labelontop" } })
             @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
         </div>
-
-
-
-
-
-
-
         <label for="files" class="custom-file-upload" style="padding:5px;">
-            Upload Image File
+            Upload ImageFile
         </label>
         <input type="file" class="custom-file-upload" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
         <div>.jpg,.png (5MB MAX)</div>
@@ -160,6 +127,6 @@
     }
 </div>
 
-    @*<div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>*@
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

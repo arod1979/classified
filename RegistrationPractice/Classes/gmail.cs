@@ -67,7 +67,7 @@ namespace RegistrationPractice.Classes
                 WatchRequest body = new WatchRequest()
                 {
                     //TopicName = "projects/awolr-213414/topics/awolr",
-                    TopicName = "projects/my-project-1534192170383/topics/awolr",
+                    TopicName = "projects/my-project-1534261658850/topics/awolr",
                     LabelIds = new[] { "INBOX" }
                 };
                 string userId = "admin@awolr.com";

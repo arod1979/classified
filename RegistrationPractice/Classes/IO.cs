@@ -11,7 +11,16 @@ namespace RegistrationPractice.Classes
 {
     public class IO_Operations
     {
-        string servername = constants.servername;
+        private constants constants;
+        string servername;
+        public IO_Operations()
+        {
+            constants = new constants();
+            string servername = constants.servername;
+        }
+
+
+
 
         public bool SaveFile()
         {
@@ -71,6 +80,7 @@ namespace RegistrationPractice.Classes
             }
             catch (Exception e)
             {
+                Loggers.Logger.Write(e.ToString());
                 return false;
             }
         }

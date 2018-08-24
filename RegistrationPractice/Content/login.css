@@ -97,6 +97,15 @@ input, select {
     margin: 20px auto;
 }
 
+    input.labelontop {
+        outline: none;
+        padding: 10px;
+        display: block;
+        border-radius: 3px;
+        border: 1px solid #eee;
+        margin: 5px auto 20px auto
+    }
+
     input[type="text"], input[type="password"], input[type="date"], input[type="submit"], select {
         width: 75%;
     }

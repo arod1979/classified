@@ -313,6 +313,7 @@
     <Compile Include="Extensions\ProfanityExtension.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Filters\CheckURLParameters.cs" />
+    <Compile Include="Filters\ExcludFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -648,7 +649,9 @@
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

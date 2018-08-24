@@ -17,6 +17,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Web.Http;
 using RegistrationPractice.App_Start;
 using RegistrationPractice.Classes;
+using RegistrationPractice.Filters;
 
 namespace RegistrationPractice
 {
@@ -52,7 +53,12 @@ namespace RegistrationPractice
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            //FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            IFilterProvider[] providers = FilterProviders.Providers.ToArray();
+            FilterProviders.Providers.Clear();
+            FilterProviders.Providers.Add(new ExcludeFilterProvider(providers));
+
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             gmail.RegisterWatch();

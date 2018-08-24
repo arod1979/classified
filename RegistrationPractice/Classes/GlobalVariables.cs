@@ -7,19 +7,41 @@ using System.Web;
 namespace RegistrationPractice.Classes.Globals
 {
 
-    public static class constants
+    public class constants
     {
         //replace generic repository
 
-        static readonly ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
-        //public static readonly string servername = System.Configuration.ConfigurationManager.AppSettings["servername"];
-        public static readonly string servername = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
-        public static readonly int stolendbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "stolen").Id;
-        public static readonly int lostdbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "lost").Id;
-        public static readonly int founddbid = db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "found").Id;
-
-        public static int GetCityPrimaryKey(string city)
+        private ApplicationDbContext db;
+        public constants()
         {
+            db = new ApplicationDbContext("DefaultConnection");
+        }
+
+
+        public string servername
+        {
+            get { return HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority); }
+        }
+
+        public int stolendbid
+        {
+            get { return db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "stolen").Id; }
+        }
+
+        public int lostdbid
+        {
+            get { return db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "lost").Id; }
+        }
+
+        public int founddbid
+        {
+            get { return db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "found").Id; }
+        }
+
+
+        public int GetCityPrimaryKey(string city)
+        {
+
             return db.Locations.Where(loc => loc.LocationText == city.ToLower()).SingleOrDefault().Id;
         }
 
@@ -28,8 +50,10 @@ namespace RegistrationPractice.Classes.Globals
 
     public static class CityListing
     {
-
+        public static String[] countrylist = { "usa", "canada" };
         public static List<KeyValuePair<string, string[]>> canadian_cities = new List<KeyValuePair<string, string[]>>();
+
+
 
         static CityListing()
         {
