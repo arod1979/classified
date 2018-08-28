@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        li {
+            list - style - type: none;
+            width: 50 %;
+            color: blue;
+        }
+
+        li.left {
+            float: left;
+            background - color: #0f0;
+        }
+
+        li.right {
+            float: right;
+            background - color: #00f;
+        }
+
+        @media only screen and(max - width: 480px) {
+                .left, .right {
+                float: none;
+                width: 100 %;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li class="left">Item A</li>
+            <li class="right">Item 1</li>
+            <li class="left">Item B</li>
+            <li class="right">Item 2</li>
+            <li class="left">Item C</li>
+            <li class="right">Item 3</li>
+            <li class="left">Item D</li>
+            <li class="right">Item 4</li>
+        </ul>
+    </div>
+</body>
+</html>

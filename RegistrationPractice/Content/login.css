@@ -1,3 +1,5 @@
+
+
 .dropdown-submenu {
     position: relative;
 }
@@ -234,9 +236,9 @@ h1 {
     }
 
     a.awolr-logo {
-        color: black !important;
+        color: white !important;
         float: left;
-        margin-top: 10px;
+        margin-top: 8px;
         font-size: 20px;
         font-family: 'Comfortaa' !important;
     }
@@ -307,8 +309,8 @@ a.awolr-logo {
     }
 
     a.awolr-logo {
-        margin-top: 20px;
-        color: black !important;
+        margin-top: 16px;
+        color: white !important;
         font-size: 70px;
         font-family: 'Comfortaa' !important;
     }
@@ -368,4 +370,17 @@ input[type="button"] {
     padding: 5px;
     background-color: white;
     display: inline-block;
+}
+
+
+.myRow > div {
+    border: 1px solid black;
+    height: 25px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    div.middleDiv {
+        height: 50px;
+        float: right;
+    }
 }

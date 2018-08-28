@@ -1,0 +1,27 @@
+﻿@model List<RegistrationPractice.Entities.Item>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="lostitems">
+
+                <strong>What:</strong>@item.Description <br /><br />
+                <strong>Category:</strong>@item.Category.CategoryText <br /><br />
+
+                <strong>Where:</strong>@item.LostLocation<br /><br />
+
+                <strong>When:</strong>@item.FoundDate.ToShortDateString()<br><br>
+
+                <strong>Description:</strong>@item.AdditionalNotes      <br><br>
+
+                <strong>Reward $</strong>@item.ItemReward<br><br>
+
+                @if (item.imageURL != null)
+                {
+                    <img src="@Html.DisplayFor(modelItem => item.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
+                }
+            </div>
+        </div>
+    }
+</div>

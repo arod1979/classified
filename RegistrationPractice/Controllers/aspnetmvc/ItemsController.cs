@@ -102,7 +102,7 @@ namespace RegistrationPractice.Controllers
         [CheckURLParameters(6)]
         public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post) ////candidate for dependancy injection
         {
-            if (search_or_post.ToLower() == "post")
+            if (search_or_post != null && search_or_post.ToLower() == "post")
                 return View("Create");
 
             List<KeyValuePair<string, string[]>> list = null;

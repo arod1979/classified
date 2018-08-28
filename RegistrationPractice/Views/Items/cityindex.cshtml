@@ -1,5 +1,5 @@
 ﻿@model List<RegistrationPractice.Entities.Item>
-
+@using RegistrationPractice.ViewModels;
 
 @{
     ViewBag.Title = "cityindex";
@@ -70,31 +70,25 @@ else
         <input type="submit" value="Search">
     </form>
 
-    foreach (RegistrationPractice.Entities.Item item in Model)
-    {
-    <div class="lostitems">
 
-        <strong>What:</strong>@item.Description <br /><br />
-        <strong>Category:</strong>@item.Category.CategoryText <br /><br />
 
-        <strong>Where:</strong>@item.LostLocation<br /><br />
 
-        <strong>When:</strong>@item.FoundDate.ToShortDateString()<br><br>
+    <div class="container-fluid">
+        <div class="row ten-columns">
+            @{ int pagesize = 10;
+                for (int x = 0; x < Model.Count; x += pagesize)
+                {
 
-        <strong>Description:</strong>@item.AdditionalNotes		<br><br>
 
-        <strong>Reward $</strong>@item.ItemReward<br><br>
+                    @Html.Partial("_PostItem", Model.Skip(x).Take(pagesize).ToList<RegistrationPractice.Entities.Item>());
 
-        @if (item.imageURL != null)
-        {
-            <img src="@Html.DisplayFor(modelItem => item.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => item.imageTitle)" />
-        }
+                }
+            }
+        </div>
     </div>
-    }
-
-
-
-
-
 
 }
+
+
+
+

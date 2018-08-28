@@ -1,7 +1,7 @@
 ﻿$(function () {
 
-                $("#FoundDate").datepicker();
-    
+    $("#FoundDate").datepicker();
+
     $('[file-upload]').change(function () {
         var File = this.files;
 
@@ -10,12 +10,12 @@
         }
     });
 
-  
-      
-  
-       
 
-    
+
+
+
+
+
 });
 
 var ReadImage = function (file) {
@@ -23,10 +23,10 @@ var ReadImage = function (file) {
     var s = document.getElementById('UpdatedActionsFileUpload');
     s.value = 'ReverseDelete';
 
-   
+
     var reader = new FileReader;
     var image = new Image;
-    
+
     image.addEventListener('error', imagenotfound);
     var imagenotfound = function () {
         alert("imagenotfound");
@@ -52,12 +52,12 @@ var ReadImage = function (file) {
 var ClearPreview = function () {
     $('[file-upload]').val('');
     $('[img-description]').text('');
-    
+
     $('#img-preview').css({ "visibility": "visible" });
 
     $('[img-preview]').hide();
     var s = document.getElementById('UpdatedActionsFileUpload');
     s.value = 'Delete';
 
-    
+
 };
