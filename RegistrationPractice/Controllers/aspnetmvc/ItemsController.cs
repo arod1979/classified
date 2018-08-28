@@ -21,6 +21,7 @@ using RegistrationPractice.Entities;
 using RegistrationPractice.Models;
 using RegistrationPractice.Classes.Cookies;
 using RegistrationPractice.Classes.Session;
+using System.Data.Entity.Core.Objects;
 
 namespace RegistrationPractice.Controllers
 {
@@ -164,21 +165,22 @@ namespace RegistrationPractice.Controllers
 
                 if (posttypefilter == "stolen")
                 {
-                    items = (from si in db.Items.Where(si => si.PostTypeID == constants.stolendbid && si.LocationID == cityid) select (Item)si);
+                    items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.stolendbid && si.LocationID == cityid) select (Item)si);
                 }
                 if (posttypefilter == "lost")
                 {
-                    items = (from si in db.Items.Where(si => si.PostTypeID == constants.lostdbid && si.LocationID == cityid) select (Item)si);
+                    items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.lostdbid && si.LocationID == cityid) select (Item)si);
                 }
                 if (posttypefilter == "found")
                 {
-                    items = (from si in db.Items.Where(si => si.PostTypeID == constants.founddbid && si.LocationID == cityid) select (Item)si);
+                    items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.founddbid && si.LocationID == cityid) select (Item)si);
                 }
                 if (search_or_post != null)
                 {
-                    items = items.Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
+                    items = items.Include("PostType").Include("Category").Include("Location").Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
                 }
-                return View(await items.Include("PostType").Include("Category").ToListAsync());
+
+                return View(await items.ToListAsync());
             }
             else
             {

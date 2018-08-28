@@ -1,10 +1,29 @@
 ﻿@model List<RegistrationPractice.Entities.Item>
-
+<link href="~/Content/projectcards.css" rel="stylesheet" />
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-sm-3">
-            <div class="card"
+        <div class="col-sm-3 d-flex">
+
+            <div class="card project project-default" style="width: 75rem;">
+
+                <div class="card-body">
+                    <h5 class="card-title">@item.Description | Category:@item.Category.CategoryText</h5>
+                    <p class="card-text">@item.AdditionalNotes</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Lost: @item.LostLocation</li>
+                    <li class="list-group-item">Reward: @item.ItemReward</li>
+                    <li class="list-group-item">Reward: @item.Id</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Contact Poster</a>
+                </div>
+                <img class="card-img-top" src=@item.imageURL alt="@item.imageURL">
+
+
+            </div>
         </div>
-        }
+
+    }
 </div>

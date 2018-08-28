@@ -1,6 +1,7 @@
 ﻿@model List<RegistrationPractice.Entities.Item>
 @using RegistrationPractice.ViewModels;
 
+
 @{
     ViewBag.Title = "cityindex";
     Layout = "~/Views/Shared/_Jumbotron.cshtml";
@@ -66,7 +67,7 @@ else
     }
 
     <form method="get" action="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/@ViewBag.PostType">
-        <input type="text" class="itemsearchbox" name="search" placeholder="Search" maxlength="30" required="">
+        <input type="text" class="itemsearchbox" name="search_or_post" placeholder="Search" maxlength="30" required="">
         <input type="submit" value="Search">
     </form>
 
@@ -74,13 +75,13 @@ else
 
 
     <div class="container-fluid">
-        <div class="row ten-columns">
-            @{ int pagesize = 10;
+        <div class="row">
+            @{ int pagesize = 20;
                 for (int x = 0; x < Model.Count; x += pagesize)
                 {
 
 
-                    @Html.Partial("_PostItem", Model.Skip(x).Take(pagesize).ToList<RegistrationPractice.Entities.Item>());
+                    @Html.Partial("_PostCards", Model.Skip(x).Take(pagesize).ToList<RegistrationPractice.Entities.Item>());
 
                 }
             }

@@ -26,60 +26,11 @@
 </head>
 <body>
 
-    @*<nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-
-                    <ul class="nav navbar-nav navbar-center">
-                        <li class="nav-item">
-                            <a href="~/items/countryindex" class="navbar-center awolr-logo">AwolR</a>
-                        </li>
-
-                        <li>
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-
-                    @if (Request.IsAuthenticated)
-                    {
-                        <ul class="nav navbar-nav">
-                            @Html.Partial("_AdminMenuPartial")
-                        </ul>
-                    }
-                    @Html.Partial("_LoginPartial")
-
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-            <!--/.container-fluid -->
-        </nav>
-        @System.Web.HttpContext.Current.Session["UserEmail"];*@
-
 
 
 
     <nav class="navbar navbar-expand-md navbar-dark bg-lightblue">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            @*@if (Request.IsAuthenticated)
-                {
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            @User.Identity.GetUserName()
-                        </button>
-                        <div class="dropdown-menu">
-                            @Html.ActionLink("My AWOLR Items", "UserPosts", "Items")
-                            <div class="dropdown-divider"></div>
-                            @Html.ActionLink("User Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                        </div>
-                    </div>
-                }*@
             <ul class="navbar-nav mr-auto">
                 @if (Request.IsAuthenticated)
                 {
@@ -89,7 +40,7 @@
             </ul>
         </div>
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto awolr-logo" href="#">AwolR</a>
+            <a class="navbar-brand mx-auto awolr-logo" href="Start">AwolR</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
