@@ -18,6 +18,7 @@ namespace RegistrationPractice.Models
         public string FirstName { get; set; }
         public bool IsActive { get; set; }
         public DateTime Registered { get; set; } = DateTime.Now;
+        public bool IsAdmin { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -34,6 +35,7 @@ namespace RegistrationPractice.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<PostType> PostTypes { get; set; }
+        public DbSet<Email> Emails { get; set; }
 
         public ApplicationDbContext(string connectionstring)
             : base(connectionstring, throwIfV1Schema: false)

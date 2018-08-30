@@ -1,0 +1,81 @@
+﻿@model RegistrationPractice.Entities.Email
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Jumbotron.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Email</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fromaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emailbody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emailbody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.toaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APIEmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APIEmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APIThreadId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APIThreadId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

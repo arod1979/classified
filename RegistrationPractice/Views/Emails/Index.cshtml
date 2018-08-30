@@ -1,0 +1,70 @@
+﻿@model IEnumerable<RegistrationPractice.Entities.Email>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Jumbotron.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fromaddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emailbody)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.toaddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APIEmailId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APIThreadId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fromaddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emailbody)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.toaddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APIEmailId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APIThreadId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

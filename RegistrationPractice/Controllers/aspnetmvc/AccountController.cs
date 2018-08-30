@@ -78,6 +78,7 @@ namespace RegistrationPractice.Controllers
             var user = await UserManager.FindByNameAsync(model.Email);
             if (user != null)
             {
+
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
@@ -95,10 +96,17 @@ namespace RegistrationPractice.Controllers
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
+
                 case SignInStatus.Success:
                     //allan rodkin
                     string currentUserEmail = model.Email;
+                    string userId = SignInManager
+.AuthenticationManager
+.AuthenticationResponseGrant.Identity.GetUserId();
                     System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
+                    var userid = UserManager.FindByEmail(model.Email);
+                    System.Web.HttpContext.Current.Session["UserId"] = userId;
+
                     //allan rodkin
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:

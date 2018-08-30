@@ -44,13 +44,13 @@ namespace RegistrationPractice.Entities
 
         [Required]
 
-        [Range(20, 1000)]
+        [Range(20, 10000)]
         [DisplayName("Item Reward")]
         //[DataType(dataType: DataType.Currency)]
         //[DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#.#}")]
         public decimal ItemReward { get; set; }
-        
+
         [Required]
         [DisplayName("What Day Did You Find it")]
         [DataType(DataType.Date)]
@@ -65,22 +65,23 @@ namespace RegistrationPractice.Entities
         public virtual Category Category { get; set; }
 
         [Required]
-      
+
         public string AdditionalNotes { get; set; }
 
         public int Visits { get; set; }
 
         public bool Returned { get; set; }
 
-         
+
 
         public string EmailRelayAddress { get; set; }
 
-        
 
+        [Required]
         public string OwnerUserEmail { get; set; }
 
-       
+        [Required]
+        public string UserId { get; set; }
 
         [DisplayName("Image")]
         public string imageURL { get; set; }
@@ -90,7 +91,7 @@ namespace RegistrationPractice.Entities
         [Display(Name = "Display profile Image")]
         public bool? HideItem { get; set; }
 
-        
+
 
 
     }

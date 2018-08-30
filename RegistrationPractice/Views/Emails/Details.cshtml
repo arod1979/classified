@@ -1,0 +1,75 @@
+﻿@model RegistrationPractice.Entities.Email
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Jumbotron.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Email</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fromaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emailbody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emailbody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.toaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APIEmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APIEmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APIThreadId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APIThreadId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

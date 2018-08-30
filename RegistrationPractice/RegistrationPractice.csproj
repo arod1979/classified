@@ -296,6 +296,7 @@
     <Compile Include="Classes\Session.cs" />
     <Compile Include="Classes\TrackLocations.cs" />
     <Compile Include="Controllers\aspnetmvc\AccountController.cs" />
+    <Compile Include="Controllers\aspnetmvc\EmailsController.cs" />
     <Compile Include="Controllers\aspnetmvc\HomeController.cs" />
     <Compile Include="Controllers\aspnetmvc\ImageEntity.cs" />
     <Compile Include="Controllers\aspnetmvc\ItemsController.cs" />
@@ -304,8 +305,10 @@
     <Compile Include="Controllers\aspnetmvc\ManageController.cs" />
     <Compile Include="Controllers\aspnetmvc\UserManager.cs" />
     <Compile Include="Controllers\WebApi\GmailInboxController.cs" />
+    <Compile Include="Controllers\WebApi\MailController.cs" />
     <Compile Include="DAL\DALInterfaces.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Email.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
@@ -537,6 +540,18 @@
     <Compile Include="Migrations\201807272047550_updatecategory.Designer.cs">
       <DependentUpon>201807272047550_updatecategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808291648361_emailtable.cs" />
+    <Compile Include="Migrations\201808291648361_emailtable.Designer.cs">
+      <DependentUpon>201808291648361_emailtable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808291720439_adduseridtoitem.cs" />
+    <Compile Include="Migrations\201808291720439_adduseridtoitem.Designer.cs">
+      <DependentUpon>201808291720439_adduseridtoitem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808291816582_useridnowstring.cs" />
+    <Compile Include="Migrations\201808291816582_useridnowstring.Designer.cs">
+      <DependentUpon>201808291816582_useridnowstring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -556,6 +571,8 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\layout-styles.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\PagedList.css" />
@@ -603,6 +620,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="GmailInbox.html" />
@@ -631,12 +649,18 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\userscript\emailcontroller.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -760,6 +784,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Emails\Create.cshtml" />
+    <Content Include="Views\Emails\Delete.cshtml" />
+    <Content Include="Views\Emails\Details.cshtml" />
+    <Content Include="Views\Emails\Edit.cshtml" />
+    <Content Include="Views\Emails\Index.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -941,6 +970,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807272047550_updatecategory.resx">
       <DependentUpon>201807272047550_updatecategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808291648361_emailtable.resx">
+      <DependentUpon>201808291648361_emailtable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808291720439_adduseridtoitem.resx">
+      <DependentUpon>201808291720439_adduseridtoitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808291816582_useridnowstring.resx">
+      <DependentUpon>201808291816582_useridnowstring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

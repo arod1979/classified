@@ -179,6 +179,7 @@ namespace RegistrationPractice.Controllers
                 {
                     items = items.Include("PostType").Include("Category").Include("Location").Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
                 }
+                ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
 
                 return View(await items.ToListAsync());
             }
@@ -286,23 +287,19 @@ namespace RegistrationPractice.Controllers
 
 
                 string useremail;
+                string userid = string.Empty;
                 if (Request != null) //case for live
                 {
                     useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
-
+                    userid = (string)System.Web.HttpContext.Current.Session["UserId"];
 
                     if (useremail == null)
                     {
-                        try
-                        {
-                            var path = Server.MapPath(@"~/LogFiles");
-                            System.IO.File.WriteAllText(path, "No user email for post");
-                            return RedirectToAction("Login", "Account", null);
-                        }
-                        catch (Exception e)
-                        {
-
-                        }
+                        Logger.Write("useremail not defined");
+                    }
+                    if (userid == null)
+                    {
+                        Logger.Write("useremail not defined");
                     }
 
                 }
@@ -312,8 +309,9 @@ namespace RegistrationPractice.Controllers
                     useremail = "allanrodkin@gmail.com";
                 }
 
-
+                item.UserId = userid;
                 item.OwnerUserEmail = useremail;
+
                 //
                 item.EmailRelayAddress = "";
                 item.CreationDate = System.DateTime.Now;
@@ -335,7 +333,7 @@ namespace RegistrationPractice.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io)
+        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate,UserId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io)
         {
             try
             {

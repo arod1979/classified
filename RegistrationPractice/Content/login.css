@@ -183,6 +183,10 @@ h1 {
     font-size: 40px;
 }
 
+h7 {
+    font-size: 8px;
+}
+
 .bottom-footer {
     background-color: #eee;
     border-top: 6px solid #aaa;

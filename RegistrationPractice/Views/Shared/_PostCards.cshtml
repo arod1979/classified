@@ -7,23 +7,48 @@
 
             <div class="card project project-default" style="width: 75rem;">
 
+
                 <div class="card-body">
                     <h5 class="card-title">@item.Description | Category:@item.Category.CategoryText</h5>
                     <p class="card-text">@item.AdditionalNotes</p>
                 </div>
+                <img class="card-img-top" src=@item.imageURL alt="@item.imageURL">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Lost: @item.LostLocation</li>
                     <li class="list-group-item">Reward: @item.ItemReward</li>
-                    <li class="list-group-item">Reward: @item.Id</li>
+                    @{string dat = "collapse" + item.Id;}
+
                 </ul>
-                <div class="card-body">
-                    <a href="#" class="card-link">Contact Poster</a>
+
+
+                <a href="#@dat" data-toggle="collapse">
+                    <i class="icon-action fa fa-chevron-down"></i>
+                    <h6 class="title">Contact Poster</h6>
+                </a>
+
+
+                <div id="@dat" class="filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
+                    @using (Html.BeginForm("EmailRequest", "Items", FormMethod.Get))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="input-group">
+                            <textarea rows="1" cols="40" placeholder="email" required></textarea>
+                            <textarea rows="3" cols="40" placeholder="message" required></textarea>
+                            <input type="hidden" name="bid" value="@ViewBag.BrowsingUserId" />
+                            <input type="hidden" name="pid" value="@item.UserId" />
+                        </div>
+                        <input type="submit" class="btn" value="Submit asdfasdf">
+
+                    }
+
+
+                    <h7>Id @item.Id</h7>
+
+
                 </div>
-                <img class="card-img-top" src=@item.imageURL alt="@item.imageURL">
-
-
             </div>
         </div>
 
     }
 </div>
+
