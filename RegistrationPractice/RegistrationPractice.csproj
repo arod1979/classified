@@ -633,7 +633,6 @@
     <Content Include="photos\colors3-CA-fys.png" />
     <Content Include="pictures\colors2-usa-fys.png" />
     <Content Include="pictures\colors3-CA-fys.png" />
-    <Content Include="robots.txt" />
     <Content Include="Scripts\AdminMenu.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
