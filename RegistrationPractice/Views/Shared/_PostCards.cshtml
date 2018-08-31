@@ -1,11 +1,27 @@
 ﻿@model List<RegistrationPractice.Entities.Item>
 <link href="~/Content/projectcards.css" rel="stylesheet" />
-<div class="row">
-    @foreach (var item in Model)
+
+
+@for (var i = 0; i < 12; i++)
+{
+    int elementcount = Model.Count;
+    if (i > (elementcount - 1))
     {
+        @*<div class="col-sm-3 d-flex ">
+
+                <div class="card project project-default" style="width: 75rem;">
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>*@
+
+    }
+    else
+    {
+        var item = Model[i];
         <div class="col-sm-3 d-flex">
 
-            <div class="card project project-default" style="width: 75rem;">
+            <div class="card project project-default" @*style="width: 75rem;"*@>
 
 
                 <div class="card-body">
@@ -37,9 +53,9 @@
                             <input type="hidden" name="bid" value="@ViewBag.BrowsingUserId" />
                             <input type="hidden" name="pid" value="@item.UserId" />
                         </div>
-                        <input type="submit" class="btn" value="Submit asdfasdf">
-
+                        <input type="submit" class="btn card-submit" value="Submit">
                     }
+
 
 
                     <h7>Id @item.Id</h7>
@@ -48,7 +64,7 @@
                 </div>
             </div>
         </div>
-
     }
+}
 </div>
 

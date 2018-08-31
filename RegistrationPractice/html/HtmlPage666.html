@@ -1,46 +1,91 @@
-﻿<!DOCTYPE html>
+﻿
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <script>
-        li {
-            list - style - type: none;
-            width: 50 %;
-            color: blue;
-        }
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        li.left {
-            float: left;
-            background - color: #0f0;
-        }
-
-        li.right {
-            float: right;
-            background - color: #00f;
-        }
-
-        @media only screen and(max - width: 480px) {
-                .left, .right {
-                float: none;
-                width: 100 %;
-            }
-        }
-
-    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div>
-        <ul>
-            <li class="left">Item A</li>
-            <li class="right">Item 1</li>
-            <li class="left">Item B</li>
-            <li class="right">Item 2</li>
-            <li class="left">Item C</li>
-            <li class="right">Item 3</li>
-            <li class="left">Item D</li>
-            <li class="right">Item 4</li>
-        </ul>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="card-deck">
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/abc" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card <br> with <br> supporting <br> text below <br> as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/bca" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/bb4" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This <br> card <br> has <br> even longer <br> content <br> than <br> the first <br> to show <br> that equal height action.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/54a" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card <br> with <br> supporting <br> text below <br> as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/f0a" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/aa0" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This <br> card <br> has <br> even longer <br> content <br> than <br> the first <br> to show <br> that equal height action.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/f00" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card <br> with <br> supporting <br> text below <br> as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/090" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <img class="card-img-top" src="https://placehold.it/280x140/ff0" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This <br> card <br> has <br> even longer <br> content <br> than <br> the first <br> to show <br> that equal height action.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
