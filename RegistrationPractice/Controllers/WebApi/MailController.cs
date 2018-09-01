@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrationPractice.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +10,8 @@ namespace RegistrationPractice.Controllers.WebApi
 {
     public class MailController : ApiController
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: api/Mail
         public IEnumerable<string> Get()
         {
@@ -22,8 +25,9 @@ namespace RegistrationPractice.Controllers.WebApi
         }
 
         // POST: api/Mail
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post([FromBody]string message, string bid, string pid)
         {
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         // PUT: api/Mail/5

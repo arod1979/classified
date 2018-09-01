@@ -50,6 +50,7 @@ namespace RegistrationPractice.Classes
                     throw new Exception("File cannot be saved. Invalid extension.");
                 }
                 var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/photos"), filename);
+                Loggers.Logger.Write("path");
                 imageUrl = servername + "/photos/" + filename;
                 files.SaveAs(path);
 

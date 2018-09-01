@@ -76,13 +76,10 @@ else
 
     <div class="container">
         <div class="row">
-            @{ int pagesize = 8;
+            @{ int pagesize = 12;
                 for (int x = 0; x < Model.Count; x += pagesize)
                 {
-
-
                     @Html.Partial("_PostCards", Model.Skip(x).Take(pagesize).ToList<RegistrationPractice.Entities.Item>());
-
                 }
             }
         </div>

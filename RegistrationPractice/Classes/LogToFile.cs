@@ -29,7 +29,7 @@ namespace RegistrationPractice.Classes.Loggers
 
             string combinedpath = Path.Combine(System.Web.HttpContext.Current.Server.
             MapPath(
-            String.Format("{0}{1}", "~/logfiles", SPath() + System.DateTime.Now.ToString("dd/MM/yyyy"))
+            String.Format("{0}{1}", "~/logfiles", SPath() + System.DateTime.Now.ToString("dd-MM-yyyy"))
             )
             );
             tw = TextWriter.Synchronized(File.AppendText(combinedpath));

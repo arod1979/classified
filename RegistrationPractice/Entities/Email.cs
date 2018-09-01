@@ -16,11 +16,16 @@ namespace RegistrationPractice.Entities
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("From Address")]
-        public string fromaddress { get; set; }
+        public int postid { get; set; }
 
         [Required]
         public string emailbody { get; set; }
+
+        [Required]
+        [DisplayName("From Address")]
+        public string fromaddress { get; set; }
+
+
 
         [Required]
         [DisplayName("To Address")]

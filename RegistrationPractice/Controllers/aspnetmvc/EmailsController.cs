@@ -44,6 +44,7 @@ namespace RegistrationPractice.Controllers.aspnetmvc
         // GET: Emails/Create
         public ActionResult Create()
         {
+
             return View();
         }
 

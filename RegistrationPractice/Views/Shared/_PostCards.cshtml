@@ -1,4 +1,5 @@
 ﻿@model List<RegistrationPractice.Entities.Item>
+@using Microsoft.AspNet.Identity
 <link href="~/Content/projectcards.css" rel="stylesheet" />
 
 
@@ -36,35 +37,49 @@
 
                 </ul>
 
+                @if (Request.IsAuthenticated)
+                {
 
-                <a href="#@dat" data-toggle="collapse">
-                    <i class="icon-action fa fa-chevron-down"></i>
-                    <h6 class="title">Contact Poster</h6>
-                </a>
+                    <a href="#@dat" data-toggle="collapse">
+                        <i class="icon-action fa fa-chevron-down"></i>
+                        <h6 class="title">Contact Poster</h6>
+                    </a>
 
 
-                <div id="@dat" class="filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
-                    @using (Html.BeginForm("EmailRequest", "Items", FormMethod.Get))
-                    {
+                    <div id="@dat" class="post-id filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
+                        @*@using (Html.BeginForm("EmailRequest", "Items", FormMethod.Get))
+                            {*@
                         @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="input-group">
-                            <textarea rows="1" cols="40" placeholder="email" required></textarea>
-                            <textarea rows="3" cols="40" placeholder="message" required></textarea>
-                            <input type="hidden" name="bid" value="@ViewBag.BrowsingUserId" />
-                            <input type="hidden" name="pid" value="@item.UserId" />
+
+                            <textarea rows="1" cols="40" placeholder="@System.Web.HttpContext.Current.Session["UserEmail"];" readonly></textarea>
+                            <textarea name="message" class="message" rows="3" cols="40" placeholder="message" required></textarea>
+                            <input name="bid" type="hidden" class="bid" value="@ViewBag.BrowsingUserId" />
+                            <input name="pid" type="hidden" class="pid" value="@item.UserId" />
+                            <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"];" />
+                            <button type="button" class="submit-button">Submit</button>
                         </div>
-                        <input type="submit" class="btn card-submit" value="Submit">
-                    }
+
+                        @*}*@
+                    </div>
+
+                }
+                else
+                {
+                    string returnurl = HttpContext.Current.Request.Url.AbsolutePath;
+                    <p>@Html.ActionLink("Login", "Login", "Account", new { returnUrl = returnurl }, null) to contact poster.</p>
+                }
 
 
 
-                    <h7>Id @item.Id</h7>
+
+            </div> @*//end of card body*@
+        </div> @*//end of col*@
 
 
-                </div>
-            </div>
-        </div>
+
     }
 }
-</div>
+
 

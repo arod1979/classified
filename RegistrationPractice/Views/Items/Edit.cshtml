@@ -15,6 +15,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.OwnerUserEmail)
+        @Html.HiddenFor(model => model.UserId)
         @Html.HiddenFor(model => model.PostTypeID)
         @Html.HiddenFor(model => model.LostLocation)
         @Html.HiddenFor(model => model.City)
@@ -63,11 +64,11 @@
         <input type="file" class="custom-file-upload" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
         <div>.jpg,.png (5MB MAX)</div>
 
-        <div class="alert alert-danger hidden">File Could Not Be Uploaded</div>
+        <div class="alert alert-danger d-none">File Could Not Be Uploaded</div>
 
 
 
-        <div class="www">
+        <div class="www-nobottom">
             @if (ViewBag.ImageUrl == null)
             {
                 <div img-preview class="thumbnail" id="img-preview" style="display:none">
@@ -92,25 +93,25 @@
             }
             @if (ViewBag.ImageUrl != null)
             {
+
+
+
+
                 <div img-preview class="thumbnail" id="img-preview">
 
+                    <img class="img-fluid" src="@ViewBag.ImageUrl" target-img />
 
+                    <div class="caption">
 
-                    <div img-preview class="thumbnail" id="img-preview">
-
-                        <img class="img-responsive" src="@ViewBag.ImageUrl" target-img />
-
-                        <div class="caption">
-
-                            <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
-                            <p img-description></p>
-
-                        </div>
+                        <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
+                        <p img-description></p>
 
                     </div>
 
-
                 </div>
+
+
+
             }
 
         </div>

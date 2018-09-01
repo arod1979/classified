@@ -437,7 +437,7 @@ namespace RegistrationPractice.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<ActionResult> Edit([Bind(Include = "City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io)
+        public async Task<ActionResult> Edit([Bind(Include = "UserId,City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io)
         {
 
             //allan rodkin image code
