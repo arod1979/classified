@@ -15,6 +15,9 @@ namespace RegistrationPractice.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        public string pid { get; set; }
+        public string bid { get; set; }
+
         [Required]
         public int postid { get; set; }
 

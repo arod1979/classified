@@ -27,6 +27,7 @@ namespace RegistrationPractice.Controllers
             SignInManager = signInManager;
         }
 
+
         public ApplicationSignInManager SignInManager
         {
             get

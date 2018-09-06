@@ -304,11 +304,12 @@
     <Compile Include="Controllers\aspnetmvc\_ItemsController.cs" />
     <Compile Include="Controllers\aspnetmvc\ManageController.cs" />
     <Compile Include="Controllers\aspnetmvc\UserManager.cs" />
+    <Compile Include="Controllers\WebApi\EmailsController.cs" />
     <Compile Include="Controllers\WebApi\GmailInboxController.cs" />
-    <Compile Include="Controllers\WebApi\MailController.cs" />
     <Compile Include="DAL\DALInterfaces.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Email.cs" />
+    <Compile Include="Entities\EmailReduced.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />

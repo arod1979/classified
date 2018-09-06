@@ -33,13 +33,13 @@ namespace RegistrationPractice.Controllers
         //private MySession mysession;
         //private MyCookies mycookies = new MyCookies();
 
-        public ItemsController()
+        public ItemsController(constants constants)
         {
-
+            this.constants = constants;
         }
 
 
-        private constants constants = new constants();
+        private constants constants;
         public ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
         private readonly ProfanityFilter pf = new ProfanityFilter(new List<string>
         {
@@ -103,6 +103,8 @@ namespace RegistrationPractice.Controllers
         [CheckURLParameters(6)]
         public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post) ////candidate for dependancy injection
         {
+
+
             if (search_or_post != null && search_or_post.ToLower() == "post")
                 return View("Create");
 
@@ -145,7 +147,7 @@ namespace RegistrationPractice.Controllers
             ViewBag.city = city;
             ViewBag.city_province = string.Format("{0},{1}", city, province);
             ViewBag.PostType = posttypefilter;
-
+            ViewBag.server = constants.servername;
 
 
 

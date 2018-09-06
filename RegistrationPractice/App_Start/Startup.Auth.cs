@@ -19,12 +19,20 @@ using RegistrationPractice.Classes.Session;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
+using RegistrationPractice.Classes.Globals;
+using RegistrationPractice.Classes;
+using RegistrationPractice.Controllers.aspnetmvc;
 
 namespace RegistrationPractice
 {
     public partial class Startup
     {
+
         // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
+
+        public static ApplicationUserManager exportUserManager;
+
+
         public void ConfigureAuth(IAppBuilder app, Container container)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
@@ -33,6 +41,7 @@ namespace RegistrationPractice
             //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             //app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
             app.CreatePerOwinContext(() => container.GetInstance<ApplicationUserManager>());
+            exportUserManager = container.GetInstance<ApplicationUserManager>();
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -108,6 +117,9 @@ namespace RegistrationPractice
 
                 container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 
+                container.Register<constants>(Lifestyle.Scoped);
+
+                container.Register<IO_Operations>(Lifestyle.Scoped);
 
 
                 container.Register<ApplicationDbContext>(()
