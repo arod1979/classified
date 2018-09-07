@@ -10,11 +10,14 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Mvc;
+using RegistrationPractice.Classes;
 using RegistrationPractice.Entities;
 using RegistrationPractice.Models;
 
 namespace RegistrationPractice.Controllers.WebApi
 {
+
     public class EmailsController : ApiController
     {
         public ApplicationDbContext db = new ApplicationDbContext();
@@ -75,6 +78,7 @@ namespace RegistrationPractice.Controllers.WebApi
 
         // POST: api/Emails
         [ResponseType(typeof(Email))]
+        [ValidateAntiForgeryTokenOnAllPosts]
         public async Task<IHttpActionResult> PostEmail([FromBody]Email email)
         {
 

@@ -126,7 +126,7 @@
     <script src="~/Scripts/expandmenu.js"></script>
     <script src="~/Scripts/button.js"></script>
     <script src="~/Scripts/PreviewImage.js"></script>
-    <script src="~/Scripts/allan.js"></script>
+    <script src="~/Scripts/token.js"></script>
     <!-- Initialize Bootstrap functionality -->
     <script>
         // Initialize tooltip component
@@ -145,6 +145,7 @@
     @RenderSection("scripts", required: false)
 
 
+    <form id="__AjaxAntiForgeryForm" action="#" method="post">@Html.AntiForgeryToken()</form>
 
 
 </body>

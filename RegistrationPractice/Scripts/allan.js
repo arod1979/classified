@@ -2,6 +2,19 @@
 
 $(document).ready(function () {
 
+    var securityToken = $('[name=__RequestVerificationToken]').val();
+    $(document).ajaxSend(function (event, request, opt) {
+        if (opt.hasContent && securityToken) {   // handle all verbs with content
+            var tokenParam = "__RequestVerificationToken=" + encodeURIComponent(securityToken);
+            opt.data = opt.data ? [opt.data, tokenParam].join("&") : tokenParam;
+            // ensure Content-Type header is present!
+            if (opt.contentType !== false || event.contentType) {
+                alert(opt.contentType);
+                request.setRequestHeader("Content-Type", opt.contentType);
+            }
+        }
+    });
+
     $(".submit-button").click(function () {
 
         var postid = $(this).closest('.post-id').attr('id').slice(1);
@@ -27,13 +40,9 @@ $(document).ready(function () {
 
             url: '/api/Emails/',
             type: 'POST',
-            headers: {
-                'Cache-Control': 'no-cache, no-store, must-revalidate',
-                'Pragma': 'no-cache',
-                'Expires': '0'
-            },
             contentType: 'application/json',
             data: JSON.stringify(Email),
+
             success: function (data, textStatus, xhr) {
 
                 alert("ok");
