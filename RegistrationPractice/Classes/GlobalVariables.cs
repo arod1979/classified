@@ -1,20 +1,28 @@
 ﻿using RegistrationPractice.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
 namespace RegistrationPractice.Classes.Globals
 {
 
-    public class constants
+    public class Constants
     {
         //replace generic repository
 
         private ApplicationDbContext db;
-        public constants()
+        public Constants()
         {
             db = new ApplicationDbContext("DefaultConnection");
+            if (HttpContext.Current == null) //testing
+            {
+                HttpContext.Current = new HttpContext(
+                new HttpRequest("", "https://awolr.com", ""),
+                 new HttpResponse(new StringWriter())
+                );
+            }
         }
 
 

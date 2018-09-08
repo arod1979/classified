@@ -11,11 +11,11 @@ namespace RegistrationPractice.Classes
 {
     public class IO_Operations
     {
-        private constants constants;
+        private Constants constants;
         string servername;
         public IO_Operations()
         {
-            constants = new constants();
+            constants = new Constants();
             string servername = constants.servername;
         }
 

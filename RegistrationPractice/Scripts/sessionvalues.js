@@ -37,7 +37,7 @@
         }
 
         function errorCallback(error) {
-            if (error.code == error.PERMISSION_DENIED) {
+            if (error.code === error.PERMISSION_DENIED) {
                 // pop up dialog asking for location
                 alert("ooops! Error: " + position.code);
             }
@@ -54,14 +54,14 @@
             var dc = document.cookie;
             var prefix = name + "=";
             var begin = dc.indexOf("; " + prefix);
-            if (begin == -1) {
+            if (begin === -1) {
                 begin = dc.indexOf(prefix);
-                if (begin != 0) return null;
+                if (begin !== 0) return null;
             }
             else {
                 begin += 2;
                 var end = document.cookie.indexOf(";", begin);
-                if (end == -1) {
+                if (end === -1) {
                     end = dc.length;
                 }
             }

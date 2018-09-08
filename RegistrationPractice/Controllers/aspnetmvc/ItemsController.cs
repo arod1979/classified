@@ -28,18 +28,29 @@ namespace RegistrationPractice.Controllers
 
     public class ItemsController : Controller
     {
-        //private MyCookies mycookies;
+        private LoggerWrapper loggerwrapper;
+        public static bool testing = false;
 
-        //private MySession mysession;
-        //private MyCookies mycookies = new MyCookies();
-
-        public ItemsController(constants constants)
+        public ItemsController(Classes.Globals.Constants constants)
         {
+            loggerwrapper = new LoggerWrapper(testing);
+
+            if (System.Web.HttpContext.Current == null)
+            {
+                //testing
+                System.Web.HttpContext.Current = new HttpContext(
+                new HttpRequest("", "https://awolr.com", ""),
+                 new HttpResponse(new StringWriter())
+                );
+
+
+
+            }
             this.constants = constants;
         }
 
 
-        private constants constants;
+        private Classes.Globals.Constants constants;
         public ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
         private readonly ProfanityFilter pf = new ProfanityFilter(new List<string>
         {
@@ -103,14 +114,19 @@ namespace RegistrationPractice.Controllers
         [CheckURLParameters(6)]
         public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post) ////candidate for dependancy injection
         {
-
+            ViewBag.country = country;
+            ViewBag.province = province;
+            ViewBag.city = city;
+            ViewBag.city_province = string.Format("{0},{1}", city, province);
+            ViewBag.PostType = posttypefilter;
+            ViewBag.server = constants.servername;
 
             if (search_or_post != null && search_or_post.ToLower() == "post")
                 return View("Create");
 
             List<KeyValuePair<string, string[]>> list = null;
 
-            Logger.Write(String.Format("{0}:{1}>{2},{3}->{4},{5}->{6},{7}->{8},{9}->{10}", "CityIndexLog", "province", province, "city", city, "posttypefiler", posttypefilter,
+            loggerwrapper.PickAndExecuteLogging(String.Format("{0}:{1}>{2},{3}->{4},{5}->{6},{7}->{8},{9}->{10}", "CityIndexLog", "province", province, "city", city, "posttypefiler", posttypefilter,
                "Action", cityindex, "Search", search_or_post));
 
             if (!RegistrationPractice.Classes.Globals.CityListing.countrylist.Contains(country.ToLower()))
@@ -133,27 +149,36 @@ namespace RegistrationPractice.Controllers
             }
             string key = string.Format("{0}_{1}", province, country_abbreviation);
 
-            var single = list.Where(entry => entry.Key == key).SingleOrDefault();
-            bool validcity = single.Value.Contains(city.ToLower());
-            if (!validcity)
+            try
             {
-                ViewBag.Message = "Invalid City/Locale";
-                return View("invalidcity");
+                var single = list.Where(entry => entry.Key == key).SingleOrDefault();
+                if (single.Key == null)
+                {
+                    ViewBag.Message = "Invalid locale";
+                    return View("invalidcity");
+                }
+                else
+                {
+                    bool validcity = single.Value.Contains(city.ToLower());
+                    if (!validcity)
+                    {
+                        ViewBag.Message = "Invalid country";
+                        return View("invalidcity");
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                loggerwrapper.PickAndExecuteLogging(e.ToString());
             }
 
+
             IQueryable<Item> items = null;
-            ViewBag.country = country;
-            ViewBag.province = province;
-            ViewBag.city = city;
-            ViewBag.city_province = string.Format("{0},{1}", city, province);
-            ViewBag.PostType = posttypefilter;
-            ViewBag.server = constants.servername;
-
-
-
             if (posttypefilter != null)
             {
-                if (!RegistrationPractice.Classes.Globals.constants.posttypes.Contains(posttypefilter))
+                if (!RegistrationPractice.Classes.Globals.Constants.posttypes.Contains(posttypefilter))
                 {
                     ViewBag.Message = "Invalid Search Type";
                     return View("invalidcity");
@@ -296,11 +321,11 @@ namespace RegistrationPractice.Controllers
 
                     if (useremail == null)
                     {
-                        Logger.Write("useremail not defined");
+                        loggerwrapper.PickAndExecuteLogging("useremail not defined");
                     }
                     if (userid == null)
                     {
-                        Logger.Write("useremail not defined");
+                        loggerwrapper.PickAndExecuteLogging("useremail not defined");
                     }
 
                 }
@@ -323,7 +348,7 @@ namespace RegistrationPractice.Controllers
             }
             catch (Exception e)
             {
-                Logger.Write(e.ToString());
+                loggerwrapper.PickAndExecuteLogging(e.ToString());
             }
             return View("Create", item);
         }
@@ -396,7 +421,7 @@ namespace RegistrationPractice.Controllers
             }
             catch (Exception e)
             {
-                Logger.Write(e.ToString());
+                loggerwrapper.PickAndExecuteLogging(e.ToString());
             }
 
             return View(item);

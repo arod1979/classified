@@ -21,11 +21,6 @@ namespace RegistrationPractice.Classes.Loggers
         static Logger()
         {
 
-            if (System.Web.HttpContext.Current == null)
-            {
-                testing = true;
-                return;
-            }
 
             string combinedpath = Path.Combine(System.Web.HttpContext.Current.Server.
             MapPath(
@@ -44,7 +39,7 @@ namespace RegistrationPractice.Classes.Loggers
         {
             try
             {
-                if (!testing) Log(logMessage, tw);
+                Log(logMessage, tw);
             }
             catch (IOException e)
             {

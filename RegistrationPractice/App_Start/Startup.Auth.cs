@@ -117,7 +117,7 @@ namespace RegistrationPractice
 
                 container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 
-                container.Register<constants>(Lifestyle.Scoped);
+                container.Register<Classes.Globals.Constants>(Lifestyle.Scoped);
 
                 container.Register<IO_Operations>(Lifestyle.Scoped);
 
