@@ -23,20 +23,27 @@ namespace RegistrationPractice
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/popper").Include(
-                    "~/Scripts/popper.js"));
+                "~/Scripts/umd/popper-min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                     "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                        "~/Content/bootstrap.css",
-                      "~/Content/login.css", "~/Content/font-awesome.css"));
+                      "~/Content/login.css", "~/Content/font-awesome.css", "~/Content/jquery-ui.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                      "~/Scripts/AdminMenu.js"));
+                      "~/Scripts/AdminMenu.js",
+                      "~/Scripts/PreviewImage.js",
+                      "~/Scripts/expandmenu.js",
+                      "~/Scripts/button.js",
+                      "~/Scripts/PreviewImage.js",
+                      "~/Scripts/token.js"
 
-            bundles.Add(new ScriptBundle("~/bundles/previewimage").Include(
-                      "~/Scripts/PreviewImage.js"));
+                      ));
+
+
+
 
 
         }

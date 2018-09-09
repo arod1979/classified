@@ -6,42 +6,39 @@
 
 
 
-        <section id="loginForm">
-            <div class="lostitems">
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form" }))
-                {
-                    @Html.AntiForgeryToken()
+<section id="loginForm">
+    <div class="lostitems">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.AntiForgeryToken()
 
-                    <label style="display:block;text-align:center;">Sign-In</label>
+            <label style="display:block;text-align:center;">Sign-In</label>
 
-                    <input type="text" placeholder="Enter your email" name="email">
+            <input type="text" placeholder="Enter your email" name="email">
 
-                    <input type="password" placeholder="Password" name="password">
+            <input type="password" placeholder="Password" name="password">
 
-                    <input type="submit" name="submit" value="Login">
+            <input type="submit" name="submit" value="Login">
 
-                    <p>
-                        @Html.ActionLink("Register as a new user", "Register")
-                    </p>
-                    //Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>
-                   
+            <p>
+                @Html.ActionLink("Register as a new user", "Register")
+            </p>
+            //Enable this once you have account confirmation enabled for password reset functionality
+            <p>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>
 
 
-                }
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
 
-            </div>
+        }
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
-    
-       
-    
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    </div>
+</section>
+
+
+
+

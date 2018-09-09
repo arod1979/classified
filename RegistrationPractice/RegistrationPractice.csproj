@@ -589,6 +589,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\layout-styles.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\PagedList.css" />

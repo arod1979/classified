@@ -8,7 +8,7 @@
 }
 
 <br>
-@if (!ViewBag.detailsview)
+@if (ViewBag.detailsview == false)
 {
 
 
@@ -74,16 +74,63 @@ else
 
 
     <input id="servername" type="hidden" name="servername" value="@ViewBag.server" />
+
+    int itemsperpage = ViewBag.itemsperpage;
+    int totalpages = Model.Count > itemsperpage ? Model.Count % itemsperpage : 0;
+    int currentpage = ViewBag.page;
+    int previous = currentpage - 1;
+    int next = currentpage + 1;
+
+
+    int totalimagescurrentpage = 0;
+
+    if ((itemsperpage * currentpage) > Model.Count)
+    {
+        totalimagescurrentpage = Model.Count;
+    }
+    else
+    {
+        totalimagescurrentpage = itemsperpage;
+    }
+
+
+
+
+
     <div class="container">
         <div class="row">
-            @{ int pagesize = 12;
-                for (int x = 0; x < Model.Count; x += pagesize)
-                {
-                    @Html.Partial("_PostCards", Model.Skip(x).Take(pagesize).ToList<RegistrationPractice.Entities.Item>());
-                }
+            @{
+                int skip = (ViewBag.page - 1) * ViewBag.itemsperpage;
+
+                @Html.Partial("_PostCards", Model.Skip(skip).Take(totalimagescurrentpage).OrderBy(item => item.CreationDate).ToList<RegistrationPractice.Entities.Item>());
+
             }
         </div>
     </div>
+
+
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @if (previous > 0)
+            {
+                <li id="page+previous" class="page-item"><a class="page-link" href="#">Previous</a></li>
+            }
+
+            @for (var j = 0; j < totalpages; j++)
+            {
+
+                <li d="page+j" class="page-item"><a class="page-link" href="#">1</a></li>
+
+            }
+            @if (next < totalpages)
+            {
+                <li id="page+next" class="page-item"><a class="page-link" href="#">Previous</a></li>
+            }
+        </ul>
+    </nav>
+
 
 }
 

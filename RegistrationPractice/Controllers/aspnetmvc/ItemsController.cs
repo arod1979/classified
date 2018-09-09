@@ -112,7 +112,7 @@ namespace RegistrationPractice.Controllers
         // GET: Items
         [AllowAnonymous]
         [CheckURLParameters(6)]
-        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post) ////candidate for dependancy injection
+        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, int paging = 1) ////candidate for dependancy injection
         {
             ViewBag.country = country;
             ViewBag.province = province;
@@ -208,14 +208,15 @@ namespace RegistrationPractice.Controllers
                 }
                 ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
 
+                int itemsperpage = 12;
+                ViewBag.url = Request.Url.AbsoluteUri;
+                ViewBag.page = paging;
+                ViewBag.itemsperpage = itemsperpage;
+                ViewBag.detailsview = true;
                 return View(await items.ToListAsync());
             }
-            else
-            {
-                ViewBag.detailsview = false;
-                return View();
-            }
-
+            ViewBag.detailsview = false; //because the url did not contain lost, found, or stolen
+            return View();
         }
 
         [AllowAnonymous]
