@@ -57,6 +57,7 @@ namespace RegistrationPractice.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime FoundDate { get; set; } = System.DateTime.Now;
 
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime CreationDate { get; set; } = System.DateTime.Now;
 
         [Required]

@@ -650,7 +650,7 @@
     <Content Include="photos\colors3-CA-fys.png" />
     <Content Include="pictures\colors2-usa-fys.png" />
     <Content Include="pictures\colors3-CA-fys.png" />
-    <Content Include="Scripts\AdminMenu.js" />
+    <Content Include="Scripts\userscript\AdminMenu.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -676,7 +676,9 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\token.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\userscript\token.js" />
     <Content Include="Scripts\userscript\emailcontroller.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -691,14 +693,14 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\button.js" />
-    <Content Include="Scripts\country.js" />
-    <Content Include="Scripts\expandmenu.js" />
+    <Content Include="Scripts\userscript\button.js" />
+    <Content Include="Scripts\userscript\country.js" />
+    <Content Include="Scripts\userscript\expandmenu.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\sessionvalues.js" />
+    <Content Include="Scripts\userscript\sessionvalues.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -711,11 +713,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\PreviewImage.js" />
+    <Content Include="Scripts\userscript\PreviewImage.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\userscript\paging.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

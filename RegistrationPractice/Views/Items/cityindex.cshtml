@@ -5,9 +5,11 @@
 @{
     ViewBag.Title = "cityindex";
     Layout = "~/Views/Shared/_Jumbotron.cshtml";
+
 }
 
 <br>
+
 @if (ViewBag.detailsview == false)
 {
 
@@ -68,71 +70,24 @@ else
 
     <form method="get" action="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/@ViewBag.PostType">
         <input type="text" class="itemsearchbox" name="search_or_post" placeholder="Search" maxlength="30" required="">
-        <input type="submit" value="Search">
+        <input type="submit" class="search-button" value="Search">
+        @Html.DropDownList("CategoryID")
     </form>
 
-
-
     <input id="servername" type="hidden" name="servername" value="@ViewBag.server" />
-
-    int itemsperpage = ViewBag.itemsperpage;
-    int totalpages = Model.Count > itemsperpage ? Model.Count % itemsperpage : 0;
-    int currentpage = ViewBag.page;
-    int previous = currentpage - 1;
-    int next = currentpage + 1;
-
-
-    int totalimagescurrentpage = 0;
-
-    if ((itemsperpage * currentpage) > Model.Count)
-    {
-        totalimagescurrentpage = Model.Count;
-    }
-    else
-    {
-        totalimagescurrentpage = itemsperpage;
-    }
-
-
-
-
-
-    <div class="container">
-        <div class="row">
-            @{
-                int skip = (ViewBag.page - 1) * ViewBag.itemsperpage;
-
-                @Html.Partial("_PostCards", Model.Skip(skip).Take(totalimagescurrentpage).OrderBy(item => item.CreationDate).ToList<RegistrationPractice.Entities.Item>());
-
-            }
-        </div>
+    <div id="grid">
+        @Html.Partial("_PostCards", Model)
     </div>
 
+    using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid" }, new { @id = "pagingform" }))
+    {
 
-
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            @if (previous > 0)
-            {
-                <li id="page+previous" class="page-item"><a class="page-link" href="#">Previous</a></li>
-            }
-
-            @for (var j = 0; j < totalpages; j++)
-            {
-
-                <li d="page+j" class="page-item"><a class="page-link" href="#">1</a></li>
-
-            }
-            @if (next < totalpages)
-            {
-                <li id="page+next" class="page-item"><a class="page-link" href="#">Previous</a></li>
-            }
-        </ul>
-    </nav>
-
+        <input type="hidden" name="paging" id="paging" />
+    }
 
 }
+
+
 
 
 

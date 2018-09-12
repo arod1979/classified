@@ -33,18 +33,21 @@ namespace RegistrationPractice
                       "~/Content/login.css", "~/Content/font-awesome.css", "~/Content/jquery-ui.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                      "~/Scripts/AdminMenu.js",
-                      "~/Scripts/PreviewImage.js",
-                      "~/Scripts/expandmenu.js",
-                      "~/Scripts/button.js",
-                      "~/Scripts/PreviewImage.js",
-                      "~/Scripts/token.js"
+                      "~/Scripts/userscript/AdminMenu.js",
+                      "~/Scripts/userscript/PreviewImage.js",
+                      "~/Scripts/userscript/expandmenu.js",
+                      "~/Scripts/userscript/button.js",
+                      "~/Scripts/userscript/PreviewImage.js",
+                      "~/Scripts/userscript/token.js",
+                      "~/Scripts/userscript/paging.js"
+
+
 
                       ));
 
-
-
-
+            bundles.Add(new ScriptBundle("~/bundles/jqueryunobtrusive").Include(
+                "~/Scripts/jquery.unobtrusive-ajax.js"
+            ));
 
         }
     }

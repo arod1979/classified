@@ -63,6 +63,7 @@ namespace RegistrationPractice
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //BundleTable.EnableOptimizations = true;
             gmail.RegisterWatch();
 
 

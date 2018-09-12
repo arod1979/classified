@@ -1,4 +1,6 @@
-
+.search-button {
+    width: 10% !important;
+}
 
 .dropdown-submenu {
     position: relative;

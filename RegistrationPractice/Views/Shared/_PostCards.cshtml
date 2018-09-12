@@ -2,63 +2,110 @@
 @using Microsoft.AspNet.Identity
 <link href="~/Content/projectcards.css" rel="stylesheet" />
 
+<div class="container">
+    <div class="row">
+        @for (var i = 0; i < Model.Count; i++)
+        {
 
-@for (var i = 0; i < Model.Count; i++)
-{
+            var item = Model[i];
+            <div class="col-sm-3 d-flex">
 
-    var item = Model[i];
-    <div class="col-sm-3 d-flex">
-
-        <div class="card project project-default" @*style="width: 75rem;"*@>
-
-
-            <div class="card-body">
-                <h5 class="card-title">@item.Description | Category:@item.Category.CategoryText</h5>
-                <p class="card-text">@item.AdditionalNotes</p>
-            </div>
-            <img class="card-img-top" src=@item.imageURL alt="@item.imageURL">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Lost: @item.LostLocation</li>
-                <li class="list-group-item">Reward: @item.ItemReward</li>
-                @{string dat = "i" + item.Id;}
-
-            </ul>
-
-            @if (Request.IsAuthenticated)
-            {
-
-                <a href="#@dat" data-toggle="collapse">
-                    <i class="icon-action fa fa-chevron-down"></i>
-                    <h6 class="title">Contact Poster</h6>
-                </a>
+                <div class="card project project-default" @*style="width: 75rem;"*@>
 
 
-                <div id="@dat" class="post-id filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
-
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="input-group">
-
-                        <textarea rows="1" cols="40" placeholder="@System.Web.HttpContext.Current.Session["UserEmail"];" readonly></textarea>
-                        <textarea name="message" class="message" rows="3" cols="40" placeholder="message" required></textarea>
-                        <input name="bid" type="hidden" class="bid" value="@ViewBag.BrowsingUserId" />
-                        <input name="pid" type="hidden" class="pid" value="@item.UserId" />
-                        <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"];" />
-                        <button type="button" class="submit-button">Submit</button>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Description | Category:@item.Category.CategoryText</h5>
+                        <p class="card-text">@item.AdditionalNotes</p>
                     </div>
-                </div>
+                    <img class="card-img-top" src=@item.imageURL alt="@item.imageURL">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Lost: @item.LostLocation</li>
+                        <li class="list-group-item">Reward: @item.ItemReward</li>
+                        <li class="list-group-item">Created: @item.CreationDate</li>
 
-            }
-            else
-            {
-                string returnurl = HttpContext.Current.Request.Url.AbsolutePath;
-                <p>@Html.ActionLink("Login", "Login", "Account", new { returnUrl = returnurl }, null) to contact poster.</p>
-            }
+                        @{string dat = "i" + item.Id;}
+
+                    </ul>
+
+                    @if (Request.IsAuthenticated)
+                    {
+
+                        <a href="#@dat" data-toggle="collapse">
+                            <i class="icon-action fa fa-chevron-down"></i>
+                            <h6 class="title">Contact Poster</h6>
+                        </a>
+
+
+                        <div id="@dat" class="post-id filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
+
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="input-group">
+
+                                <textarea rows="1" cols="40" placeholder="@System.Web.HttpContext.Current.Session["UserEmail"];" readonly></textarea>
+                                <textarea name="message" class="message" rows="3" cols="40" placeholder="message" required></textarea>
+                                <input name="bid" type="hidden" class="bid" value="@ViewBag.BrowsingUserId" />
+                                <input name="pid" type="hidden" class="pid" value="@item.UserId" />
+                                <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"];" />
+
+                                <button type="button" class="btn btn-sm" style="margin:auto;">Submit</button>
+                                <h7>Id @item.Id</h7>
+
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {
+                        string returnurl = HttpContext.Current.Request.Url.AbsolutePath;
+                        <p>@Html.ActionLink("Login", "Login", "Account", new { returnUrl = returnurl }, null) to contact poster.</p>
+                    }
 
 
 
 
-        </div> @*//end of card body*@
-    </div> @*//end of col*@
+                </div> @*//end of card body*@
+            </div> @*//end of col*@
+
+        }
+    </div>
+</div>
+@{
+    int itemsperpage = ViewBag.itemsperpage;
+    int totalitems = ViewBag.totalitems;
+    int currentpage = ViewBag.paging;
+    int totalpages = (totalitems + itemsperpage - 1) / itemsperpage;
+    int previous = currentpage - 1;
+    int next = currentpage + 1;
 
 }
+
+<div aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+
+        @if (previous > 0)
+        {
+            var id = "p" + previous;
+            <li class="page-item"><a id="@id" class="page-link">Previous</a></li>
+        }
+
+        @for (var j = 0; j < totalpages; j++)
+        {
+            int indexshift = j + 1;
+            var id = "page" + indexshift;
+            string active = "";
+            if (currentpage == indexshift)
+            {
+                active = "active";
+            }
+
+            <li class="page-item @active"><a id="@id" class="page-link">@indexshift</a></li>
+
+        }
+        @if (next <= totalpages)
+        {
+            var id = "n" + next;
+            <li class="page-item"><a id="@id" class="page-link">Next</a></li>
+        }
+    </ul>
+</div>

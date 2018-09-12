@@ -112,7 +112,7 @@ namespace RegistrationPractice.Controllers
         // GET: Items
         [AllowAnonymous]
         [CheckURLParameters(6)]
-        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, int paging = 1) ////candidate for dependancy injection
+        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, int paging = 1, bool partialmode = false) ////candidate for dependancy injection
         {
             ViewBag.country = country;
             ViewBag.province = province;
@@ -190,6 +190,10 @@ namespace RegistrationPractice.Controllers
                 ////var items = db.Items.Include(i => i.Category).Include(i => i.Location);
                 var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city.ToLower()).Id;
 
+                if (search_or_post != null)
+                {
+                    items = items.Include("PostType").Include("Category").Include("Location").Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
+                }
                 if (posttypefilter == "stolen")
                 {
                     items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.stolendbid && si.LocationID == cityid) select (Item)si);
@@ -202,18 +206,56 @@ namespace RegistrationPractice.Controllers
                 {
                     items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.founddbid && si.LocationID == cityid) select (Item)si);
                 }
-                if (search_or_post != null)
-                {
-                    items = items.Include("PostType").Include("Category").Include("Location").Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
-                }
-                ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
+
+                //values needed to render the form for first load as well as subsequen ajax calls
 
                 int itemsperpage = 12;
-                ViewBag.url = Request.Url.AbsoluteUri;
-                ViewBag.page = paging;
+                int totalitems = items.Count();
+                int totalimagescurrentpage = 0;
+                if (formcollection["paging"] != null)
+                {
+                    try
+                    {
+                        paging = System.Convert.ToInt32(formcollection["paging"]);
+                    }
+                    catch (Exception e)
+                    {
+                        loggerwrapper.PickAndExecuteLogging("cannot convert pagingvaluefromform to integer");
+
+                    }
+                }
+
+                if ((itemsperpage * paging) > totalitems)
+                {
+                    totalimagescurrentpage = totalitems;
+                }
+                else
+                {
+                    totalimagescurrentpage = itemsperpage;
+                }
+                int skip = (paging - 1) * itemsperpage;
+
+
+                items = items.OrderBy(item => item.CreationDate).Skip(skip).Take(totalimagescurrentpage);
+
+                //------------------------- 
+                //items needed to render _PostCards
                 ViewBag.itemsperpage = itemsperpage;
+                ViewBag.totalitems = totalitems;
+                ViewBag.paging = paging;
+                //--------------------------
+
                 ViewBag.detailsview = true;
-                return View(await items.ToListAsync());
+                ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.stolendbid), "Id", "CategoryText");
+                ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
+
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("_PostCards", await items.ToListAsync());
+                }
+                else
+                    return View(await items.ToListAsync());
+
             }
             ViewBag.detailsview = false; //because the url did not contain lost, found, or stolen
             return View();
@@ -288,9 +330,13 @@ namespace RegistrationPractice.Controllers
                 item.LocationID = constants.GetCityPrimaryKey(city);
 
                 if (posttypefilter == "stolen")
-                { ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.stolendbid), "Id", "CategoryText"); }
+                {
+                    ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.stolendbid), "Id", "CategoryText");
+                }
                 else
-                { ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.founddbid), "Id", "CategoryText"); }
+                {
+                    ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.founddbid), "Id", "CategoryText");
+                }
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 posttypefilter = textInfo.ToTitleCase(posttypefilter);
 
