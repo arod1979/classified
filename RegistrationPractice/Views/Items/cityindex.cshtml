@@ -9,78 +9,78 @@
 }
 
 <br>
-
-@if (ViewBag.detailsview == false)
+@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid" }, new { @id = "pagingform" }))
 {
-
-
-    <h1 class="city">@ViewBag.city_province</h1>
-    <h1 class="lfs">Lost</h1>
-    <div class="text">
-        <li>
-
-            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost">All</a> lost items
-        </li>
-        <br>
-        <li>
-            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost/create">Post</a> something you've lost
-        </li>
-    </div>
-
-    <h1 class="lfs">Found</h1>
-    <div class="text">
-        <li>
-            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found">All</a> found items
-        </li>
-
-        <br />
-
-        <li>
-            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found/create">Post</a> something you've found
-        </li>
-
-    </div>
-
-
-    <h1 class="lfs">Stolen</h1>
-    <div class="text">
-        <li>
-            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen">All</a> stolen items
-        </li>
-
-        <br />
-
-        <li>
-            <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a> something that was stolen
-        </li>
-        <br>
-    </div>
-}
-else
-{
-    <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
-    if (@Model.Count == 0)
+    if (ViewBag.detailsview == false)
     {
-        <h1>All @ViewBag.PostType Items</h1>
+
+
+        <h1 class="city">@ViewBag.city_province</h1>
+        <h1 class="lfs">Lost</h1>
+        <div class="text">
+            <li>
+
+                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost">All</a> lost items
+            </li>
+            <br>
+            <li>
+                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost/create">Post</a> something you've lost
+            </li>
+        </div>
+
+        <h1 class="lfs">Found</h1>
+        <div class="text">
+            <li>
+                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found">All</a> found items
+            </li>
+
+            <br />
+
+            <li>
+                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found/create">Post</a> something you've found
+            </li>
+
+        </div>
+
+
+        <h1 class="lfs">Stolen</h1>
+        <div class="text">
+            <li>
+                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen">All</a> stolen items
+            </li>
+
+            <br />
+
+            <li>
+                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a> something that was stolen
+            </li>
+            <br>
+        </div>
     }
     else
     {
-        <h1>@Model.Count @ViewBag.PostType Items</h1>
-    }
+        <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
+        if (@Model.Count == 0)
+        {
+            <h1>All @ViewBag.PostType Items</h1>
+        }
+        else
+        {
+            <h1>@ViewBag.totalitems @ViewBag.PostType Items</h1>
+        }
 
-    <form method="get" action="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/@ViewBag.PostType">
+        @*<form method="get" action="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/@ViewBag.PostType">*@
         <input type="text" class="itemsearchbox" name="search_or_post" placeholder="Search" maxlength="30" required="">
         <input type="submit" class="search-button" value="Search">
         @Html.DropDownList("CategoryID")
-    </form>
+        @*</form>*@
 
-    <input id="servername" type="hidden" name="servername" value="@ViewBag.server" />
-    <div id="grid">
-        @Html.Partial("_PostCards", Model)
-    </div>
+        <input id="servername" type="hidden" name="servername" value="@ViewBag.server" />
+        <div id="grid">
+            @Html.Partial("_PostCards", Model)
+        </div>
 
-    using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid" }, new { @id = "pagingform" }))
-    {
+
 
         <input type="hidden" name="paging" id="paging" />
     }

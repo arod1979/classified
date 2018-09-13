@@ -46,6 +46,16 @@ namespace RegistrationPractice.Classes.Globals
             get { return db.PostTypes.SingleOrDefault(pt => pt.PostTypeText == "found").Id; }
         }
 
+        public int Getdbidbyposttype(string posttype)
+        {
+            if (nameof(founddbid).StartsWith(posttype))
+                return founddbid;
+            if (nameof(stolendbid).StartsWith(posttype))
+                return stolendbid;
+            if (nameof(lostdbid).StartsWith(posttype))
+                return lostdbid;
+            return stolendbid;
+        }
 
         public int GetCityPrimaryKey(string city)
         {

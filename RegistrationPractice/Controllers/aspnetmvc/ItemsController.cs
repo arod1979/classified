@@ -189,22 +189,23 @@ namespace RegistrationPractice.Controllers
                 ViewBag.detailsview = true;
                 ////var items = db.Items.Include(i => i.Category).Include(i => i.Location);
                 var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city.ToLower()).Id;
-
-                if (search_or_post != null)
-                {
-                    items = items.Include("PostType").Include("Category").Include("Location").Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
-                }
+                var dbid = constants.Getdbidbyposttype(posttypefilter);
+                items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == dbid && si.LocationID == cityid) select (Item)si);
+                //if (search_or_post != null)
+                //{
+                //    items = items.Include("PostType").Include("Category").Include("Location").Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
+                //}
                 if (posttypefilter == "stolen")
                 {
-                    items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.stolendbid && si.LocationID == cityid) select (Item)si);
+                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.stolendbid && si.LocationID == cityid);
                 }
                 if (posttypefilter == "lost")
                 {
-                    items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.lostdbid && si.LocationID == cityid) select (Item)si);
+                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.lostdbid && si.LocationID == cityid);
                 }
                 if (posttypefilter == "found")
                 {
-                    items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.founddbid && si.LocationID == cityid) select (Item)si);
+                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.founddbid && si.LocationID == cityid);
                 }
 
                 //values needed to render the form for first load as well as subsequen ajax calls
@@ -246,7 +247,8 @@ namespace RegistrationPractice.Controllers
                 //--------------------------
 
                 ViewBag.detailsview = true;
-                ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.stolendbid), "Id", "CategoryText");
+
+                ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == dbid), "Id", "CategoryText");
                 ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
 
                 if (Request.IsAjaxRequest())
