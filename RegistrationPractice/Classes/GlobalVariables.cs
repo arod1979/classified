@@ -1,9 +1,11 @@
-﻿using RegistrationPractice.Models;
+﻿using RegistrationPractice.Entities;
+using RegistrationPractice.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace RegistrationPractice.Classes.Globals
 {
@@ -12,7 +14,8 @@ namespace RegistrationPractice.Classes.Globals
     {
         //replace generic repository
 
-        private ApplicationDbContext db;
+        public ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
+
         public Constants()
         {
             db = new ApplicationDbContext("DefaultConnection");
@@ -57,6 +60,54 @@ namespace RegistrationPractice.Classes.Globals
             return stolendbid;
         }
 
+        //public IEnumerable<SelectListItem> GetCategorySelectList(string posttypefilter)
+        //{
+
+        //    if (posttypefilter == "lost")
+        //    {
+        //        var categorylist =
+        //        db.Category
+        //        .Join(db.CategoryPostType,
+        //            c => c.Id,
+        //            cp => cp.CategoryID,
+        //            (c, cp) => new { c, cp })
+        //            .Where(z => z.cp.PostTypeID == lostdbid)
+        //            .Select(z => z.c)
+        //            .ToList();
+
+        //        System.Diagnostics.Debug.WriteLine("apple" + categorylist.Count.ToString());
+
+        //        var categoryselectlist =
+        //            categorylist.Select(c => new SelectListItem
+        //            {
+        //                Text = c.CategoryText,
+        //                Value = c.Id.ToString()
+
+        //            }).ToList();
+
+        //        return new SelectList(categoryselectlist, ;
+
+
+
+
+
+        //    }
+        //    else if (posttypefilter == "found")
+        //    {
+        //        yield return null;
+        //    }
+        //    else if (posttypefilter == "stolen")
+        //    {
+
+        //        yield return null;
+        //    }
+        //    else
+        //    {
+        //        Loggers.Logger.Write("Could not build select list for category dropdown");
+        //        yield return null;
+        //    }
+        //}
+
         public int GetCityPrimaryKey(string city)
         {
 
@@ -70,6 +121,7 @@ namespace RegistrationPractice.Classes.Globals
     {
         public static String[] countrylist = { "usa", "canada" };
         public static List<KeyValuePair<string, string[]>> canadian_cities = new List<KeyValuePair<string, string[]>>();
+
 
 
 

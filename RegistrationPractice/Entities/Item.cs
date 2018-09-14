@@ -63,10 +63,12 @@ namespace RegistrationPractice.Entities
         [Required]
         [DisplayName("Category")]
         public int? CategoryID { get; set; }
+
+
         public virtual Category Category { get; set; }
+        public string CategoryText { get; set; }
 
         [Required]
-
         public string AdditionalNotes { get; set; }
 
         public int Visits { get; set; }

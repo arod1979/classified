@@ -32,6 +32,7 @@ namespace RegistrationPractice.Models
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<CategoryPostType> CategoryPostType { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<PostType> PostTypes { get; set; }
@@ -58,6 +59,6 @@ namespace RegistrationPractice.Models
         //    return new ApplicationDbContext();
         //}
 
-        public System.Data.Entity.DbSet<RegistrationPractice.Entities.Test> Tests { get; set; }
+
     }
 }

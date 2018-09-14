@@ -1,27 +1,20 @@
-﻿using System;
+﻿using Classes.Profanity.Logic;
+using RegistrationPractice.Classes;
+using RegistrationPractice.Classes.Globals;
+using RegistrationPractice.Entities;
+using RegistrationPractice.Filters;
+using RegistrationPractice.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.IO;
-using System.Globalization;
-using Microsoft.AspNet.Identity;
-using Classes.Profanity.Logic;
-using RegistrationPractice.Classes;
-using RegistrationPractice.Classes.Globals;
-using RegistrationPractice.Classes.ViewModels;
-using RegistrationPractice.Filters;
-using RegistrationPractice.Classes.Loggers;
-using RegistrationPractice.HelperMethods;
-using RegistrationPractice.Entities;
-using RegistrationPractice.Models;
-using RegistrationPractice.Classes.Cookies;
-using RegistrationPractice.Classes.Session;
-using System.Data.Entity.Core.Objects;
 
 namespace RegistrationPractice.Controllers
 {
@@ -65,54 +58,55 @@ namespace RegistrationPractice.Controllers
         }
 
 
-        [AllowAnonymous]
-        public async Task<ActionResult> Index(string categoryfilter, string SearchTerm, int? LocationId, int? CategoryId, int? PostTypeId, string cancel)
-        {
-            var items = db.Items.Include(i => i.Category).Include(i => i.Location);
-            if (string.IsNullOrEmpty(cancel))
-            {
+        //[AllowAnonymous]
+        //public async Task<ActionResult> Index(string categoryfilter, string SearchTerm, int? LocationId, int? CategoryId, int? PostTypeId, string cancel)
 
-                if (!String.IsNullOrEmpty(SearchTerm))
+        //{
+        //    var items = db.Items.Include(i => i.Category).Include(i => i.Location);
+        //    if (string.IsNullOrEmpty(cancel))
+        //    {
 
-                {
-                    items = items.Where(i => i.Description.ToUpper().Contains(SearchTerm.ToUpper())
-                    || i.AdditionalNotes.ToUpper().Contains(SearchTerm.ToUpper())
-                );
-                }
+        //        if (!String.IsNullOrEmpty(SearchTerm))
 
-                if (LocationId.HasValue)
-                {
+        //        {
+        //            items = items.Where(i => i.Description.ToUpper().Contains(SearchTerm.ToUpper())
+        //            || i.AdditionalNotes.ToUpper().Contains(SearchTerm.ToUpper())
+        //        );
+        //        }
 
-
-                    items = from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist;
-                    int count = (from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist).Count();
-
-                }
-
-                if (PostTypeId.HasValue)
-                {
-                    items = from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist;
-                    int count = (from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist).Count();
-                }
-
-                if (categoryfilter != null)
-                {
-                    items = items.Where(i => i.CategoryID == CategoryId);
-                }
-            }
+        //        if (LocationId.HasValue)
+        //        {
 
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
-            ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
-            ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
-            return View(await items.ToListAsync());
-        }
+        //            items = from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist;
+        //            int count = (from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist).Count();
+
+        //        }
+
+        //        if (PostTypeId.HasValue)
+        //        {
+        //            items = from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist;
+        //            int count = (from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist).Count();
+        //        }
+
+        //        if (categoryfilter != null)
+        //        {
+        //            items = items.Where(i => i.CategoryID == CategoryId);
+        //        }
+        //    }
+
+
+        //    ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
+        //    ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
+        //    ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
+        //    return View(await items.ToListAsync());
+        //}
 
 
         // GET: Items
         [AllowAnonymous]
         [CheckURLParameters(6)]
-        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, int paging = 1, bool partialmode = false) ////candidate for dependancy injection
+        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, Constants constants, int paging = 1, bool partialmode = false) ////candidate for dependancy injection
         {
             ViewBag.country = country;
             ViewBag.province = province;
@@ -120,7 +114,7 @@ namespace RegistrationPractice.Controllers
             ViewBag.city_province = string.Format("{0},{1}", city, province);
             ViewBag.PostType = posttypefilter;
             ViewBag.server = constants.servername;
-
+            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
             if (search_or_post != null && search_or_post.ToLower() == "post")
                 return View("Create");
 
@@ -191,21 +185,37 @@ namespace RegistrationPractice.Controllers
                 var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city.ToLower()).Id;
                 var dbid = constants.Getdbidbyposttype(posttypefilter);
                 items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == dbid && si.LocationID == cityid) select (Item)si);
-                //if (search_or_post != null)
-                //{
-                //    items = items.Include("PostType").Include("Category").Include("Location").Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
-                //}
+
+
                 if (posttypefilter == "stolen")
                 {
-                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.stolendbid && si.LocationID == cityid);
+                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.stolendbid);
                 }
                 if (posttypefilter == "lost")
                 {
-                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.lostdbid && si.LocationID == cityid);
+                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.lostdbid);
                 }
                 if (posttypefilter == "found")
                 {
-                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.founddbid && si.LocationID == cityid);
+                    items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.founddbid);
+                }
+                search_or_post = formcollection["search_or_post"];
+                if (search_or_post != null && search_or_post != String.Empty)
+                {
+                    items = items.Where(i => (i.Description.ToLower().Contains(search_or_post.ToLower()) || i.AdditionalNotes.ToLower().Contains(search_or_post.ToLower())));
+                }
+
+                string checkbox = formcollection["includecategoriescheckbox"];
+                if (checkbox == "on")
+                {
+                    string categoryid = formcollection["CategoryID"];
+                    if (categoryid != String.Empty && categoryid != null)
+                    {
+                        int categoryidint = Int32.Parse(categoryid);
+                        {
+                            items = items.Where(i => (i.CategoryID == categoryidint));
+                        }
+                    }
                 }
 
                 //values needed to render the form for first load as well as subsequen ajax calls
@@ -248,7 +258,10 @@ namespace RegistrationPractice.Controllers
 
                 ViewBag.detailsview = true;
 
-                ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == dbid), "Id", "CategoryText");
+                //ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == dbid), "Id", "CategoryText");
+
+                //ViewBag.CategoryID = constants.GetCategorySelectList(posttypefilter);
+                //ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
                 ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
 
                 if (Request.IsAjaxRequest())
@@ -316,9 +329,49 @@ namespace RegistrationPractice.Controllers
             return View(item);
         }
 
+        private IEnumerable<SelectListItem> GetCategorySelectList(string posttypefilter, Item item = null)
+        {
+            int posttypeid = 1;
+            switch (posttypefilter)
+            {
+                case "lost":
+                    posttypeid = constants.lostdbid;
+                    break;
+                case "found":
+                    posttypeid = constants.founddbid;
+                    break;
+                case "stolen":
+                    posttypeid = constants.stolendbid;
+                    break;
+                default:
+                    loggerwrapper.PickAndExecuteLogging("Could Not Filter By posttype");
+                    break;
+            }
+
+
+
+            var categorylist =
+             db.Categories
+            .Join(db.CategoryPostType,
+            c => c.Id,
+            cp => cp.CategoryID,
+            (c, cp) => new { c, cp })
+            .Where(z => z.cp.PostTypeID == posttypeid)
+            .Select(res => res.c)
+            .ToList();
+
+            var a = categorylist[0].CategoryText;
+
+            var selectlist = new SelectList(categorylist, "Id", "CategoryText", item.CategoryText);
+
+            return selectlist;
+
+
+        }
+
         // GET: Items/Create
         [CheckURLParameters(6)]
-        public ActionResult Create(string country, string province, string city, string posttypefilter, string action) ////candidate for dependancy injection
+        public ActionResult Create(string country, string province, string city, string posttypefilter, string action, Constants constants) ////candidate for dependancy injection
         {
             Item item = new Item();
             try
@@ -331,14 +384,11 @@ namespace RegistrationPractice.Controllers
                 item.City = city;
                 item.LocationID = constants.GetCityPrimaryKey(city);
 
-                if (posttypefilter == "stolen")
-                {
-                    ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.stolendbid), "Id", "CategoryText");
-                }
-                else
-                {
-                    ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.founddbid), "Id", "CategoryText");
-                }
+                //IEnumerable<Category> categorylist = constants.GetCategorySelectList(posttypefilter);
+                //ViewBag.CategoryID = new SelectList(categorylist, "Id", "CategoryText", item.CategoryID);
+                ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
+
+
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 posttypefilter = textInfo.ToTitleCase(posttypefilter);
 
@@ -407,7 +457,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate,UserId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io)
+        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate,UserId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io, Constants constants)
         {
             try
             {
@@ -458,10 +508,11 @@ namespace RegistrationPractice.Controllers
                 //ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText", item.PostTypeID);
                 ViewBag.city_province = string.Format("{0},{1}", item.City, province);
                 ViewBag.Province = province;
-                if (posttypefilter == "stolen")
-                { ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.stolendbid), "Id", "CategoryText"); }
-                else
-                { ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == constants.stolendbid), "Id", "CategoryText"); }
+                //IEnumerable<Category> categorylist = constants.GetCategorySelectList(posttypefilter);
+
+
+                //ViewBag.CategoryID = new SelectList(categorylist, "Id", "CategoryText");
+
 
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 posttypefilter = textInfo.ToTitleCase(posttypefilter);
@@ -478,7 +529,7 @@ namespace RegistrationPractice.Controllers
 
         // GET: Items/Edit/5
 
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(int? id, Constants constant)
         {
 
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
@@ -503,7 +554,9 @@ namespace RegistrationPractice.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", item.CategoryID);
+
+            //IEnumerable<Category> categorylist = constants.GetCategorySelectList(item.PostType.PostTypeText);
+            ViewBag.CategoryID = this.GetCategorySelectList(item.PostType.PostTypeText, item);
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", item.LocationID);
             if (item.imageURL != null) ViewBag.ImageUrl = item.imageURL;
             return View(item);
@@ -513,7 +566,7 @@ namespace RegistrationPractice.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<ActionResult> Edit([Bind(Include = "UserId,City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io)
+        public async Task<ActionResult> Edit([Bind(Include = "UserId,City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io, Constants constants)
         {
 
             //allan rodkin image code
@@ -561,9 +614,12 @@ namespace RegistrationPractice.Controllers
             item.PostType.PostTypeText = db.PostTypes.SingleOrDefault(pt => pt.Id == item.PostTypeID).PostTypeText;
             //allan rodkin
             item.Category = new Category();
-            item.Category.CategoryText = db.Categories.SingleOrDefault(pt => pt.Id == item.CategoryID).CategoryText;
+            string categorytext = db.Categories.SingleOrDefault(pt => pt.Id == item.CategoryID).CategoryText;
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", item.CategoryID);
+            //IEnumerable<Category> categorylist = constants.GetCategorySelectList(categorytext);
+
+
+            ViewBag.CategoryID = new SelectList(categorytext, "Id", "CategoryText", item.CategoryID);
             ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", item.LocationID);
             ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText", item.PostTypeID);
             return View(item);

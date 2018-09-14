@@ -12,6 +12,14 @@ $(document).ready(function () {
         $("#pagingform").trigger('submit');
     });
 
-
+    $(".search-button").click(function () {
+        alert("here");
+    }
+    );
 
 }); (jQuery);
+
+function success(data, textStatus, jqxhr) {
+    alert("here");
+}
+

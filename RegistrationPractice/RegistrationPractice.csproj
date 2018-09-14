@@ -314,8 +314,6 @@
     <Compile Include="Controllers\aspnetmvc\HomeController.cs" />
     <Compile Include="Controllers\aspnetmvc\ImageEntity.cs" />
     <Compile Include="Controllers\aspnetmvc\ItemsController.cs" />
-    <Compile Include="Controllers\aspnetmvc\TestsController.cs" />
-    <Compile Include="Controllers\aspnetmvc\_ItemsController.cs" />
     <Compile Include="Controllers\aspnetmvc\ManageController.cs" />
     <Compile Include="Controllers\aspnetmvc\UserManager.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -323,13 +321,13 @@
     <Compile Include="Controllers\WebApi\GmailInboxController.cs" />
     <Compile Include="DAL\DALInterfaces.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\CategoryPostType.cs" />
     <Compile Include="Entities\Email.cs" />
     <Compile Include="Entities\EmailReduced.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\PostType.cs" />
-    <Compile Include="Entities\Test.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ProfanityExtension.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
@@ -567,6 +565,26 @@
     <Compile Include="Migrations\201808291816582_useridnowstring.cs" />
     <Compile Include="Migrations\201808291816582_useridnowstring.Designer.cs">
       <DependentUpon>201808291816582_useridnowstring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809141434462_categorypostypetable.cs" />
+    <Compile Include="Migrations\201809141434462_categorypostypetable.Designer.cs">
+      <DependentUpon>201809141434462_categorypostypetable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809141449229_whyisthtereitem_id.cs" />
+    <Compile Include="Migrations\201809141449229_whyisthtereitem_id.Designer.cs">
+      <DependentUpon>201809141449229_whyisthtereitem_id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809141451577_gotridofforeignkey.cs" />
+    <Compile Include="Migrations\201809141451577_gotridofforeignkey.Designer.cs">
+      <DependentUpon>201809141451577_gotridofforeignkey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809141500010_gotridofforeignkey2.cs" />
+    <Compile Include="Migrations\201809141500010_gotridofforeignkey2.Designer.cs">
+      <DependentUpon>201809141500010_gotridofforeignkey2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809141503467_gotridofforeignkey3.cs" />
+    <Compile Include="Migrations\201809141503467_gotridofforeignkey3.Designer.cs">
+      <DependentUpon>201809141503467_gotridofforeignkey3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -999,6 +1017,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808291816582_useridnowstring.resx">
       <DependentUpon>201808291816582_useridnowstring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809141434462_categorypostypetable.resx">
+      <DependentUpon>201809141434462_categorypostypetable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809141449229_whyisthtereitem_id.resx">
+      <DependentUpon>201809141449229_whyisthtereitem_id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809141451577_gotridofforeignkey.resx">
+      <DependentUpon>201809141451577_gotridofforeignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809141500010_gotridofforeignkey2.resx">
+      <DependentUpon>201809141500010_gotridofforeignkey2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809141503467_gotridofforeignkey3.resx">
+      <DependentUpon>201809141503467_gotridofforeignkey3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

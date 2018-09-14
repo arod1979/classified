@@ -9,7 +9,7 @@
 }
 
 <br>
-@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid" }, new { @id = "pagingform" }))
+@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data, textStatus, jqxhr )" }, new { @id = "pagingform" }))
 {
     if (ViewBag.detailsview == false)
     {
@@ -69,11 +69,15 @@
             <h1>@ViewBag.totalitems @ViewBag.PostType Items</h1>
         }
 
-        @*<form method="get" action="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/@ViewBag.PostType">*@
-        <input type="text" class="itemsearchbox" name="search_or_post" placeholder="Search" maxlength="30" required="">
+
+        <input type="text" class="itemsearchbox" name="search_or_post" placeholder="Search" maxlength="30">
         <input type="submit" class="search-button" value="Search">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="includecategoriescheckbox" name="includecategoriescheckbox">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
         @Html.DropDownList("CategoryID")
-        @*</form>*@
+
 
         <input id="servername" type="hidden" name="servername" value="@ViewBag.server" />
         <div id="grid">
