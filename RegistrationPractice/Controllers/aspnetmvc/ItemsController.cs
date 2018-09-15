@@ -223,11 +223,14 @@ namespace RegistrationPractice.Controllers
                 int itemsperpage = 12;
                 int totalitems = items.Count();
                 int totalimagescurrentpage = 0;
-                if (formcollection["paging"] != null)
+                if (formcollection["paging"] != null && formcollection["paging"] != String.Empty)
                 {
                     try
                     {
+
                         paging = System.Convert.ToInt32(formcollection["paging"]);
+
+
                     }
                     catch (Exception e)
                     {
@@ -461,8 +464,6 @@ namespace RegistrationPractice.Controllers
         {
             try
             {
-
-
                 string province = formcollection["province"];
                 string posttypefilter = formcollection["posttypefilter"];
                 ViewBag.city_province = string.Format("{0},{1}", item.City, province);
@@ -503,6 +504,9 @@ namespace RegistrationPractice.Controllers
 
 
                 }
+
+                ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
+
                 //ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", item.CategoryID);
                 //ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", item.LocationID);
                 //ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText", item.PostTypeID);

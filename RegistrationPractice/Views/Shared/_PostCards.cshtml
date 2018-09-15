@@ -1,7 +1,14 @@
 ﻿@model List<RegistrationPractice.Entities.Item>
 @using Microsoft.AspNet.Identity
 <link href="~/Content/projectcards.css" rel="stylesheet" />
-
+@if (@Model.Count == 0)
+{
+    <h1>No @ViewBag.PostType Items</h1>
+}
+else
+{
+    <h1>@Model.Count  @ViewBag.PostType Items</h1>
+}
 <div class="container">
     <div class="row">
         @for (var i = 0; i < Model.Count; i++)

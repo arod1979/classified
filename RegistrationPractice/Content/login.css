@@ -1,6 +1,4 @@
-.search-button {
-    width: 10% !important;
-}
+
 
 .dropdown-submenu {
     position: relative;
@@ -92,6 +90,9 @@ body {
     text-align: center;
 }
 
+
+
+
 input, select {
     outline: none;
     padding: 10px;
@@ -100,6 +101,10 @@ input, select {
     border: 1px solid #eee;
     margin: 20px auto;
 }
+
+    input[type="checkbox"] {
+        display: inline-block;
+    }
 
     input.labelontop {
         outline: none;
@@ -228,6 +233,13 @@ h7 {
         width: 50%;
     }
 
+    .search-button {
+        width: 40%;
+    }
+
+    .category-dropdown {
+        width: 80%;
+    }
 
     .lostitems {
         border: 1px solid black;
@@ -283,6 +295,14 @@ a.awolr-logo {
 }
 
 @media screen and (min-width: 601px) {
+
+    .search-button {
+        width: 10% !important;
+    }
+
+    .category-dropdown {
+        width: 20%;
+    }
 
     .menu-item {
         padding: 9px 15px 15px 15px;
