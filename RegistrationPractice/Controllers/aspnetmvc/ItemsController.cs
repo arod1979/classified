@@ -114,7 +114,7 @@ namespace RegistrationPractice.Controllers
             ViewBag.city_province = string.Format("{0},{1}", city, province);
             ViewBag.PostType = posttypefilter;
             ViewBag.server = constants.servername;
-            ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
+
             if (search_or_post != null && search_or_post.ToLower() == "post")
                 return View("Create");
 
@@ -257,6 +257,7 @@ namespace RegistrationPractice.Controllers
                 ViewBag.itemsperpage = itemsperpage;
                 ViewBag.totalitems = totalitems;
                 ViewBag.paging = paging;
+                ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter.ToLower());
                 //--------------------------
 
                 ViewBag.detailsview = true;
@@ -364,8 +365,16 @@ namespace RegistrationPractice.Controllers
             .ToList();
 
             var a = categorylist[0].CategoryText;
+            SelectList selectlist = null;
+            if (item != null)
+            {
+                selectlist = new SelectList(categorylist, "Id", "CategoryText", item.CategoryText);
+            }
+            else
+            {
+                selectlist = new SelectList(categorylist, "Id", "CategoryText");
+            }
 
-            var selectlist = new SelectList(categorylist, "Id", "CategoryText", item.CategoryText);
 
             return selectlist;
 

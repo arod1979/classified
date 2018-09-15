@@ -66,6 +66,10 @@ namespace RegistrationPractice
             string password = System.Configuration.ConfigurationManager.AppSettings["emailpassword"];
             try
             {
+
+                //email = "admin@awolr.com";
+                //password = "passWord321$";
+
                 var client = new SmtpClient("smtp.gmail.com", 587)
                 {
 
