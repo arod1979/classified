@@ -390,21 +390,15 @@ namespace RegistrationPractice.Controllers
             {
                 ViewBag.city_province = string.Format("{0},{1}", city, province);
                 ViewBag.Province = province;
-
-
-                item.Country = country;
-                item.City = city;
-                item.LocationID = constants.GetCityPrimaryKey(city);
-
-                //IEnumerable<Category> categorylist = constants.GetCategorySelectList(posttypefilter);
-                //ViewBag.CategoryID = new SelectList(categorylist, "Id", "CategoryText", item.CategoryID);
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
-
-
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 posttypefilter = textInfo.ToTitleCase(posttypefilter);
 
                 ViewBag.PostType = posttypefilter;
+
+                item.Country = country;
+                item.City = city;
+                item.LocationID = constants.GetCityPrimaryKey(city);
 
                 switch (posttypefilter)
                 {
@@ -500,32 +494,17 @@ namespace RegistrationPractice.Controllers
 
                     }
 
-
-
                     db.Items.Add(item);
                     await db.SaveChangesAsync();
-
-
 
                     string route = string.Format("{0}/{1}/cityindex/{2}/{3}", item.Country, province, item.City, posttypefilter);
                     return RedirectToAction(route);
 
-
-
                 }
 
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
-
-                //ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText", item.CategoryID);
-                //ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", item.LocationID);
-                //ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText", item.PostTypeID);
                 ViewBag.city_province = string.Format("{0},{1}", item.City, province);
                 ViewBag.Province = province;
-                //IEnumerable<Category> categorylist = constants.GetCategorySelectList(posttypefilter);
-
-
-                //ViewBag.CategoryID = new SelectList(categorylist, "Id", "CategoryText");
-
 
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 posttypefilter = textInfo.ToTitleCase(posttypefilter);

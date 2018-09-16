@@ -90,10 +90,12 @@ body {
     text-align: center;
 }
 
+textarea {
+    resize: none
+}
 
 
-
-input, select {
+input, select, textarea {
     outline: none;
     padding: 10px;
     display: block;
@@ -115,7 +117,7 @@ input, select {
         margin: 5px auto 20px auto
     }
 
-    input[type="text"], input[type="password"], input[type="date"], input[type="submit"], select {
+    input[type="text"], input[type="password"], input[type="date"], input[type="submit"], select, textarea {
         width: 75%;
     }
 

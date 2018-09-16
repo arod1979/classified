@@ -54,7 +54,9 @@
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input" } })
+                adfasdf
+                @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input", rows = "3" })
+                @*@Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input" } })*@
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
             <br>
@@ -152,13 +154,13 @@
         <div class="alert alert-danger d-none">File Could Not Be Uploaded</div>
 
 
-
+        <a name="in-form"></a>
 
         <div class="www-nobottom">
             <div img-preview class="thumbnail" style="display:none">
                 <img class="img-fluid" target-img />
                 <div class="caption">
-                    <a href="#" onclick="ClearPreview()"><i class="fas fa-trash"></i> </a>
+                    <a href="#in-form" onclick="ClearPreview()"><i class="fas fa-trash"></i> </a>
                     <p img-description></p>
                 </div>
             </div>

@@ -55,7 +55,8 @@
         <br /><br />
         <div class="www">
             <label>AdditionalNotes</label>
-            @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control labelontop" } })
+            @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "labelontop input text-box", rows = "3" })
+            @*@Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control labelontop" } })*@
             @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
         </div>
         <label for="files" class="custom-file-upload" style="padding:5px;">
@@ -95,7 +96,7 @@
             {
 
 
-
+                <a name="in-form"></a>
 
                 <div img-preview class="thumbnail" id="img-preview">
 
@@ -103,7 +104,7 @@
 
                     <div class="caption">
 
-                        <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i> </a>
+                        <a href="#in-form" onclick="ClearPreview()"><i class="fas fa-trash"></i> </a>
                         <p img-description></p>
 
                     </div>
