@@ -25,8 +25,10 @@ namespace RegistrationPractice.Classes.Globals
                 new HttpRequest("", "https://awolr.com", ""),
                  new HttpResponse(new StringWriter())
                 );
+
             }
         }
+
 
 
         public string servername
@@ -111,21 +113,44 @@ namespace RegistrationPractice.Classes.Globals
         public int GetCityPrimaryKey(string city)
         {
 
-            return db.Locations.Where(loc => loc.LocationText == city.ToLower()).SingleOrDefault().Id;
+            return db.Locations.Where(loc => loc.LocationText == city).SingleOrDefault().Id;
         }
 
         public static string[] posttypes = { "lost", "Lost", "stolen", "Stolen", "found", "Found" };
     }
 
-    public static class CityListing
+    public class CityListing
     {
-        public static String[] countrylist = { "usa", "canada" };
-        public static List<KeyValuePair<string, string[]>> canadian_cities = new List<KeyValuePair<string, string[]>>();
+        public CityListing()
+        {
+            LoadCities();
+        }
+
+        public ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
+        public String[] countrylist = { "usa", "canada" };
+        public List<KeyValuePair<string, string[]>> canadian_cities = new List<KeyValuePair<string, string[]>>();
+
+        public List<Location> GetCities(string region)
+        {
+            List<Location> list =
+                     db.Locations
+                    .Join(db.Countries,
+                    l => l.CountryId,
+                    c => c.Id,
+                    (l, c) => new { l, c })
+                    .Where(z => z.c.RegionText == region)
+                    .Select(res => res.l)
+                    .ToList();
+
+            return list;
+        }
 
 
 
 
-        static CityListing()
+
+
+        private void LoadCities()
         {
             canadian_cities.Add(new KeyValuePair<string, string[]>("ON_CD", new string[] { "thunder bay", "toronto" }));
             canadian_cities.Add(new KeyValuePair<string, string[]>("BC_CD", new string[] { "victoria", "vancouver" }));

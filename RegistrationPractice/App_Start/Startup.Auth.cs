@@ -121,6 +121,7 @@ namespace RegistrationPractice
 
                 container.Register<IO_Operations>(Lifestyle.Scoped);
 
+                container.Register<Classes.Globals.CityListing>(Lifestyle.Scoped);
 
                 container.Register<ApplicationDbContext>(()
                   => new ApplicationDbContext(

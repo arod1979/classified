@@ -35,6 +35,7 @@ namespace RegistrationPractice.Models
         public DbSet<CategoryPostType> CategoryPostType { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Country> Countries { get; set; }
         public DbSet<PostType> PostTypes { get; set; }
         public DbSet<Email> Emails { get; set; }
 

@@ -106,7 +106,7 @@ namespace RegistrationPractice.Controllers
         // GET: Items
         [AllowAnonymous]
         [CheckURLParameters(6)]
-        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, Constants constants, int paging = 1, bool partialmode = false) ////candidate for dependancy injection
+        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, Constants constants, CityListing cityListing, int paging = 1, bool partialmode = false) ////candidate for dependancy injection
         {
             ViewBag.country = country;
             ViewBag.province = province;
@@ -123,7 +123,7 @@ namespace RegistrationPractice.Controllers
             loggerwrapper.PickAndExecuteLogging(String.Format("{0}:{1}>{2},{3}->{4},{5}->{6},{7}->{8},{9}->{10}", "CityIndexLog", "province", province, "city", city, "posttypefiler", posttypefilter,
                "Action", cityindex, "Search", search_or_post));
 
-            if (!RegistrationPractice.Classes.Globals.CityListing.countrylist.Contains(country.ToLower()))
+            if (cityListing.countrylist.Contains(country.ToLower()))
             {
                 ViewBag.Message = "Invalid country";
                 return View("invalidcity");
@@ -134,12 +134,12 @@ namespace RegistrationPractice.Controllers
             if (country.ToLower() == "canada")
             {
                 country_abbreviation = "CD";
-                list = CityListing.canadian_cities;
+                list = cityListing.canadian_cities;
             }
             else if (country.ToLower() == "USA")
             {
                 country_abbreviation = "US";
-                list = CityListing.canadian_cities;
+                list = cityListing.canadian_cities;
             }
             string key = string.Format("{0}_{1}", province, country_abbreviation);
 
@@ -182,7 +182,7 @@ namespace RegistrationPractice.Controllers
                 posttypefilter = posttypefilter.ToLower();
                 ViewBag.detailsview = true;
                 ////var items = db.Items.Include(i => i.Category).Include(i => i.Location);
-                var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city.ToLower()).Id;
+                var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city).Id;
                 var dbid = constants.Getdbidbyposttype(posttypefilter);
                 items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == dbid && si.LocationID == cityid) select (Item)si);
 
@@ -289,13 +289,17 @@ namespace RegistrationPractice.Controllers
 
         // GET: Items
         [AllowAnonymous]
-        public ViewResult CountryIndex(string countryname = "canada")
+        public ViewResult CountryIndex(CityListing cityListing, string countryname = "canada")
         {
             countryname = countryname.ToLower();
-
+            List<Location> citylisting = null;
+            string region = "Manitoba";
             if (countryname == "canada")
             {
                 ViewBag.country = "Canada";
+
+                citylisting = cityListing.GetCities(region);
+
             }
             else
             {

@@ -321,6 +321,7 @@
     <Compile Include="DAL\DALInterfaces.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\CategoryPostType.cs" />
+    <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\Email.cs" />
     <Compile Include="Entities\EmailReduced.cs" />
     <Compile Include="Entities\Item.cs" />
@@ -584,6 +585,22 @@
     <Compile Include="Migrations\201809141503467_gotridofforeignkey3.cs" />
     <Compile Include="Migrations\201809141503467_gotridofforeignkey3.Designer.cs">
       <DependentUpon>201809141503467_gotridofforeignkey3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809181638448_countrytable.cs" />
+    <Compile Include="Migrations\201809181638448_countrytable.Designer.cs">
+      <DependentUpon>201809181638448_countrytable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809191424195_getridofcountryid6669.cs" />
+    <Compile Include="Migrations\201809191424195_getridofcountryid6669.Designer.cs">
+      <DependentUpon>201809191424195_getridofcountryid6669.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809191426138_getridofcountryid66690.cs" />
+    <Compile Include="Migrations\201809191426138_getridofcountryid66690.Designer.cs">
+      <DependentUpon>201809191426138_getridofcountryid66690.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809191630473_countrydatabase.cs" />
+    <Compile Include="Migrations\201809191630473_countrydatabase.Designer.cs">
+      <DependentUpon>201809191630473_countrydatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1031,6 +1048,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809141503467_gotridofforeignkey3.resx">
       <DependentUpon>201809141503467_gotridofforeignkey3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809181638448_countrytable.resx">
+      <DependentUpon>201809181638448_countrytable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809191424195_getridofcountryid6669.resx">
+      <DependentUpon>201809191424195_getridofcountryid6669.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809191426138_getridofcountryid66690.resx">
+      <DependentUpon>201809191426138_getridofcountryid66690.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809191630473_countrydatabase.resx">
+      <DependentUpon>201809191630473_countrydatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

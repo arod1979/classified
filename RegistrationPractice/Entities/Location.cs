@@ -17,5 +17,9 @@ namespace RegistrationPractice.Entities
         public string LocationText { get; set; }
 
         public ICollection<Post> Posts { get; set; }
+
+        public Country Country { get; set; }
+
+        public int? CountryId { get; set; }
     }
 }
