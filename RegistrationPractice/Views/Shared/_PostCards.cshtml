@@ -7,7 +7,7 @@
 }
 else
 {
-    <h1>@Model.Count  @ViewBag.PostType Items</h1>
+    <h1>@ViewBag.ItemCount  @ViewBag.PostType Items</h1>
 }
 <div class="container">
     <div class="row">
@@ -15,6 +15,7 @@ else
         {
 
             var item = Model[i];
+
             <div class="col-sm-3 d-flex">
 
                 <div class="card project project-default" @*style="width: 75rem;"*@>
@@ -24,11 +25,14 @@ else
                         <h5 class="card-title">@item.Description | Category:@item.Category.CategoryText</h5>
                         <p class="card-text">@item.AdditionalNotes</p>
                     </div>
-                    <img class="card-img-top" src=@item.imageURL alt="@item.imageURL">
+                    @if (item.imageURL != null)
+                    {
+                        <img class="card-img-top" src=@item.imageURL alt="@item.imageURL">
+                    }
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Lost: @item.LostLocation</li>
                         <li class="list-group-item">Reward: @item.ItemReward</li>
-                        <li class="list-group-item">Created: @item.CreationDate</li>
+                        <li class="list-group-item">Created: @item.CreationDate.ToString("MM/dd/yyyy")</li>
 
                         @{string dat = "i" + item.Id;}
 
@@ -49,14 +53,42 @@ else
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="input-group">
 
-                                <textarea rows="1" cols="40" placeholder="@System.Web.HttpContext.Current.Session["UserEmail"];" readonly></textarea>
+                                <div class="form-check">
+                                    @if (item.PostType.PostTypeText.ToLower() == "lost")
+                                    {
+                                        <input type="checkbox" class="form-check-input" id="lostcheckbox" name="lostcheckbox">
+                                        <label class="form-check-label" for="exampleCheck1">Found/Return</label>
+                                    }
+                                    @if (item.PostType.PostTypeText.ToLower() == "found")
+                                    {
+                                        <input type="checkbox" class="form-check-input" id="foundcheckbox" name="foundcheckbox">
+                                        <label class="form-check-label" for="exampleCheck1">Claim/Recover</label>
+                                    }
+                                    @if (item.PostType.PostTypeText.ToLower() == "stolen")
+                                    {
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" id="stolencheckbox" name="stolencheckbox">
+                                            <label class="form-check-label" for="exampleCheck1">Return</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" id="anonymoustip" name="anonymoustip">
+                                            <label class="form-check-label" for="exampleCheck1">Anonymous Tip</label>
+                                        </div>
+
+                                    }
+                                </div>
+
+                                <textarea name="email" class="email" rows="1" cols="40" placeholder="@System.Web.HttpContext.Current.Session["UserEmail"];" readonly></textarea>
                                 <textarea name="message" class="message" rows="3" cols="40" placeholder="message" required></textarea>
                                 <input name="bid" type="hidden" class="bid" value="@ViewBag.BrowsingUserId" />
                                 <input name="pid" type="hidden" class="pid" value="@item.UserId" />
                                 <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"];" />
 
-                                <button type="button" class="btn btn-sm" style="margin:auto;">Submit</button>
-                                <h7>Id @item.Id</h7>
+
+                                <button type="button" class="btn btn-sm" style="margin:auto;display:block;">Submit</button>
+
+
+
 
                             </div>
                         </div>
@@ -69,7 +101,9 @@ else
                     }
 
 
-
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><h7>Id: @item.Id<h7 /></li>
+                    </ul>
 
                 </div> @*//end of card body*@
             </div> @*//end of col*@

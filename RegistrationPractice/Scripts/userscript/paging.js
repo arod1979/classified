@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 
     $(".search-button").click(function () {
-        $("#pagingform").trigger('submit');
+        $("#paging").val("1");
     }
     );
 

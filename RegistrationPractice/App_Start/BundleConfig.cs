@@ -29,7 +29,9 @@ namespace RegistrationPractice
                     "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                       "~/Content/bootstrap.css",
+                       "~/Content/bootstrap.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css1").Include(
                       "~/Content/login.css", "~/Content/font-awesome.css", "~/Content/jquery-ui.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(

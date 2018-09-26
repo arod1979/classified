@@ -4,6 +4,7 @@ using RegistrationPractice.Classes.Globals;
 using RegistrationPractice.Entities;
 using RegistrationPractice.Filters;
 using RegistrationPractice.Models;
+using RegistrationPractice.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -123,7 +124,7 @@ namespace RegistrationPractice.Controllers
             loggerwrapper.PickAndExecuteLogging(String.Format("{0}:{1}>{2},{3}->{4},{5}->{6},{7}->{8},{9}->{10}", "CityIndexLog", "province", province, "city", city, "posttypefiler", posttypefilter,
                "Action", cityindex, "Search", search_or_post));
 
-            if (cityListing.countrylist.Contains(country.ToLower()))
+            if (!cityListing.countrylist.Contains(country.ToLower()))
             {
                 ViewBag.Message = "Invalid country";
                 return View("invalidcity");
@@ -217,7 +218,7 @@ namespace RegistrationPractice.Controllers
                         }
                     }
                 }
-
+                ViewBag.ItemCount = items.Count();
                 //values needed to render the form for first load as well as subsequen ajax calls
 
                 int itemsperpage = 12;
@@ -261,11 +262,6 @@ namespace RegistrationPractice.Controllers
                 //--------------------------
 
                 ViewBag.detailsview = true;
-
-                //ViewBag.CategoryID = new SelectList(db.Categories.Where(cat => cat.PostTypeID == dbid), "Id", "CategoryText");
-
-                //ViewBag.CategoryID = constants.GetCategorySelectList(posttypefilter);
-                //ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
                 ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
 
                 if (Request.IsAjaxRequest())
@@ -292,8 +288,8 @@ namespace RegistrationPractice.Controllers
         public ViewResult CountryIndex(CityListing cityListing, string countryname = "canada")
         {
             countryname = countryname.ToLower();
-            List<Location> citylisting = null;
-            string region = "Manitoba";
+            List<LocationListing> citylisting = null;
+            string region = "New Jersey";
             if (countryname == "canada")
             {
                 ViewBag.country = "Canada";
@@ -307,7 +303,7 @@ namespace RegistrationPractice.Controllers
             }
 
 
-            return View();
+            return View(citylisting);
         }
 
         // GET: Items/Details/5
@@ -474,18 +470,6 @@ namespace RegistrationPractice.Controllers
                 string province = formcollection["province"];
                 string posttypefilter = formcollection["posttypefilter"];
                 ViewBag.city_province = string.Format("{0},{1}", item.City, province);
-                if (files != null)
-                {
-                    string imageUrl;
-                    string result = io.SaveImage(files, out imageUrl);
-                    item.imageURL = imageUrl;
-
-                    if (result.Length > 0)
-                    {
-                        ModelState.AddModelError(string.Empty, result);
-                    }
-                }
-
 
                 if (ModelState.IsValid)
                 {
@@ -498,14 +482,39 @@ namespace RegistrationPractice.Controllers
 
                     }
 
-                    db.Items.Add(item);
-                    await db.SaveChangesAsync();
+
+
+                    try
+                    {
+
+                        if (files != null)
+                        {
+                            string imageUrl;
+                            string result = io.SaveImage(files, out imageUrl);
+                            item.imageURL = imageUrl;
+
+                            if (result.Length > 0)
+                            {
+                                ModelState.AddModelError(string.Empty, result);
+                                goto imageproblem;
+                            }
+                        }
+                        db.Items.Add(item);
+                        await db.SaveChangesAsync();
+                    }
+                    catch (Exception e)
+                    {
+                        loggerwrapper.PickAndExecuteLogging("item cannot be saved: " + e.ToString());
+                    }
+
+
+
 
                     string route = string.Format("{0}/{1}/cityindex/{2}/{3}", item.Country, province, item.City, posttypefilter);
                     return RedirectToAction(route);
 
                 }
-
+                imageproblem:
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
                 ViewBag.city_province = string.Format("{0},{1}", item.City, province);
                 ViewBag.Province = province;

@@ -1,5 +1,6 @@
 ﻿using RegistrationPractice.Entities;
 using RegistrationPractice.Models;
+using RegistrationPractice.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -130,16 +131,16 @@ namespace RegistrationPractice.Classes.Globals
         public String[] countrylist = { "usa", "canada" };
         public List<KeyValuePair<string, string[]>> canadian_cities = new List<KeyValuePair<string, string[]>>();
 
-        public List<Location> GetCities(string region)
+        public List<LocationListing> GetCities(string region)
         {
-            List<Location> list =
+            List<LocationListing> list =
                      db.Locations
                     .Join(db.Countries,
                     l => l.CountryId,
                     c => c.Id,
                     (l, c) => new { l, c })
                     .Where(z => z.c.RegionText == region)
-                    .Select(res => res.l)
+                    .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, region = res.c.RegionAbbreviation })
                     .ToList();
 
             return list;

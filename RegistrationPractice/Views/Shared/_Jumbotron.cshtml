@@ -11,15 +11,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="~/pictures/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="robots" content="noindex">
-    <title>AWolR</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css1")
     @Scripts.Render("~/bundles/modernizr")
-
-
-    @*<link href="~/Content/allanbootstra.pcss" rel="stylesheet" />*@
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Comfortaa'>
 </head>
 <body>
@@ -71,7 +69,6 @@
     </nav>
 
 
-    @System.Web.HttpContext.Current.Session["UserEmail"];
     <img src="~/pictures/awolrlogo.png.gif" style="display: block;
                     margin-left: auto;
                   margin-right: auto;" />

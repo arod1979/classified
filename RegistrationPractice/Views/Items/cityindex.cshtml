@@ -3,7 +3,7 @@
 
 
 @{
-    ViewBag.Title = "cityindex";
+
     Layout = "~/Views/Shared/_Jumbotron.cshtml";
 
 }
@@ -14,6 +14,7 @@
     if (ViewBag.detailsview == false)
     {
 
+        ViewBag.Title = "AwolR City Index";
 
         <h1 class="city">@ViewBag.city_province</h1>
         <h1 class="lfs">Lost</h1>
@@ -59,6 +60,7 @@
     }
     else
     {
+        ViewBag.Title = ViewBag.city + "listings";
         <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
 
 

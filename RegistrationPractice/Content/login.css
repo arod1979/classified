@@ -1,5 +1,10 @@
 
 
+.form-check {
+    margin: auto;
+}
+
+
 .dropdown-submenu {
     position: relative;
 }
@@ -189,7 +194,7 @@ input[type="file"] {
     }
 
 h1 {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 h7 {
@@ -413,4 +418,10 @@ input[type="button"] {
         height: 50px;
         float: right;
     }
+}
+
+
+textarea.message, textarea.email {
+    margin-bottom: 1px !important;
+    margin-bottom: 1px !important;
 }
