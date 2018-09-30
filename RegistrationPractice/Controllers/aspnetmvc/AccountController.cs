@@ -11,17 +11,19 @@ using Microsoft.Owin.Security;
 using RegistrationPractice.Models;
 using CaptchaMvc.HtmlHelpers;
 using System.Text.RegularExpressions;
+using RegistrationPractice.Classes;
 
 namespace RegistrationPractice.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, LoggerWrapper loggerwrapper)
         {
             _userManager = userManager;
             SignInManager = signInManager;
@@ -101,9 +103,7 @@ namespace RegistrationPractice.Controllers
                 case SignInStatus.Success:
                     //allan rodkin
                     string currentUserEmail = model.Email;
-                    string userId = SignInManager
-.AuthenticationManager
-.AuthenticationResponseGrant.Identity.GetUserId();
+                    string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
                     System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
                     var userid = UserManager.FindByEmail(model.Email);
                     System.Web.HttpContext.Current.Session["UserId"] = userId;

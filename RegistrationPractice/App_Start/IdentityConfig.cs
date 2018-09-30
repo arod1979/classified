@@ -18,13 +18,17 @@ using System.Net.Mime;
 using System.Net;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using RegistrationPractice.Classes;
 
 namespace RegistrationPractice
 {
     public class EmailService : IIdentityMessageService
     {
+        private LoggerWrapper loggerwrapper = new LoggerWrapper();
+
         public async Task SendAsync(IdentityMessage message)
         {
+
             // Plug in your email service here to send an email.
             //return Task.FromResult(0);
             //return Task.Factory.StartNew(() =>
@@ -85,7 +89,7 @@ namespace RegistrationPractice
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                loggerwrapper.PickAndExecuteLogging("email could not be sent" + ex.Message);
             }
 
         }

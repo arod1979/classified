@@ -13,7 +13,7 @@ namespace UnitTestProject
     {
 
 
-        ItemsController controller = new ItemsController(new Constants());
+        ItemsController controller = new ItemsController(new Constants(), new RegistrationPractice.Classes.LoggerWrapper());
         public UnitTest1()
         {
             ItemsController.testing = true;

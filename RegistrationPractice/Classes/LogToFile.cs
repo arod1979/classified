@@ -17,14 +17,17 @@ namespace RegistrationPractice.Classes.Loggers
 
         public static string server { get; set; }
 
-        private static bool testing = false;
+
         static Logger()
         {
-
+            string filepath = System.DateTime.Now.ToString("dd-MM-yyyy") + ".txt";
+            string path = String.Format("{0}{1}", "~/logfiles/", /*SPath()*/ filepath);
+            //if (!Directory.Exists("~logfiles")) Directory.CreateDirectory("~logfiles");
+            //if (!File.Exists("~logfiles/" + filepath)) File.Create("~logfiles/" + filepath);
 
             string combinedpath = Path.Combine(System.Web.HttpContext.Current.Server.
             MapPath(
-            String.Format("{0}{1}", "~/logfiles", SPath() + System.DateTime.Now.ToString("dd-MM-yyyy"))
+                 path
             )
             );
             tw = TextWriter.Synchronized(File.AppendText(combinedpath));

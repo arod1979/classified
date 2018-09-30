@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationPractice", "Reg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{EE96B028-4F53-4117-8A1F-8DFF7DC3389F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWOLREntities", "AWOLREntities\AWOLREntities.csproj", "{292B033E-DD4A-475A-973B-65B53AF6ED30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,12 @@ Global
 		{EE96B028-4F53-4117-8A1F-8DFF7DC3389F}.Production|Any CPU.Build.0 = Release|Any CPU
 		{EE96B028-4F53-4117-8A1F-8DFF7DC3389F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE96B028-4F53-4117-8A1F-8DFF7DC3389F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{292B033E-DD4A-475A-973B-65B53AF6ED30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{292B033E-DD4A-475A-973B-65B53AF6ED30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{292B033E-DD4A-475A-973B-65B53AF6ED30}.Production|Any CPU.ActiveCfg = Release|Any CPU
+		{292B033E-DD4A-475A-973B-65B53AF6ED30}.Production|Any CPU.Build.0 = Release|Any CPU
+		{292B033E-DD4A-475A-973B-65B53AF6ED30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{292B033E-DD4A-475A-973B-65B53AF6ED30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

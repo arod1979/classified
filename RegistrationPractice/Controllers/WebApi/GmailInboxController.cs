@@ -8,7 +8,7 @@ using RegistrationPractice.Classes.Loggers;
 
 namespace RegistrationPractice.Controllers.WebApi
 {
-    [RoutePrefix("api/Products")]
+    [RoutePrefix("api/GmailPushclient")]
     public class GmailInboxController : ApiController
     {
         public HttpResponseMessage Post([FromBody] Object email)

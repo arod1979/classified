@@ -10,6 +10,7 @@ using RegistrationPractice.Models;
 
 namespace RegistrationPractice.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class ManageController : Controller
     {

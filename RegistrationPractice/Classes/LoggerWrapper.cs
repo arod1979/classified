@@ -8,12 +8,9 @@ namespace RegistrationPractice.Classes
 {
     public class LoggerWrapper
     {
-        private bool testingmode { get; set; }
+        public bool testingmode { get; set; }
 
-        public LoggerWrapper(bool testing = false)
-        {
-            this.testingmode = testing;
-        }
+        
 
 
         public void PickAndExecuteLogging(string message)

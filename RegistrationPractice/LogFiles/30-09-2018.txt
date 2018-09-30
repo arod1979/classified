@@ -1,0 +1,186 @@
+1:17:19 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+1:19:15 PM September 30, 2018
+  :
+  :CityIndexLog:province>NJ,city->Elizabeth,posttypefiler->,Action->,Search->
+-------------------------------
+1:19:17 PM September 30, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__6.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 152
+-------------------------------
+1:23:26 PM September 30, 2018
+  :
+  :useremail not defined
+-------------------------------
+1:23:26 PM September 30, 2018
+  :
+  :useremail not defined
+-------------------------------
+1:49:44 PM September 30, 2018
+  :
+  :useremail not defined
+-------------------------------
+1:49:44 PM September 30, 2018
+  :
+  :useremail not defined
+-------------------------------
+1:57:50 PM September 30, 2018
+  :
+  :useremail not defined
+-------------------------------
+1:57:50 PM September 30, 2018
+  :
+  :useremail not defined
+-------------------------------
+3:00:34 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+3:02:36 PM September 30, 2018
+  :
+  :CityIndexLog:province>NJ,city->Elizabeth,posttypefiler->,Action->,Search->
+-------------------------------
+3:02:37 PM September 30, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__6.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 153
+-------------------------------
+3:03:54 PM September 30, 2018
+  :
+  :CityIndexLog:province>AB,city->Calgary,posttypefiler->,Action->,Search->
+-------------------------------
+3:04:08 PM September 30, 2018
+  :
+  :CityIndexLog:province>AB,city->Calgary,posttypefiler->,Action->,Search->
+-------------------------------
+3:04:46 PM September 30, 2018
+  :
+  :CityIndexLog:province>ON,city->Thunder Bay,posttypefiler->,Action->,Search->
+-------------------------------
+3:05:17 PM September 30, 2018
+  :
+  :CityIndexLog:province>ON,city->Thunder Bay,posttypefiler->,Action->,Search->
+-------------------------------
+3:06:00 PM September 30, 2018
+  :
+  :CityIndexLog:province>ON,city->Thunder Bay,posttypefiler->,Action->,Search->
+-------------------------------
+3:08:13 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+3:09:00 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+3:11:27 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+3:13:07 PM September 30, 2018
+  :
+  :CityIndexLog:province>SK,city->Saskatoon,posttypefiler->,Action->,Search->
+-------------------------------
+3:16:57 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+3:18:13 PM September 30, 2018
+  :
+  :CityIndexLog:province>ON,city->Thunder Bay,posttypefiler->,Action->,Search->
+-------------------------------
+3:20:22 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+3:22:27 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+3:23:17 PM September 30, 2018
+  :
+  :CityIndexLog:province>ON,city->Thunder Bay,posttypefiler->,Action->,Search->
+-------------------------------
+3:38:44 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+3:40:10 PM September 30, 2018
+  :
+  :CityIndexLog:province>AB,city->Edmonton,posttypefiler->,Action->,Search->
+-------------------------------
+3:42:53 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+3:57:45 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+4:00:16 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+4:01:26 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+4:03:25 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->Lost,Action->,Search->
+-------------------------------
+4:04:29 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->Lost,Action->,Search->
+-------------------------------
+4:05:06 PM September 30, 2018
+  :
+  :CityIndexLog:province>AB,city->Calgary,posttypefiler->,Action->,Search->
+-------------------------------
+4:06:15 PM September 30, 2018
+  :
+  :CityIndexLog:province>AB,city->Calgary,posttypefiler->Lost,Action->,Search->
+-------------------------------
+4:40:28 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+4:41:57 PM September 30, 2018
+  :
+  :CityIndexLog:province>SK,city->Regina,posttypefiler->,Action->,Search->
+-------------------------------
+4:43:58 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+4:45:43 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->Lost,Action->,Search->
+-------------------------------
+4:46:25 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->Lost,Action->,Search->
+-------------------------------
+4:48:13 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->Lost,Action->,Search->
+-------------------------------
+5:05:22 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+5:10:46 PM September 30, 2018
+  :
+  :path
+-------------------------------
+5:12:30 PM September 30, 2018
+  :
+  :path
+-------------------------------

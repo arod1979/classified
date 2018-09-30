@@ -83,10 +83,12 @@ namespace RegistrationPractice
             //   appId: "",
             //   appSecret: "");
 
+
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "736503357607-pe9pcvibar5cbfr34olr0mdk9jhjbm3n.apps.googleusercontent.com",
-                ClientSecret = "53SOkhXJFgnG7IDqnbiXwOA_"
+                ClientId = "913060532754-nkhkc0t2smn22mt5qpaj59n9c67vl6fp.apps.googleusercontent.com",
+
+                ClientSecret = "BouJXmwmhQSytT0wFh20tHpD"
             });
         }
 
@@ -118,6 +120,8 @@ namespace RegistrationPractice
                 container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 
                 container.Register<Classes.Globals.Constants>(Lifestyle.Scoped);
+
+                container.Register<RegistrationPractice.Classes.LoggerWrapper>(Lifestyle.Scoped);
 
                 container.Register<IO_Operations>(Lifestyle.Scoped);
 
