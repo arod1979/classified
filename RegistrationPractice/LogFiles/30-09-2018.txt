@@ -184,3 +184,97 @@ Parameter name: source
   :
   :path
 -------------------------------
+8:42:12 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+8:43:12 PM September 30, 2018
+  :
+  :CityIndexLog:province>MB,city->Brandon,posttypefiler->,Action->,Search->
+-------------------------------
+8:44:26 PM September 30, 2018
+  :
+  :path
+-------------------------------
+8:44:27 PM September 30, 2018
+  :
+  :CityIndexLog:province>MB,city->Brandon,posttypefiler->Found,Action->,Search->
+-------------------------------
+8:45:34 PM September 30, 2018
+  :
+  :path
+-------------------------------
+8:47:10 PM September 30, 2018
+  :
+  :path
+-------------------------------
+8:49:17 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+9:03:49 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+9:04:08 PM September 30, 2018
+  :
+  :CityIndexLog:province>NJ,city->Jersey City,posttypefiler->,Action->,Search->
+-------------------------------
+9:04:08 PM September 30, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__8.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 165
+-------------------------------
+9:05:17 PM September 30, 2018
+  :
+  :path
+-------------------------------
+9:06:14 PM September 30, 2018
+  :
+  :path
+-------------------------------
+9:07:31 PM September 30, 2018
+  :
+  :path
+-------------------------------
+9:39:24 PM September 30, 2018
+  :
+  :apple
+-------------------------------
+9:41:22 PM September 30, 2018
+  :
+  :CityIndexLog:province>NJ,city->Newark,posttypefiler->,Action->,Search->
+-------------------------------
+9:41:22 PM September 30, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__8.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 165
+-------------------------------
+9:41:45 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+9:41:48 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+9:42:21 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+9:42:32 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+9:45:07 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+9:45:09 PM September 30, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------

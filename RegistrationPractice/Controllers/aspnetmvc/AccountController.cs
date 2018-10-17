@@ -16,17 +16,19 @@ using RegistrationPractice.Classes;
 namespace RegistrationPractice.Controllers
 {
     [Authorize]
-    [RequireHttps]
+
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
+        private LoggerWrapper loggerWrapper;
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, LoggerWrapper loggerwrapper)
         {
             _userManager = userManager;
             SignInManager = signInManager;
+            loggerWrapper = loggerwrapper;
         }
 
 
@@ -398,6 +400,13 @@ namespace RegistrationPractice.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    //allan rodkin
+                    string currentUserEmail = loginInfo.Email;
+                    string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
+                    System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
+                    var userid = UserManager.FindByEmail(loginInfo.Email);
+                    System.Web.HttpContext.Current.Session["UserId"] = userId;
+                    loggerWrapper.PickAndExecuteLogging(currentUserEmail + "=" + userId);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

@@ -1,0 +1,138 @@
+12:57:02 PM October 1, 2018
+  :
+  :apple
+-------------------------------
+1:15:18 PM October 1, 2018
+  :
+  :apple
+-------------------------------
+1:15:50 PM October 1, 2018
+  :
+  :CityIndexLog:province>NJ,city->Jersey City,posttypefiler->,Action->,Search->
+-------------------------------
+1:15:50 PM October 1, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__8.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 165
+-------------------------------
+1:15:56 PM October 1, 2018
+  :
+  :CityIndexLog:province>NJ,city->Jersey City,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:15:56 PM October 1, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__8.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 165
+-------------------------------
+1:16:13 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:16:15 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:19:13 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:22:44 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:27:59 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:29:07 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:32:34 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:34:09 PM October 1, 2018
+  :
+  :apple
+-------------------------------
+1:34:29 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:34:33 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:50:11 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:52:58 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:05:07 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:18:35 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:19:24 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:20:17 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:20:47 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:21:19 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:22:24 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:23:14 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:24:08 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:24:34 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:26:46 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:36:23 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:37:01 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:37:28 PM October 1, 2018
+  :
+  :apple
+-------------------------------
+2:37:36 PM October 1, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------

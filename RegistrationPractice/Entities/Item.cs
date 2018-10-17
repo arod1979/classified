@@ -95,7 +95,13 @@ namespace RegistrationPractice.Entities
         public bool? HideItem { get; set; }
 
 
+        public string lostcheckbox { get; set; }
 
+        public string foundcheckbox { get; set; }
+
+        public string stolencheckbox { get; set; }
+
+        public string anonymoustipcheckbox { get; set; }
 
     }
 }

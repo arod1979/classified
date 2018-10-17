@@ -44,7 +44,6 @@ namespace RegistrationPractice
                       "~/Scripts/userscript/paging.js"
 
 
-
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryunobtrusive").Include(

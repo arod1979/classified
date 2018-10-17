@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace RegistrationPractice.Controllers
 {
-    [RequireHttps]
+   
     public class HomeController : Controller
     {
         [AllowAnonymous]

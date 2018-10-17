@@ -68,13 +68,16 @@ namespace RegistrationPractice
             html += HttpUtility.HtmlEncode(@"Or copy the following link to your browser:" + message.Body);
             string email = System.Configuration.ConfigurationManager.AppSettings["email"];
             string password = System.Configuration.ConfigurationManager.AppSettings["emailpassword"];
+            string server = System.Configuration.ConfigurationManager.AppSettings["emailserver"];
+            string emailport = System.Configuration.ConfigurationManager.AppSettings["emailport"];
+            int port = Int32.Parse(emailport);
             try
             {
 
                 //email = "admin@awolr.com";
                 //password = "passWord321$";
 
-                var client = new SmtpClient("smtp.gmail.com", 587)
+                var client = new SmtpClient(server, port)
                 {
 
                     Credentials = new NetworkCredential(email, password),
@@ -82,7 +85,7 @@ namespace RegistrationPractice
                 };
 
 
-                await client.SendMailAsync("admin@domain.com", message.Destination, message.Subject, message.Body);
+                await client.SendMailAsync("admin@awolr.com", message.Destination, message.Subject, message.Body);
                 Console.WriteLine("Sent");
                 //Console.ReadLine();
 

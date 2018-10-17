@@ -1,0 +1,12 @@
+1:49:58 PM October 5, 2018
+  :
+  :apple
+-------------------------------
+1:50:27 PM October 5, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:50:40 PM October 5, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------

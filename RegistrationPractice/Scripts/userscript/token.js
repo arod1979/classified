@@ -3,13 +3,25 @@
 $(document).ready(function () {
 
 
-    $(".submit-button").click(function () {
+    $("[name='adresponsesubmit']").click(function () {
         var postid = $(this).closest('.post-id').attr('id').slice(1);
         var pid = $(this).siblings('.pid').val();
         var bid = $(this).siblings('.bid').val();
         var emailbody = $(this).siblings('.message').val();
         var fromaddress = $(this).siblings('.email').val();
+        var lostcheckbox = $(this).siblings('.input-group').find('.lostcheckbox').val();
+        var foundcheckbox = $(this).siblings('.input-group').find('.foundcheckbox').val();
+        var stolencheckbox = $(this).siblings('.input-group').find('.stolencheckbox').val();
+        var anonymoustipcheckbox = $(this).siblings('.input-group').find('.anonymoustipcheckbox').val();
+
+
+
+
         var Email = {};
+        Email.lostcheckbox = lostcheckbox;
+        Email.foundcheckbox = foundcheckbox;
+        Email.stolencheckbox = stolencheckbox;
+        Email.anonymoustipcheckbox = anonymoustipcheckbox;
         Email.postid = postid;
         Email.pid = pid;
         Email.bid = bid;

@@ -7,6 +7,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -83,8 +84,12 @@ namespace RegistrationPractice.Controllers.WebApi
         {
 
             var _usermanager = RegistrationPractice.Startup.exportUserManager;
-            ApplicationUser user = await _usermanager.FindByIdAsync(email.pid);
-            email.toaddress = user.Email;
+            ApplicationUser publisher = await _usermanager.FindByIdAsync(email.pid);
+            email.toaddress = publisher.Email;
+            email.pidrealemailaddress = publisher.Email;
+            ApplicationUser browser = await _usermanager.FindByIdAsync(email.bid);
+            email.bidrealemailaddress = browser.Email;
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

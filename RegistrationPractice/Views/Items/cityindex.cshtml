@@ -9,7 +9,8 @@
 }
 
 <br>
-@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data, textStatus, jqxhr )" }, new { @id = "pagingform" }))
+@*@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data, textStatus, jqxhr )" }, new { @id = "pagingform" }))*@
+@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data )" }, new { @id = "pagingform" }))
 {
     if (ViewBag.detailsview == false)
     {

@@ -1,0 +1,312 @@
+1:25:25 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+1:25:40 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:25:46 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:26:11 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:29:16 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+1:29:33 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:29:37 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:29:55 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:49:18 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+1:49:51 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:49:55 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+3:57:21 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+3:57:57 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+3:58:02 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+3:58:22 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:02:05 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+4:02:25 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+4:02:32 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:02:53 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:06:42 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+4:06:57 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+4:07:02 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:07:22 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:16:47 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:17:00 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:20:01 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:20:50 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+4:21:03 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+4:21:09 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:21:29 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:28:39 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:28:54 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:29:57 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:30:48 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:33:10 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+4:33:27 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+4:33:34 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:33:52 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:42:02 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+4:42:33 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+4:42:38 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+4:42:53 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:05:40 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+8:06:18 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+8:06:24 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:14:29 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+8:15:01 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+8:15:05 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:20:16 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:20:27 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:20:29 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:20:43 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+8:20:48 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:20:56 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:21:03 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:21:06 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:22:17 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:22:23 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:25:25 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:30:15 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+8:31:02 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+8:31:14 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:31:29 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:31:39 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:34:25 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+8:34:54 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->,Action->,Search->
+-------------------------------
+8:34:58 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:35:10 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:40:50 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+8:41:31 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+8:41:37 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:41:54 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:43:32 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:44:18 PM October 8, 2018
+  :
+  :apple
+-------------------------------
+8:44:33 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+8:44:38 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+8:45:29 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+8:45:32 PM October 8, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------

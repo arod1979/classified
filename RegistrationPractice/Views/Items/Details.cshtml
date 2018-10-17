@@ -4,135 +4,56 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+@section MetaContent
+{
+    <meta property="og:title" content="@Model.PostType.PostTypeText posting from awolr.com" />
+    <meta property="og:url" content="https://www.awolr.com/items/details/@Model.Id" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="@Model.PostType.PostTypeText posting from awolr.com. Item:@Model.Description - @Model.Description" />
+    <meta property="og:image:secure_url" content="@Model.PostType.PostTypeText posting from awolr.com. Item:@Model.Description - @Model.Description" />
 
-<div>
-    <h4>Item</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryText)
-        </dt>
+    @if (Model.imageURL != null)
+    {
+        string a = String.Format("{0}{1}", "https://awolr.com", Model.imageURL);
+        <meta property="og:image" content="@a" />
+    }
+    <meta property="fb:app_id" content="303700687093451" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="800" />
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.CategoryText)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.LocationText)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location.LocationText)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LostOrFoundItem)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LostOrFoundItem)
-        </dd>
+}
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NoReward)
-        </dt>
+<div class="lostitems">
 
-        <dd>
-            @Html.DisplayFor(model => model.NoReward)
-        </dd>
+    <strong>PostType:</strong> @Model.PostType.PostTypeText <br /><br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemReward)
-        </dt>
+    <strong>Category:</strong> @Model.Category.CategoryText <br /><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.ItemReward)
-        </dd>
+    <strong>Item Location:</strong> @Model.Location.LocationText <br /><br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+    <strong>What:</strong> @Model.Description <br /><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+    <strong>Where:</strong> @Model.LostLocation<br /><br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+    <strong>When:</strong> @Model.FoundDate.ToShortDateString()<br><br>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
+    <strong>Description:</strong> @Model.AdditionalNotes		<br><br>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailRelayAddress)
-        </dt>
+    @if (Model.PostType.PostTypeText != "found")
+    {
+        <strong>Reward $</strong> @Model.ItemReward<br><br>
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.EmailRelayAddress)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AdditionalNotes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdditionalNotes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Visits)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Visits)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Returned)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Returned)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerUserEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OwnerUserEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.imageURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.imageURL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.imageTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.imageTitle)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HideItem)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HideItem)
-        </dd>
-
-    </dl>
+    @if (Model.imageURL != null)
+    {
+        <img id="detailsimage" src="@Html.DisplayFor(modelItem => Model.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => Model.imageTitle)" />
+        <br />
+        <br />
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

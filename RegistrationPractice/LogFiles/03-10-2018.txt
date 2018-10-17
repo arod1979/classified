@@ -1,0 +1,96 @@
+1:37:47 PM October 3, 2018
+  :
+  :apple
+-------------------------------
+1:38:02 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:38:15 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:42:12 PM October 3, 2018
+  :
+  :apple
+-------------------------------
+1:42:56 PM October 3, 2018
+  :
+  :apple
+-------------------------------
+1:46:31 PM October 3, 2018
+  :
+  :admin@awolr.com=ef1eb0d1-9abd-4343-b07d-95613cc9348a
+-------------------------------
+1:46:44 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:46:52 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:48:15 PM October 3, 2018
+  :
+  :CityIndexLog:province>AB,city->Edmonton,posttypefiler->,Action->,Search->
+-------------------------------
+1:48:18 PM October 3, 2018
+  :
+  :CityIndexLog:province>AB,city->Edmonton,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:48:47 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+1:48:51 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:49:51 PM October 3, 2018
+  :
+  :CityIndexLog:province>AB,city->Edmonton,posttypefiler->,Action->,Search->
+-------------------------------
+1:49:53 PM October 3, 2018
+  :
+  :CityIndexLog:province>AB,city->Edmonton,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:50:35 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->,Action->,Search->
+-------------------------------
+1:50:43 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->found,Action->,Search->
+-------------------------------
+1:50:57 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->lost,Action->,Search->
+-------------------------------
+1:51:04 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->found,Action->,Search->
+-------------------------------
+1:58:53 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:02:57 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->lost,Action->,Search->
+-------------------------------
+2:03:10 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Vancouver,posttypefiler->found,Action->,Search->
+-------------------------------
+2:42:00 PM October 3, 2018
+  :
+  :apple
+-------------------------------
+2:42:15 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+2:42:33 PM October 3, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------

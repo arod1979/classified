@@ -79,9 +79,9 @@ namespace RegistrationPractice
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "303700687093451",
+               appSecret: "896f3a3797e5c682ed62c8767518618a");
 
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()

@@ -5,6 +5,7 @@
             $.ajax('http://ip-api.com/json')
                 .then(
                     function success(response) {
+                        alert(response.country);
                         console.log('User\'s Location Data is ', response);
                         alert('User\'s Country', response.country);
                     },

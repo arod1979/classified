@@ -12,7 +12,7 @@ using RegistrationPractice.Models;
 
 namespace RegistrationPractice.Controllers.aspnetmvc
 {
-    [RequireHttps]
+    
     public class EmailsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

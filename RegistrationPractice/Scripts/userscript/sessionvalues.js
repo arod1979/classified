@@ -2,15 +2,17 @@
     $(document).ready(function () {
 
         function ipLookUp() {
-            $.ajax('http://ip-api.com/json')
+            $.ajax('http://geoip.nekudo.com/api/')
                 .then(
                     function success(response) {
-                        console.log('User\'s Location Data is ', response);
+                        alert(response.country.name);
+                        console.log('User\'s Location Data is ', response.country.name);
                         console.log('User\'s Country', response.country);
-                        window.location.href = "/Items/CountryIndex/?countryname=" + response.country;
+                        window.location.href = "/Items/CountryIndex/?countryname=" + response.country.name;
                     },
 
                     function fail(data, status) {
+                        alert(data.country);
                         console.log('Request failed.  Returned status of',
                             status);
                         window.location.href = "/Items/CountryIndex/?countryname=canada";

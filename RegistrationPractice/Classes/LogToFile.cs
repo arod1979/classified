@@ -22,8 +22,14 @@ namespace RegistrationPractice.Classes.Loggers
         {
             string filepath = System.DateTime.Now.ToString("dd-MM-yyyy") + ".txt";
             string path = String.Format("{0}{1}", "~/logfiles/", /*SPath()*/ filepath);
+
+            if (!Directory.Exists(System.Web.HttpContext.Current.Server.MapPath("~/logfiles")))
+            {
+                Directory.CreateDirectory(System.Web.HttpContext.Current.Server.MapPath("~/logfiles"));
+            }
+
             //if (!Directory.Exists("~logfiles")) Directory.CreateDirectory("~logfiles");
-            //if (!File.Exists("~logfiles/" + filepath)) File.Create("~logfiles/" + filepath);
+            ////if (!File.Exists("~logfiles/" + filepath)) File.Create("~logfiles/" + filepath);
 
             string combinedpath = Path.Combine(System.Web.HttpContext.Current.Server.
             MapPath(

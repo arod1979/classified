@@ -1,0 +1,40 @@
+3:09:49 PM October 9, 2018
+  :
+  :apple
+-------------------------------
+3:11:43 PM October 9, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+3:12:10 PM October 9, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+3:12:12 PM October 9, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------
+3:19:45 PM October 9, 2018
+  :
+  :apple
+-------------------------------
+3:19:58 PM October 9, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+3:22:35 PM October 9, 2018
+  :
+  :email could not be sentThe SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+-------------------------------
+3:23:17 PM October 9, 2018
+  :
+  :apple
+-------------------------------
+3:23:29 PM October 9, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->,Action->,Search->
+-------------------------------
+3:23:32 PM October 9, 2018
+  :
+  :CityIndexLog:province>BC,city->Victoria,posttypefiler->lost,Action->,Search->
+-------------------------------

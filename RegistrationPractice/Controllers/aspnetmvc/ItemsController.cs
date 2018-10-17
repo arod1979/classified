@@ -18,10 +18,11 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Net.Http;
 
 namespace RegistrationPractice.Controllers
 {
-    [RequireHttps]
+
     public class ItemsController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -125,6 +126,11 @@ namespace RegistrationPractice.Controllers
         [CheckURLParameters(6)]
         public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, RegistrationPractice.Classes.Globals.Constants constants, CityListing cityListing, int paging = 1, bool partialmode = false) ////candidate for dependancy injection
         {
+            if (formcollection["adresponse"] == "on")
+            {
+
+            }
+
             ViewBag.country = country;
             ViewBag.province = province;
             ViewBag.city = city;
@@ -324,6 +330,7 @@ namespace RegistrationPractice.Controllers
 
         // GET: Items/Details/5
         [RequiresRouteValuesAttribute("id")]
+        [AllowAnonymous]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -434,19 +441,23 @@ namespace RegistrationPractice.Controllers
 
 
 
-                string useremail;
+                string useremail = string.Empty;
                 string userid = string.Empty;
                 if (Request != null) //case for live
                 {
-                    userid = User.Identity.GetUserId();
-                    ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                    useremail = await applicationUserManager.GetEmailAsync(userid);
+
+                    if (System.Web.HttpContext.Current.Session["UserId"] != null && System.Web.HttpContext.Current.Session["UserEmail"].ToString().Length > 0)
+                        userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
+                    else
+                    {
+                        userid = User.Identity.GetUserId();
+                        System.Web.HttpContext.Current.Session["UserId"] = userid;
+                    }
+
+                    if (System.Web.HttpContext.Current.Session["UserEmail"] != null && System.Web.HttpContext.Current.Session["UserEmail"].ToString().Length > 0)
+                        useremail = System.Web.HttpContext.Current.Session["UserEmail"].ToString();
 
 
-
-
-                    //useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
-                    //userid = (string)System.Web.HttpContext.Current.Session["UserId"];
 
                     if (useremail == null)
                     {
@@ -454,7 +465,7 @@ namespace RegistrationPractice.Controllers
                     }
                     if (userid == null)
                     {
-                        loggerwrapper.PickAndExecuteLogging("useremail not defined");
+                        loggerwrapper.PickAndExecuteLogging("userid not defined");
                     }
 
                 }
@@ -567,7 +578,10 @@ namespace RegistrationPractice.Controllers
             var itemlist = await (db.Items.Where(i => i.Id == id).Include("PostType").Include("Category").ToListAsync());
             Item item = itemlist[0];
 
-            if (item != null && useremail != null && useremail != item.OwnerUserEmail)
+            ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
+            bool isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
+            if ((item != null && useremail != null && useremail != item.OwnerUserEmail) || !isAdmin)
             {
                 TempData["Message"] = "You do not have permission to modify this post.";
                 return RedirectToAction("Index", "Items", null);
@@ -625,8 +639,7 @@ namespace RegistrationPractice.Controllers
                     ViewBag.Message = "Post contains profanity. Cannot submit.";
                     return RedirectToAction("FAQ", "Account");
                 }
-                db.Items.Add(item);
-                await db.SaveChangesAsync();
+
                 try
                 {
 
@@ -643,6 +656,7 @@ namespace RegistrationPractice.Controllers
                         }
                     }
 
+                    await db.SaveChangesAsync();
 
                 }
                 catch (Exception e)
@@ -676,8 +690,10 @@ namespace RegistrationPractice.Controllers
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
 
             Item item = await db.Items.FindAsync(id);
-
-            if (item != null && useremail != null && useremail != item.OwnerUserEmail)
+            ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
+            bool isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
+            if ((item != null && useremail != null && useremail != item.OwnerUserEmail) || !isAdmin)
             {
                 TempData["Message"] = "You do not have permission to modify this post.";
                 return RedirectToAction("Index", "Items", null);
