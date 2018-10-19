@@ -13,7 +13,15 @@ namespace RegistrationPractice.Models.ViewModels
         }
 
         public string city;
-        public string region;
+        public string regionabbreviation;
         public string country;
     }
+
+    public class Region_LocationListing
+    {
+        public string region;
+        public List<LocationListing> locationlistings;
+    }
+
+
 }

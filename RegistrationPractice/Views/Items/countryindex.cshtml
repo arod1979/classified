@@ -1,240 +1,53 @@
 ﻿
-@model List<RegistrationPractice.Models.ViewModels.LocationListing>
+@model List<RegistrationPractice.Models.ViewModels.Region_LocationListing>
 @{
     ViewBag.Title = "AwolR Country Index";
 }
 <meta name="robots" content="noindex">
 <h1 class="city">Find Your Stuff</h1>
-@if (ViewBag.country == "Canada")
-{
+<b><i>Lost, Found &amp; Stolen Classifieds</i></b>
+@*@if (ViewBag.country == "Canada")
+    {*@
 
-    <br />
-    <br />
-    @*<img src="~/pictures/colors3-CA-fys.png" class="countryimage" />*@
+<br />
+<br />
+@*<img src="~/pictures/colors3-CA-fys.png" class="countryimage" />*@
 
-    <button id="al">allan</button>
-    <h1 class="lfs">Select Your City</h1>
-
-
+@*<button id="al">allan</button>*@
+<h1 class="lfs">Select Your City</h1>
 
 
-    <div class="cities">
+
+
+<div class="cities">
+
+    @foreach (RegistrationPractice.Models.ViewModels.Region_LocationListing region_locationlisting in Model)
+    {
+
         <ul class="citieslist">
-            @foreach (RegistrationPractice.Models.ViewModels.LocationListing item in Model)
+            <b>@region_locationlisting.region</b>
+            @foreach (RegistrationPractice.Models.ViewModels.LocationListing item in region_locationlisting.locationlistings)
             {
+
                 <li>
                     @Html.ActionLink(item.city, String.Format("{0}/{1}/CityIndex/{2}",
-                   item.country,item.region,item.city))
+                    item.country, item.regionabbreviation, item.city))
                 </li>
             }
         </ul>
-        <ul class="citieslist mblist">
-            <li> @Html.ActionLink("Victoria", "Canada/BC/CityIndex/Victoria")</li>
+    }
 
-            <li>
-                @Html.ActionLink("Vancouver", "Canada/BC/CityIndex/Vancouver")
+</div>
+@*}
+    else if (ViewBag.country == "USA")
+    {
 
-            </li>
 
 
-            <li>@Html.ActionLink("Edmonton", "Canada/AB/CityIndex/Edmonton")</li>
+        <br />
+        <br />
 
-            <li>
-                @Html.ActionLink("Calgary", "Canada/AB/CityIndex/Calgary")
-            </li>
-
-
-
-            <li>
-                @Html.ActionLink("Regina", "Canada/SK/CityIndex/Regina")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Saskatoon", "Canada/SK/CityIndex/Saskatoon")
-            </li>
-
-            <li>
-                @Html.ActionLink("Brandon", "Canada/MB/CityIndex/Brandon")
-            </li>
-            <li>
-                @Html.ActionLink("Winnipeg", "Canada/MB/CityIndex/Winnipeg")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Thunder Bay", "Canada/ON/CityIndex/Thunder Bay")
-            </li>
-            <li>@Html.ActionLink("Toronto", "Canada/ON/CityIndex/Toronto")</li>
-        </ul>
-        <ul class="citieslist mb2-list">
-            <li> @Html.ActionLink("Victoria", "Canada/BC/CityIndex/Victoria")</li>
-
-            <li>
-                @Html.ActionLink("Vancouver", "Canada/BC/CityIndex/Vancouver")
-
-            </li>
-
-
-            <li>@Html.ActionLink("Edmonton", "Canada/AB/CityIndex/Edmonton")</li>
-
-            <li>
-                @Html.ActionLink("Calgary", "Canada/AB/CityIndex/Calgary")
-            </li>
-
-
-
-            <li>
-                @Html.ActionLink("Regina", "Canada/SK/CityIndex/Regina")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Saskatoon", "Canada/SK/CityIndex/Saskatoon")
-            </li>
-
-            <li>
-                @Html.ActionLink("Brandon", "Canada/MB/CityIndex/Brandon")
-            </li>
-            <li>
-                @Html.ActionLink("Winnipeg", "Canada/MB/CityIndex/Winnipeg")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Thunder Bay", "Canada/ON/CityIndex/Thunder Bay")
-            </li>
-            <li>@Html.ActionLink("Toronto", "Canada/ON/CityIndex/Toronto")</li>
-        </ul>
-        <ul class="citieslist mb2-list">
-            <li> @Html.ActionLink("Victoria", "Canada/BC/CityIndex/Victoria")</li>
-
-            <li>
-                @Html.ActionLink("Vancouver", "Canada/BC/CityIndex/Vancouver")
-
-            </li>
-
-
-            <li>@Html.ActionLink("Edmonton", "Canada/AB/CityIndex/Edmonton")</li>
-
-            <li>
-                @Html.ActionLink("Calgary", "Canada/AB/CityIndex/Calgary")
-            </li>
-
-
-
-            <li>
-                @Html.ActionLink("Regina", "Canada/SK/CityIndex/Regina")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Saskatoon", "Canada/SK/CityIndex/Saskatoon")
-            </li>
-
-            <li>
-                @Html.ActionLink("Brandon", "Canada/MB/CityIndex/Brandon")
-            </li>
-            <li>
-                @Html.ActionLink("Winnipeg", "Canada/MB/CityIndex/Winnipeg")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Thunder Bay", "Canada/ON/CityIndex/Thunder Bay")
-            </li>
-            <li>@Html.ActionLink("Toronto", "Canada/ON/CityIndex/Toronto")</li>
-        </ul>
-        <ul class="citieslist mb2-list">
-            <li> @Html.ActionLink("Victoria", "Canada/BC/CityIndex/Victoria")</li>
-
-            <li>
-                @Html.ActionLink("Vancouver", "Canada/BC/CityIndex/Vancouver")
-
-            </li>
-
-
-            <li>@Html.ActionLink("Edmonton", "Canada/AB/CityIndex/Edmonton")</li>
-
-            <li>
-                @Html.ActionLink("Calgary", "Canada/AB/CityIndex/Calgary")
-            </li>
-
-
-
-            <li>
-                @Html.ActionLink("Regina", "Canada/SK/CityIndex/Regina")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Saskatoon", "Canada/SK/CityIndex/Saskatoon")
-            </li>
-
-            <li>
-                @Html.ActionLink("Brandon", "Canada/MB/CityIndex/Brandon")
-            </li>
-            <li>
-                @Html.ActionLink("Winnipeg", "Canada/MB/CityIndex/Winnipeg")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Thunder Bay", "Canada/ON/CityIndex/Thunder Bay")
-            </li>
-            <li>@Html.ActionLink("Toronto", "Canada/ON/CityIndex/Toronto")</li>
-        </ul>
-        <ul class="citieslist mb2-list">
-            <li> @Html.ActionLink("Victoria", "Canada/BC/CityIndex/Victoria")</li>
-
-            <li>
-                @Html.ActionLink("Vancouver", "Canada/BC/CityIndex/Vancouver")
-
-            </li>
-
-
-            <li>@Html.ActionLink("Edmonton", "Canada/AB/CityIndex/Edmonton")</li>
-
-            <li>
-                @Html.ActionLink("Calgary", "Canada/AB/CityIndex/Calgary")
-            </li>
-
-
-
-            <li>
-                @Html.ActionLink("Regina", "Canada/SK/CityIndex/Regina")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Saskatoon", "Canada/SK/CityIndex/Saskatoon")
-            </li>
-
-            <li>
-                @Html.ActionLink("Brandon", "Canada/MB/CityIndex/Brandon")
-            </li>
-            <li>
-                @Html.ActionLink("Winnipeg", "Canada/MB/CityIndex/Winnipeg")
-            </li>
-
-
-            <li>
-                @Html.ActionLink("Thunder Bay", "Canada/ON/CityIndex/Thunder Bay")
-            </li>
-            <li>@Html.ActionLink("Toronto", "Canada/ON/CityIndex/Toronto")</li>
-        </ul>
-
-    </div>
-}
-else if (ViewBag.country == "USA")
-{
-
-
-
-    <br />
-    <br />
-
-    <img src="~/pictures/colors2-usa-fys.png" class="countryimage" />
-    <h1>Coming Soon!</h1>
-}
+        <img src="~/pictures/colors2-usa-fys.png" class="countryimage" />
+        <h1>Coming Soon!</h1>
+    }*@
 

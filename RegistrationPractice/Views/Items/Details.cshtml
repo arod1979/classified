@@ -6,20 +6,18 @@
 
 @section MetaContent
 {
-    <meta property="og:title" content="@Model.PostType.PostTypeText posting from awolr.com" />
+    <meta property="og:title" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
     <meta property="og:url" content="https://www.awolr.com/items/details/@Model.Id" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="@Model.PostType.PostTypeText posting from awolr.com. Item:@Model.Description - @Model.Description" />
-    <meta property="og:image:secure_url" content="@Model.PostType.PostTypeText posting from awolr.com. Item:@Model.Description - @Model.Description" />
+    <meta property="og:description" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
+    <meta property="og:image:secure_url" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
 
     @if (Model.imageURL != null)
     {
         string a = String.Format("{0}{1}", "https://awolr.com", Model.imageURL);
         <meta property="og:image" content="@a" />
     }
-    <meta property="fb:app_id" content="303700687093451" />
-    <meta property="og:image:width" content="600" />
-    <meta property="og:image:height" content="800" />
+
 
 
 

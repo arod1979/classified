@@ -405,6 +405,7 @@ input[type="button"] {
     padding: 5px;
     background-color: white;
     display: inline-block;
+    vertical-align: top;
 }
 
 

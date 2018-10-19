@@ -1,0 +1,92 @@
+12:45:26 PM October 19, 2018
+  :
+  :apple
+-------------------------------
+12:47:25 PM October 19, 2018
+  :
+  :apple
+-------------------------------
+1:05:16 PM October 19, 2018
+  :
+  :apple
+-------------------------------
+1:07:49 PM October 19, 2018
+  :
+  :apple
+-------------------------------
+1:19:26 PM October 19, 2018
+  :
+  :apple
+-------------------------------
+1:31:45 PM October 19, 2018
+  :
+  :apple
+-------------------------------
+1:36:49 PM October 19, 2018
+  :
+  :apple
+-------------------------------
+1:40:19 PM October 19, 2018
+  :
+  :CityIndexLog:province>NS,city->Halifax,posttypefiler->,Action->,Search->
+-------------------------------
+1:41:00 PM October 19, 2018
+  :
+  :CityIndexLog:province>UT,city->West Jordan,posttypefiler->,Action->,Search->
+-------------------------------
+1:41:00 PM October 19, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__8.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 171
+-------------------------------
+1:41:21 PM October 19, 2018
+  :
+  :CityIndexLog:province>QC,city->Saint-Jean-sur-Richelieu,posttypefiler->,Action->,Search->
+-------------------------------
+1:41:32 PM October 19, 2018
+  :
+  :CityIndexLog:province>TN,city->Brookings,posttypefiler->,Action->,Search->
+-------------------------------
+1:41:32 PM October 19, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__8.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 171
+-------------------------------
+1:43:09 PM October 19, 2018
+  :
+  :path
+-------------------------------
+1:43:10 PM October 19, 2018
+  :
+  :CityIndexLog:province>TN,city->Brookings,posttypefiler->Lost,Action->,Search->
+-------------------------------
+1:43:10 PM October 19, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__8.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 171
+-------------------------------
+1:44:08 PM October 19, 2018
+  :
+  :CityIndexLog:province>MB,city->Winnipeg,posttypefiler->,Action->,Search->
+-------------------------------
+1:47:20 PM October 19, 2018
+  :
+  :CityIndexLog:province>DE,city->Wilmington,posttypefiler->,Action->,Search->
+-------------------------------
+1:47:20 PM October 19, 2018
+  :
+  :System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RegistrationPractice.Controllers.ItemsController.<CityIndex>d__8.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 171
+-------------------------------
+1:52:49 PM October 19, 2018
+  :
+  :apple
+-------------------------------

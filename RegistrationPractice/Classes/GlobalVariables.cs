@@ -131,6 +131,21 @@ namespace RegistrationPractice.Classes.Globals
         public String[] countrylist = { "usa", "canada" };
         public List<KeyValuePair<string, string[]>> canadian_cities = new List<KeyValuePair<string, string[]>>();
 
+        public static Dictionary<string, List<Region_LocationListing>> region_locationlist_dictionary = new Dictionary<string, List<Region_LocationListing>>();
+
+
+        public List<string> GetRegions(string country)
+        {
+            List<string> regions =
+                db.Countries.Where(c => c.CountryText.ToUpper() == country.ToUpper())
+                .Select(c => c.RegionText)
+                .ToList<string>();
+            return regions;
+
+        }
+
+
+
         public List<LocationListing> GetCities(string region)
         {
             List<LocationListing> list =
@@ -140,7 +155,7 @@ namespace RegistrationPractice.Classes.Globals
                     c => c.Id,
                     (l, c) => new { l, c })
                     .Where(z => z.c.RegionText == region)
-                    .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, region = res.c.RegionAbbreviation })
+                    .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, regionabbreviation = res.c.RegionAbbreviation })
                     .ToList();
 
             return list;

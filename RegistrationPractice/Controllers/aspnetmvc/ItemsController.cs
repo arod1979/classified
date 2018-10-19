@@ -143,53 +143,53 @@ namespace RegistrationPractice.Controllers
 
             List<KeyValuePair<string, string[]>> list = null;
 
-            loggerwrapper.PickAndExecuteLogging(String.Format("{0}:{1}>{2},{3}->{4},{5}->{6},{7}->{8},{9}->{10}", "CityIndexLog", "province", province, "city", city, "posttypefiler", posttypefilter,
-               "Action", cityindex, "Search", search_or_post));
+            //loggerwrapper.PickAndExecuteLogging(String.Format("{0}:{1}>{2},{3}->{4},{5}->{6},{7}->{8},{9}->{10}", "CityIndexLog", "province", province, "city", city, "posttypefiler", posttypefilter,
+            //   "Action", cityindex, "Search", search_or_post));
 
-            if (!cityListing.countrylist.Contains(country.ToLower()))
-            {
-                ViewBag.Message = "Invalid country";
-                return View("invalidcity");
-            }
+            //if (!cityListing.countrylist.Contains(country.ToLower()))
+            //{
+            //    ViewBag.Message = "Invalid country";
+            //    return View("invalidcity");
+            //}
 
 
-            string country_abbreviation = null;
-            if (country.ToLower() == "canada")
-            {
-                country_abbreviation = "CD";
-                list = cityListing.canadian_cities;
-            }
-            else if (country.ToLower() == "USA")
-            {
-                country_abbreviation = "US";
-                list = cityListing.canadian_cities;
-            }
-            string key = string.Format("{0}_{1}", province, country_abbreviation);
+            //string country_abbreviation = null;
+            //if (country.ToLower() == "canada")
+            //{
+            //    country_abbreviation = "CD";
+            //    list = cityListing.canadian_cities;
+            //}
+            //else if (country.ToLower() == "USA")
+            //{
+            //    country_abbreviation = "US";
+            //    list = cityListing.canadian_cities;
+            //}
+            //string key = string.Format("{0}_{1}", province, country_abbreviation);
 
-            try
-            {
-                var single = list.Where(entry => entry.Key == key).SingleOrDefault();
-                if (single.Key == null)
-                {
-                    ViewBag.Message = "Invalid locale";
-                    return View("invalidcity");
-                }
-                else
-                {
-                    bool validcity = single.Value.Contains(city.ToLower());
-                    if (!validcity)
-                    {
-                        ViewBag.Message = "Invalid country";
-                        return View("invalidcity");
-                    }
+            //try
+            //{
+            //    var single = list.Where(entry => entry.Key == key).SingleOrDefault();
+            //    if (single.Key == null)
+            //    {
+            //        ViewBag.Message = "Invalid locale";
+            //        return View("invalidcity");
+            //    }
+            //    else
+            //    {
+            //        bool validcity = single.Value.Contains(city.ToLower());
+            //        if (!validcity)
+            //        {
+            //            ViewBag.Message = "Invalid country";
+            //            return View("invalidcity");
+            //        }
 
-                }
+            //    }
 
-            }
-            catch (Exception e)
-            {
-                loggerwrapper.PickAndExecuteLogging(e.ToString());
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    loggerwrapper.PickAndExecuteLogging(e.ToString());
+            //}
 
 
             IQueryable<Item> items = null;
@@ -310,22 +310,37 @@ namespace RegistrationPractice.Controllers
         public ViewResult CountryIndex(CityListing cityListing, string countryname = "canada")
         {
             countryname = countryname.ToLower();
-            List<LocationListing> citylisting = null;
-            string region = "New Jersey";
+            List<string> regions = null;
+            List<LocationListing> locationListings = null;
+            List<Region_LocationListing> region_LocationListings = new List<Region_LocationListing>();
             if (countryname == "canada")
             {
                 ViewBag.country = "Canada";
-
-                citylisting = cityListing.GetCities(region);
-
             }
             else
             {
                 ViewBag.country = "USA";
             }
+            if (CityListing.region_locationlist_dictionary.ContainsKey(countryname.ToUpper()))
+            {
+                region_LocationListings = CityListing.region_locationlist_dictionary[countryname.ToUpper()];
+            }
+            else
+            {
+                regions = cityListing.GetRegions(countryname);
+                foreach (string region in regions)
+                {
+                    Region_LocationListing region_LocationListing = new Region_LocationListing();
+                    region_LocationListing.region = region;
+                    locationListings = cityListing.GetCities(region);
+                    region_LocationListing.locationlistings = locationListings;
+                    region_LocationListings.Add(region_LocationListing);
+                }
+                CityListing.region_locationlist_dictionary[countryname.ToUpper()] = region_LocationListings;
+            }
 
 
-            return View(citylisting);
+            return View(region_LocationListings);
         }
 
         // GET: Items/Details/5
