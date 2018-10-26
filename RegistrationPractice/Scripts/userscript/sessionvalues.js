@@ -12,7 +12,7 @@
                     },
 
                     function fail(data, status) {
-                        alert(data.country);
+                        //alert(data.country);
                         console.log('Request failed.  Returned status of',
                             status);
                         window.location.href = "/Items/CountryIndex/?countryname=canada";

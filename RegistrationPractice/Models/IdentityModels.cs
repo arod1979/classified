@@ -37,7 +37,7 @@ namespace RegistrationPractice.Models
         public DbSet<Location> Locations { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<PostType> PostTypes { get; set; }
-        public DbSet<Email> Emails { get; set; }
+
 
         public ApplicationDbContext(string connectionstring)
             : base(connectionstring, throwIfV1Schema: false)
@@ -60,6 +60,25 @@ namespace RegistrationPractice.Models
         //    return new ApplicationDbContext();
         //}
 
+
+    }
+
+
+
+    public class EmailsDbContext : DbContext
+    {
+
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<EmailRecipients> EmailRecipients { get; set; }
+        public DbSet<HistoryID> HistoryIDs { get; set; }
+
+        public EmailsDbContext() : base()
+        {
+            {
+                //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+                Database.SetInitializer<EmailsDbContext>(new DropCreateDatabaseAlways<EmailsDbContext>());
+            }
+        }
 
     }
 }

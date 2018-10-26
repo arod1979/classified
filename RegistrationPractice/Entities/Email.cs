@@ -9,60 +9,81 @@ using RegistrationPractice.Models;
 
 namespace RegistrationPractice.Entities
 {
+    public class EmailRecipientsPlus : EmailRecipients
+    {
+        public string emailbody { get; set; }
+        public string fromaddress { get; set; }
+    }
+
+    [Table("EmailRecipients")]
+    public class EmailRecipients
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required]
+        public int IdItem { get; set; }
+
+        [Required]
+        public string pid { get; set; }
+
+        [Required]
+        public string bid { get; set; }
+
+        [Required]
+        public string pidrealemailaddress { get; set; }
+
+        [Required]
+        public string bidrealemailaddress { get; set; }
+
+        public string pidfakeemailaddress { get; set; }
+        public string bidfakeemailaddress { get; set; }
+
+        public bool lostcheckbox { get; set; }
+
+        public bool foundcheckbox { get; set; }
+
+        public bool stolencheckbox { get; set; }
+
+        public bool anonymoustipcheckbox { get; set; }
+    }
+
+
     [Table("Email")]
     public class Email
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string pid { get; set; }
-        public string bid { get; set; }
-
-        public string pidrealemailaddress { get; set; }
-        public string bidrealemailaddress { get; set; }
-
-        public string pidfakeemailaddress { get; set; }
-        public string bidfakeemailaddress { get; set; }
-
-        [Required]
         [DisplayName("From Address")]
         public string fromaddress { get; set; }
 
-        [Required]
         [DisplayName("To Address")]
         public string toaddress { get; set; }
 
         [Required]
-        public int postid { get; set; }
+        public int IdItem { get; set; }
+
 
         [Required]
         public string emailbody { get; set; }
 
-
-
         public string subject { get; set; }
 
-        [DisplayName("BCC Address")]
-        public string[] bccaddress { get; set; }
-
-        [DisplayName("APIEmailID")]
-        public int APIEmailId { get; set; }
-        public virtual Location Location { get; set; }
+        [DisplayName("EmailID")]
+        public int EmailId { get; set; }
 
         [DisplayName("APIThreadID")]
         public int APIThreadId { get; set; }
+    }
 
-        public virtual int PosterUserId { get; set; }
+    [Table("HistoryID")]
+    public class HistoryID
+    {
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public int Id { get; set; }
 
-        public virtual int ResponderUserId { get; set; }
-
-        public string lostcheckbox { get; set; }
-
-        public string foundcheckbox { get; set; }
-
-        public string stolencheckbox { get; set; }
-
-        public string anonymoustipcheckbox { get; set; }
-
+        [DisplayName("HistoryID")]
+        public ulong History { get; set; }
     }
 }

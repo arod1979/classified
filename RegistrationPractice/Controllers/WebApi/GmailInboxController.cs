@@ -26,7 +26,8 @@ namespace RegistrationPractice.Controllers.WebApi
     public class GmailServiceHandler
     {
         static GmailServiceHandler _instance;
-        static string[] Scopes = { GmailService.Scope.GmailReadonly };
+        static string[] Scopes = {"https://mail.google.com/",
+    "https://www.googleapis.com/auth/pubsub"};
         static string ApplicationName = "awolr.com";
         private LoggerWrapper loggerwrapper = new LoggerWrapper();
 
@@ -53,18 +54,19 @@ namespace RegistrationPractice.Controllers.WebApi
                         new FileDataStore(credPath, true)).Result;
                     Console.WriteLine("Credential file saved to: " + credPath);
                 }
+
+                // Create Gmail API service.
+                var service = new GmailService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = ApplicationName,
+                });
+                this.service = service;
             }
             catch (Exception e)
             {
                 loggerwrapper.PickAndExecuteLogging(e.ToString());
             }
-            // Create Gmail API service.
-            var service = new GmailService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
-            });
-            this.service = service;
         }
 
         public string Message { get; set; }
@@ -75,14 +77,12 @@ namespace RegistrationPractice.Controllers.WebApi
 
     public class GmailInboxController : ApiController
     {
-        private string userid = "admin@awolr.com";
         LoggerWrapper loggerWrapper = new LoggerWrapper();
-        public async Task<HttpResponseMessage> Post([FromBody] Message email)
+        public HttpResponseMessage Post([FromBody] Message email)
         {
-
             try
             {
-
+                loggerWrapper.PickAndExecuteLogging("here");
                 string historyid = null;
                 string emailaddress = null;
                 if (email != null)
@@ -91,20 +91,13 @@ namespace RegistrationPractice.Controllers.WebApi
                     JObject historyidobj = JObject.Parse(data);
                     historyid = (string)historyidobj["historyId"];
                     emailaddress = (string)historyidobj["emailAddress"];
-                    Logger.Write(Encoding.UTF8.GetString(Convert.FromBase64String(email.message.data)));
-                    loggerWrapper.PickAndExecuteLogging(emailaddress);
+
+                    loggerWrapper.PickAndExecuteLogging(historyid);
                 }
 
-                var gmailservicehandler = GmailServiceHandler.Instance;
-                var gmailservice = gmailservicehandler.service;
-
-
-
+                //var gmailservicehandler = GmailServiceHandler.Instance;
+                //var gmailservice = gmailservicehandler.service;
                 //Google.Apis.Gmail.v1.Data.Message message = await gmailservice.Users.Messages.Get("admin@awolr.com", email.message.messageId).ExecuteAsync();
-
-
-
-
                 //if (email != null)
                 //{
                 //    String from = "";
@@ -126,47 +119,34 @@ namespace RegistrationPractice.Controllers.WebApi
                 //        {
                 //            subject = mParts.Value;
                 //        }
-
                 //        if (date != "" && from != "")
                 //        {
                 //            if (message.Payload.Parts == null && message.Payload.Body != null)
                 //                body = DecodeBase64String(message.Payload.Body.Data);
                 //            //else
                 //            //body = GetNestedBodyParts(message.Payload.Parts, "");
-
                 //            //now you have the data you want....
-
                 //        }
-
                 //    }
-
                 //    //Console.Write(body);
                 //    Console.WriteLine("{0}  --  {1}  -- {2}", subject, date, message.Id);
                 //    Console.ReadKey();
-
                 //}
-
-
                 //List<History> historylist = null;
                 //ulong historyid_start_conversionresult;
                 //try
                 //{
                 //    historyid_start_conversionresult = Convert.ToUInt64(historyid);
                 //    historylist = ListHistory(gmailservice, "admin@awolr.com", historyid_start_conversionresult);
-
                 //}
                 //catch (OverflowException)
                 //{
                 //    Console.WriteLine("{0} is outside the range of the UInt64 type.", historyid);
-
                 //}
-
                 //if (historylist != null)
                 //{
                 //    loggerWrapper.PickAndExecuteLogging("Was able to retrieve history" + historylist.ToString());
-
                 //}
-
             }
             catch (Exception e)
             {
@@ -174,6 +154,7 @@ namespace RegistrationPractice.Controllers.WebApi
             }
             var response = new HttpResponseMessage();
             response.StatusCode = HttpStatusCode.OK;
+            loggerWrapper.PickAndExecuteLogging("got here");
             return response;
         }
 

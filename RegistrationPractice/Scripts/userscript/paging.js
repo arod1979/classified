@@ -20,6 +20,6 @@ $(document).ready(function () {
 }); (jQuery);
 
 function success(data, textStatus, jqxhr) {
-    alert("here");
+    //alert("here");
 }
 

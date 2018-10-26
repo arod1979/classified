@@ -605,6 +605,22 @@
     <Compile Include="Migrations\201810071635546_checkboxes.Designer.cs">
       <DependentUpon>201810071635546_checkboxes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810211825004_newdatabase.cs" />
+    <Compile Include="Migrations\201810211825004_newdatabase.Designer.cs">
+      <DependentUpon>201810211825004_newdatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810211829270_dropemail.cs" />
+    <Compile Include="Migrations\201810211829270_dropemail.Designer.cs">
+      <DependentUpon>201810211829270_dropemail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260026286_emailtables.cs" />
+    <Compile Include="Migrations\201810260026286_emailtables.Designer.cs">
+      <DependentUpon>201810260026286_emailtables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260033408_emailtables2.cs" />
+    <Compile Include="Migrations\201810260033408_emailtables2.Designer.cs">
+      <DependentUpon>201810260033408_emailtables2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1070,6 +1086,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810071635546_checkboxes.resx">
       <DependentUpon>201810071635546_checkboxes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810211825004_newdatabase.resx">
+      <DependentUpon>201810211825004_newdatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810211829270_dropemail.resx">
+      <DependentUpon>201810211829270_dropemail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260026286_emailtables.resx">
+      <DependentUpon>201810260026286_emailtables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260033408_emailtables2.resx">
+      <DependentUpon>201810260033408_emailtables2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

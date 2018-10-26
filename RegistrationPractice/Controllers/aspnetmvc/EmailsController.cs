@@ -12,10 +12,10 @@ using RegistrationPractice.Models;
 
 namespace RegistrationPractice.Controllers.aspnetmvc
 {
-    
+
     public class EmailsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private EmailsDbContext db = new EmailsDbContext();
 
         // GET: Emails
 

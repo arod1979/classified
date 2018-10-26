@@ -21,7 +21,7 @@ namespace RegistrationPractice.Controllers.WebApi
 
     public class EmailsController : ApiController
     {
-        public ApplicationDbContext db = new ApplicationDbContext();
+        private readonly EmailsDbContext db = new EmailsDbContext();
 
         // GET: api/Emails
         public IQueryable<Email> GetEmails()
@@ -80,25 +80,59 @@ namespace RegistrationPractice.Controllers.WebApi
         // POST: api/Emails
         [ResponseType(typeof(Email))]
         [ValidateAntiForgeryTokenOnAllPosts]
-        public async Task<IHttpActionResult> PostEmail([FromBody]Email email)
+        public async Task<IHttpActionResult> PostEmail([FromBody]EmailRecipientsPlus emailrecipientsplus)
         {
 
-            var _usermanager = RegistrationPractice.Startup.exportUserManager;
-            ApplicationUser publisher = await _usermanager.FindByIdAsync(email.pid);
-            email.toaddress = publisher.Email;
-            email.pidrealemailaddress = publisher.Email;
-            ApplicationUser browser = await _usermanager.FindByIdAsync(email.bid);
-            email.bidrealemailaddress = browser.Email;
+            EmailRecipients emailrecipients = new EmailRecipients();
 
-            if (!ModelState.IsValid)
+
+
+            var _usermanager = RegistrationPractice.Startup.exportUserManager;
+            ApplicationUser publisher = await _usermanager.FindByIdAsync(emailrecipientsplus.pid);
+
+            emailrecipients.pidrealemailaddress = publisher.Email;
+            ApplicationUser browser = await _usermanager.FindByIdAsync(emailrecipientsplus.bid);
+            emailrecipients.bidrealemailaddress = browser.Email;
+            //eventually delete
+            emailrecipientsplus.bidrealemailaddress = browser.Email;
+            emailrecipientsplus.pidrealemailaddress = publisher.Email;
+            //
+            emailrecipients.anonymoustipcheckbox = emailrecipientsplus.anonymoustipcheckbox;
+            emailrecipients.foundcheckbox = emailrecipientsplus.foundcheckbox;
+            emailrecipients.lostcheckbox = emailrecipientsplus.lostcheckbox;
+            emailrecipients.stolencheckbox = emailrecipientsplus.stolencheckbox;
+            emailrecipients.IdItem = emailrecipientsplus.IdItem;
+            emailrecipients.pidfakeemailaddress = System.IO.Path.GetRandomFileName();
+            emailrecipients.bidfakeemailaddress = System.IO.Path.GetRandomFileName();
+            emailrecipients.bid = emailrecipientsplus.bid;
+            emailrecipients.pid = emailrecipientsplus.pid;
+
+            try
+            {
+                db.EmailRecipients.Add(emailrecipients);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Emails.Add(email);
-            await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = email.Id }, email);
+            Email email = new Email();
+
+            email.toaddress = publisher.Email;
+            email.emailbody = emailrecipientsplus.emailbody;
+            email.fromaddress = emailrecipientsplus.fromaddress;
+
+
+
+
+
+
+
+
+
+            return CreatedAtRoute("DefaultApi", new { id = emailrecipientsplus.Id }, emailrecipientsplus);
         }
 
         // DELETE: api/Emails/5

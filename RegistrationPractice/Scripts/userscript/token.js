@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 
     $("[name='adresponsesubmit']").click(function () {
-        var postid = $(this).closest('.post-id').attr('id').slice(1);
+        var itemid = $(this).closest('.post-id').attr('id').slice(1);
         var pid = $(this).siblings('.pid').val();
         var bid = $(this).siblings('.bid').val();
         var emailbody = $(this).siblings('.message').val();
@@ -18,11 +18,11 @@ $(document).ready(function () {
 
 
         var Email = {};
-        Email.lostcheckbox = lostcheckbox;
-        Email.foundcheckbox = foundcheckbox;
-        Email.stolencheckbox = stolencheckbox;
-        Email.anonymoustipcheckbox = anonymoustipcheckbox;
-        Email.postid = postid;
+        Email.lostcheckbox = lostcheckbox === "on";
+        Email.foundcheckbox = foundcheckbox === "on";
+        Email.stolencheckbox = stolencheckbox === "on";
+        Email.anonymoustipcheckbox = anonymoustipcheckbox === "on";
+        Email.Item_Id = itemid;
         Email.pid = pid;
         Email.bid = bid;
         Email.emailbody = emailbody;
