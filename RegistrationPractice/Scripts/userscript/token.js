@@ -13,16 +13,17 @@ $(document).ready(function () {
         var foundcheckbox = $(this).siblings('.input-group').find('.foundcheckbox').val();
         var stolencheckbox = $(this).siblings('.input-group').find('.stolencheckbox').val();
         var anonymoustipcheckbox = $(this).siblings('.input-group').find('.anonymoustipcheckbox').val();
-        alert($(this).closest('.card-title').val() + $(this).closest('.card-text').val());
+        var itemdescription = $(this).closest('.card').find('.card-title').html() + $(this).closest('.card').find('.card-text').html();
 
 
 
         var Email = {};
+        Email.itemdescription = itemdescription;
         Email.lostcheckbox = lostcheckbox === "on";
         Email.foundcheckbox = foundcheckbox === "on";
         Email.stolencheckbox = stolencheckbox === "on";
         Email.anonymoustipcheckbox = anonymoustipcheckbox === "on";
-        Email.Item_Id = itemid;
+        Email.IdItem = itemid;
         Email.pid = pid;
         Email.bid = bid;
         Email.emailbody = emailbody;

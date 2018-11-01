@@ -14,6 +14,7 @@ namespace RegistrationPractice.Entities
         public string emailbody { get; set; }
         public string fromaddress { get; set; }
         public string itemdescription { get; set; }
+
     }
 
     [Table("EmailRecipients")]

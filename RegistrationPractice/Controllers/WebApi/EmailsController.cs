@@ -86,6 +86,9 @@ namespace RegistrationPractice.Controllers.WebApi
         {
 
             EmailRecipients emailrecipients = new EmailRecipients();
+            string emailbody = emailrecipientsplus.emailbody;
+            string fromaddress = emailrecipientsplus.fromaddress;
+            string itemdescription = emailrecipientsplus.itemdescription;
 
 
 
@@ -96,8 +99,8 @@ namespace RegistrationPractice.Controllers.WebApi
             ApplicationUser browser = await _usermanager.FindByIdAsync(emailrecipientsplus.bid);
             emailrecipients.bidrealemailaddress = browser.Email;
             //eventually delete
-            emailrecipientsplus.bidrealemailaddress = browser.Email;
-            emailrecipientsplus.pidrealemailaddress = publisher.Email;
+            emailrecipients.bidrealemailaddress = browser.Email;
+            emailrecipients.pidrealemailaddress = publisher.Email;
             //
             emailrecipients.anonymoustipcheckbox = emailrecipientsplus.anonymoustipcheckbox;
             emailrecipients.foundcheckbox = emailrecipientsplus.foundcheckbox;
@@ -112,6 +115,7 @@ namespace RegistrationPractice.Controllers.WebApi
             bool wroteemailrecipients = false;
             try
             {
+                emailrecipientsplus = null;
                 db.EmailRecipients.Add(emailrecipients);
                 await db.SaveChangesAsync();
                 loggerwrapper.PickAndExecuteLogging("ad response added to database");
@@ -155,12 +159,12 @@ namespace RegistrationPractice.Controllers.WebApi
             if (wroteemailrecipients) //now will be writing email table
             {
                 Email email = new Email();
-                email.fromaddress = String.Format("{0}{1}", emailrecipients.pidfakeemailaddress, "awolr.com");
+                email.fromaddress = String.Format("{0}{1}", emailrecipients.pidfakeemailaddress, "@awolr.com");
                 email.toaddress = publisher.Email;
-                email.emailbody = emailrecipientsplus.emailbody;
-                email.fromaddress = emailrecipientsplus.fromaddress;
-                email.ItemDescription = emailrecipientsplus.itemdescription;
-                email.subject = String.Format("{0}-{1}", "Message from awolr.com", email.ItemDescription);
+                email.emailbody = emailbody;
+
+                email.ItemDescription = itemdescription;
+                email.subject = String.Format("{0}|{1}", "Message from awolr.com", email.ItemDescription);
                 try
                 {
                     db.Emails.Add(email);

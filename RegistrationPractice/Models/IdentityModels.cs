@@ -78,7 +78,7 @@ namespace RegistrationPractice.Models
         {
             {
                 //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
-                Database.SetInitializer<EmailsDbContext>(new DropCreateDatabaseAlways<EmailsDbContext>());
+                Database.SetInitializer<EmailsDbContext>(new DropCreateDatabaseIfModelChanges<EmailsDbContext>());
             }
         }
 
