@@ -71,8 +71,10 @@ namespace RegistrationPractice.Models
         public DbSet<Email> Emails { get; set; }
         public DbSet<EmailRecipients> EmailRecipients { get; set; }
         public DbSet<HistoryID> HistoryIDs { get; set; }
+        public DbSet<FakeEmail> FakeEmails { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
 
-        public EmailsDbContext() : base()
+        public EmailsDbContext() : base("EmailConnection")
         {
             {
                 //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());

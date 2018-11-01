@@ -4,16 +4,15 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
-using RegistrationPractice.Models;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace RegistrationPractice.Entities
+namespace EmailClasses
 {
     public class EmailRecipientsPlus : EmailRecipients
     {
         public string emailbody { get; set; }
         public string fromaddress { get; set; }
-        public string itemdescription { get; set; }
     }
 
     [Table("EmailRecipients")]
@@ -65,8 +64,6 @@ namespace RegistrationPractice.Entities
         [Required]
         public int IdItem { get; set; }
 
-        [Required]
-        public string ItemDescription { get; set; }
 
         [Required]
         public string emailbody { get; set; }
@@ -88,15 +85,5 @@ namespace RegistrationPractice.Entities
 
         [DisplayName("HistoryID")]
         public long History { get; set; }
-    }
-
-    [Table("FakeEmail")]
-    public class FakeEmail
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        [DisplayName("FakeEmail")]
-        public string FakeEmailChars { get; set; }
     }
 }

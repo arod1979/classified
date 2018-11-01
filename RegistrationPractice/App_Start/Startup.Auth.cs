@@ -21,7 +21,7 @@ using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 using RegistrationPractice.Classes.Globals;
 using RegistrationPractice.Classes;
-using RegistrationPractice.Controllers.aspnetmvc;
+//using RegistrationPractice.Controllers.aspnetmvc;
 
 namespace RegistrationPractice
 {

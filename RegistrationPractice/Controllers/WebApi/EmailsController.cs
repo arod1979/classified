@@ -22,6 +22,8 @@ namespace RegistrationPractice.Controllers.WebApi
     public class EmailsController : ApiController
     {
         private readonly EmailsDbContext db = new EmailsDbContext();
+        private LoggerWrapper loggerwrapper = new LoggerWrapper();
+
 
         // GET: api/Emails
         public IQueryable<Email> GetEmails()
@@ -107,22 +109,68 @@ namespace RegistrationPractice.Controllers.WebApi
             emailrecipients.bid = emailrecipientsplus.bid;
             emailrecipients.pid = emailrecipientsplus.pid;
 
+            bool wroteemailrecipients = false;
             try
             {
                 db.EmailRecipients.Add(emailrecipients);
                 await db.SaveChangesAsync();
+                loggerwrapper.PickAndExecuteLogging("ad response added to database");
+
+                var f1 = new FakeEmail { FakeEmailChars = emailrecipients.pidfakeemailaddress };
+                var f2 = new FakeEmail { FakeEmailChars = emailrecipients.bidfakeemailaddress };
+                try
+                {
+
+
+                    db.FakeEmails.Add(f1);
+                    db.FakeEmails.Add(f2);
+                    await db.SaveChangesAsync();
+                    loggerwrapper.PickAndExecuteLogging("fake emails added to database");
+                }
+                catch (Exception e)
+                {
+                    try
+                    {
+                        db.FakeEmails.Remove(f1);
+                        db.FakeEmails.Remove(f2);
+                        await db.SaveChangesAsync();
+                        loggerwrapper.PickAndExecuteLogging("fake emails removed to database");
+                    }
+                    catch (Exception f)
+                    {
+                        loggerwrapper.PickAndExecuteLogging("fake emails not added to database. Delete Manually");
+                        throw new Exception();
+                    }
+                    throw new Exception();
+
+                }
+                wroteemailrecipients = true;
             }
             catch (Exception e)
             {
+                loggerwrapper.PickAndExecuteLogging("ad response not to database. No roll back required");
                 return BadRequest(ModelState);
             }
 
+            if (wroteemailrecipients) //now will be writing email table
+            {
+                Email email = new Email();
+                email.fromaddress = String.Format("{0}{1}", emailrecipients.pidfakeemailaddress, "awolr.com");
+                email.toaddress = publisher.Email;
+                email.emailbody = emailrecipientsplus.emailbody;
+                email.fromaddress = emailrecipientsplus.fromaddress;
+                email.ItemDescription = emailrecipientsplus.itemdescription;
+                email.subject = String.Format("{0}-{1}", "Message from awolr.com", email.ItemDescription);
+                try
+                {
+                    db.Emails.Add(email);
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception e)
+                {
 
-            Email email = new Email();
-
-            email.toaddress = publisher.Email;
-            email.emailbody = emailrecipientsplus.emailbody;
-            email.fromaddress = emailrecipientsplus.fromaddress;
+                }
+            }
 
 
 
@@ -132,7 +180,13 @@ namespace RegistrationPractice.Controllers.WebApi
 
 
 
-            return CreatedAtRoute("DefaultApi", new { id = emailrecipientsplus.Id }, emailrecipientsplus);
+
+
+
+            return CreatedAtRoute("DefaultApi", new
+            {
+                id = emailrecipientsplus.Id
+            }, emailrecipientsplus);
         }
 
         // DELETE: api/Emails/5

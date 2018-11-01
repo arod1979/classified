@@ -1,0 +1,48 @@
+12:05:47 PM November 1, 2018
+  :
+  :apple
+-------------------------------
+12:11:33 PM November 1, 2018
+  :
+  :apple
+-------------------------------
+12:13:52 PM November 1, 2018
+  :
+  :ad response not to database. No roll back required
+-------------------------------
+12:15:08 PM November 1, 2018
+  :
+  :ad response added to database
+-------------------------------
+12:15:24 PM November 1, 2018
+  :
+  :fake emails not added to database. Delete Manually
+-------------------------------
+12:35:08 PM November 1, 2018
+  :
+  :apple
+-------------------------------
+12:42:30 PM November 1, 2018
+  :
+  :apple
+-------------------------------
+12:55:16 PM November 1, 2018
+  :
+  :apple
+-------------------------------
+12:55:38 PM November 1, 2018
+  :
+  :apple
+-------------------------------
+1:00:15 PM November 1, 2018
+  :
+  :ad response not to database. No roll back required
+-------------------------------
+1:01:09 PM November 1, 2018
+  :
+  :apple
+-------------------------------
+1:03:13 PM November 1, 2018
+  :
+  :apple
+-------------------------------
