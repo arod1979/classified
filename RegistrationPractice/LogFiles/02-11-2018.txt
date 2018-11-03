@@ -1,0 +1,128 @@
+11:56:52 AM November 2, 2018
+  :
+  :apple
+-------------------------------
+12:20:49 PM November 2, 2018
+  :
+  :ad response not to database. No roll back required
+-------------------------------
+12:22:38 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+12:25:00 PM November 2, 2018
+  :
+  :ad response not to database. No roll back required
+-------------------------------
+12:25:35 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+12:28:26 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+12:34:18 PM November 2, 2018
+  :
+  :ad response added to database
+-------------------------------
+12:34:24 PM November 2, 2018
+  :
+  :fake emails added to database
+-------------------------------
+1:04:38 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:07:39 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:12:40 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:14:04 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:26:55 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:35:53 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:47:47 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:48:36 PM November 2, 2018
+  :
+  :item cannot be saved: System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__180_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 554
+-------------------------------
+1:49:45 PM November 2, 2018
+  :
+  :ad response added to database
+-------------------------------
+1:49:47 PM November 2, 2018
+  :
+  :fake emails added to database
+-------------------------------
+1:52:30 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:54:40 PM November 2, 2018
+  :
+  :apple
+-------------------------------
+1:55:42 PM November 2, 2018
+  :
+  :ad response not to database. No roll back required
+-------------------------------
+1:56:31 PM November 2, 2018
+  :
+  :ad response not to database. No roll back required
+-------------------------------
+2:10:25 PM November 2, 2018
+  :
+  :apple
+-------------------------------

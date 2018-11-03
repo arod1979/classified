@@ -13,7 +13,7 @@ $(document).ready(function () {
         var foundcheckbox = $(this).siblings('.input-group').find('.foundcheckbox').val();
         var stolencheckbox = $(this).siblings('.input-group').find('.stolencheckbox').val();
         var anonymoustipcheckbox = $(this).siblings('.input-group').find('.anonymoustipcheckbox').val();
-        var itemdescription = $(this).closest('.card').find('.card-title').html() + $(this).closest('.card').find('.card-text').html();
+        var itemdescription = "item" + itemid + "Title: " + $(this).closest('.card').find('.card-title').html() + " Description: " + $(this).closest('.card').find('.card-text').html();
 
 
 

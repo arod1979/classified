@@ -82,40 +82,36 @@ namespace RegistrationPractice.Controllers.WebApi
         // POST: api/Emails
         [ResponseType(typeof(Email))]
         [ValidateAntiForgeryTokenOnAllPosts]
-        public async Task<IHttpActionResult> PostEmail([FromBody]EmailRecipientsPlus emailrecipientsplus)
+        public async Task<IHttpActionResult> PostEmail([FromBody]EmailRecipients emailrecipients)
         {
 
-            EmailRecipients emailrecipients = new EmailRecipients();
-            string emailbody = emailrecipientsplus.emailbody;
-            string fromaddress = emailrecipientsplus.fromaddress;
-            string itemdescription = emailrecipientsplus.itemdescription;
 
 
 
             var _usermanager = RegistrationPractice.Startup.exportUserManager;
-            ApplicationUser publisher = await _usermanager.FindByIdAsync(emailrecipientsplus.pid);
+            ApplicationUser publisher = await _usermanager.FindByIdAsync(emailrecipients.pid);
 
             emailrecipients.pidrealemailaddress = publisher.Email;
-            ApplicationUser browser = await _usermanager.FindByIdAsync(emailrecipientsplus.bid);
+            ApplicationUser browser = await _usermanager.FindByIdAsync(emailrecipients.bid);
             emailrecipients.bidrealemailaddress = browser.Email;
             //eventually delete
             emailrecipients.bidrealemailaddress = browser.Email;
             emailrecipients.pidrealemailaddress = publisher.Email;
             //
-            emailrecipients.anonymoustipcheckbox = emailrecipientsplus.anonymoustipcheckbox;
-            emailrecipients.foundcheckbox = emailrecipientsplus.foundcheckbox;
-            emailrecipients.lostcheckbox = emailrecipientsplus.lostcheckbox;
-            emailrecipients.stolencheckbox = emailrecipientsplus.stolencheckbox;
-            emailrecipients.IdItem = emailrecipientsplus.IdItem;
+            emailrecipients.anonymoustipcheckbox = emailrecipients.anonymoustipcheckbox;
+            emailrecipients.foundcheckbox = emailrecipients.foundcheckbox;
+            emailrecipients.lostcheckbox = emailrecipients.lostcheckbox;
+            emailrecipients.stolencheckbox = emailrecipients.stolencheckbox;
+            emailrecipients.IdItem = emailrecipients.IdItem;
             emailrecipients.pidfakeemailaddress = System.IO.Path.GetRandomFileName();
             emailrecipients.bidfakeemailaddress = System.IO.Path.GetRandomFileName();
-            emailrecipients.bid = emailrecipientsplus.bid;
-            emailrecipients.pid = emailrecipientsplus.pid;
+            emailrecipients.bid = emailrecipients.bid;
+            emailrecipients.pid = emailrecipients.pid;
 
             bool wroteemailrecipients = false;
             try
             {
-                emailrecipientsplus = null;
+
                 db.EmailRecipients.Add(emailrecipients);
                 await db.SaveChangesAsync();
                 loggerwrapper.PickAndExecuteLogging("ad response added to database");
@@ -159,12 +155,13 @@ namespace RegistrationPractice.Controllers.WebApi
             if (wroteemailrecipients) //now will be writing email table
             {
                 Email email = new Email();
-                email.fromaddress = String.Format("{0}{1}", emailrecipients.pidfakeemailaddress, "@awolr.com");
+                email.fromaddress = String.Format("{0}{1}", emailrecipients.bidfakeemailaddress, "@awolr.com");
+                //email.fromaddress = "admin@awolr.com";
                 email.toaddress = publisher.Email;
-                email.emailbody = emailbody;
-
-                email.ItemDescription = itemdescription;
-                email.subject = String.Format("{0}|{1}", "Message from awolr.com", email.ItemDescription);
+                email.emailbody = emailrecipients.emailbody += String.Format("\n\nRegarding {0}{1}\n\n{2}", "https://awolr.com/Items/Details", emailrecipients.IdItem.ToString(), "Do not change the subject to this email");
+                email.IdItem = emailrecipients.IdItem;
+                email.ItemDescription = emailrecipients.itemdescription;
+                email.subject = String.Format("{0} {1} || AwolrID:{2}", "Message from awolr.com", email.ItemDescription, emailrecipients.bidfakeemailaddress);
                 try
                 {
                     db.Emails.Add(email);
@@ -189,8 +186,8 @@ namespace RegistrationPractice.Controllers.WebApi
 
             return CreatedAtRoute("DefaultApi", new
             {
-                id = emailrecipientsplus.Id
-            }, emailrecipientsplus);
+                id = emailrecipients.Id
+            }, emailrecipients);
         }
 
         // DELETE: api/Emails/5

@@ -9,19 +9,19 @@ using RegistrationPractice.Models;
 
 namespace RegistrationPractice.Entities
 {
-    public class EmailRecipientsPlus : EmailRecipients
-    {
-        public string emailbody { get; set; }
-        public string fromaddress { get; set; }
-        public string itemdescription { get; set; }
 
-    }
 
     [Table("EmailRecipients")]
     public class EmailRecipients
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required]
+        public string emailbody { get; set; }
+
+        [Required]
+        public string itemdescription { get; set; }
 
         [Required]
         public int IdItem { get; set; }
@@ -48,8 +48,11 @@ namespace RegistrationPractice.Entities
         public bool stolencheckbox { get; set; }
 
         public bool anonymoustipcheckbox { get; set; }
-    }
 
+
+        public DateTime DateCreated { get; set; } = System.DateTime.Now;
+
+    }
 
     [Table("Email")]
     public class Email
@@ -74,6 +77,8 @@ namespace RegistrationPractice.Entities
 
         public string subject { get; set; }
 
+        public DateTime DateCreated { get; set; } = System.DateTime.Now;
+
         [DisplayName("EmailID")]
         public int EmailId { get; set; }
 
@@ -89,6 +94,9 @@ namespace RegistrationPractice.Entities
 
         [DisplayName("HistoryID")]
         public long History { get; set; }
+
+        public DateTime DateCreated { get; set; } = System.DateTime.Now;
+
     }
 
     [Table("FakeEmail")]
@@ -99,5 +107,8 @@ namespace RegistrationPractice.Entities
 
         [DisplayName("FakeEmail")]
         public string FakeEmailChars { get; set; }
+
+        public DateTime DateCreated { get; set; } = System.DateTime.Now;
+
     }
 }

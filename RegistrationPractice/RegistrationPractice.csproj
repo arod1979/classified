@@ -336,7 +336,15 @@
     </Compile>
     <Compile Include="HelperMethods\GlobalControllerMethods.cs" />
     <Compile Include="Interfaces\Interfaces.cs" />
+    <Compile Include="Migrations.Email\201811021810197_timestamp.cs" />
+    <Compile Include="Migrations.Email\201811021810197_timestamp.Designer.cs">
+      <DependentUpon>201811021810197_timestamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations.Email\Configuration.cs" />
+    <Compile Include="Migrations.Item\201811021810491_timestamp.cs" />
+    <Compile Include="Migrations.Item\201811021810491_timestamp.Designer.cs">
+      <DependentUpon>201811021810491_timestamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations.Item\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -604,6 +612,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations.Email\201811021810197_timestamp.resx">
+      <DependentUpon>201811021810197_timestamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations.Item\201811021810491_timestamp.resx">
+      <DependentUpon>201811021810491_timestamp.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

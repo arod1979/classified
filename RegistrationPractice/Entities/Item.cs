@@ -103,5 +103,8 @@ namespace RegistrationPractice.Entities
 
         public string anonymoustipcheckbox { get; set; }
 
+
+        public DateTime DateCreated { get; set; } = System.DateTime.Now;
+
     }
 }
