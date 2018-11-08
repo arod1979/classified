@@ -1,0 +1,84 @@
+10:13:55 AM November 6, 2018
+  :
+  :apple
+-------------------------------
+10:17:00 AM November 6, 2018
+  :
+  :ad response added to database
+-------------------------------
+10:17:00 AM November 6, 2018
+  :
+  :fake emails added to database
+-------------------------------
+10:18:27 AM November 6, 2018
+  :
+  :ad response added to database
+-------------------------------
+10:18:27 AM November 6, 2018
+  :
+  :fake emails added to database
+-------------------------------
+10:23:53 AM November 6, 2018
+  :
+  :apple
+-------------------------------
+10:25:40 AM November 6, 2018
+  :
+  :ad response not added to database. No roll back required
+-------------------------------
+10:28:16 AM November 6, 2018
+  :
+  :apple
+-------------------------------
+10:29:30 AM November 6, 2018
+  :
+  :ad response added to database
+-------------------------------
+10:29:37 AM November 6, 2018
+  :
+  :fake emails added to database
+-------------------------------
+11:05:42 AM November 6, 2018
+  :
+  :apple
+-------------------------------
+11:06:38 AM November 6, 2018
+  :
+  :ad response added to database
+-------------------------------
+11:06:38 AM November 6, 2018
+  :
+  :fake emails added to database
+-------------------------------
+11:20:25 AM November 6, 2018
+  :
+  :ad response added to database
+-------------------------------
+11:20:25 AM November 6, 2018
+  :
+  :ad response added to database
+-------------------------------
+11:20:26 AM November 6, 2018
+  :
+  :fake emails added to database
+-------------------------------
+11:20:26 AM November 6, 2018
+  :
+  :fake emails added to database
+-------------------------------
+12:04:21 PM November 6, 2018
+  :
+  :ad response added to database
+-------------------------------
+12:04:21 PM November 6, 2018
+  :
+  :fake emails added to database
+-------------------------------
+12:15:13 PM November 6, 2018
+  :
+  :ad response added to database
+-------------------------------
+12:15:13 PM November 6, 2018
+  :
+  :fake emails added to database
+-------------------------------

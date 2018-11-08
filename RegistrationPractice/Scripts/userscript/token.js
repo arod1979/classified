@@ -13,7 +13,9 @@ $(document).ready(function () {
         var foundcheckbox = $(this).siblings('.input-group').find('.foundcheckbox').val();
         var stolencheckbox = $(this).siblings('.input-group').find('.stolencheckbox').val();
         var anonymoustipcheckbox = $(this).siblings('.input-group').find('.anonymoustipcheckbox').val();
-        var itemdescription = "item" + itemid + "Title: " + $(this).closest('.card').find('.card-title').html() + " Description: " + $(this).closest('.card').find('.card-text').html();
+        var posttype = $("[name='posttype']").val();
+        var posttypesentencecase = posttype[0].toUpperCase() + posttype.slice(1);
+        var itemdescription = posttypesentencecase + " Item |" + $(this).closest('.card').find('.card-title').html() + " Description: " + $(this).closest('.card').find('.card-text').html();
 
 
 

@@ -93,7 +93,7 @@ else
                             <input name="pid" type="hidden" class="pid" value="@item.UserId" />
                             <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"]" />
                             <input name="postid" type="hidden" value="@item.Id" />
-
+                            <input name="posttype" type="hidden" value="@ViewBag.PostType" />
 
 
                             <input type="button" name="adresponsesubmit" id="@buttonid" class="btn" style="margin:auto;display:block;" value="submit" />

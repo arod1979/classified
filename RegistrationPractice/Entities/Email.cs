@@ -60,6 +60,9 @@ namespace RegistrationPractice.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
+        public int EmailRecipientsId { get; set; }
+
         [DisplayName("From Address")]
         public string fromaddress { get; set; }
 
@@ -69,10 +72,9 @@ namespace RegistrationPractice.Entities
         [Required]
         public int IdItem { get; set; }
 
-        [Required]
         public string ItemDescription { get; set; }
 
-        [Required]
+
         public string emailbody { get; set; }
 
         public string subject { get; set; }

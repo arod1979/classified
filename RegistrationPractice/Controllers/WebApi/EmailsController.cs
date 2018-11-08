@@ -148,17 +148,18 @@ namespace RegistrationPractice.Controllers.WebApi
             }
             catch (Exception e)
             {
-                loggerwrapper.PickAndExecuteLogging("ad response not to database. No roll back required");
+                loggerwrapper.PickAndExecuteLogging("ad response not added to database. No roll back required");
                 return BadRequest(ModelState);
             }
 
             if (wroteemailrecipients) //now will be writing email table
             {
                 Email email = new Email();
+                email.EmailRecipientsId = emailrecipients.Id;
                 email.fromaddress = String.Format("{0}{1}", emailrecipients.bidfakeemailaddress, "@awolr.com");
                 //email.fromaddress = "admin@awolr.com";
                 email.toaddress = publisher.Email;
-                email.emailbody = emailrecipients.emailbody += String.Format("\n\nRegarding {0}{1}\n\n{2}", "https://awolr.com/Items/Details", emailrecipients.IdItem.ToString(), "Do not change the subject to this email");
+                email.emailbody = emailrecipients.emailbody += String.Format("\n\n Another AwoLr! {0}{1}\n\n{2}", "https://awolr.com/Items/Details/", emailrecipients.IdItem.ToString(), "Do not change the subject line of this email");
                 email.IdItem = emailrecipients.IdItem;
                 email.ItemDescription = emailrecipients.itemdescription;
                 email.subject = String.Format("{0} {1} || AwolrID:{2}", "Message from awolr.com", email.ItemDescription, emailrecipients.bidfakeemailaddress);
