@@ -395,6 +395,7 @@ namespace RegistrationPractice.Controllers
                 return RedirectToAction("Login");
             }
 
+
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
@@ -430,6 +431,7 @@ namespace RegistrationPractice.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                System.Web.HttpContext.Current.Session["UserEmail"] = model.Email;
                 return RedirectToAction("Index", "Manage");
             }
 

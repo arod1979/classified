@@ -32,7 +32,14 @@
             <ul class="navbar-nav mr-auto">
                 @if (Request.IsAuthenticated)
                 {
-                    <li>@Html.ActionLink("My AWOLR Items", "UserPosts", "Items")&nbsp&nbsp</li>
+                    var User = String.Empty;
+
+                    if (System.Web.HttpContext.Current.Session["UserEmail"] != null)
+                    {
+                        User = System.Web.HttpContext.Current.Session["UserEmail"].ToString();
+                    }
+
+                    <li>@Html.ActionLink(User + ":UserPosts", "UserPosts", "Items")&nbsp&nbsp</li>
                     <li>@Html.ActionLink("User Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
                 }
             </ul>

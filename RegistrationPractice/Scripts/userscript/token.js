@@ -39,7 +39,14 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: JSON.stringify(Email),
             success: function (data, textStatus, xhr) {
-                alert("ok");
+                $('#' + "sent" + itemid).show();
+                $('#' + "i" + itemid).collapse("hide");
+                $('#' + "message" + itemid).val("message");
+                $('#' + "message" + itemid).css('color', 'grey');
+                var id = "message" + itemid;
+
+
+
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log('Error in Operation');

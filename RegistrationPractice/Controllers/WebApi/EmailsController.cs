@@ -166,23 +166,15 @@ namespace RegistrationPractice.Controllers.WebApi
                 try
                 {
                     db.Emails.Add(email);
+                    db.HistoryIDs.Add(new HistoryID { History = 666 });
                     await db.SaveChangesAsync();
                 }
                 catch (Exception e)
                 {
-
+                    loggerwrapper.PickAndExecuteLogging("ad response and historyid666 not added to database.");
                 }
+
             }
-
-
-
-
-
-
-
-
-
-
 
 
             return CreatedAtRoute("DefaultApi", new

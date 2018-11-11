@@ -21,6 +21,7 @@ using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 using RegistrationPractice.Classes.Globals;
 using RegistrationPractice.Classes;
+using RegistrationPractice.Controllers;
 //using RegistrationPractice.Controllers.aspnetmvc;
 
 namespace RegistrationPractice
@@ -124,6 +125,7 @@ namespace RegistrationPractice
                 container.Register<RegistrationPractice.Classes.LoggerWrapper>(Lifestyle.Scoped);
 
                 container.Register<IO_Operations>(Lifestyle.Scoped);
+
 
                 container.Register<Classes.Globals.CityListing>(Lifestyle.Scoped);
 

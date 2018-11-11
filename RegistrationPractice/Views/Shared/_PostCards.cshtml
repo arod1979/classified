@@ -19,6 +19,8 @@ else
             string shareid = @dat + "share";
             string buttonid = item.Id + "button";
             string checkboxid = item.Id + "checkbox";
+            string messagesent = "sent" + item.Id;
+            string messageid = "message" + item.Id;
 
 
             <div class="col-sm-3 d-flex">
@@ -51,7 +53,7 @@ else
                             <h6 class="title">Contact Poster</h6>
                         </a>
 
-
+                        <div id="@messagesent" style="display:none; color:green">Message Queued</div>
                         <div id="@dat" class="post-id filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
 
                             @Html.AntiForgeryToken()
@@ -61,25 +63,25 @@ else
 
                                 @if (item.PostType.PostTypeText.ToLower() == "lost")
                                 {
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input lostcheckbox" id="" name="lostcheckbox">
+                                    <div class="form-check" style="display:none;">
+                                        <input type="checkbox" class=";" -check-input lostcheckbox" id="" name="lostcheckbox">
                                         <label class="form-check-label" for="exampleCheck1">Found/Return</label>
                                     </div>
                                 }
                                 @if (item.PostType.PostTypeText.ToLower() == "found")
                                 {
-                                    <div class="form-check">
+                                    <div class="form-check" style="display:none;">
                                         <input type="checkbox" class="form-check-input foundcheckbox" id="" name="foundcheckbox">
                                         <label class="form-check-label" for="exampleCheck1">Claim/Recover</label>
                                     </div>
                                 }
                                 @if (item.PostType.PostTypeText.ToLower() == "stolen")
                                 {
-                                    <div class="form-check">
+                                    <div class="form-check" style="display:none;">
                                         <input type="checkbox" class="form-check-input stolencheckbox" id="" name="stolencheckbox">
                                         <label class="form-check-label" for="exampleCheck1">Return</label>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check" style="display:none;">
                                         <input type="checkbox" class="form-check-input anonymoustipcheckbox" id="" name="anonymoustipcheckbox">
                                         <label class="form-check-label" for="exampleCheck1">Anonymous Tip</label>
                                     </div>
@@ -88,7 +90,7 @@ else
                             </div>
 
                             <textarea name="email" class="email" rows="1" cols="40" placeholder="@System.Web.HttpContext.Current.Session["UserEmail"]" readonly></textarea>
-                            <textarea name="message" class="message" rows="3" cols="40" placeholder="message" required></textarea>
+                            <textarea id="@messageid" name="message" class="message" rows="3" cols="40" placeholder="message" required></textarea>
                             <input name="bid" type="hidden" class="bid" value="@ViewBag.BrowsingUserId" />
                             <input name="pid" type="hidden" class="pid" value="@item.UserId" />
                             <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"]" />

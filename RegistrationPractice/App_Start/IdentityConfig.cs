@@ -135,7 +135,7 @@ namespace RegistrationPractice
         //    {
         //        AllowOnlyAlphanumericUserNames = false,
         //        RequireUniqueEmail = true
-        //    };
+        //    };two factor authentication
 
         //    // Configure validation logic for passwords
         //    manager.PasswordValidator = new PasswordValidator

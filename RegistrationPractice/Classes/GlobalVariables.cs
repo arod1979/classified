@@ -1,4 +1,5 @@
-﻿using RegistrationPractice.Entities;
+﻿using RegistrationPractice.Controllers;
+using RegistrationPractice.Entities;
 using RegistrationPractice.Models;
 using RegistrationPractice.Models.ViewModels;
 using System;
@@ -30,7 +31,21 @@ namespace RegistrationPractice.Classes.Globals
             }
         }
 
+        //public bool IsUserEmailConfirmed(AccountController accountController)
+        //{
+        //    string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
 
+        //    try
+        //    {
+        //        return accountController.UserManager.IsEmailConfirmedAsync(user.Id)
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //    }
+
+        //    return true;
+        //}
 
         public string servername
         {

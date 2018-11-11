@@ -10,7 +10,7 @@ using RegistrationPractice.Models;
 
 namespace RegistrationPractice.Controllers
 {
-    
+
     [Authorize]
     public class ManageController : Controller
     {
@@ -33,9 +33,9 @@ namespace RegistrationPractice.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -73,6 +73,7 @@ namespace RegistrationPractice.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+            ViewBag.EmailConfirmed = await UserManager.IsEmailConfirmedAsync(userId);
             return View(model);
         }
 
@@ -292,7 +293,7 @@ namespace RegistrationPractice.Controllers
             }
             var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
             var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes().Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider)).ToList();
-            ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
+            ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 0;
             return View(new ManageLoginsViewModel
             {
                 CurrentLogins = userLogins,
@@ -334,7 +335,7 @@ namespace RegistrationPractice.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -385,6 +386,6 @@ namespace RegistrationPractice.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

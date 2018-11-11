@@ -7,9 +7,9 @@
     </a>
     <ul class="dropdown-menu" role="menu">
         @*<li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        <li>@Html.ActionLink("Add AWOLR Item", "Create", "Items")</li>*@
-        <li>@Html.ActionLink("My AWOLR Items", "UserPosts", "Items")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Add AWOLR Item", "Create", "Items")</li>*@
+        <li>@Html.ActionLink(@System.Web.HttpContext.Current.Session["UserEmail"].ToString(), "UserPosts", "Items")</li>
         @if (Request.IsAuthenticated)
         {
             <li>
