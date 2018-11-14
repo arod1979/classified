@@ -37,13 +37,13 @@ namespace RegistrationPractice.Classes
             time = time.Replace("/", "-");
             try
             {
-                string[] extensions = new string[] { ".jpg", ".png" };
+                string[] extensions = new string[] { ".jpg", ".png", ".jpeg", ".gif" };
                 var filename = Path.GetFileName(time + Path.GetFileName(files.FileName));
                 var checkextension = Path.GetExtension(files.FileName).ToLower();
                 var filesize = (files.ContentLength / 1048576);
-                if (filesize > 2)
+                if (filesize > 10)
                 {
-                    throw new Exception("File cannot be saved. Max file extension is 5MB");
+                    throw new Exception("File cannot be saved. Max file extension is 10MB");
                 }
                 if (!extensions.Contains(checkextension))
                 {

@@ -389,9 +389,11 @@ namespace RegistrationPractice.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
+            ControllerContext.HttpContext.Session.RemoveAll();
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
+                loggerWrapper.PickAndExecuteLogging("Account.ExternalLoginCallBack(): unable to get loginInfo");
                 return RedirectToAction("Login");
             }
 

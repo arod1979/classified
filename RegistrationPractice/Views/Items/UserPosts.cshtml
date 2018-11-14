@@ -38,9 +38,9 @@
             <br />
         }
 
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Edit", "Edit", "Items", new { id = item.Id }, null) |
 
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        @Html.ActionLink("Delete", "Delete", "Items", new { id = item.Id }, null)
     </div>
 
 }

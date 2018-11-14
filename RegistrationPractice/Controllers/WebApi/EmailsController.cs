@@ -88,57 +88,59 @@ namespace RegistrationPractice.Controllers.WebApi
 
 
 
-            var _usermanager = RegistrationPractice.Startup.exportUserManager;
-            ApplicationUser publisher = await _usermanager.FindByIdAsync(emailrecipients.pid);
 
-            emailrecipients.pidrealemailaddress = publisher.Email;
-            ApplicationUser browser = await _usermanager.FindByIdAsync(emailrecipients.bid);
-            emailrecipients.bidrealemailaddress = browser.Email;
-            //eventually delete
-            emailrecipients.bidrealemailaddress = browser.Email;
-            emailrecipients.pidrealemailaddress = publisher.Email;
-            //
-            emailrecipients.anonymoustipcheckbox = emailrecipients.anonymoustipcheckbox;
-            emailrecipients.foundcheckbox = emailrecipients.foundcheckbox;
-            emailrecipients.lostcheckbox = emailrecipients.lostcheckbox;
-            emailrecipients.stolencheckbox = emailrecipients.stolencheckbox;
-            emailrecipients.IdItem = emailrecipients.IdItem;
-            emailrecipients.pidfakeemailaddress = System.IO.Path.GetRandomFileName();
-            emailrecipients.bidfakeemailaddress = System.IO.Path.GetRandomFileName();
-            emailrecipients.bid = emailrecipients.bid;
-            emailrecipients.pid = emailrecipients.pid;
 
             bool wroteemailrecipients = false;
+            ApplicationUser publisher = null;
             try
             {
+                var _usermanager = RegistrationPractice.Startup.exportUserManager;
+                publisher = await _usermanager.FindByIdAsync(emailrecipients.pid);
+
+                emailrecipients.pidrealemailaddress = publisher.Email;
+                ApplicationUser browser = await _usermanager.FindByIdAsync(emailrecipients.bid);
+                emailrecipients.bidrealemailaddress = browser.Email;
+                //eventually delete
+                emailrecipients.bidrealemailaddress = browser.Email;
+                emailrecipients.pidrealemailaddress = publisher.Email;
+                //
+                emailrecipients.anonymoustipcheckbox = emailrecipients.anonymoustipcheckbox;
+                emailrecipients.foundcheckbox = emailrecipients.foundcheckbox;
+                emailrecipients.lostcheckbox = emailrecipients.lostcheckbox;
+                emailrecipients.stolencheckbox = emailrecipients.stolencheckbox;
+                emailrecipients.IdItem = emailrecipients.IdItem;
+                emailrecipients.pidfakeemailaddress = System.IO.Path.GetRandomFileName();
+                emailrecipients.bidfakeemailaddress = System.IO.Path.GetRandomFileName();
+                emailrecipients.bid = emailrecipients.bid;
+                emailrecipients.pid = emailrecipients.pid;
 
                 db.EmailRecipients.Add(emailrecipients);
                 await db.SaveChangesAsync();
                 loggerwrapper.PickAndExecuteLogging("ad response added to database");
 
-                var f1 = new FakeEmail { FakeEmailChars = emailrecipients.pidfakeemailaddress };
-                var f2 = new FakeEmail { FakeEmailChars = emailrecipients.bidfakeemailaddress };
+                //var f1 = new FakeEmail { FakeEmailChars = emailrecipients.pidfakeemailaddress };
+                //var f2 = new FakeEmail { FakeEmailChars = emailrecipients.bidfakeemailaddress };
                 try
                 {
 
 
-                    db.FakeEmails.Add(f1);
-                    db.FakeEmails.Add(f2);
-                    await db.SaveChangesAsync();
-                    loggerwrapper.PickAndExecuteLogging("fake emails added to database");
+                    //db.FakeEmails.Add(f1);
+                    //db.FakeEmails.Add(f2);
+                    //await db.SaveChangesAsync();
+                    //loggerwrapper.PickAndExecuteLogging("fake emails added to database");
                 }
                 catch (Exception e)
                 {
                     try
                     {
-                        db.FakeEmails.Remove(f1);
-                        db.FakeEmails.Remove(f2);
-                        await db.SaveChangesAsync();
-                        loggerwrapper.PickAndExecuteLogging("fake emails removed to database");
+                        //db.FakeEmails.Remove(f1);
+                        //db.FakeEmails.Remove(f2);
+                        //await db.SaveChangesAsync();
+                        //loggerwrapper.PickAndExecuteLogging("fake emails removed to database");
                     }
                     catch (Exception f)
                     {
-                        loggerwrapper.PickAndExecuteLogging("fake emails not added to database. Delete Manually");
+                        //loggerwrapper.PickAndExecuteLogging("fake emails not added to database. Delete Manually");
                         throw new Exception();
                     }
                     throw new Exception();

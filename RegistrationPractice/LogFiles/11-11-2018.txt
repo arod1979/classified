@@ -110,3 +110,56 @@
   :
   :allanrodkin@hotmail.com=3627856c-2f8e-4d84-8309-d496d519e447
 -------------------------------
+3:45:33 PM November 11, 2018
+  :
+  :apple
+-------------------------------
+3:49:27 PM November 11, 2018
+  :
+  :apple
+-------------------------------
+3:53:17 PM November 11, 2018
+  :
+  :apple
+-------------------------------
+3:55:48 PM November 11, 2018
+  :
+  :apple
+-------------------------------
+4:04:00 PM November 11, 2018
+  :
+  :apple
+-------------------------------
+10:51:43 PM November 11, 2018
+  :
+  :allanrodkin@hotmail.com=45bbadf5-0f31-4b57-96f8-53a207eafe92
+-------------------------------
+10:56:26 PM November 11, 2018
+  :
+  :apple
+-------------------------------
+10:56:56 PM November 11, 2018
+  :
+  :allanrodkin@hotmail.com=45bbadf5-0f31-4b57-96f8-53a207eafe92
+-------------------------------
+11:06:27 PM November 11, 2018
+  :
+  :apple
+-------------------------------
+11:07:11 PM November 11, 2018
+  :
+  :allanrodkin@hotmail.com=45bbadf5-0f31-4b57-96f8-53a207eafe92
+-------------------------------
+11:07:47 PM November 11, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 72
+-------------------------------
+11:10:11 PM November 11, 2018
+  :
+  :ad response added to database
+-------------------------------
+11:10:15 PM November 11, 2018
+  :
+  :fake emails added to database
+-------------------------------

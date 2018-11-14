@@ -596,7 +596,7 @@ namespace RegistrationPractice.Controllers
             ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
             bool isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
-            if ((item != null && useremail != null && useremail != item.OwnerUserEmail) || !isAdmin)
+            if ((item != null && useremail != null && useremail != item.OwnerUserEmail) && !isAdmin)
             {
                 TempData["Message"] = "You do not have permission to modify this post.";
                 return RedirectToAction("Index", "Items", null);
@@ -708,7 +708,7 @@ namespace RegistrationPractice.Controllers
             ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
             bool isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
-            if ((item != null && useremail != null && useremail != item.OwnerUserEmail) || !isAdmin)
+            if ((item != null && useremail != null && useremail != item.OwnerUserEmail) && !isAdmin)
             {
                 TempData["Message"] = "You do not have permission to modify this post.";
                 return RedirectToAction("Index", "Items", null);
