@@ -345,6 +345,7 @@ namespace RegistrationPractice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
+            ControllerContext.HttpContext.Session.RemoveAll();
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
@@ -389,7 +390,6 @@ namespace RegistrationPractice.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            ControllerContext.HttpContext.Session.RemoveAll();
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
@@ -472,6 +472,11 @@ namespace RegistrationPractice.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session.Add("CurrentUserEmail", "");
             //allan rodkin
+            return RedirectToAction("countryindex", "items");
+        }
+
+        public ActionResult LogOff(string url)
+        {
             return RedirectToAction("countryindex", "items");
         }
 

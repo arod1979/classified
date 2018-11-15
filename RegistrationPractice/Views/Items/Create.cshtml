@@ -1,4 +1,6 @@
-﻿@model RegistrationPractice.Entities.Item
+﻿@using System.Globalization
+
+@model RegistrationPractice.Entities.Item
 
 @{
     ViewBag.Title = "Create";
@@ -26,6 +28,15 @@
         </p>
 
         <br>
+        string placeholder;
+        if (ViewBag.RemoveDatePlaceholder == null)
+        {
+            placeholder = "Specify Item " + ViewBag.posttype + " Date?";
+        }
+        else
+        {
+            placeholder = ViewBag.RemoveDatePlaceholder;
+        }
         if (ViewBag.posttype == "Lost")
         {
             <div class="www">
@@ -46,8 +57,11 @@
             </div>
             <br>
             <br />
+
+
+
             <div class="www">
-                <input type="text" name="FoundDate" id="FoundDate" placeholder="When was this lost? @System.DateTime.Now.ToShortDateString()" />
+                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" />
                 @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
                 @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
             </div>
@@ -89,8 +103,9 @@
             <br>
             <br />
             <div class="www">
-                <input type="text" name="FoundDate" id="FoundDate" placeholder="When was this lost? @System.DateTime.Now.ToShortDateString()" />
-                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger" })
+                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" />
+                @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
+                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
             </div>
             <br>
             <br />
@@ -124,9 +139,9 @@
             <br>
             <br />
             <div class="www">
-                <input type="text" name="FoundDate" id="FoundDate" placeholder="When was this lost? @System.DateTime.Now.ToShortDateString()" />
-                @*<input type="text" id="FoundDate" placeholder="When was this stolen? @System.DateTime.Now.ToShortDateString()" />*@
-                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger" })
+                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" />
+                @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
+                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
             </div>
             <br>
             <br />
@@ -148,7 +163,7 @@
             Upload Image File
         </label>
         <input type="file" class="custom-file-upload" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
-        <div>.jpg,.png(5MB MAX)</div>
+        <div>.jpg,.png(10MB MAX)</div>
 
         <div class="alert alert-danger d-none">File Could Not Be Uploaded</div>
 
@@ -186,7 +201,7 @@
 
 
         <div class="www">
-            <input type="submit" class="btn btn-info" value="Submit">
+            <input id="createform" type="submit" class="btn btn-info" value="Submit">
         </div>
         <br>
         <br />

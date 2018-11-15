@@ -55,7 +55,7 @@ namespace RegistrationPractice.Entities
         [DisplayName("What Day Did You Find it")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public virtual DateTime FoundDate { get; set; } = System.DateTime.Now;
+        public virtual DateTime FoundDate { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime CreationDate { get; set; } = System.DateTime.Now;

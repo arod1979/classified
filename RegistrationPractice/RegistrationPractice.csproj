@@ -460,6 +460,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\userscript\adresponse.js" />
+    <Content Include="Scripts\userscript\createsubmit.js" />
     <Content Include="Scripts\userscript\token.js" />
     <Content Include="Scripts\userscript\emailcontroller.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -583,6 +584,7 @@
     <Content Include="Views\Emails\Details.cshtml" />
     <Content Include="Views\Emails\Edit.cshtml" />
     <Content Include="Views\Emails\Index.cshtml" />
+    <Content Include="Views\Account\Invalidcity.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

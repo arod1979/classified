@@ -126,10 +126,6 @@ namespace RegistrationPractice.Controllers
         [CheckURLParameters(6)]
         public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, RegistrationPractice.Classes.Globals.Constants constants, CityListing cityListing, int paging = 1, bool partialmode = false) ////candidate for dependancy injection
         {
-            if (formcollection["adresponse"] == "on")
-            {
-
-            }
 
             ViewBag.country = country;
             ViewBag.province = province;
@@ -520,7 +516,12 @@ namespace RegistrationPractice.Controllers
             {
                 string province = formcollection["province"];
                 string posttypefilter = formcollection["posttypefilter"];
+                string foundate = formcollection["FoundDate"];
                 ViewBag.city_province = string.Format("{0},{1}", item.City, province);
+
+                if ((System.DateTime.Now - item.FoundDate).Days < 500)
+                    ViewBag.RemoveDatePlaceholder = item.FoundDate.ToShortDateString();
+
 
                 if (ModelState.IsValid)
                 {
@@ -588,37 +589,45 @@ namespace RegistrationPractice.Controllers
         public async Task<ActionResult> Edit(int? id, RegistrationPractice.Classes.Globals.Constants constant)
         {
 
-            string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
-
-            var itemlist = await (db.Items.Where(i => i.Id == id).Include("PostType").Include("Category").ToListAsync());
-            Item item = itemlist[0];
-
-            ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
-            bool isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
-            if ((item != null && useremail != null && useremail != item.OwnerUserEmail) && !isAdmin)
+            try
             {
-                TempData["Message"] = "You do not have permission to modify this post.";
-                return RedirectToAction("Index", "Items", null);
-            }
+                string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
 
-            if (id == null)
+                var itemlist = await (db.Items.Where(i => i.Id == id).Include("PostType").Include("Category").ToListAsync());
+                Item item = itemlist[0];
+
+                ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
+                bool isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
+                if ((item != null && useremail != null && useremail != item.OwnerUserEmail) && !isAdmin)
+                {
+                    TempData["Message"] = "You do not have permission to modify this post.";
+                    return RedirectToAction("Index", "Items", null);
+                }
+
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+
+
+                if (item == null)
+                {
+                    return HttpNotFound();
+                }
+
+                //IEnumerable<Category> categorylist = constants.GetCategorySelectList(item.PostType.PostTypeText);
+                ViewBag.CategoryID = this.GetCategorySelectList(item.PostType.PostTypeText, item);
+                ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", item.LocationID);
+                if (item.imageURL != null) ViewBag.ImageUrl = item.imageURL;
+                return View(item);
+            }
+            catch (Exception e)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                loggerwrapper.PickAndExecuteLogging("cannot edit item");
+                return View("start");
             }
-
-
-
-            if (item == null)
-            {
-                return HttpNotFound();
-            }
-
-            //IEnumerable<Category> categorylist = constants.GetCategorySelectList(item.PostType.PostTypeText);
-            ViewBag.CategoryID = this.GetCategorySelectList(item.PostType.PostTypeText, item);
-            ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText", item.LocationID);
-            if (item.imageURL != null) ViewBag.ImageUrl = item.imageURL;
-            return View(item);
         }
 
 
@@ -732,12 +741,26 @@ namespace RegistrationPractice.Controllers
         [RequiresRouteValuesAttribute("id")]
         public async Task<ActionResult> DeleteConfirmed(int? id, IO_Operations io)
         {
-            Item item = await db.Items.FindAsync(id);
-            db.Items.Remove(item);
-            io.DeleteImage(item.imageURL);
+            try
+            {
+                EmailsDbContext dbemail = new EmailsDbContext();
+                EmailRecipients emailRecipients = new EmailRecipients();
 
-            await db.SaveChangesAsync();
-            return RedirectToAction("UserPosts");
+                Item item = await db.Items.FindAsync(id);
+                db.Items.Remove(item);
+                emailRecipients = dbemail.EmailRecipients.Where(i => i.IdItem == item.Id).FirstOrDefault();
+                dbemail.EmailRecipients.Remove(emailRecipients);
+                io.DeleteImage(item.imageURL);
+                await dbemail.SaveChangesAsync();
+                await db.SaveChangesAsync();
+                return RedirectToAction("UserPosts");
+            }
+            catch (Exception e)
+            {
+                ViewBag.Message = "Item could not be deleted at this time";
+                loggerwrapper.PickAndExecuteLogging("Delete failed for item.id" + id);
+                return View("Invalidcity");
+            }
 
         }
 

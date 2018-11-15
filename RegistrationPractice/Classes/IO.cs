@@ -41,7 +41,7 @@ namespace RegistrationPractice.Classes
                 var filename = Path.GetFileName(time + Path.GetFileName(files.FileName));
                 var checkextension = Path.GetExtension(files.FileName).ToLower();
                 var filesize = (files.ContentLength / 1048576);
-                if (filesize > 10)
+                if (filesize > 1)
                 {
                     throw new Exception("File cannot be saved. Max file extension is 10MB");
                 }
