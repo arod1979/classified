@@ -428,6 +428,7 @@
     <Content Include="photos\colors3-CA-fys.png" />
     <Content Include="pictures\colors2-usa-fys.png" />
     <Content Include="pictures\colors3-CA-fys.png" />
+    <Content Include="pictures\logoSmallFile.png" />
     <Content Include="Scripts\userscript\AdminMenu.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -460,7 +461,6 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\userscript\adresponse.js" />
-    <Content Include="Scripts\userscript\createsubmit.js" />
     <Content Include="Scripts\userscript\token.js" />
     <Content Include="Scripts\userscript\emailcontroller.js" />
     <Content Include="Scripts\esm\popper-utils.js" />

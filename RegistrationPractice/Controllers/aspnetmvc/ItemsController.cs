@@ -71,7 +71,7 @@ namespace RegistrationPractice.Controllers
                 useremail = await applicationUserManager.GetEmailAsync(userid);
             }
 
-            var items = db.Items.Where(i => i.OwnerUserEmail == useremail);
+            var items = db.Items.Where(i => i.OwnerUserEmail == useremail && i.HideItem == false);
             return View(await items.ToListAsync());
         }
 
@@ -203,7 +203,7 @@ namespace RegistrationPractice.Controllers
                 ////var items = db.Items.Include(i => i.Category).Include(i => i.Location);
                 var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city).Id;
                 var dbid = constants.Getdbidbyposttype(posttypefilter);
-                items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == dbid && si.LocationID == cityid) select (Item)si);
+                items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => (si.PostTypeID == dbid && si.HideItem == false) && si.LocationID == cityid) select (Item)si);
 
 
                 if (posttypefilter == "stolen")
@@ -349,22 +349,33 @@ namespace RegistrationPractice.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Item item = await db.Items.FindAsync(id);
-
-
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
-            if (useremail != null)
+            if (item != null && useremail != null)
             {
                 if (useremail != item.OwnerUserEmail)
                     item.Visits++;
             }
 
             db.Entry(item).State = EntityState.Modified;
-            await db.SaveChangesAsync();
-            if (item == null)
+
+            try
             {
-                return HttpNotFound();
+                await db.SaveChangesAsync();
+                ViewBag.PostType = item.PostType;
+                return View(item);
             }
-            return View(item);
+            catch (Exception e)
+            {
+                loggerwrapper.PickAndExecuteLogging("Cannot save visit increase in details method");
+                return View(item);
+            }
+
+
         }
 
         private IEnumerable<SelectListItem> GetCategorySelectList(string posttypefilter, Item item = null)
@@ -522,23 +533,31 @@ namespace RegistrationPractice.Controllers
                 if ((System.DateTime.Now - item.FoundDate).Days < 500)
                     ViewBag.RemoveDatePlaceholder = item.FoundDate.ToShortDateString();
 
+                bool textContainsProfanity1 = (item.Description != null) && pf.ValidateTextContainsProfanity(item.Description);
+                bool textContainsProfanity2 = (item.AdditionalNotes != null) && pf.ValidateTextContainsProfanity(item.AdditionalNotes);
+                bool textContainsProfanity3 = (item.LostLocation != null) && pf.ValidateTextContainsProfanity(item.LostLocation);
+                bool anyprofanity = textContainsProfanity1 || textContainsProfanity2 || textContainsProfanity3;
+                if (textContainsProfanity1)
+                {
+                    ModelState.AddModelError(string.Empty, "Description contains profanity. Cannot submit.");
+                }
+                if (textContainsProfanity2)
+                {
+                    ModelState.AddModelError(string.Empty, "Additional Notes contains profanity. Cannot submit.");
+                }
+                if (textContainsProfanity3)
+                {
+                    ModelState.AddModelError(string.Empty, "Location contains profanity. Cannot submit.");
+                }
+                if (anyprofanity)
+                {
+                    goto imageproblem;
+                }
 
                 if (ModelState.IsValid)
                 {
-                    bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description) || pf.ValidateTextContainsProfanity(item.AdditionalNotes);
-                    if (textContainsProfanity)
-                    {
-                        //item.Description = pf.CleanTextProfanity(item.Description);
-                        ViewBag.Message = "Post contains profanity. Cannot submit.";
-                        return RedirectToAction("FAQ", "Account");
-
-                    }
-
-
-
                     try
                     {
-
                         if (files != null)
                         {
                             string imageUrl;
@@ -567,6 +586,7 @@ namespace RegistrationPractice.Controllers
 
                 }
                 imageproblem:
+
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
                 ViewBag.city_province = string.Format("{0},{1}", item.City, province);
                 ViewBag.Province = province;
@@ -645,24 +665,30 @@ namespace RegistrationPractice.Controllers
             }
 
 
-
-
+            bool textContainsProfanity1 = (item.Description != null) && pf.ValidateTextContainsProfanity(item.Description);
+            bool textContainsProfanity2 = (item.AdditionalNotes != null) && pf.ValidateTextContainsProfanity(item.AdditionalNotes);
+            bool textContainsProfanity3 = (item.LostLocation != null) && pf.ValidateTextContainsProfanity(item.LostLocation);
+            bool anyprofanity = textContainsProfanity1 || textContainsProfanity2 || textContainsProfanity3;
+            if (textContainsProfanity1)
+            {
+                ModelState.AddModelError(string.Empty, "Description contains profanity. Cannot submit.");
+            }
+            if (textContainsProfanity2)
+            {
+                ModelState.AddModelError(string.Empty, "Additional Notes contains profanity. Cannot submit.");
+            }
+            if (textContainsProfanity3)
+            {
+                ModelState.AddModelError(string.Empty, "Location contains profanity. Cannot submit.");
+            }
+            if (anyprofanity)
+            {
+                goto imageproblem;
+            }
 
             if (ModelState.IsValid)
             {
                 db.Entry(item).State = EntityState.Modified;
-                //profanity check
-                bool textContainsProfanity = pf.ValidateTextContainsProfanity(item.Description) || pf.ValidateTextContainsProfanity(item.AdditionalNotes);
-                if (textContainsProfanity)
-                {
-                    //item.Description = pf.CleanTextProfanity(item.Description);
-                    Item item2 = await db.Items.FindAsync(item.Id);
-                    db.Items.Remove(item2);
-                    await db.SaveChangesAsync();
-
-                    ViewBag.Message = "Post contains profanity. Cannot submit.";
-                    return RedirectToAction("FAQ", "Account");
-                }
 
                 try
                 {
@@ -747,12 +773,37 @@ namespace RegistrationPractice.Controllers
                 EmailRecipients emailRecipients = new EmailRecipients();
 
                 Item item = await db.Items.FindAsync(id);
-                db.Items.Remove(item);
-                emailRecipients = dbemail.EmailRecipients.Where(i => i.IdItem == item.Id).FirstOrDefault();
-                dbemail.EmailRecipients.Remove(emailRecipients);
-                io.DeleteImage(item.imageURL);
-                await dbemail.SaveChangesAsync();
-                await db.SaveChangesAsync();
+                db.Entry(item).State = EntityState.Modified;
+                try
+                {
+                    item.HideItem = true;
+                    await db.SaveChangesAsync();
+                    io.DeleteImage(item.imageURL);
+
+                }
+                catch (Exception e)
+                {
+                    loggerwrapper.PickAndExecuteLogging("Cannot delete item:");
+                }
+
+                try
+                {
+                    emailRecipients = dbemail.EmailRecipients.Where(i => i.IdItem == item.Id).FirstOrDefault();
+                    if (emailRecipients != null)
+                    {
+                        dbemail.EmailRecipients.Remove(emailRecipients);
+                        await dbemail.SaveChangesAsync();
+                    }
+                }
+                catch (Exception e)
+                {
+                    loggerwrapper.PickAndExecuteLogging("Cannot delete emailrecipient:");
+
+                }
+
+
+
+
                 return RedirectToAction("UserPosts");
             }
             catch (Exception e)

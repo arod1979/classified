@@ -1,0 +1,8 @@
+2:51:20 PM November 18, 2018
+  :
+  :apple
+-------------------------------
+2:53:40 PM November 18, 2018
+  :
+  :ad response not added to database. No roll back required
+-------------------------------

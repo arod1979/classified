@@ -13,7 +13,7 @@
         {
             @Html.AntiForgeryToken()
 
-            <label style="display:block;text-align:center;">Sign-In</label>
+            <label style="display:block;text-align:center;" class="white">Sign-In</label>
 
             <input type="text" placeholder="Enter your email" name="email">
 
@@ -22,14 +22,15 @@
             <input type="submit" name="submit" value="Login">
 
             <p>
-                @Html.ActionLink("Register as a new user", "Register")
+                @Html.ActionLink("Register as a new user", "Register", null, new { @class = "white" })
             </p>
             //Enable this once you have account confirmation enabled for password reset functionality
 
 
             <p>
-                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                @Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "white" })
             </p>
+
 
 
 

@@ -1,4 +1,6 @@
-
+.white {
+    color: white !important;
+}
 
 .form-check {
     margin: auto;
@@ -257,7 +259,19 @@ h7 {
         border-radius: 20px;
         text-align: left;
         padding: 15px;
-        background-color: #eee;
+        background-color: saddlebrown;
+    }
+
+    .lostitems2 {
+        border: 1px solid black;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 3%;
+        margin-bottom: 8%;
+        border-radius: 20px;
+        text-align: left;
+        padding: 15px;
+        background-color: white;
     }
 
     a.awolr-logo {
@@ -273,7 +287,7 @@ h7 {
         margin-left: 5%;
         margin-right: 5%;
         border: 1px solid black;
-        background-color: #eee;
+        background-color: white;
     }
 
     h1.city {
@@ -338,7 +352,19 @@ a.awolr-logo {
         border-radius: 20px;
         text-align: left;
         padding: 15px;
-        background-color: #eee;
+        background-color: saddlebrown;
+    }
+
+    .lostitems2 {
+        border: 1px solid black;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-top: 3%;
+        margin-bottom: 8%;
+        border-radius: 20px;
+        text-align: left;
+        padding: 15px;
+        background-color: saddlebrown;
     }
 
     a.awolr-logo {
@@ -353,7 +379,7 @@ a.awolr-logo {
         margin-left: 25%;
         margin-right: 25%;
         border: 1px solid black;
-        background-color: #eee;
+        background-color: white;
     }
 
     h1.city {

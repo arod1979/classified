@@ -41,7 +41,7 @@
         {
             <div class="www">
 
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you lose?" } })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you lose?" }, @id = "Description" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
             <br /><br />
@@ -68,7 +68,7 @@
             <br>
             <br />
             <div class="www">
-                @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input", rows = "3" })
+                @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input", rows = "3", @id = "Notes" })
                 @*@Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input" } })*@
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
@@ -83,7 +83,7 @@
         if (ViewBag.posttype == "Found")
         {
             <div class="www">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you find?" } })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you find?" }, @id = "Description" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
             <br>
@@ -110,7 +110,7 @@
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", name = "FoundDate" } })
+                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", name = "FoundDate", @id = "Notes" } })
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
 
@@ -121,7 +121,7 @@
         if (ViewBag.posttype == "Stolen")
         {
             <div class="www">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What was stolen?" } })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What was stolen?" }, @id = "Description" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
             <br>
@@ -146,7 +146,7 @@
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?" } })
+                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @id = "Notes" } })
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
             <br>
@@ -163,7 +163,7 @@
             Upload Image File
         </label>
         <input type="file" class="custom-file-upload" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
-        <div>.jpg,.png(10MB MAX)</div>
+        <div>jpg,png,gif(10MB MAX)</div>
 
         <div class="alert alert-danger d-none">File Could Not Be Uploaded</div>
 

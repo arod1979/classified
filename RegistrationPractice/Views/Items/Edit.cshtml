@@ -25,7 +25,6 @@
         @Html.HiddenFor(item => item.LocationID)
         @Html.HiddenFor(item => item.CategoryID)
         <input type="hidden" id="UpdatedActionsFileUpload" name="UpdatedActionsFileUpload" value="none" />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <h1>Edit Form</h1>
         <div class="www">
@@ -45,14 +44,14 @@
             @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { @class = "form-control labelontop" } })
             @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
         </div>
-        <br /><br />
+
 
         <div class="www">
             <label>Description</label>
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control labelontop" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
-        <br /><br />
+
         <div class="www">
             <label>AdditionalNotes</label>
             @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "labelontop input text-box", rows = "3" })

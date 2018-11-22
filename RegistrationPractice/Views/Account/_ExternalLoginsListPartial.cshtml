@@ -1,6 +1,5 @@
 ﻿@model RegistrationPractice.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
-
 @*<h4>Use another service to log in.</h4>*@
 <hr />
 @{
@@ -20,7 +19,7 @@
         {
             @Html.AntiForgeryToken()
             <div id="socialLoginList">
-                Use Another Log-In Service<br /><br />
+                <label class="white">Use Another Log-In Service</label>
                 <p>
                     @foreach (AuthenticationDescription p in loginProviders)
                     {

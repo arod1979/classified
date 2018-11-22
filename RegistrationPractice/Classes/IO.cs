@@ -41,14 +41,17 @@ namespace RegistrationPractice.Classes
                 var filename = Path.GetFileName(time + Path.GetFileName(files.FileName));
                 var checkextension = Path.GetExtension(files.FileName).ToLower();
                 var filesize = (files.ContentLength / 1048576);
-                if (filesize > 1)
-                {
-                    throw new Exception("File cannot be saved. Max file extension is 10MB");
-                }
+
                 if (!extensions.Contains(checkextension))
                 {
                     throw new Exception("File cannot be saved. Invalid extension.");
                 }
+
+                if (filesize >= 10)
+                {
+                    throw new Exception("File cannot be saved. Max file extension is 10MB");
+                }
+
                 var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/photos"), filename);
                 Loggers.Logger.Write("path");
                 imageUrl = servername + "/photos/" + filename;

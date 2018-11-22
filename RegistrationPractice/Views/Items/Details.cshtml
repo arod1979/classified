@@ -1,5 +1,5 @@
 ﻿@model RegistrationPractice.Entities.Item
-
+<link href="/Content/projectcards.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Details";
 }
@@ -7,7 +7,7 @@
 @section MetaContent
 {
     <meta property="og:title" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
-    <meta property="og:url" content="https://www.awolr.com/items/details/@Model.Id" />
+    <meta property="og:url" content="https://www.awolr.com/Models/details/@Model.Id" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
     <meta property="og:image:secure_url" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
@@ -17,41 +17,181 @@
         string a = String.Format("{0}{1}", "https://awolr.com", Model.imageURL);
         <meta property="og:image" content="@a" />
     }
+}
+
+@*<div class="lostModels">
+
+        <strong>PostType:</strong> @Model.PostType.PostTypeText <br /><br />
+
+        <strong>Category:</strong> @Model.Category.CategoryText <br /><br />
+
+        <strong>Item Location:</strong> @Model.Location.LocationText <br /><br />
+
+        <strong>What:</strong> @Model.Description <br /><br />
+
+        <strong>Where:</strong> @Model.LostLocation<br /><br />
+
+        <strong>When:</strong> @Model.FoundDate.ToShortDateString()<br><br>
+
+        <strong>Description:</strong> @Model.AdditionalNotes		<br><br>
+
+        @if (Model.PostType.PostTypeText != "found")
+        {
+            <strong>Reward $</strong> @Model.ItemReward<br><br>
+        }
 
 
+        @if (Model.imageURL != null)
+        {
+            <img id="detailsimage" src="@Html.DisplayFor(modelItem => Model.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => Model.imageTitle)" />
+            <br />
+            <br />
+        }
+    </div>*@
 
 
-
+@{
+    string dat = "i" + Model.Id;
+    string shareid = @dat + "share";
+    string buttonid = Model.Id + "button";
+    string checkboxid = Model.Id + "checkbox";
+    string messagesent = "sent" + Model.Id;
+    string messageid = "message" + Model.Id;
 
 }
 
-<div class="lostitems">
+<div class="container">
+    <div class="row" style="justify-content:center;">
 
-    <strong>PostType:</strong> @Model.PostType.PostTypeText <br /><br />
+        <div class="col-sm-3 d-flex">
 
-    <strong>Category:</strong> @Model.Category.CategoryText <br /><br />
-
-    <strong>Item Location:</strong> @Model.Location.LocationText <br /><br />
-
-    <strong>What:</strong> @Model.Description <br /><br />
-
-    <strong>Where:</strong> @Model.LostLocation<br /><br />
-
-    <strong>When:</strong> @Model.FoundDate.ToShortDateString()<br><br>
-
-    <strong>Description:</strong> @Model.AdditionalNotes		<br><br>
-
-    @if (Model.PostType.PostTypeText != "found")
-    {
-        <strong>Reward $</strong> @Model.ItemReward<br><br>
-    }
+            <div class="card project project-default">
 
 
-    @if (Model.imageURL != null)
-    {
-        <img id="detailsimage" src="@Html.DisplayFor(modelItem => Model.imageURL)" width="100%" alt="@Html.DisplayFor(modelItem => Model.imageTitle)" />
-        <br />
-        <br />
-    }
-</div>
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Description | Category:@Model.Category.CategoryText</h5>
+                    <p class="card-text">@Model.AdditionalNotes</p>
+                </div>
+                @if (Model.imageURL != null)
+                {
+                    <img class="card-img-top" src=@Model.imageURL alt="@Model.imageURL">
+                }
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Lost: @Model.LostLocation</li>
+                    <li class="list-group-item">Reward: @Model.ItemReward</li>
+                    <li class="list-group-item">Created: @Model.CreationDate.ToString("MM/dd/yyyy")</li>
+                    <li class="list-group-item">Share Views: @Model.Visits</li>
+                </ul>
+
+                @if (Request.IsAuthenticated)
+                {
+
+                    <a href="#@dat" data-toggle="collapse">
+                        <i class="icon-action fa fa-chevron-down"></i>
+                        <h6 class="title">Contact Poster</h6>
+                    </a>
+
+                    <div id="@messagesent" style="display:none; color:green">Message Queued</div>
+                    <div id="@dat" class="post-id filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="input-group">
+
+
+                            @if (Model.PostType.PostTypeText.ToLower() == "lost")
+                            {
+                                <div class="form-check" style="display:none;">
+                                    <input type="checkbox" class=";" -check-input lostcheckbox" id="" name="lostcheckbox">
+                                    <label class="form-check-label" for="exampleCheck1">Found/Return</label>
+                                </div>
+                            }
+                            @if (Model.PostType.PostTypeText.ToLower() == "found")
+                            {
+                                <div class="form-check" style="display:none;">
+                                    <input type="checkbox" class="form-check-input foundcheckbox" id="" name="foundcheckbox">
+                                    <label class="form-check-label" for="exampleCheck1">Claim/Recover</label>
+                                </div>
+                            }
+                            @if (Model.PostType.PostTypeText.ToLower() == "stolen")
+                            {
+                                <div class="form-check" style="display:none;">
+                                    <input type="checkbox" class="form-check-input stolencheckbox" id="" name="stolencheckbox">
+                                    <label class="form-check-label" for="exampleCheck1">Return</label>
+                                </div>
+                                <div class="form-check" style="display:none;">
+                                    <input type="checkbox" class="form-check-input anonymoustipcheckbox" id="" name="anonymoustipcheckbox">
+                                    <label class="form-check-label" for="exampleCheck1">Anonymous Tip</label>
+                                </div>
+
+                            }
+                        </div>
+
+                        <textarea name="email" class="email" rows="1" cols="40" placeholder="@System.Web.HttpContext.Current.Session["UserEmail"]" readonly></textarea>
+                        <textarea id="@messageid" name="message" class="message" rows="3" cols="40" placeholder="message" required></textarea>
+                        <input name="bid" type="hidden" class="bid" value="@ViewBag.BrowsingUserId" />
+                        <input name="pid" type="hidden" class="pid" value="@Model.UserId" />
+                        <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"]" />
+                        <input name="postid" type="hidden" value="@Model.Id" />
+                        <input name="posttype" type="hidden" value="@ViewBag.PostType" />
+
+
+                        <input type="button" name="adresponsesubmit" id="@buttonid" class="btn" style="margin:auto;display:block;" value="submit" />
+
+
+
+
+                    </div>
+
+
+                }
+                else
+                {
+                    string returnurl = HttpContext.Current.Request.Url.AbsolutePath;
+                    <p>@Html.ActionLink("Login", "Login", "Account", new { returnUrl = returnurl }, null) to contact poster.</p>
+                }
+
+
+                <a href="#@shareid" data-toggle="collapse">
+                    <i class="icon-action fa fa-chevron-down"></i>
+                    <h6 class="title">share</h6>
+                </a>
+
+
+                <div id="@shareid" class="post-id filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
+                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://www.awolr.com/Models/details/@Model.Id" data-a2a-title="https://awolr.com @Model.PostType.PostTypeText: @Model.Description">
+                        @*<a href="https://www.addtoany.com/share"> <i class="fa-share fas"></i></a>*@
+                        <a class="a2a_button_facebook"></a>
+                        <a class="a2a_button_twitter"></a>
+                        <a class="a2a_button_google_plus"></a>
+                        <a class="a2a_button_reddit"></a>
+                        <a class="a2a_button_email"></a>
+                        <a class="a2a_button_google_gmail"></a>
+                        <a class="a2a_button_sms"></a>
+                        <a class="a2a_button_copy_link"></a>
+                        <a class="a2a_button_linkedin"></a>
+                    </div>
+
+                </div>
+
+                <!-- AddToAny BEGIN -->
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h7>Id: @Model.Id<h7 /></li>
+                </ul>
+            </div> @*//end of card body*@
+        </div> @*//end of col*@
+
+
+
+    </div>
+
+    <script>
+
+        var a2a_config = a2a_config || {};
+        a2a_config.onclick = 1;
+    </script>
+
+
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+
 

@@ -55,7 +55,7 @@ namespace RegistrationPractice.Entities
         [DisplayName("What Day Did You Find it")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public virtual DateTime FoundDate { get; set; }
+        public virtual DateTime FoundDate { get; set; } = System.DateTime.Now;
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public virtual DateTime CreationDate { get; set; } = System.DateTime.Now;
@@ -91,8 +91,9 @@ namespace RegistrationPractice.Entities
 
         public string imageTitle { get; set; }
 
+        [Required]
         [Display(Name = "Display profile Image")]
-        public bool? HideItem { get; set; }
+        public bool? HideItem { get; set; } = false;
 
 
         public string lostcheckbox { get; set; }
