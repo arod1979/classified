@@ -22,6 +22,12 @@ namespace RegistrationPractice
                 defaults: new { controller = "Items", action = "Details" }
             );
 
+            routes.MapRoute(
+                name: "ItemDetailsState",
+                url: "Items/Details/",
+                defaults: new { controller = "Items", action = "Details" }
+            );
+
 
 
 

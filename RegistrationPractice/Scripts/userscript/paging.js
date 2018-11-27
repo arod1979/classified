@@ -10,9 +10,18 @@ $(document).ready(function () {
         $("#paging").val(lastChar);
 
         $("#pagingform").trigger('submit');
+
+
+    });
+
+    $('#pagingform').on('click', '.search-button', function (event) {
+
+        $("#pagingform").trigger('submit');
     });
 
     $(".search-button").click(function () {
+
+
         $("#paging").val("1");
     }
     );

@@ -46,10 +46,14 @@ namespace RegistrationPractice.Entities
 
         [Range(20, 10000)]
         [DisplayName("Item Reward")]
-        //[DataType(dataType: DataType.Currency)]
+        [DataType(DataType.Currency)]
         //[DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#.#}")]
         public decimal ItemReward { get; set; }
+
+        [MaxLength(25)] //actually serial number
+        public string EmailRelayAddress { get; set; }
+
 
         [Required]
         [DisplayName("What Day Did You Find it")]
@@ -77,7 +81,7 @@ namespace RegistrationPractice.Entities
 
 
 
-        public string EmailRelayAddress { get; set; }
+
 
 
         [Required]

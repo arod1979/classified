@@ -10,14 +10,14 @@
 
 <br>
 @*@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data, textStatus, jqxhr )" }, new { @id = "pagingform" }))*@
-@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data )" }, new { @id = "pagingform" }))
+@using (Ajax.BeginForm("CityIndex", "Items", new { posttypefilter = ViewBag.PostType, p = ViewBag.paging }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data )" }, new { @id = "pagingform" }))
 {
     if (ViewBag.detailsview == false)
     {
 
         ViewBag.Title = "AwolR City Index";
 
-        <h1 class="city">@ViewBag.city_province</h1>
+        <h1 class="city" onclick="window.history.back();">@ViewBag.city_province</h1>
         <h1 class="lfs">Lost</h1>
         <div class="text">
             <li>
@@ -62,7 +62,7 @@
     else
     {
         ViewBag.Title = ViewBag.city + " Listings";
-        <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
+        <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city" onclick="window.history.back();"><h1 class="city">@ViewBag.city_province</h1></a>
 
 
 

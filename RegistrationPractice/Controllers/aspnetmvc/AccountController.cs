@@ -61,7 +61,14 @@ namespace RegistrationPractice.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            if (string.IsNullOrEmpty(returnUrl) && Request.UrlReferrer != null)
+                returnUrl = Server.UrlEncode(Request.UrlReferrer.PathAndQuery);
+
+            if (Url.IsLocalUrl(returnUrl) && !string.IsNullOrEmpty(returnUrl))
+            {
+                ViewBag.ReturnURL = returnUrl;
+            }
+
             return View();
         }
 
@@ -347,7 +354,7 @@ namespace RegistrationPractice.Controllers
         {
             ControllerContext.HttpContext.Session.RemoveAll();
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl, }));
         }
 
         //
@@ -569,29 +576,52 @@ namespace RegistrationPractice.Controllers
 
         internal class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri)
-                : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri, string state = null)
+                : this(provider, redirectUri, null, state)
             {
             }
 
-            public ChallengeResult(string provider, string redirectUri, string userId)
+            public ChallengeResult(string provider, string redirectUri, string userId, string state = null)
             {
+
                 LoginProvider = provider;
                 RedirectUri = redirectUri;
                 UserId = userId;
+
+
+
+
+
+
             }
 
             public string LoginProvider { get; set; }
             public string RedirectUri { get; set; }
             public string UserId { get; set; }
+            public string State { get; set; }
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
+
+                AuthenticationProperties properties = null;
+                //if (RedirectUri.IndexOf("state") < -1)
+                //{
+                //    string url = RedirectUri.Substring(0, RedirectUri.IndexOf("state") - 3);
+                //    string statestring = RedirectUri.Substring(RedirectUri.IndexOf("state") + 8);
+
+                //    properties = new AuthenticationProperties { RedirectUri = url };
+                //    properties.Dictionary["state"] = statestring;
+                //}
+                //else
+                //{
+                properties = new AuthenticationProperties { RedirectUri = RedirectUri };
+                //}
                 if (UserId != null)
                 {
                     properties.Dictionary[XsrfKey] = UserId;
                 }
+                properties.Dictionary[XsrfKey] = "303700687093451";
+
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
 

@@ -124,68 +124,20 @@ namespace RegistrationPractice.Controllers
         // GET: Items
         [AllowAnonymous]
         [CheckURLParameters(6)]
-        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, RegistrationPractice.Classes.Globals.Constants constants, CityListing cityListing, int paging = 1, bool partialmode = false) ////candidate for dependancy injection
+        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, RegistrationPractice.Classes.Globals.Constants constants, CityListing cityListing, int p = 1, int rp = 0) ////candidate for dependancy injection
         {
-
+            if (rp > p)
+                p = rp;
             ViewBag.country = country;
             ViewBag.province = province;
             ViewBag.city = city;
             ViewBag.city_province = string.Format("{0},{1}", city, province);
             ViewBag.PostType = posttypefilter;
             ViewBag.server = constants.servername;
-
+            Session["returnurl"] = HttpContext.Request.RawUrl;
             if (search_or_post != null && search_or_post.ToLower() == "post")
                 return View("Create");
 
-            List<KeyValuePair<string, string[]>> list = null;
-
-            //loggerwrapper.PickAndExecuteLogging(String.Format("{0}:{1}>{2},{3}->{4},{5}->{6},{7}->{8},{9}->{10}", "CityIndexLog", "province", province, "city", city, "posttypefiler", posttypefilter,
-            //   "Action", cityindex, "Search", search_or_post));
-
-            //if (!cityListing.countrylist.Contains(country.ToLower()))
-            //{
-            //    ViewBag.Message = "Invalid country";
-            //    return View("invalidcity");
-            //}
-
-
-            //string country_abbreviation = null;
-            //if (country.ToLower() == "canada")
-            //{
-            //    country_abbreviation = "CD";
-            //    list = cityListing.canadian_cities;
-            //}
-            //else if (country.ToLower() == "USA")
-            //{
-            //    country_abbreviation = "US";
-            //    list = cityListing.canadian_cities;
-            //}
-            //string key = string.Format("{0}_{1}", province, country_abbreviation);
-
-            //try
-            //{
-            //    var single = list.Where(entry => entry.Key == key).SingleOrDefault();
-            //    if (single.Key == null)
-            //    {
-            //        ViewBag.Message = "Invalid locale";
-            //        return View("invalidcity");
-            //    }
-            //    else
-            //    {
-            //        bool validcity = single.Value.Contains(city.ToLower());
-            //        if (!validcity)
-            //        {
-            //            ViewBag.Message = "Invalid country";
-            //            return View("invalidcity");
-            //        }
-
-            //    }
-
-            //}
-            //catch (Exception e)
-            //{
-            //    loggerwrapper.PickAndExecuteLogging(e.ToString());
-            //}
 
 
             IQueryable<Item> items = null;
@@ -247,7 +199,7 @@ namespace RegistrationPractice.Controllers
                     try
                     {
 
-                        paging = System.Convert.ToInt32(formcollection["paging"]);
+                        p = System.Convert.ToInt32(formcollection["paging"]);
 
 
                     }
@@ -258,7 +210,7 @@ namespace RegistrationPractice.Controllers
                     }
                 }
 
-                if ((itemsperpage * paging) > totalitems)
+                if ((itemsperpage * p) > totalitems)
                 {
                     totalimagescurrentpage = totalitems;
                 }
@@ -266,7 +218,7 @@ namespace RegistrationPractice.Controllers
                 {
                     totalimagescurrentpage = itemsperpage;
                 }
-                int skip = (paging - 1) * itemsperpage;
+                int skip = (p - 1) * itemsperpage;
 
 
                 items = items.OrderBy(item => item.CreationDate).Skip(skip).Take(totalimagescurrentpage);
@@ -275,7 +227,7 @@ namespace RegistrationPractice.Controllers
                 //items needed to render _PostCards
                 ViewBag.itemsperpage = itemsperpage;
                 ViewBag.totalitems = totalitems;
-                ViewBag.paging = paging;
+                ViewBag.paging = p;
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter.ToLower());
                 //--------------------------
 
@@ -285,6 +237,7 @@ namespace RegistrationPractice.Controllers
                 if (Request.IsAjaxRequest())
                 {
                     return PartialView("_PostCards", await items.ToListAsync());
+
                 }
                 else
                     return View(await items.ToListAsync());
@@ -340,15 +293,25 @@ namespace RegistrationPractice.Controllers
         }
 
         // GET: Items/Details/5
-        [RequiresRouteValuesAttribute("id")]
+        //[RequiresRouteValuesAttribute("id")]
         [AllowAnonymous]
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(int? state)
         {
-            if (id == null)
+
+
+            string a = null;
+            if (RouteData.Values["state"] != null)
+            {
+                a = RouteData.Values["state"].ToString();
+            }
+
+
+
+            if (state == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = await db.Items.FindAsync(id);
+            Item item = await db.Items.FindAsync(state);
             if (item == null)
             {
                 return HttpNotFound();
@@ -384,13 +347,13 @@ namespace RegistrationPractice.Controllers
             switch (posttypefilter)
             {
                 case "lost":
-                    posttypeid = constants.lostdbid;
+                    posttypeid = 1;
                     break;
                 case "found":
-                    posttypeid = constants.founddbid;
+                    posttypeid = 2;
                     break;
                 case "stolen":
-                    posttypeid = constants.stolendbid;
+                    posttypeid = 3;
                     break;
                 default:
                     loggerwrapper.PickAndExecuteLogging("Could Not Filter By posttype");
@@ -450,14 +413,14 @@ namespace RegistrationPractice.Controllers
                 {
                     case "Stolen":
 
-                        item.PostTypeID = constants.stolendbid;
+                        item.PostTypeID = 3;
                         item.ItemReward = 0;
                         break;
                     case "Found":
-                        item.PostTypeID = constants.founddbid;
+                        item.PostTypeID = 2;
                         break;
                     case "Lost":
-                        item.PostTypeID = constants.lostdbid;
+                        item.PostTypeID = 1;
                         break;
                 }
 
@@ -615,6 +578,10 @@ namespace RegistrationPractice.Controllers
 
                 var itemlist = await (db.Items.Where(i => i.Id == id).Include("PostType").Include("Category").ToListAsync());
                 Item item = itemlist[0];
+                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+                item.PostType.PostTypeText = textInfo.ToTitleCase(item.PostType.PostTypeText);
+
+
 
                 ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();

@@ -146,6 +146,12 @@
             <br>
             <br />
             <div class="www">
+
+                @Html.EditorFor(model => model.EmailRelayAddress, new { htmlAttributes = new { placeholder = "Serial #" }, @id = "SerialNumber" })
+                @Html.ValidationMessageFor(model => model.EmailRelayAddress, "", new { @class = "text-danger" })
+            </div>
+            <br /><br />
+            <div class="www">
                 @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @id = "Notes" } })
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
@@ -163,7 +169,7 @@
             Upload Image File
         </label>
         <input type="file" class="custom-file-upload" name="files" id="files" multiple="multiple" accept=".jpg,.jpeg,.png" file-upload />
-        <div>jpg,png,gif(10MB MAX)</div>
+        @*<div>jpg,png,gif(10MB MAX)</div>*@
 
         <div class="alert alert-danger d-none">File Could Not Be Uploaded</div>
 

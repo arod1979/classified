@@ -69,8 +69,8 @@
 
 
                 <div class="card-body">
-                    <h5 class="card-title">@Model.Description | Category:@Model.Category.CategoryText</h5>
-                    <p class="card-text">@Model.AdditionalNotes</p>
+                    <h5 class="card-title">@Model.Description</h5>
+
                 </div>
                 @if (Model.imageURL != null)
                 {
@@ -78,9 +78,15 @@
                 }
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Lost: @Model.LostLocation</li>
-                    <li class="list-group-item">Reward: @Model.ItemReward</li>
+                    <li class="list-group-item"><b style="color:#85bb65">REWARD: $@Model.ItemReward</b></li>
                     <li class="list-group-item">Created: @Model.CreationDate.ToString("MM/dd/yyyy")</li>
                     <li class="list-group-item">Share Views: @Model.Visits</li>
+                    <li class="list-group-item">Additional Notes: @Model.AdditionalNotes</li>
+                    <li class="list-group-item">Category: @Model.Category.CategoryText</li>
+                    @if (@Model.EmailRelayAddress != null)
+                    {
+                        <li class="list-group-item">Serial Number: @Model.EmailRelayAddress</li>
+                    }
                 </ul>
 
                 @if (Request.IsAuthenticated)
@@ -147,14 +153,18 @@
                 }
                 else
                 {
-                    string returnurl = HttpContext.Current.Request.Url.AbsolutePath;
+                    //Uri theRealURL = new Uri(HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.RawUrl);
+
+
+                    string returnurl = HttpContext.Current.Request.Url.PathAndQuery;
+
                     <p>@Html.ActionLink("Login", "Login", "Account", new { returnUrl = returnurl }, null) to contact poster.</p>
                 }
 
 
                 <a href="#@shareid" data-toggle="collapse">
                     <i class="icon-action fa fa-chevron-down"></i>
-                    <h6 class="title">share</h6>
+                    <h6 class="title">Share/Help</h6>
                 </a>
 
 
@@ -185,6 +195,18 @@
 
     </div>
 
+    @{ string redirect = null;
+        if (Session["returnurl"] != null)
+        {
+            redirect = Session["returnurl"].ToString();
+
+
+        }
+    }
+    @if (redirect != null)
+    {
+        <a href="@redirect">Back To Listings</a>
+    }
     <script>
 
         var a2a_config = a2a_config || {};

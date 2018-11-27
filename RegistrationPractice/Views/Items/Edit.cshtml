@@ -30,6 +30,12 @@
         <div class="www">
             <b> @Model.PostType.PostTypeText </b>
         </div>
+        if (Model.EmailRelayAddress != null)
+        {
+            <div class="www">
+                <b>Serial: @Model.EmailRelayAddress</b>
+            </div>
+        }
         <div class="www">
             <b>@Model.Category.CategoryText </b>
         </div>
