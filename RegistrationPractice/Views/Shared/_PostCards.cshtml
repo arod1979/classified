@@ -36,7 +36,7 @@ else
                         <img class="card-img-top" src=@item.imageURL alt="@item.imageURL">
                     }
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Lost: @item.LostLocation</li>
+                        <li class="list-group-item">@ViewBag.PostType location: @item.LostLocation</li>
                         <li class="list-group-item"><b style="color:#85bb65">REWARD: $@item.ItemReward</b></li>
                         <li class="list-group-item">Created: @item.CreationDate.ToString("MM/dd/yyyy")</li>
                         <li class="list-group-item">Share Views: @item.Visits</li>

@@ -196,9 +196,9 @@
     </div>
 
     @{ string redirect = null;
-        if (Session["returnurl"] != null)
+        if (HttpContext.Current.Request.Cookies["returnurl"] != null)
         {
-            redirect = Session["returnurl"].ToString();
+            redirect = HttpContext.Current.Request.Cookies["returnurl"].Value;
 
 
         }

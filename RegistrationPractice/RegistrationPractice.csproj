@@ -567,7 +567,6 @@
     <Content Include="Views\public\start.cshtml" />
     <Content Include="Views\Items\start.cshtml" />
     <Content Include="Views\Shared\_PostItem.cshtml" />
-    <Content Include="Views\Shared\_Post.cshtml" />
     <Content Include="Views\Shared\_Jumbotron2.cshtml" />
     <Content Include="Views\Shared\_PostCards.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -628,7 +627,6 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
-
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>

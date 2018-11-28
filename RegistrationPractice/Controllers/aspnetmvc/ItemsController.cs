@@ -25,6 +25,7 @@ namespace RegistrationPractice.Controllers
 
     public class ItemsController : Controller
     {
+        private TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
         private ApplicationUserManager _userManager;
         public ApplicationDbContext db = new ApplicationDbContext("DefaultConnection");
         private readonly ProfanityFilter pf = new ProfanityFilter(new List<string>
@@ -132,9 +133,11 @@ namespace RegistrationPractice.Controllers
             ViewBag.province = province;
             ViewBag.city = city;
             ViewBag.city_province = string.Format("{0},{1}", city, province);
-            ViewBag.PostType = posttypefilter;
-            ViewBag.server = constants.servername;
-            Session["returnurl"] = HttpContext.Request.RawUrl;
+            if (posttypefilter != null)
+                ViewBag.PostType = textInfo.ToTitleCase(posttypefilter);
+            HttpCookie mycookie = new HttpCookie("returnurl");
+            HttpContext.Response.Cookies.Add(mycookie);
+            mycookie.Value = HttpContext.Request.RawUrl;
             if (search_or_post != null && search_or_post.ToLower() == "post")
                 return View("Create");
 
@@ -400,10 +403,10 @@ namespace RegistrationPractice.Controllers
                 ViewBag.city_province = string.Format("{0},{1}", city, province);
                 ViewBag.Province = province;
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
-                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+
                 posttypefilter = textInfo.ToTitleCase(posttypefilter);
 
-                ViewBag.PostType = posttypefilter;
+                ViewBag.PostType = textInfo.ToTitleCase(posttypefilter);
 
                 item.Country = country;
                 item.City = city;
