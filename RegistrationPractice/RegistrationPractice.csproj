@@ -326,6 +326,7 @@
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\PostType.cs" />
+    <Compile Include="Entities\Totals.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ProfanityExtension.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
@@ -341,9 +342,9 @@
       <DependentUpon>201811021810197_timestamp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations.Email\Configuration.cs" />
-    <Compile Include="Migrations.Item\201811021810491_timestamp.cs" />
-    <Compile Include="Migrations.Item\201811021810491_timestamp.Designer.cs">
-      <DependentUpon>201811021810491_timestamp.cs</DependentUpon>
+    <Compile Include="Migrations.Item\201811292008596_serialnumbertotalstable.cs" />
+    <Compile Include="Migrations.Item\201811292008596_serialnumbertotalstable.Designer.cs">
+      <DependentUpon>201811292008596_serialnumbertotalstable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations.Item\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -584,6 +585,8 @@
     <Content Include="Views\Emails\Edit.cshtml" />
     <Content Include="Views\Emails\Index.cshtml" />
     <Content Include="Views\Account\Invalidcity.cshtml" />
+    <Content Include="Views\Items\Deleted.cshtml" />
+    <Content Include="Views\Items\Permission.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -618,8 +621,8 @@
     <EmbeddedResource Include="Migrations.Email\201811021810197_timestamp.resx">
       <DependentUpon>201811021810197_timestamp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations.Item\201811021810491_timestamp.resx">
-      <DependentUpon>201811021810491_timestamp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations.Item\201811292008596_serialnumbertotalstable.resx">
+      <DependentUpon>201811292008596_serialnumbertotalstable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

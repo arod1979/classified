@@ -3,7 +3,7 @@ namespace RegistrationPractice.Migrations.Item
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class timestamp : DbMigration
+    public partial class serialnumbertotalstable : DbMigration
     {
         public override void Up()
         {
@@ -36,7 +36,7 @@ namespace RegistrationPractice.Migrations.Item
                         foundcheckbox = c.Boolean(nullable: false),
                         stolencheckbox = c.Boolean(nullable: false),
                         anonymoustipcheckbox = c.Boolean(nullable: false),
-                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        DateCreated = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -45,13 +45,14 @@ namespace RegistrationPractice.Migrations.Item
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        EmailRecipientsId = c.Int(nullable: false),
                         fromaddress = c.String(),
                         toaddress = c.String(),
                         IdItem = c.Int(nullable: false),
-                        ItemDescription = c.String(nullable: false),
-                        emailbody = c.String(nullable: false),
+                        ItemDescription = c.String(),
+                        emailbody = c.String(),
                         subject = c.String(),
-                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        DateCreated = c.DateTime(nullable: false),
                         EmailId = c.Int(nullable: false),
                         APIThreadId = c.Int(nullable: false),
                     })
@@ -63,7 +64,7 @@ namespace RegistrationPractice.Migrations.Item
                     {
                         Id = c.Int(nullable: false, identity: true),
                         FakeEmailChars = c.String(),
-                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        DateCreated = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -73,7 +74,7 @@ namespace RegistrationPractice.Migrations.Item
                     {
                         Id = c.Int(nullable: false, identity: true),
                         History = c.Long(nullable: false),
-                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        DateCreated = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

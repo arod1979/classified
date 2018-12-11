@@ -54,6 +54,7 @@ namespace RegistrationPractice.Entities
         [MaxLength(25)] //actually serial number
         public string EmailRelayAddress { get; set; }
 
+        public string SerialNumber { get; set; }
 
         [Required]
         [DisplayName("What Day Did You Find it")]

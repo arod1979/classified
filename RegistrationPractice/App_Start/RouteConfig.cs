@@ -63,17 +63,16 @@ namespace RegistrationPractice
                 defaults: new { controller = "Items", action = "cityindex" }
             );
 
-            //routes.MapRoute(
-            //    name: "CountryIndex",
-            //    url: "Items/countryindex/{id}",
-            //    defaults: new { controller = "Items", action = "countryindex" }
-            //);
-
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}",
-                defaults: new { controller = "Items", action = "start" }
+                name: "DeleteItem",
+                url: "Items/Delete/{id}",
+                defaults: new { controller = "Items", action = "Delete" }
             );
+
+
+
+
+
 
             routes.MapRoute(
                 name: "CountryIndex",
@@ -81,6 +80,16 @@ namespace RegistrationPractice
                 defaults: new { controller = "Items", action = "countryindex", country = "canada" }
             );
 
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}",
+            //    defaults: new { controller = "Items", action = "start" }
+            //);
+            routes.MapRoute(
+                name: "Default",
+                url: "Items/Deleted/{id}",
+                defaults: new { controller = "Items", action = "Deleted" }
+            );
 
 
 

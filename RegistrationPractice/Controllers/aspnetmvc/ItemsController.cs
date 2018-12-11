@@ -308,14 +308,12 @@ namespace RegistrationPractice.Controllers
                 a = RouteData.Values["state"].ToString();
             }
 
-
-
             if (state == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Item item = await db.Items.FindAsync(state);
-            if (item == null)
+            if (item == null || item.HideItem == true)
             {
                 return HttpNotFound();
             }
@@ -704,19 +702,55 @@ namespace RegistrationPractice.Controllers
         }
 
         // GET: Items/Delete/5
+        [AllowAnonymous]
+        public async Task<ActionResult> Deleted(int? id)
+        {
+
+
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> Deleted(FormCollection formcollection)
+        {
+            string a = TempData["PostType"].ToString();
+            string b = TempData["CurrentUser"].ToString();
+            string c = TempData["ItemUser"].ToString();
+            if (a == null || b == null || c == null)
+                return RedirectToAction("Start");
+
+            Totals totals = new Totals();
+            totals = db.Totals.FirstOrDefault();
+            //int a = (int)totals.Lost;
+            //int b = (int)totals.Stolen;
+            //int c = (int)totals.Found;
+
+
+            return RedirectToAction("Start");
+        }
+
+        public async Task<ActionResult> Permission()
+        {
+            return View();
+        }
+
 
         public async Task<ActionResult> Delete(int? id)
         {
             string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
 
             Item item = await db.Items.FindAsync(id);
+            TempData["PostType"] = item.PostType.PostTypeText;
+            TempData["CurrentUser"] = useremail;
+            TempData["ItemUser"] = item.OwnerUserEmail;
             ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
             bool isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
             if ((item != null && useremail != null && useremail != item.OwnerUserEmail) && !isAdmin)
             {
                 TempData["Message"] = "You do not have permission to modify this post.";
-                return RedirectToAction("Index", "Items", null);
+                return RedirectToAction("Permission", "Items", null);
             }
 
             if (id == null)
@@ -771,10 +805,10 @@ namespace RegistrationPractice.Controllers
 
                 }
 
+                ViewBag.DeletedItem = item.Id.ToString();
+                return RedirectToAction("Deleted");
 
-
-
-                return RedirectToAction("UserPosts");
+                //return RedirectToAction("UserPosts");
             }
             catch (Exception e)
             {

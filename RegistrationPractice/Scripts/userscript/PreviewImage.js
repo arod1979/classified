@@ -1,5 +1,8 @@
 ﻿$(function () {
 
+    $("#DeleteReasonModal").modal();
+
+
     $("#FoundDate").datepicker();
 
     $('[file-upload]').change(function () {

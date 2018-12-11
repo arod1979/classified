@@ -11,8 +11,6 @@
     <h4>Item</h4>
     <hr />
     <dl class="dl-horizontal">
-
-
         <dd>
             @Html.DisplayFor(model => model.Category.CategoryText)
         </dd>
@@ -53,13 +51,21 @@
 
     </dl>
 
-    @using (Html.BeginForm())
-    {
+    <form method="post" id="DeleteForm">
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-info" /> |
             @Html.ActionLink("Back to List", "UserPosts")
         </div>
-    }
+    </form>
 </div>
+
+<script>
+
+</script>
+
+
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

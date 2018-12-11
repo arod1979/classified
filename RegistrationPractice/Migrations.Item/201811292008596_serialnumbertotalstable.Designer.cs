@@ -7,13 +7,13 @@ namespace RegistrationPractice.Migrations.Item
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class timestamp : IMigrationMetadata
+    public sealed partial class serialnumbertotalstable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(timestamp));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(serialnumbertotalstable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811021810491_timestamp"; }
+            get { return "201811292008596_serialnumbertotalstable"; }
         }
         
         string IMigrationMetadata.Source

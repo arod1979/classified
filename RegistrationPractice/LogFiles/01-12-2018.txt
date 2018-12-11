@@ -1,0 +1,42 @@
+6:44:37 PM December 1, 2018
+  :
+  :apple
+-------------------------------
+7:36:31 PM December 1, 2018
+  :
+  :apple
+-------------------------------
+7:43:11 PM December 1, 2018
+  :
+  :apple
+-------------------------------
+7:46:23 PM December 1, 2018
+  :
+  :apple
+-------------------------------
+8:23:48 PM December 1, 2018
+  :
+  :apple
+-------------------------------
+8:24:34 PM December 1, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+8:24:35 PM December 1, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.Globals.Constants.GetCityPrimaryKey(String city) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\GlobalVariables.cs:line 132
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 411
+-------------------------------
+8:24:58 PM December 1, 2018
+  :
+  :Could Not Filter By posttype
+-------------------------------
+8:25:04 PM December 1, 2018
+  :
+  :Could Not Filter By posttype
+-------------------------------
+8:27:28 PM December 1, 2018
+  :
+  :Could Not Filter By posttype
+-------------------------------

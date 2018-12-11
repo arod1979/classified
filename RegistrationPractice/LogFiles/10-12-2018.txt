@@ -1,0 +1,119 @@
+7:23:33 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+7:28:33 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+7:29:33 PM December 10, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+7:30:48 PM December 10, 2018
+  :
+  :Could Not Filter By posttype
+-------------------------------
+7:31:45 PM December 10, 2018
+  :
+  :path
+-------------------------------
+7:35:50 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+7:49:22 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+7:49:40 PM December 10, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+7:58:30 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+8:11:13 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+8:16:02 PM December 10, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+8:17:50 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+8:19:58 PM December 10, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+8:22:37 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+8:28:33 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+8:30:37 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+9:00:05 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+9:00:27 PM December 10, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+9:00:45 PM December 10, 2018
+  :
+  :Cannot delete emailrecipient:
+-------------------------------
+9:01:07 PM December 10, 2018
+  :
+  :Delete failed for item.id9
+-------------------------------
+9:01:51 PM December 10, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl)
+-------------------------------
+9:01:52 PM December 10, 2018
+  :
+  :Cannot delete emailrecipient:
+-------------------------------
+9:05:37 PM December 10, 2018
+  :
+  :Could Not Filter By posttype
+-------------------------------
+9:14:43 PM December 10, 2018
+  :
+  :apple
+-------------------------------
+9:15:02 PM December 10, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+9:15:31 PM December 10, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+9:15:33 PM December 10, 2018
+  :
+  :Cannot delete emailrecipient:
+-------------------------------
+9:18:13 PM December 10, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+9:18:13 PM December 10, 2018
+  :
+  :Cannot delete emailrecipient:
+-------------------------------

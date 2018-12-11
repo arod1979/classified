@@ -40,20 +40,21 @@ namespace RegistrationPractice.Models
         public DbSet<Location> Locations { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<PostType> PostTypes { get; set; }
+        public DbSet<Totals> Totals { get; set; }
 
 
         public ApplicationDbContext(string connectionstring)
             : base(connectionstring, throwIfV1Schema: false)
         {
-            //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
             Database.SetInitializer<ApplicationDbContext>(null);
+            //Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public ApplicationDbContext()
              : base("DefaultConnection", throwIfV1Schema: false)
         {
-            //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
             Database.SetInitializer<ApplicationDbContext>(null);
+            //Database.SetInitializer<ApplicationDbContext>(null);
         }
 
 
@@ -75,13 +76,13 @@ namespace RegistrationPractice.Models
         public DbSet<EmailRecipients> EmailRecipients { get; set; }
         public DbSet<HistoryID> HistoryIDs { get; set; }
         public DbSet<FakeEmail> FakeEmails { get; set; }
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        //public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
 
         public EmailsDbContext() : base("EmailConnection")
         {
             {
-                //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
-                Database.SetInitializer<EmailsDbContext>(null);
+                Database.SetInitializer<ApplicationDbContext>(null);
+                //Database.SetInitializer<EmailsDbContext>(null);
             }
         }
 

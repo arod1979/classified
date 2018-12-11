@@ -61,6 +61,7 @@ namespace RegistrationPractice.Entities
         [DisplayName("Category")]
         public int? CategoryID { get; set; }
 
+        public string SerialNumber { get; set; }
 
         public virtual Category Category { get; set; }
         public string CategoryText { get; set; }
