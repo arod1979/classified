@@ -13,9 +13,9 @@ namespace RegistrationPractice.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Lost { get; set; }
-        public string Found { get; set; }
-        public string Stolen { get; set; }
+        public double Lost { get; set; }
+        public double Found { get; set; }
+        public double Stolen { get; set; }
 
     }
 

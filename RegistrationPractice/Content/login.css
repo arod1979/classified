@@ -6,6 +6,14 @@
     margin: auto;
 }
 
+.headertext {
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+.elegantformcontrol {
+    width: 100%;
+}
 
 .dropdown-submenu {
     position: relative;
@@ -94,7 +102,10 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: 'Comfortaa', cursive;
+    /*font-family: 'Roboto';*/
     text-align: center;
+    /*font-size: 1em;
+    letter-spacing: 3px;*/
 }
 
 textarea {
@@ -262,6 +273,14 @@ h7 {
         background-color: saddlebrown;
     }
 
+    .elegantform {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 3%;
+        margin-bottom: 8%;
+    }
+
+
     .lostitems2 {
         border: 1px solid black;
         margin-left: 5%;
@@ -281,6 +300,8 @@ h7 {
         font-size: 20px;
         font-family: 'Comfortaa' !important;
     }
+
+
 
     .simpleform {
         border-radius: 20px;
@@ -353,6 +374,12 @@ a.awolr-logo {
         text-align: left;
         padding: 15px;
         background-color: saddlebrown;
+    }
+
+
+
+    .elegantformwidth {
+        width: 50%;
     }
 
     .lostitems2 {

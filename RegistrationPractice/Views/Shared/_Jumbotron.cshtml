@@ -17,8 +17,12 @@
     @Styles.Render("~/Content/css1")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Comfortaa'>
+    <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Comfortaa' />
+    <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Roboto:400' />
+    <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400' />
+
     @RenderSection("MetaContent", false)
+
 
 </head>
 <body>
@@ -38,8 +42,8 @@
                         User = System.Web.HttpContext.Current.Session["UserEmail"].ToString();
                     }
 
-                    <li>@Html.ActionLink(User + ":UserPosts", "UserPosts", "Items")&nbsp&nbsp</li>
-                    <li>@Html.ActionLink("User Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    <li class="headertext">@Html.ActionLink(User + ":UserPosts", "UserPosts", "Items", null, new { @class = "headertext" })&nbsp&nbsp</li>
+                    <li>@Html.ActionLink("User Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "headertext" })</li>
                 }
             </ul>
         </div>
@@ -68,18 +72,16 @@
                 }
                 else
                 {
-                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })&nbsp;|&nbsp;</li>
+                    <li>@Html.ActionLink("Register", "Register", "Account", null, new { id = "registerLink", @class = "headertext" })&nbsp;&nbsp;</li>
 
-                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink", @class = "headertext" })</li>
                 }
             </ul>
         </div>
     </nav>
 
 
-    @*<img src="~/pictures/awolrlogo.png.gif" style="display: block;
-          margin-left: auto;
-        margin-right: auto;" />*@
+
 
     <img src="~/pictures/logoSmallFile.png" style="display: block;
 
@@ -137,7 +139,7 @@
 
     @Scripts.Render("~/bundles/admin")
     @Scripts.Render("~/bundles/bootstrap")
-
+    @*<link href="~/Content/mdb/mdb.min.css" rel="stylesheet" />*@
     @RenderSection("scripts", required: false)
 
 

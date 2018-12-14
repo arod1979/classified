@@ -20,7 +20,9 @@ namespace RegistrationPractice
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/mdb/mdb.min.js"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/popper").Include(
                 "~/Scripts/umd/popper-min.js"));

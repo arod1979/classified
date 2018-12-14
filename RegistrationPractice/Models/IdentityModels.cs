@@ -46,15 +46,15 @@ namespace RegistrationPractice.Models
         public ApplicationDbContext(string connectionstring)
             : base(connectionstring, throwIfV1Schema: false)
         {
+            //Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
             Database.SetInitializer<ApplicationDbContext>(null);
-            //Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public ApplicationDbContext()
              : base("DefaultConnection", throwIfV1Schema: false)
         {
+            //Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
             Database.SetInitializer<ApplicationDbContext>(null);
-            //Database.SetInitializer<ApplicationDbContext>(null);
         }
 
 

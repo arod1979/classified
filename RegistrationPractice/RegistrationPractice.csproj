@@ -366,11 +366,14 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstraploginform\elegantloginform.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\layout-styles.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\mdb\mdb.min - Copy.css" />
+    <Content Include="Content\mdb\mdb.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\projectcards.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -587,6 +590,7 @@
     <Content Include="Views\Account\Invalidcity.cshtml" />
     <Content Include="Views\Items\Deleted.cshtml" />
     <Content Include="Views\Items\Permission.cshtml" />
+    <Content Include="Views\Items\Stats.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -605,6 +609,7 @@
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Content\bootstrap4\" />
     <Folder Include="logfiles\" />
+    <Folder Include="Scripts\mdb\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

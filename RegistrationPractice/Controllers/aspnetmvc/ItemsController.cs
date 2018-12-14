@@ -709,19 +709,90 @@ namespace RegistrationPractice.Controllers
 
             return View();
         }
+        [AllowAnonymous]
+        public async Task<ActionResult> Stats()
+        {
+            Totals totals = db.Totals.FirstOrDefault();
+            if (totals != null)
+            {
+                TempData["Message"] = String.Format("Lost:{0} Found:{1} Stolen:{2}", totals.Lost.ToString(),
+                    totals.Found.ToString(), totals.Stolen.ToString());
+
+            }
+            else
+            {
+                TempData["Message"] = "There is data";
+            }
+            return View();
+
+        }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<ActionResult> Deleted(FormCollection formcollection)
         {
-            string a = TempData["PostType"].ToString();
-            string b = TempData["CurrentUser"].ToString();
-            string c = TempData["ItemUser"].ToString();
-            if (a == null || b == null || c == null)
-                return RedirectToAction("Start");
+            try
+            {
 
-            Totals totals = new Totals();
-            totals = db.Totals.FirstOrDefault();
+                string posttype = TempData["PostType"].ToString();
+                string currentuser = TempData["CurrentUser"].ToString();
+                string itemuser = TempData["ItemUser"].ToString();
+                if (posttype == null || currentuser == null || itemuser == null)
+                    return RedirectToAction("Start");
+                string response = formcollection["deleted"];
+                ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                bool isAdmin = false;
+                try
+                {
+                    isAdmin = await applicationUserManager.IsInRoleAsync(currentuser, "admin");
+                }
+                catch (Exception e)
+                {
+                    loggerwrapper.PickAndExecuteLogging("Deleted - could not check role");
+                }
+
+                string collectstats = System.Configuration.ConfigurationManager.AppSettings["collectstats"];
+
+                if (collectstats == "true" && response.ToLower().Contains("awo") && posttype != null && (currentuser == itemuser || isAdmin))
+                {
+                    Totals totals = new Totals();
+                    totals = db.Totals.FirstOrDefault();
+
+                    double stolen = 0, lost = 0, found = 0;
+                    switch (posttype.ToLower())
+                    {
+                        case "stolen":
+                            stolen++;
+                            break;
+                        case "lost":
+                            lost++;
+                            break;
+                        case "found":
+                            found++;
+                            break;
+                        default:
+                            lost++;
+                            break;
+                    }
+                    if (totals == null)
+                    {
+                        Totals totals2 = new Totals { Lost = lost, Found = found, Stolen = stolen };
+                        db.Totals.Add(totals2);
+                    }
+                    else
+                    {
+                        db.Entry(totals).State = EntityState.Modified;
+                        totals.Lost += lost;
+                        totals.Found += found;
+                        totals.Stolen += stolen;
+                    }
+                    await db.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                loggerwrapper.PickAndExecuteLogging("Cannot load deleted feedback form");
+            }
+
             //int a = (int)totals.Lost;
             //int b = (int)totals.Stolen;
             //int c = (int)totals.Found;
@@ -729,6 +800,11 @@ namespace RegistrationPractice.Controllers
 
             return RedirectToAction("Start");
         }
+
+
+
+
+
 
         public async Task<ActionResult> Permission()
         {

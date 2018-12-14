@@ -4,51 +4,126 @@
     ViewBag.Title = "Register";
 }
 
-<h1 class="city">Register</h1>
+<div class="card elegantformwidth mx-auto">
 
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-<div class="lostitems">
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <input type="text" placeholder="Enter your email" name="email">
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Register</strong>
+    </h5>
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+        <br />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "elegantform, text-center", style = "color: #757575;" }))
+        {
+            @Html.AntiForgeryToken()
 
-    <input type="password" placeholder="Choose password" name="password" >
-
-    <input type="password" placeholder="Confirm password" name="confirmpassword" >
-
-    <input type="submit" name="submit" value="Register">
-
-
+            <!-- Form -->
 
 
-
-
-    @*<div class="form-group">
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            <!-- Email -->
+            <div class="md-form">
+                <input type="email" id="materialLoginFormEmail" class="form-control" name="email">
+                <label for="materialLoginFormEmail">E-mail</label>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+            <!-- Password -->
+            <div class="md-form">
+                <input type="password" id="materialLoginFormPassword" class="form-control" name="password">
+                <label for="materialLoginFormPassword">Password</label>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+
+            <!-- Password -->
+            <div class="md-form">
+                <input type="password" id="materialLoginFormPassword" class="form-control" name="confirmpassword">
+                <label for="materialLoginFormPassword">Confirm Password</label>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label"></label>
-            <div class="col-md-10">*@
-    @Html.Captcha("Refresh", "Please Enter Captcha Value Below", 5, "Is required field.", false)
+            @Html.Captcha("Refresh", "Please Enter Captcha Value Below", 7, "Is required field.", false)
+            <div class="d-flex justify-content-around">
+                @*<div>
+                         Remember me
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="materialLoginFormRemember">
+                            <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
+                        </div>
+                    </div>*@
+
+            </div>
+
+            <!-- Sign in button -->
+            <button class="btn btn-outline-info  my-1 waves-effect z-depth-0" type="submit">Register</button>
+
+            <!-- Register -->
+
+
+            <!-- Social login -->
+            @*<p>or sign in with:</p>
+
+                <a type="button" class="btn-floating btn-fb btn-sm">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a type="button" class="btn-floating btn-tw btn-sm">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a type="button" class="btn-floating btn-li btn-sm">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a type="button" class="btn-floating btn-git btn-sm">
+                    <i class="fa fa-github"></i>
+                </a>*@
+
+        }
+
     </div>
-}
+</div>
+
+
+
+
+
+
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="lostitems">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <input type="text" placeholder="Enter your email" name="email">
+
+            <input type="password" placeholder="Choose password" name="password">
+
+            <input type="password" placeholder="Confirm password" name="confirmpassword">
+
+            <input type="submit" name="submit" value="Register">*@
+
+
+
+
+
+
+@*<div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+            @Html.Captcha("Refresh", "Please Enter Captcha Value Below", 5, "Is required field.", false)
+        </div>
+    }
     @*</div>
             </div>
 
@@ -59,8 +134,17 @@
                 </div>
             </div>
         </div>*@
-    
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section MetaContent
+{
+
+    <link href="@Url.Content("~/Content/mdb/mdb.min.css")" rel="stylesheet" type="text/css" />
+    @*<script src="~/Scripts/mdb/mdb.min.js"></script>*@
+    <link href="~/Content/mdb/mdb.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+}

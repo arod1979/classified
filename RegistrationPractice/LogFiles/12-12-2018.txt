@@ -1,0 +1,62 @@
+8:33:28 PM December 12, 2018
+  :
+  :apple
+-------------------------------
+8:42:19 PM December 12, 2018
+  :
+  :apple
+-------------------------------
+8:43:48 PM December 12, 2018
+  :
+  :apple
+-------------------------------
+8:44:26 PM December 12, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+8:45:07 PM December 12, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+8:45:10 PM December 12, 2018
+  :
+  :Cannot delete emailrecipient:
+-------------------------------
+8:45:35 PM December 12, 2018
+  :
+  :Deleted - could not check role
+-------------------------------
+8:49:24 PM December 12, 2018
+  :
+  :Could Not Filter By posttype
+-------------------------------
+8:49:45 PM December 12, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl)
+-------------------------------
+8:49:46 PM December 12, 2018
+  :
+  :Cannot delete emailrecipient:
+-------------------------------
+8:49:58 PM December 12, 2018
+  :
+  :Deleted - could not check role
+-------------------------------
+8:53:12 PM December 12, 2018
+  :
+  :apple
+-------------------------------
+8:53:39 PM December 12, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+8:54:35 PM December 12, 2018
+  :
+  :apple
+-------------------------------
+8:57:30 PM December 12, 2018
+  :
+  :apple
+-------------------------------
