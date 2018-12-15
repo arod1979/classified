@@ -9,7 +9,7 @@
 <div class="card elegantformwidth mx-auto">
 
 
-    <h5 class="card-header info-color white-text text-center py-4">
+    <h5 class="card-header white-text text-center py-4" style="background-color: #99D5FF;">
         <strong>Sign in</strong>
     </h5>
 
@@ -26,13 +26,15 @@
 
             <!-- Email -->
             <div class="md-form elegantformcontrol">
-                <input type="email" id="materialLoginFormEmail" class="form-control" name="email">
+                @*<i class="fa fa-envelope prefix"></i>*@
+                <input type="text" id="materialLoginFormEmail" class="form-control validate" name="email">
                 <label for="materialLoginFormEmail">E-mail</label>
             </div>
 
             <!-- Password -->
             <div class="md-form elegantformcontrol">
-                <input type="password" id="materialLoginFormPassword" class="form-control" name="password">
+                @*<i class="fa fa-lock prefix"></i>*@
+                <input type="password" id="materialLoginFormPassword" class="form-control validate" name="password">
                 <label for="materialLoginFormPassword">Password</label>
             </div>
 
@@ -63,7 +65,7 @@
 
 
             <!-- Social login -->
-            <p>or sign in with:</p>
+            @*<p>or sign in with:</p>*@
             @*
                 <a type="button" class="btn-floating btn-fb btn-sm">
                     <i class="fa fa-facebook"></i>
@@ -128,11 +130,8 @@
 {
 
     <link href="@Url.Content("~/Content/mdb/mdb.min.css")" rel="stylesheet" type="text/css" />
-    @*<script src="~/Scripts/mdb/mdb.min.js"></script>*@
     <link href="~/Content/mdb/mdb.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        }*@
+
 }
-
-
-@*<script src="~/Scripts/mdb/mdb.min.js"></script>
-    @Scripts.Render("~/bundles/popper")*@

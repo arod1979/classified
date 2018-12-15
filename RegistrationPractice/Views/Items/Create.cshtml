@@ -41,18 +41,18 @@
         {
             <div class="www">
 
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you lose?" }, @id = "Description" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you lose?", @id = "Description", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
             <br /><br />
             <div class="www">
-                @Html.DropDownList("CategoryID")
+                @Html.DropDownList("CategoryID", null, new { @class = "simpleformfield" })
                 @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
             </div>
             <br>
             <br>
             <div class="www">
-                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where did you lose it?" } })
+                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where did you lose it?", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
             </div>
             <br>
@@ -61,21 +61,21 @@
 
 
             <div class="www">
-                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" />
+                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" class="simpleformfield" />
                 @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
                 @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
             </div>
             <br>
             <br />
             <div class="www">
-                @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input", rows = "3", @id = "Notes" })
+                @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input simpleformfield", rows = "3", @id = "Notes" })
                 @*@Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input" } })*@
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20" } })
+                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
             </div>
 
@@ -83,7 +83,7 @@
         if (ViewBag.posttype == "Found")
         {
             <div class="www">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you find?" }, @id = "Description" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you find?", @id = "Description", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
             <br>
@@ -91,26 +91,26 @@
 
 
             <div class="www">
-                @Html.DropDownList("CategoryID")
+                @Html.DropDownList("CategoryID", null, new { @class = "simpleformfield" })
                 @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
             </div>
             <br>
             <br>
             <div class="www">
-                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where did you find it?" } })
+                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where did you find it?", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
             </div>
             <br>
             <br />
             <div class="www">
-                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" />
+                <input class="simpleformfield" type="text" name="FoundDate" id="FoundDate" value="@placeholder" />
                 @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
                 @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
             </div>
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", name = "FoundDate", @id = "Notes" } })
+                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", name = "FoundDate", @id = "Notes", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
 
@@ -121,44 +121,44 @@
         if (ViewBag.posttype == "Stolen")
         {
             <div class="www">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What was stolen?" }, @id = "Description" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What was stolen?", @id = "Description", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
             <br>
             <br>
             <div class="www">
-                @Html.DropDownList("CategoryID")
+                @Html.DropDownList("CategoryID", null, new { @class = "simpleformfield" })
                 @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
             </div>
             <br>
             <br>
             <div class="www">
-                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where was it stolen from?" } })
+                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where was it stolen from?", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
             </div>
             <br>
             <br />
             <div class="www">
-                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" />
-                @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
+                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" class="placeholder simpleformfield" />
+
                 @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
             </div>
             <br>
             <br />
             <div class="www">
 
-                @Html.EditorFor(model => model.EmailRelayAddress, new { htmlAttributes = new { placeholder = "Serial #" }, @id = "SerialNumber" })
-                @Html.ValidationMessageFor(model => model.EmailRelayAddress, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { placeholder = "Serial #", @id = "SerialNumber", @class = "simpleformfield" } })
+                @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
             </div>
             <br /><br />
             <div class="www">
-                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @id = "Notes" } })
+                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @id = "Notes", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
             </div>
             <br>
             <br />
             <div class="www">
-                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20" } })
+                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20", @class = "simpleformfield" } })
                 @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
             </div>
 

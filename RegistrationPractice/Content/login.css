@@ -1,5 +1,26 @@
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+input:focus:-moz-placeholder {
+    color: transparent;
+}
+/* Firefox 18- */
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+/* Firefox 19+ */
+input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+/* oldIE ;) */
+
 .white {
     color: white !important;
+}
+
+input.captcha {
+    margin-bottom: 0px !important;
 }
 
 .form-check {
@@ -12,7 +33,6 @@
 }
 
 .elegantformcontrol {
-    width: 100%;
 }
 
 .dropdown-submenu {
@@ -135,7 +155,7 @@ input, select, textarea {
         margin: 5px auto 20px auto
     }
 
-    input[type="text"], input[type="password"], input[type="date"], input[type="submit"], select, textarea {
+    input[type="text"].simpleformfield, input[type="password"].simpleformfield, input[type="date"].simpleformfield, input[type="submit"].simpleformfield, select.simpleformfield, textarea.simpleformfield {
         width: 75%;
     }
 

@@ -47,20 +47,20 @@
         </div>
         <div class="www">
             <label>Reward</label>
-            @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { @class = "form-control labelontop" } })
+            @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { @class = "form-control labelontop simpleformfield" } })
             @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
         </div>
 
 
         <div class="www">
             <label>Description</label>
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control labelontop" } })
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control labelontop simpleformfield" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
 
         <div class="www">
             <label>AdditionalNotes</label>
-            @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "labelontop input text-box", rows = "3" })
+            @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "labelontop input text-box simpleformfield", rows = "3" })
             @*@Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { @class = "form-control labelontop" } })*@
             @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
         </div>

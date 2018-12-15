@@ -11,6 +11,10 @@ namespace RegistrationPractice
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/popper").Include(
+                "~/Scripts/umd/popper-min.js"));
+
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //            "~/Scripts/jquery.validate*"));
 
@@ -20,12 +24,12 @@ namespace RegistrationPractice
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/mdb/mdb.min.js"
+                      "~/Scripts/bootstrap.js"
                       ));
 
-            bundles.Add(new ScriptBundle("~/bundles/popper").Include(
-                "~/Scripts/umd/popper-min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/mdb").Include(
+                "~/Scripts/mdb/mdb.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                     "~/Scripts/jquery-ui-{version}.js"));

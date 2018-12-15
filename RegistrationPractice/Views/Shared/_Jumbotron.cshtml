@@ -42,8 +42,9 @@
                         User = System.Web.HttpContext.Current.Session["UserEmail"].ToString();
                     }
 
-                    <li class="headertext">@Html.ActionLink(User + ":UserPosts", "UserPosts", "Items", null, new { @class = "headertext" })&nbsp&nbsp</li>
-                    <li>@Html.ActionLink("User Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "headertext" })</li>
+
+                    <li>@Html.ActionLink("User Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "headertext" })&nbsp&nbsp</li>
+                    <li>@Html.ActionLink(User + ":UserPosts", "UserPosts", "Items", null, new { @class = "headertext" })</li>
                 }
             </ul>
         </div>
@@ -58,7 +59,7 @@
 
                 @if (Request.IsAuthenticated)
                 {
-                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right headertext" }))
                     {
                         @Html.AntiForgeryToken()
 
@@ -105,17 +106,17 @@
 
 
 
-        @Html.ActionLink("FAQ", "FAQ", "Account") |
-        @Html.ActionLink("Privacy", "Privacy", "Account") |
-        @Html.ActionLink("Contact Us", "Contact", "Account") |
+        @Html.ActionLink("FAQ", "FAQ", "Account", null, new { @class = "headertext" }) |
+        @Html.ActionLink("Privacy", "Privacy", "Account", null, new { @class = "headertext" }) |
+        @Html.ActionLink("Contact Us", "Contact", "Account", null, new { @class = "headertext" }) |
         @if (ViewBag.Country == "Canada")
         {
-            <a href="~/Items/CountryIndex/?countryname=usa">USA</a>
+            <a href="~/Items/CountryIndex/?countryname=usa" class="headertext">USA</a>
         }
 
         else
         {
-            <a href="~/Items/CountryIndex/?countryname=canada">Canada</a>
+            <a href="~/Items/CountryIndex/?countryname=canada" class="headertext">Canada</a>
         }
 
 
@@ -139,6 +140,8 @@
 
     @Scripts.Render("~/bundles/admin")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/mdb")
+
     @*<link href="~/Content/mdb/mdb.min.css" rel="stylesheet" />*@
     @RenderSection("scripts", required: false)
 

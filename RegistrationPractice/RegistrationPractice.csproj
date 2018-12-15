@@ -433,6 +433,8 @@
     <Content Include="pictures\colors2-usa-fys.png" />
     <Content Include="pictures\colors3-CA-fys.png" />
     <Content Include="pictures\logoSmallFile.png" />
+    <Content Include="Scripts\mdb\mdb.js" />
+    <Content Include="Scripts\mdb\mdb.min.js" />
     <Content Include="Scripts\userscript\AdminMenu.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -609,7 +611,6 @@
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Content\bootstrap4\" />
     <Folder Include="logfiles\" />
-    <Folder Include="Scripts\mdb\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
