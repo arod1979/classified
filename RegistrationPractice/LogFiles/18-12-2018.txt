@@ -1,0 +1,120 @@
+10:00:33 AM December 18, 2018
+  :
+  :apple
+-------------------------------
+10:03:35 AM December 18, 2018
+  :
+  :ad response added to database
+-------------------------------
+10:19:25 AM December 18, 2018
+  :
+  :apple
+-------------------------------
+10:19:41 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+10:40:18 AM December 18, 2018
+  :
+  :apple
+-------------------------------
+10:40:33 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+10:41:48 AM December 18, 2018
+  :
+  :pid 803ec1bc-ea9d-44d7-ac30-f43b946087d4
+
+
+-------------------------------
+10:42:39 AM December 18, 2018
+  :
+  :ad response added to database
+-------------------------------
+10:48:51 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+10:57:04 AM December 18, 2018
+  :
+  :apple
+-------------------------------
+11:07:04 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+11:19:07 AM December 18, 2018
+  :
+  :apple
+-------------------------------
+11:19:28 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+11:20:46 AM December 18, 2018
+  :
+  :apple
+-------------------------------
+11:21:02 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+11:27:24 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+11:33:57 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+11:36:54 AM December 18, 2018
+  :
+  :apple
+-------------------------------
+11:37:10 AM December 18, 2018
+  :
+  :allanrodkin@hotmail.com=d16764db-4c68-42d8-8833-c46b7e6b6666
+-------------------------------
+11:40:49 AM December 18, 2018
+  :
+  :pid 803ec1bc-ea9d-44d7-ac30-f43b946087d4
+
+
+-------------------------------
+11:40:55 AM December 18, 2018
+  :
+  :ad response added to database
+-------------------------------
+11:41:52 AM December 18, 2018
+  :
+  :pid 803ec1bc-ea9d-44d7-ac30-f43b946087d4
+
+
+-------------------------------
+11:42:03 AM December 18, 2018
+  :
+  :ad response added to database
+-------------------------------
+11:42:55 AM December 18, 2018
+  :
+  :pid 803ec1bc-ea9d-44d7-ac30-f43b946087d4
+
+
+-------------------------------
+11:42:56 AM December 18, 2018
+  :
+  :ad response added to database
+-------------------------------
+5:31:21 PM December 18, 2018
+  :
+  :apple
+-------------------------------
+5:32:24 PM December 18, 2018
+  :
+  :admin@awolr.com=078ee3da-372c-4285-bbd9-6a44d6aabbe3
+-------------------------------
+5:33:42 PM December 18, 2018
+  :
+  :Account.ExternalLoginCallBack(): unable to get loginInfo
+-------------------------------

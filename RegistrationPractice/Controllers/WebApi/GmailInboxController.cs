@@ -51,8 +51,13 @@ namespace RegistrationPractice.Controllers.WebApi
             private EmailsDbContext db = new EmailsDbContext();
             HttpResponseMessage response = new HttpResponseMessage();
             LoggerWrapper loggerWrapper = new LoggerWrapper();
-            public async Task<HttpResponseMessage> Post([FromBody] Message email)
+            public async Task<HttpResponseMessage> Post([FromBody] Message email, string key)
             {
+                if (key != "AIzaSyDhIb1fVNRorQFYp8s754agVtlPBMCFWJw")
+                {
+                    loggerWrapper.PickAndExecuteLogging("GmailInbox notification not authenticaticated");
+                    response.StatusCode = HttpStatusCode.Forbidden;
+                }
                 try
                 {
 

@@ -64,7 +64,7 @@ namespace RegistrationPractice
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //BundleTable.EnableOptimizations = true;
-            gmail.RegisterWatch();
+            //gmail.RegisterWatch();
 
 
             //var container = new SimpleInjector.Container();

@@ -81,8 +81,8 @@ namespace RegistrationPractice.Models
         public EmailsDbContext() : base("EmailConnection")
         {
             {
-                Database.SetInitializer<ApplicationDbContext>(null);
-                //Database.SetInitializer<EmailsDbContext>(null);
+                //Database.SetInitializer<ApplicationDbContext>(null);
+                Database.SetInitializer<EmailsDbContext>(null);
             }
         }
 

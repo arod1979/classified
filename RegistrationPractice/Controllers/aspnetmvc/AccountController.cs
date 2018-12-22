@@ -407,16 +407,17 @@ namespace RegistrationPractice.Controllers
 
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+            string currentUserEmail = loginInfo.Email;
+            //string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
+            System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
+            var userid = UserManager.FindByEmail(loginInfo.Email);
+            System.Web.HttpContext.Current.Session["UserId"] = userid;
+            loggerWrapper.PickAndExecuteLogging(currentUserEmail + "=" + userid);
             switch (result)
             {
                 case SignInStatus.Success:
                     //allan rodkin
-                    string currentUserEmail = loginInfo.Email;
-                    string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
-                    System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
-                    var userid = UserManager.FindByEmail(loginInfo.Email);
-                    System.Web.HttpContext.Current.Session["UserId"] = userId;
-                    loggerWrapper.PickAndExecuteLogging(currentUserEmail + "=" + userId);
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

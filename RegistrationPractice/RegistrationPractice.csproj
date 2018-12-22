@@ -313,6 +313,7 @@
     <Compile Include="Controllers\aspnetmvc\ImageEntity.cs" />
     <Compile Include="Controllers\aspnetmvc\ItemsController.cs" />
     <Compile Include="Controllers\aspnetmvc\ManageController.cs" />
+    <Compile Include="Controllers\aspnetmvc\StackController.cs" />
     <Compile Include="Controllers\aspnetmvc\UserManager.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\WebApi\EmailsController.cs" />
@@ -326,6 +327,7 @@
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\PostType.cs" />
+    <Compile Include="Entities\stackoverflow.cs" />
     <Compile Include="Entities\Totals.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ProfanityExtension.cs" />
@@ -481,6 +483,7 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="RegistrationPractice.wpp.targets" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\userscript\button.js" />
     <Content Include="Scripts\userscript\country.js" />
@@ -550,11 +553,6 @@
     <Content Include="Views\Posts\Index.cshtml" />
     <Content Include="Views\Shared\_SearchFormPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmailInstructions.cshtml" />
-    <Content Include="Views\Tests\Create.cshtml" />
-    <Content Include="Views\Tests\Delete.cshtml" />
-    <Content Include="Views\Tests\Details.cshtml" />
-    <Content Include="Views\Tests\Edit.cshtml" />
-    <Content Include="Views\Tests\Index.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Items\Delete.cshtml" />
     <Content Include="Views\Items\Details.cshtml" />
@@ -593,6 +591,7 @@
     <Content Include="Views\Items\Deleted.cshtml" />
     <Content Include="Views\Items\Permission.cshtml" />
     <Content Include="Views\Items\Stats.cshtml" />
+    <Content Include="Views\Stack\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

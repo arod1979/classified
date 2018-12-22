@@ -2,20 +2,34 @@
 
 
 $("[name='adresponsesubmit']").click(function () {
-    var itemid = $(this).closest('.post-id').attr('id').slice(1);
-    var pid = $(this).siblings('.pid').val();
-    var bid = $(this).siblings('.bid').val();
-    var emailbody = $(this).siblings('.message').val();
-    var fromaddress = $(this).siblings('.email').val();
+    //var itemid = $(this).closest('.post-id').attr('id').slice(1);
+    //var pid = $(this).siblings('.pid').val();
+    //var bid = $(this).siblings('.bid').val();
+    //var emailbody = $(this).siblings('.message').val();
+    //var fromaddress = $(this).siblings('.email').val();
+    //var lostcheckbox = $(this).siblings('.input-group').find('.lostcheckbox').val();
+    //var foundcheckbox = $(this).siblings('.input-group').find('.foundcheckbox').val();
+    //var stolencheckbox = $(this).siblings('.input-group').find('.stolencheckbox').val();
+    //var anonymoustipcheckbox = $(this).siblings('.input-group').find('.anonymoustipcheckbox').val();
+    //var posttype = $("[name='posttype']").val();
+    //var posttypesentencecase = posttype[0].toUpperCase() + posttype.slice(1);
+    //var itemdescription = posttypesentencecase + " Item |" + $(this).closest('.card').find('.card-title').html() + " Description: " + $(this).closest('.card').find('.card-text').html();
+
+    var itemid = $("[name='postid']").val();
+    var bid = $("[name='bid']").val();
+    var pid = $("[name='pid']").val();
+    stringmessage = "message" + itemid;
+
+
+    var emailbody = $("[name='message']").val();
+    var fromaddress = "*"
     var lostcheckbox = $(this).siblings('.input-group').find('.lostcheckbox').val();
     var foundcheckbox = $(this).siblings('.input-group').find('.foundcheckbox').val();
     var stolencheckbox = $(this).siblings('.input-group').find('.stolencheckbox').val();
     var anonymoustipcheckbox = $(this).siblings('.input-group').find('.anonymoustipcheckbox').val();
     var posttype = $("[name='posttype']").val();
     var posttypesentencecase = posttype[0].toUpperCase() + posttype.slice(1);
-    var itemdescription = posttypesentencecase + " Item |" + $(this).closest('.card').find('.card-title').html() + " Description: " + $(this).closest('.card').find('.card-text').html();
-
-
+    var itemdescription = posttypesentencecase + " Item | " + $(this).closest('.card').find('.card-title').html();
 
     var Email = {};
     Email.itemdescription = itemdescription;

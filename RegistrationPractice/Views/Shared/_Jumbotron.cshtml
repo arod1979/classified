@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
     <meta name="robots" content="noindex">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
@@ -148,7 +148,38 @@
 
     <form id="__AjaxAntiForgeryForm" action="#" method="post">@Html.AntiForgeryToken()</form>
 
+    <script>
 
+        var i = -1;
+        $("#add").click(function (e) {
+            i++;
+            e.preventDefault();
+            $("#tbhold").append('<tr id="row' + i + '"><td><div><input type="text" name="vares[' + i + '].ProductName" id=' + i + ' /></div></td><td><div><input type="text" name="vares[' + i + '].SerialNumber" id=' + i + '/></div></td><td><div style="padding:0" class="col-md-12"><input id="Qty" name="vares[' + i + '].Qty"/></div></td><td><button type="button" class="btn btn-danger btn_remove" id="' + i + '" name="remove"><i class="fa fa-minus-circle" aria-hidden="true"></i>Remove</button></td></tr>');
+        });
+
+        //Remove input field
+        $(document).on('click', '.btn_remove', function () {
+            var button_id = $(this).attr("id");
+            $("#row" + button_id + '').remove();
+        });
+
+        $("#submit").click(function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Create", "Stack")',
+            dataType: 'json',
+            data: ($('#add_rma').serialize()),
+            success: function (result) {
+                console.log(result);
+            },
+            error: function () {
+            console.log('something went wrong - debug it!');
+            }
+        });
+        });
+    </script>
 </body>
 </html>
 

@@ -485,7 +485,7 @@ namespace RegistrationPractice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate,UserId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io, RegistrationPractice.Classes.Globals.Constants constants)
+        public async Task<ActionResult> Create([Bind(Include = "SerialNumber,Country,City,LocationID,Id,LostOrFoundItem,LostLocation,NoReward,ItemReward,Description,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem,PostTypeID,FoundDate,UserId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io, RegistrationPractice.Classes.Globals.Constants constants)
         {
             try
             {
@@ -622,7 +622,7 @@ namespace RegistrationPractice.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<ActionResult> Edit([Bind(Include = "UserId,City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io, RegistrationPractice.Classes.Globals.Constants constants)
+        public async Task<ActionResult> Edit([Bind(Include = "SerialNumber,UserId,City,Country,LostLocation,Id,LostOrFoundItem,NoReward,ItemReward,Description,LocationID,CategoryID,CreationDate,EmailRelayAddress,AdditionalNotes,Visits,Returned,OwnerUserEmail,imageURL,imageTitle,HideItem, PostTypeId")] Item item, HttpPostedFileBase files, FormCollection formcollection, IO_Operations io, RegistrationPractice.Classes.Globals.Constants constants)
         {
 
             //allan rodkin image code
@@ -712,6 +712,7 @@ namespace RegistrationPractice.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Stats()
         {
+            @ViewBag.pageNumber = 3;
             Totals totals = db.Totals.FirstOrDefault();
             if (totals != null)
             {

@@ -6,3 +6,61 @@
 
 <h2>Stats</h2>
 @TempData["Message"]
+
+@{int pagenumber = 2; int pagecount = 3;}
+
+<ul class="pagination">
+    <li class="page-item ">
+        @{
+            if (pagenumber > 1)
+            {
+
+                <a class="page-link" href="@Url.Action("Index", "Barcos", new { search = ViewBag.Search, pageNumber = pagenumber - 1 })">before</a>
+            }
+            else
+            {
+                <a class="page-link" href="#">
+                    before
+                </a>
+            }
+        }
+    </li>
+
+
+    
+
+    @for (var i = 1; i <= pagecount; i++)
+    {
+        string classes = "page-item";
+
+
+        if (pagenumber == i)
+        {
+            classes += " active";
+
+        }
+
+        <li class="@classes">
+
+            @Html.ActionLink(i.ToString(), "Index", "Barcos", new { search = ViewBag.Search, pageNumber = i }, new { @class = "page-link" })
+        </li>
+    }
+
+
+    <li>
+
+        @if (pagenumber < pagecount)
+        {
+            <a class="page-link" href="@Url.Action("Index", "Barcos", new { Search= ViewBag.Search, pageNumber= ViewBag.pageNumber+ 1 })">Next</a>
+        }
+        else
+        {
+
+            <a class="page-link disabled" href="#">
+                Before
+            </a>
+        }
+
+    </li>
+
+</ul>

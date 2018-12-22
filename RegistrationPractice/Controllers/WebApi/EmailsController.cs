@@ -85,17 +85,13 @@ namespace RegistrationPractice.Controllers.WebApi
         public async Task<IHttpActionResult> PostEmail([FromBody]EmailRecipients emailrecipients)
         {
 
-
-
-
-
-
             bool wroteemailrecipients = false;
             ApplicationUser publisher = null;
             try
             {
                 var _usermanager = RegistrationPractice.Startup.exportUserManager;
                 publisher = await _usermanager.FindByIdAsync(emailrecipients.pid);
+
 
                 emailrecipients.pidrealemailaddress = publisher.Email;
                 ApplicationUser browser = await _usermanager.FindByIdAsync(emailrecipients.bid);
@@ -150,7 +146,7 @@ namespace RegistrationPractice.Controllers.WebApi
             }
             catch (Exception e)
             {
-                loggerwrapper.PickAndExecuteLogging("ad response not added to database. No roll back required");
+                loggerwrapper.PickAndExecuteLogging("ad response not added to database. No roll back required:" + e.ToString());
                 return BadRequest(ModelState);
             }
 
@@ -161,7 +157,7 @@ namespace RegistrationPractice.Controllers.WebApi
                 email.fromaddress = String.Format("{0}{1}", emailrecipients.bidfakeemailaddress, "@awolr.com");
                 //email.fromaddress = "admin@awolr.com";
                 email.toaddress = publisher.Email;
-                email.emailbody = emailrecipients.emailbody += String.Format("\n\n Another AwoLr! {0}{1}\n\n{2}", "https://awolr.com/Items/Details/", emailrecipients.IdItem.ToString(), "Do not change the subject line of this email");
+                email.emailbody = emailrecipients.emailbody += String.Format("\n\n Another AwoLr! {0}{1}\n\n{2}", "https://awolr.com/Items/Details/?state=", emailrecipients.IdItem.ToString(), "Do not change the subject line of this email");
                 email.IdItem = emailrecipients.IdItem;
                 email.ItemDescription = emailrecipients.itemdescription;
                 email.subject = String.Format("{0} {1} || AwolrID:{2}", "Message from awolr.com", email.ItemDescription, emailrecipients.bidfakeemailaddress);

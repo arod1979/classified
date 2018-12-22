@@ -83,7 +83,7 @@
                     <li class="list-group-item">Share Views: @Model.Visits</li>
                     <li class="list-group-item">Additional Notes: @Model.AdditionalNotes</li>
                     <li class="list-group-item">Category: @Model.Category.CategoryText</li>
-                    @if (@Model.EmailRelayAddress != null)
+                    @if (@Model.SerialNumber != null)
                     {
                         <li class="list-group-item">Serial Number: @Model.SerialNumber</li>
                     }
@@ -139,7 +139,7 @@
                         <input name="pid" type="hidden" class="pid" value="@Model.UserId" />
                         <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"]" />
                         <input name="postid" type="hidden" value="@Model.Id" />
-                        <input name="posttype" type="hidden" value="@ViewBag.PostType" />
+                        <input name="posttype" type="hidden" value="@Model.PostType.PostTypeText" />
 
 
                         <input type="button" name="adresponsesubmit" id="@buttonid" class="btn" style="margin:auto;display:block;" value="submit" />
