@@ -410,7 +410,7 @@ namespace RegistrationPractice.Controllers
             string currentUserEmail = loginInfo.Email;
             //string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
             System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
-            var userid = UserManager.FindByEmail(loginInfo.Email);
+            var userid = UserManager.FindByEmail(loginInfo.Email).Id;
             System.Web.HttpContext.Current.Session["UserId"] = userid;
             loggerWrapper.PickAndExecuteLogging(currentUserEmail + "=" + userid);
             switch (result)

@@ -592,6 +592,7 @@
     <Content Include="Views\Items\Permission.cshtml" />
     <Content Include="Views\Items\Stats.cshtml" />
     <Content Include="Views\Stack\Create.cshtml" />
+    <Content Include="Views\Items\Report.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

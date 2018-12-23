@@ -1,6 +1,7 @@
 ﻿$(function () {
 
-    $("#DeleteReasonModal").modal();
+
+
 
 
     $("#FoundDate").datepicker();

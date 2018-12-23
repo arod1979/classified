@@ -13,7 +13,7 @@ namespace RegistrationPractice
 
 
             bundles.Add(new ScriptBundle("~/bundles/popper").Include(
-                "~/Scripts/umd/popper-min.js"));
+                "~/Scripts/umd/popper.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //            "~/Scripts/jquery.validate*"));

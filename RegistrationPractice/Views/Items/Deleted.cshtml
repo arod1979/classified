@@ -30,16 +30,22 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-outline-danger">Finish</button>
+                    <button name="nextaction" value="close" type="submit" class="btn btn-outline-secondary">Close</button>
+                    <button name="nextaction" value="submit" type="submit" class="btn btn-outline-danger">Finish</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-
-
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#DeleteReasonModal").modal();
+        });
+    </script>
+}
 
 
 

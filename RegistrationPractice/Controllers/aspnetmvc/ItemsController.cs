@@ -18,7 +18,9 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using CaptchaMvc.HtmlHelpers;
 using System.Net.Http;
+using System.Net.Mail;
 
 namespace RegistrationPractice.Controllers
 {
@@ -702,17 +704,62 @@ namespace RegistrationPractice.Controllers
         }
 
         // GET: Items/Delete/5
-        [AllowAnonymous]
         public async Task<ActionResult> Deleted(int? id)
         {
-
-
             return View();
         }
+
         [AllowAnonymous]
+        public async Task<ActionResult> Report(int? id)
+        {
+            ViewBag.PostInfo = String.Format("https://awolr.com/Items/Details?state=" + id);
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> ProcessReport(FormCollection formcollection)
+        {
+            string body = formcollection["postinfo"];
+            string reason = formcollection["message"];
+            body = body + "\n\n" + reason;
+            if (!this.IsCaptchaValid(""))
+            {
+                ModelState.AddModelError("captchavalidation", "captcha data incorrect");
+                return View("Report");
+            }
+            string email = System.Configuration.ConfigurationManager.AppSettings["email"];
+            string password = System.Configuration.ConfigurationManager.AppSettings["emailpassword"];
+            string server = System.Configuration.ConfigurationManager.AppSettings["emailserver"];
+            string emailport = System.Configuration.ConfigurationManager.AppSettings["emailport"];
+            int port = Int32.Parse(emailport);
+            try
+            {
+
+                //email = "admin@awolr.com";
+                //password = "passWord321$";
+
+                var client = new SmtpClient(server, port)
+                {
+
+                    Credentials = new NetworkCredential(email, password),
+                    EnableSsl = true
+                };
+
+
+                await client.SendMailAsync("admin@awolr.com", "contact@awolr.com", "Post Report", body);
+                return RedirectToAction("start");
+            }
+            catch (Exception e)
+            {
+                loggerwrapper.PickAndExecuteLogging("Could not report posting. Error " + e.ToString());
+                return RedirectToAction("start");
+            }
+        }
+
+
         public async Task<ActionResult> Stats()
         {
-            @ViewBag.pageNumber = 3;
             Totals totals = db.Totals.FirstOrDefault();
             if (totals != null)
             {
@@ -731,67 +778,71 @@ namespace RegistrationPractice.Controllers
         [HttpPost]
         public async Task<ActionResult> Deleted(FormCollection formcollection)
         {
-            try
+            if (formcollection["nextaction"].ToString() != "close")
             {
 
-                string posttype = TempData["PostType"].ToString();
-                string currentuser = TempData["CurrentUser"].ToString();
-                string itemuser = TempData["ItemUser"].ToString();
-                if (posttype == null || currentuser == null || itemuser == null)
-                    return RedirectToAction("Start");
-                string response = formcollection["deleted"];
-                ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                bool isAdmin = false;
                 try
                 {
-                    isAdmin = await applicationUserManager.IsInRoleAsync(currentuser, "admin");
+
+                    string posttype = TempData["PostType"].ToString();
+                    string currentuser = TempData["CurrentUser"].ToString();
+                    string itemuser = TempData["ItemUser"].ToString();
+                    if (posttype == null || currentuser == null || itemuser == null)
+                        return RedirectToAction("Start");
+                    string response = formcollection["deleted"];
+                    ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                    bool isAdmin = false;
+                    try
+                    {
+                        isAdmin = await applicationUserManager.IsInRoleAsync(currentuser, "admin");
+                    }
+                    catch (Exception e)
+                    {
+                        loggerwrapper.PickAndExecuteLogging("Deleted - could not check role");
+                    }
+
+                    string collectstats = System.Configuration.ConfigurationManager.AppSettings["collectstats"];
+
+                    if (collectstats == "true" && response.ToLower().Contains("awo") && posttype != null && (currentuser == itemuser || isAdmin))
+                    {
+                        Totals totals = new Totals();
+                        totals = db.Totals.FirstOrDefault();
+
+                        double stolen = 0, lost = 0, found = 0;
+                        switch (posttype.ToLower())
+                        {
+                            case "stolen":
+                                stolen++;
+                                break;
+                            case "lost":
+                                lost++;
+                                break;
+                            case "found":
+                                found++;
+                                break;
+                            default:
+                                lost++;
+                                break;
+                        }
+                        if (totals == null)
+                        {
+                            Totals totals2 = new Totals { Lost = lost, Found = found, Stolen = stolen };
+                            db.Totals.Add(totals2);
+                        }
+                        else
+                        {
+                            db.Entry(totals).State = EntityState.Modified;
+                            totals.Lost += lost;
+                            totals.Found += found;
+                            totals.Stolen += stolen;
+                        }
+                        await db.SaveChangesAsync();
+                    }
                 }
                 catch (Exception e)
                 {
-                    loggerwrapper.PickAndExecuteLogging("Deleted - could not check role");
+                    loggerwrapper.PickAndExecuteLogging("Cannot load deleted feedback form");
                 }
-
-                string collectstats = System.Configuration.ConfigurationManager.AppSettings["collectstats"];
-
-                if (collectstats == "true" && response.ToLower().Contains("awo") && posttype != null && (currentuser == itemuser || isAdmin))
-                {
-                    Totals totals = new Totals();
-                    totals = db.Totals.FirstOrDefault();
-
-                    double stolen = 0, lost = 0, found = 0;
-                    switch (posttype.ToLower())
-                    {
-                        case "stolen":
-                            stolen++;
-                            break;
-                        case "lost":
-                            lost++;
-                            break;
-                        case "found":
-                            found++;
-                            break;
-                        default:
-                            lost++;
-                            break;
-                    }
-                    if (totals == null)
-                    {
-                        Totals totals2 = new Totals { Lost = lost, Found = found, Stolen = stolen };
-                        db.Totals.Add(totals2);
-                    }
-                    else
-                    {
-                        db.Entry(totals).State = EntityState.Modified;
-                        totals.Lost += lost;
-                        totals.Found += found;
-                        totals.Stolen += stolen;
-                    }
-                    await db.SaveChangesAsync();
-                }
-            }
-            catch (Exception e)
-            {
-                loggerwrapper.PickAndExecuteLogging("Cannot load deleted feedback form");
             }
 
             //int a = (int)totals.Lost;
@@ -823,7 +874,15 @@ namespace RegistrationPractice.Controllers
             TempData["ItemUser"] = item.OwnerUserEmail;
             ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             string userid = System.Web.HttpContext.Current.Session["UserId"].ToString();
-            bool isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
+            bool isAdmin = false;
+            try
+            {
+                isAdmin = await applicationUserManager.IsInRoleAsync(userid, "admin");
+            }
+            catch (Exception e)
+            {
+
+            }
             if ((item != null && useremail != null && useremail != item.OwnerUserEmail) && !isAdmin)
             {
                 TempData["Message"] = "You do not have permission to modify this post.";

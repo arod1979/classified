@@ -30,3 +30,77 @@
   :
   :admin@awolr.com=
 -------------------------------
+11:15:35 AM December 22, 2018
+  :
+  :allanrodkin@hotmail.com=System.Data.Entity.DynamicProxies.ApplicationUser_633DF6EFD06704F3A5911B387BB2A72F224E5A0EBA4CE21B372EA34E0EB6B2FC
+-------------------------------
+11:24:06 AM December 22, 2018
+  :
+  :allanrodkin@hotmail.com=System.Data.Entity.DynamicProxies.ApplicationUser_633DF6EFD06704F3A5911B387BB2A72F224E5A0EBA4CE21B372EA34E0EB6B2FC
+-------------------------------
+11:28:46 AM December 22, 2018
+  :
+  :Deleted - could not check role
+-------------------------------
+11:30:44 AM December 22, 2018
+  :
+  :Deleted - could not check role
+-------------------------------
+11:31:19 AM December 22, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+11:34:50 AM December 22, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+11:35:54 AM December 22, 2018
+  :
+  :Deleted - could not check role
+-------------------------------
+11:36:55 AM December 22, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+11:40:29 AM December 22, 2018
+  :
+  :Deleted - could not check role
+-------------------------------
+11:42:04 AM December 22, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+12:38:10 PM December 22, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+12:38:28 PM December 22, 2018
+  :
+  :Deleted - could not check role
+-------------------------------
+1:18:16 PM December 22, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+4:56:57 PM December 22, 2018
+  :
+  :allanrodkin@hotmail.com=System.Data.Entity.DynamicProxies.ApplicationUser_633DF6EFD06704F3A5911B387BB2A72F224E5A0EBA4CE21B372EA34E0EB6B2FC
+-------------------------------
+4:56:59 PM December 22, 2018
+  :
+  :allanrodkin@hotmail.com=System.Data.Entity.DynamicProxies.ApplicationUser_633DF6EFD06704F3A5911B387BB2A72F224E5A0EBA4CE21B372EA34E0EB6B2FC
+-------------------------------
+5:03:40 PM December 22, 2018
+  :
+  :allanrodkin@hotmail.com=ca63b7e2-a1cc-40f8-849d-c7cfa3a940ba
+-------------------------------
+6:12:10 PM December 22, 2018
+  :
+  :allanrodkin@hotmail.com=ca63b7e2-a1cc-40f8-849d-c7cfa3a940ba
+-------------------------------
