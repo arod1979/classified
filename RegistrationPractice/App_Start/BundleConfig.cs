@@ -48,8 +48,10 @@ namespace RegistrationPractice
                       "~/Scripts/userscript/PreviewImage.js",
                       "~/Scripts/userscript/token.js",
                       "~/Scripts/userscript/paging.js"
+                      ));
 
-
+            bundles.Add(new ScriptBundle("~/bundles/screen").Include(
+                "~/Scripts/userscript/screen.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryunobtrusive").Include(

@@ -318,6 +318,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\WebApi\EmailsController.cs" />
     <Compile Include="Controllers\WebApi\GmailInboxController.cs" />
+    <Compile Include="Controllers\WebApi\SettingsController.cs" />
     <Compile Include="DAL\DALInterfaces.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\CategoryPostType.cs" />
@@ -469,6 +470,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\userscript\adresponse.js" />
+    <Content Include="Scripts\userscript\Screen.js" />
     <Content Include="Scripts\userscript\token.js" />
     <Content Include="Scripts\userscript\emailcontroller.js" />
     <Content Include="Scripts\esm\popper-utils.js" />

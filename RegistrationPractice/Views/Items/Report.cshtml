@@ -18,10 +18,10 @@
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                 <div class="modal-body">
 
-                    <div class="form-group">
-                        <textarea name="message" class="message" rows="3" cols="40" placeholder="issue" required></textarea>
+                    <div class="form-group text-center">
+                        <textarea name="message" class="message" rows="2" cols="20" placeholder="issue" required></textarea>
                     </div>
-                    <div>
+                    <div class="text-center">
                         @Html.Captcha("Refresh", "Please Enter Captcha Value Below", 7, "Is required field.", false)
                     </div>
 
@@ -44,7 +44,7 @@
     <script>
         $(function () {
             $("#ReportReasonModal").modal();
-            alert("here")
+
         });
     </script>
 

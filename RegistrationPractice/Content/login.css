@@ -111,6 +111,7 @@ input.captcha {
 
 li {
     list-style-position: inside;
+    list-style-type: none;
 }
 
 .red {
@@ -119,13 +120,13 @@ li {
 }
 
 body {
-    margin: 0px;
+    //rodkin margin: 0px;
     padding: 0px;
     font-family: 'Comfortaa', cursive;
     /*font-family: 'Roboto';*/
     text-align: center;
-    /*font-size: 1em;
-    letter-spacing: 3px;*/
+    font-size: 14px !important;
+    /*letter-spacing: 3px;*/
 }
 
 textarea {
@@ -227,7 +228,7 @@ input[type="file"] {
     }
 
 h1 {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 h7 {
@@ -471,7 +472,7 @@ input[type="button"] {
 }
 
 .text {
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .citieslist {

@@ -1,36 +1,18 @@
 ﻿$(function () {
-
-
-
-
-
     $("#FoundDate").datepicker();
-
     $('[file-upload]').change(function () {
         var File = this.files;
-
         if (File && File[0]) {
             ReadImage(File[0]);
         }
     });
-
-
-
-
-
-
-
 });
 
 var ReadImage = function (file) {
-
     var s = document.getElementById('UpdatedActionsFileUpload');
     s.value = 'ReverseDelete';
-
-
     var reader = new FileReader;
     var image = new Image;
-
     image.addEventListener('error', imagenotfound);
     var imagenotfound = function () {
         alert("imagenotfound");

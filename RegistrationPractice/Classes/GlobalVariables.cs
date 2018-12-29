@@ -155,6 +155,7 @@ namespace RegistrationPractice.Classes.Globals
                 db.Countries.Where(c => c.CountryText.ToUpper() == country.ToUpper())
                 .Select(c => c.RegionText)
                 .ToList<string>();
+
             return regions;
 
         }
@@ -171,6 +172,7 @@ namespace RegistrationPractice.Classes.Globals
                     (l, c) => new { l, c })
                     .Where(z => z.c.RegionText == region)
                     .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, regionabbreviation = res.c.RegionAbbreviation })
+                    .OrderBy(l => l.city)
                     .ToList();
 
             return list;

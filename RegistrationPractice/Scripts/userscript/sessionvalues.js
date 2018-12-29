@@ -2,7 +2,7 @@
     $(document).ready(function () {
 
         function ipLookUp() {
-            $.ajax('http://geoip.nekudo.com/api/')
+            $.ajax('https://geoip.nekudo.com/api/')
                 .then(
                     function success(response) {
                         alert(response.country.name);
@@ -19,6 +19,9 @@
                     }
                 );
         }
+
+
+
         ipLookUp();
 
 
@@ -28,6 +31,7 @@
         //navigator.geolocation.getCurrentPosition(successCallback,
         //    errorCallback
         //);
+
 
 
         function successCallback(position) {

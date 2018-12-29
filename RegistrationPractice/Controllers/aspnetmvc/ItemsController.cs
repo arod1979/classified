@@ -21,6 +21,7 @@ using Microsoft.AspNet.Identity.Owin;
 using CaptchaMvc.HtmlHelpers;
 using System.Net.Http;
 using System.Net.Mail;
+using System.Net.Http.Headers;
 
 namespace RegistrationPractice.Controllers
 {
@@ -281,7 +282,7 @@ namespace RegistrationPractice.Controllers
             }
             else
             {
-                regions = cityListing.GetRegions(countryname);
+                regions = (cityListing.GetRegions(countryname));
                 foreach (string region in regions)
                 {
                     Region_LocationListing region_LocationListing = new Region_LocationListing();
@@ -289,8 +290,37 @@ namespace RegistrationPractice.Controllers
                     locationListings = cityListing.GetCities(region);
                     region_LocationListing.locationlistings = locationListings;
                     region_LocationListings.Add(region_LocationListing);
+
                 }
-                CityListing.region_locationlist_dictionary[countryname.ToUpper()] = region_LocationListings;
+
+
+
+
+
+                try
+                {
+                    /*CookieHeaderValue*/
+                    string devicetype = HttpContext.Request.Cookies["device-type"].Value;
+                    if (HttpContext.Request.Cookies["device-type"] != null &&
+                    devicetype == "mobile")
+                    {
+                        region_LocationListings = region_LocationListings.OrderByDescending(r => r.locationlistings.Count).ToList();
+                        loggerwrapper.PickAndExecuteLogging("Sorted Country for Mobile");
+
+                    }
+                    else
+                    {
+                        region_LocationListings = region_LocationListings.OrderBy(r => r.locationlistings.Count).ToList();
+                        loggerwrapper.PickAndExecuteLogging("Sorted Country Non-Mobile");
+
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    loggerwrapper.PickAndExecuteLogging("Error Country Index. Cannot Order Cities");
+
+                }
             }
 
 
@@ -913,10 +943,11 @@ namespace RegistrationPractice.Controllers
                 EmailRecipients emailRecipients = new EmailRecipients();
 
                 Item item = await db.Items.FindAsync(id);
-                db.Entry(item).State = EntityState.Modified;
+                //db.Entry(item).State = EntityState.Modified;
                 try
                 {
-                    item.HideItem = true;
+                    //item.HideItem = true;
+                    db.Items.Remove(item);
                     await db.SaveChangesAsync();
                     io.DeleteImage(item.imageURL);
 
