@@ -22,3 +22,27 @@
   :
   :path
 -------------------------------
+7:06:36 PM December 29, 2018
+  :
+  :Error Country Index. Cannot Order Cities
+-------------------------------
+7:30:55 PM December 29, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+7:32:37 PM December 29, 2018
+  :
+  :Account.ExternalLoginCallBack(): unable to get loginInfo
+-------------------------------
+7:35:39 PM December 29, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+7:43:15 PM December 29, 2018
+  :
+  :Account.ExternalLoginCallBack(): unable to get loginInfo
+-------------------------------
+9:05:42 PM December 29, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------

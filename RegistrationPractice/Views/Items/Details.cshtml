@@ -94,7 +94,7 @@
 
                     <a href="#@dat" data-toggle="collapse">
                         <i class="icon-action fa fa-chevron-down"></i>
-                        <h6 class="title">Contact Poster</h6>
+                        <p>Contact Poster</p>
                     </a>
 
                     <div id="@messagesent" style="display:none; color:green">Message Queued</div>
@@ -131,10 +131,11 @@
                                 </div>
 
                             }
+                            <textarea id="@messageid" name="message" class="message" rows="3" cols="18" placeholder="message" style="margin-top:0px; padding-top:3px;" required></textarea>
                         </div>
 
-                        <textarea name="email" class="email" rows="1" cols="40" placeholder="@System.Web.HttpContext.Current.Session["UserEmail"]" readonly></textarea>
-                        <textarea id="@messageid" name="message" class="message" rows="3" cols="40" placeholder="message" required></textarea>
+
+
                         <input name="bid" type="hidden" class="bid" value="@ViewBag.BrowsingUserId" />
                         <input name="pid" type="hidden" class="pid" value="@Model.UserId" />
                         <input name="email" type="hidden" class="email" value="@System.Web.HttpContext.Current.Session["UserEmail"]" />
@@ -164,11 +165,11 @@
 
                 <a href="#@shareid" data-toggle="collapse">
                     <i class="icon-action fa fa-chevron-down"></i>
-                    <h6 class="title">Share/Help</h6>
+                    <p>Share/Help</p>
                 </a>
 
 
-                <div id="@shareid" class="post-id filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%;">
+                <div id="@shareid" class="post-id filter-content collapse" style="text-align:center; margin-left:10%; margin-right:10%; margin-bottom:10px;">
                     <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://www.awolr.com/Items/details/?state=@Model.Id" data-a2a-title="https://awolr.com @Model.PostType.PostTypeText: @Model.Description">
                         @*<a href="https://www.addtoany.com/share"> <i class="fa-share fas"></i></a>*@
                         <a class="a2a_button_facebook"></a>
@@ -192,26 +193,27 @@
 
 
     </div>
+</div>
 
-    @{ string redirect = null;
-        if (HttpContext.Current.Request.Cookies["returnurl"] != null)
-        {
-            redirect = HttpContext.Current.Request.Cookies["returnurl"].Value;
-
-
-        }
-    }
-    @if (redirect != null)
+@{ string redirect = null;
+    if (HttpContext.Current.Request.Cookies["returnurl"] != null)
     {
-        <a href="@redirect">Back To Listings</a>
+        redirect = HttpContext.Current.Request.Cookies["returnurl"].Value;
+
+
     }
-    <script>
+}
+@if (redirect != null)
+{
+    <a href="@redirect">Back To Listings</a>
+}
+<script>
 
-        var a2a_config = a2a_config || {};
-        a2a_config.onclick = 1;
-    </script>
+    var a2a_config = a2a_config || {};
+    a2a_config.onclick = 1;
+</script>
 
 
-    <script async src="https://static.addtoany.com/menu/page.js"></script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
 
 

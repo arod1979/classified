@@ -410,9 +410,18 @@ namespace RegistrationPractice.Controllers
             string currentUserEmail = loginInfo.Email;
             //string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
             System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
-            var userid = UserManager.FindByEmail(loginInfo.Email).Id;
-            System.Web.HttpContext.Current.Session["UserId"] = userid;
-            loggerWrapper.PickAndExecuteLogging(currentUserEmail + "=" + userid);
+            try
+            {
+                var user = await UserManager.FindByEmailAsync(loginInfo.Email);
+                var userid = user.Id;
+                System.Web.HttpContext.Current.Session["UserId"] = userid;
+            }
+            catch (Exception e)
+            {
+                //first time user logs in from google user is not in database
+            }
+
+
             switch (result)
             {
                 case SignInStatus.Success:
@@ -460,6 +469,7 @@ namespace RegistrationPractice.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        System.Web.HttpContext.Current.Session["UserId"] = user.Id;
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }

@@ -1,6 +1,9 @@
 ﻿@model List<RegistrationPractice.Entities.Item>
 @using Microsoft.AspNet.Identity
 <link href="~/Content/projectcards.css" rel="stylesheet" />
+@{
+    string returnurl = String.Format("{0}&rp={1}", HttpContext.Current.Request.Url.PathAndQuery, ViewBag.paging);
+}
 @if (@Model.Count == 0)
 {
     <h1>No @ViewBag.PostType Items</h1>
@@ -22,10 +25,10 @@ else
             string messagesent = "sent" + item.Id;
             string messageid = "message" + item.Id;
 
+            <div class="col-sm-3 d-flex fullwidth">
 
-            <div class="col-sm-3 d-flex">
-
-                <div class="card project project-default" @*style="width: 75rem;"*@>
+                <div class="card project project-default" style="width:100%;">
+                    @*style="width: 75rem;"*@
 
 
                     <div class="card-body">
@@ -39,14 +42,19 @@ else
                         <li class="list-group-item">@ViewBag.PostType location: @item.LostLocation</li>
                         <li class="list-group-item"><b style="color:#85bb65">REWARD: $@item.ItemReward</b></li>
                         <li class="list-group-item">Created: @item.CreationDate.ToString("MM/dd/yyyy")</li>
-                        <li class="list-group-item">Share Views: @item.Visits</li>
-                        <li class="list-group-item">Additional Notes: @item.AdditionalNotes</li>
+                        <li class="list-group-item">Views: @item.Visits</li>
+                        <li class="list-group-item">Notes: @item.AdditionalNotes</li>
                         <li class="list-group-item">Category: @item.Category.CategoryText</li>
                         @if (@item.SerialNumber != null)
                         {
                             <li class="list-group-item">Serial Number: @item.SerialNumber</li>
                         }
+                        <li class="list-group-item">@Html.ActionLink("Contact & Share", "Details", "Items", new { state = item.Id }, new { returnUrl = returnurl })</li>
 
+                        <ul class="list-group list-group-flush" style="display:inline-block;">
+                            <li class="list-group-item" style="float:left; padding-left:15px;"><h7>Id: @item.Id<h7 /></li>
+                            <li class="list-group-item" style="float:right; padding-right:15px;"><h7>@Html.ActionLink("Report", "Report", new { id = item.Id })</h7> </li>
+                        </ul>
 
                     </ul>
 
@@ -115,14 +123,9 @@ else
                                                 else*@
 
 
-                    @{
-                        string returnurl = String.Format("{0}&rp={1}", HttpContext.Current.Request.Url.PathAndQuery, ViewBag.paging);
-                    }
-                    <p>@Html.ActionLink("Contact & Share", "Details", "Items", new { state = item.Id }, new { returnUrl = returnurl }) </p>
-                    <ul class="list-group list-group-flush" style="display:inline-block;">
-                        <li class="list-group-item" style="float:left; padding-left:15px;"><h7>Id: @item.Id<h7 /></li>
-                        <li class="list-group-item" style="float:right; padding-right:15px;"><h7>@Html.ActionLink("Report", "Report", new { id = item.Id })</h7> </li>
-                    </ul>
+
+
+
 
 
                     @*<a href="#@shareid" data-toggle="collapse">
@@ -152,7 +155,7 @@ else
                             <li class="list-group-item"><h7>Id: @item.Id<h7 /></li>
                         </ul> *@
                 </div> @*//end of card body*@
-            </div> @*//end of col*@
+            </div>@*//end of col*@
 
         }
     </div>

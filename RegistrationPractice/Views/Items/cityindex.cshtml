@@ -5,12 +5,13 @@
 @{
 
     Layout = "~/Views/Shared/_Jumbotron.cshtml";
-
+    string country = "Items" + "/" + ViewBag.country + "/" + ViewBag.province;
+    string city = "CityIndex" + "/" + ViewBag.city;
 }
 
 <br>
 @*@using (Ajax.BeginForm("CityIndex", "Items", new { partialmode = true, posttypefilter = ViewBag.PostType }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data, textStatus, jqxhr )" }, new { @id = "pagingform" }))*@
-@using (Ajax.BeginForm("CityIndex", "Items", new { posttypefilter = ViewBag.PostType, p = ViewBag.paging }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data )" }, new { @id = "pagingform" }))
+@using (Ajax.BeginForm(city, country, new { posttypefilter = ViewBag.PostType, p = ViewBag.paging }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "grid", OnSuccess = "success( data )" }, new { @id = "pagingform" }))
 {
     if (ViewBag.detailsview == false)
     {
@@ -20,43 +21,40 @@
         <h1 class="city" onclick="window.history.back();">@ViewBag.city_province</h1>
         <h1 class="lfs">Lost</h1>
         <div class="text">
-            <li>
+            <ul>
+                <li>
 
-                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost">All</a> lost items
-            </li>
-            <br>
-            <li>
-                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost/create">Post</a> something you've lost
-            </li>
+                    <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost">All</a> lost items
+                </li>
+                <li class="extrapadding">
+                    <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/lost/create">Post</a> something you've lost
+                </li>
+            </ul>
         </div>
 
         <h1 class="lfs">Found</h1>
         <div class="text">
-            <li>
-                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found">All</a> found items
-            </li>
-
-            <br />
-
-            <li>
-                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found/create">Post</a> something you've found
-            </li>
-
+            <ul>
+                <li>
+                    <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found">All</a> found items
+                </li>
+                <li class="extrapadding">
+                    <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/found/create">Post</a> something you've found
+                </li>
+            </ul>
         </div>
 
 
         <h1 class="lfs">Stolen</h1>
         <div class="text">
-            <li>
-                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen">All</a> stolen items
-            </li>
-
-            <br />
-
-            <li>
-                <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a> something that was stolen
-            </li>
-            <br>
+            <ul>
+                <li>
+                    <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen">All</a> stolen items
+                </li>
+                <li class="extrapadding">
+                    <a href="/items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city/stolen/create">Post</a> something that was stolen
+                </li>
+            </ul>
         </div>
     }
     else

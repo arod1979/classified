@@ -39,7 +39,7 @@ namespace RegistrationPractice.Controllers
         private RegistrationPractice.Classes.Globals.Constants constants;
         private LoggerWrapper loggerwrapper;
 
-        public ItemsController(Classes.Globals.Constants constants, LoggerWrapper loggerwrapper)
+        public ItemsController(Classes.Globals.Constants constants, LoggerWrapper loggerwrapper, ApplicationUserManager userManager)
         {
 
             if (System.Web.HttpContext.Current == null)
@@ -53,6 +53,7 @@ namespace RegistrationPractice.Controllers
 
 
             }
+            this._userManager = userManager;
             this.loggerwrapper = loggerwrapper;
             this.constants = constants;
             loggerwrapper.testingmode = false;
@@ -128,10 +129,8 @@ namespace RegistrationPractice.Controllers
         // GET: Items
         [AllowAnonymous]
         [CheckURLParameters(6)]
-        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, RegistrationPractice.Classes.Globals.Constants constants, CityListing cityListing, int p = 1, int rp = 0) ////candidate for dependancy injection
+        public async Task<ActionResult> CityIndex(string country, string province, string city, string posttypefilter, string cityindex, string search_or_post, FormCollection formcollection, RegistrationPractice.Classes.Globals.Constants constants, CityListing cityListing, int p = 1) ////candidate for dependancy injection
         {
-            if (rp > p)
-                p = rp;
             ViewBag.country = country;
             ViewBag.province = province;
             ViewBag.city = city;
@@ -238,6 +237,15 @@ namespace RegistrationPractice.Controllers
                 //--------------------------
 
                 ViewBag.detailsview = true;
+
+
+                //if (System.Web.HttpContext.Current.Session["UserId"] == null)
+                //{
+                //    string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
+                //    var user = await _userManager.FindByEmailAsync(useremail);
+                //    var userid = user.Id;
+                //    System.Web.HttpContext.Current.Session["UserId"] = userid;
+                //}
                 ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
 
                 if (Request.IsAjaxRequest())
@@ -290,16 +298,11 @@ namespace RegistrationPractice.Controllers
                     locationListings = cityListing.GetCities(region);
                     region_LocationListing.locationlistings = locationListings;
                     region_LocationListings.Add(region_LocationListing);
-
                 }
-
-
-
-
 
                 try
                 {
-                    /*CookieHeaderValue*/
+
                     string devicetype = HttpContext.Request.Cookies["device-type"].Value;
                     if (HttpContext.Request.Cookies["device-type"] != null &&
                     devicetype == "mobile")

@@ -44,7 +44,7 @@ namespace RegistrationPractice.Entities
 
         [Required]
 
-        [Range(20, 10000)]
+        [Range(0, 10000)]
         [DisplayName("Item Reward")]
         [DataType(DataType.Currency)]
         //[DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
@@ -74,6 +74,7 @@ namespace RegistrationPractice.Entities
         public string CategoryText { get; set; }
 
         [Required]
+        [DisplayName("Notes")]
         public string AdditionalNotes { get; set; }
 
         public int Visits { get; set; }
