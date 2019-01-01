@@ -148,6 +148,8 @@ namespace RegistrationPractice.Classes.Globals
 
         public static Dictionary<string, List<Region_LocationListing>> region_locationlist_dictionary = new Dictionary<string, List<Region_LocationListing>>();
 
+        public static List<LocationListing> listcities = new List<LocationListing>();
+        public static Dictionary<string, List<LocationListing>> country_cities_dictionary = new Dictionary<string, List<LocationListing>>();
 
         public List<string> GetRegions(string country)
         {
@@ -162,20 +164,52 @@ namespace RegistrationPractice.Classes.Globals
 
 
 
-        public List<LocationListing> GetCities(string region)
+        public List<LocationListing> GetCities(string country, string query = "")
         {
-            List<LocationListing> list =
-                     db.Locations
-                    .Join(db.Countries,
-                    l => l.CountryId,
-                    c => c.Id,
-                    (l, c) => new { l, c })
-                    .Where(z => z.c.RegionText == region)
-                    .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, regionabbreviation = res.c.RegionAbbreviation })
-                    .OrderBy(l => l.city)
-                    .ToList();
+            bool isQuery = (query.Length > 0);
+            List<LocationListing> list = null;
+            if (isQuery)
+            {
+                list =
+                         db.Locations
+                        .Join(db.Countries,
+                        l => l.CountryId,
+                        c => c.Id,
+                        (l, c) => new { l, c })
+                        .Where(z => z.c.CountryText == country)
+                        .Where(p => p.l.LocationText.ToLower().Contains(query.ToLower()))
+                        .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, regionabbreviation = res.c.RegionAbbreviation })
+                        .OrderBy(l => l.city)
+                        .ToList();
+            }
+            else
+            {
+                list =
+                         db.Locations
+                        .Join(db.Countries,
+                        l => l.CountryId,
+                        c => c.Id,
+                        (l, c) => new { l, c })
+                        .Where(z => z.c.CountryText == country)
+                        .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, regionabbreviation = res.c.RegionAbbreviation })
+                        .OrderBy(l => l.city)
+                        .ToList();
+            }
+
+            //List<LocationListing> list =
+            //         db.Locations
+            //        .Join(db.Countries,
+            //        l => l.CountryId,
+            //        c => c.Id,
+            //        (l, c) => new { l, c })
+            //        .Where(z => z.c.RegionText == region)
+            //        .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, regionabbreviation = res.c.RegionAbbreviation })
+            //        .OrderBy(l => l.city)
+            //        .ToList();
 
             return list;
+
+
         }
 
 

@@ -15,7 +15,7 @@
                         //alert(data.country);
                         console.log('Request failed.  Returned status of',
                             status);
-                        window.location.href = "/Items/CountryIndex/?countryname=canada";
+                        window.location.href = "/Items/CountryIndex/?countryname=canada&detailmode=false";
                     }
                 );
         }

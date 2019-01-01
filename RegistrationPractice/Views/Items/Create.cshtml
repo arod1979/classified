@@ -4,214 +4,207 @@
 
 @{
     ViewBag.Title = "Create";
+    string itemreward = Model.ItemReward.ToString();
+
 }
 
 
 
 <h1 class="city">@ViewBag.city_province</h1>
-<div class="form-horizontal">
-    @using (Html.BeginForm("Create", "Items", FormMethod.Post, new { enctype = "multipart/form-data", @class = "simpleform" }))
-    {
-        @Html.AntiForgeryToken()
+<div class="card elegantformwidth mx-auto">
+    <h5 class="card-header white-text text-center py-4" style="background-color: #99D5FF;">
+        <strong>@ViewBag.posttype Form</strong>
+    </h5>
+    <div class="card-body px-lg-5 pt-0">
 
-        @Html.ValidationSummary(true, "Please fix errors.", new { @class = "text-danger" })
-
-
-
-
-        <h1>
-            @ViewBag.posttype Form
-        </h1>
-
-        <p>
-            <strong>Note:</strong> When posting, keep it simple and to the point.
-        </p>
-
-        <br>
-        string placeholder;
-        if (ViewBag.RemoveDatePlaceholder == null)
+        @using (Html.BeginForm("Create", "Items", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "elegantform text-center", style = "color: #757575;" }))
         {
-            placeholder = "Specify Item " + ViewBag.posttype + " Date?";
-        }
-        else
-        {
-            placeholder = ViewBag.RemoveDatePlaceholder;
-        }
-        if (ViewBag.posttype == "Lost")
-        {
-            <div class="www">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "Please fix errors.", new { @class = "text-danger" })
 
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you lose?", @id = "Description", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-            <br /><br />
-            <div class="www">
-                @Html.DropDownList("CategoryID", null, new { @class = "simpleformfield" })
-                @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br>
-            <div class="www">
-                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where did you lose it?", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br />
+            string placeholder;
+            if (ViewBag.RemoveDatePlaceholder == null)
+            {
+                placeholder = "Specify Item " + ViewBag.posttype + " Date?";
+            }
+            else
+            {
+                placeholder = ViewBag.RemoveDatePlaceholder;
+            }
+            if (ViewBag.posttype == "Lost")
+            {
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="itemdescription" class="form-control validate" name="Description" value="@Model.Description">
+                    <label for="itemdescription" class="label">Description</label>
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="md-form elegantformcontrol">
+                    @Html.DropDownList("CategoryID", null, new { @id = "itemcategory", @class = "browser-default custom-select" })
+                    @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
+                </div>
 
 
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="itemlostlocation" class="form-control validate" name="LostLocation" value="@Model.LostLocation">
+                    <label for="itemlostlocation">Lost Location</label>
+                    @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
+                </div>
 
-            <div class="www">
-                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" class="simpleformfield" />
-                @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
-                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
-            </div>
-            <br>
-            <br />
-            <div class="www">
-                @Html.TextAreaFor(model => model.AdditionalNotes, new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input simpleformfield", rows = "3", @id = "Notes" })
-                @*@Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @class = "input" } })*@
-                @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br />
-            <div class="www">
-                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
-            </div>
-
-        }
-        if (ViewBag.posttype == "Found")
-        {
-            <div class="www">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What did you find?", @id = "Description", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br>
+                <div class="md-form elegantformcontrol">
+                    <input style="font-family:14px;" type="text" class="form-control validate" name="FoundDate" id="FoundDate" value="@placeholder" />
 
 
-            <div class="www">
-                @Html.DropDownList("CategoryID", null, new { @class = "simpleformfield" })
-                @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br>
-            <div class="www">
-                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where did you find it?", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br />
-            <div class="www">
-                <input class="simpleformfield" type="text" name="FoundDate" id="FoundDate" value="@placeholder" />
-                @*@Html.EditorFor(model => model.FoundDate, new { htmlAttributes = new { placeholder = "Which Month, Day, Year?" } })*@
-                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
-            </div>
-            <br>
-            <br />
-            <div class="www">
-                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", name = "FoundDate", @id = "Notes", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
-            </div>
+                </div>
+                <div class="md-form mb-4">
+                    <textarea id="notes" class="md-textarea form-control validate" rows="1" name="AdditionalNotes" value="@Model.AdditionalNotes">@Model.AdditionalNotes</textarea>
+                    <label for="notes">Additional Notes</label>
+                    @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
 
-            <input type="hidden" value="20" name="ItemReward" />
-
-        }
-
-        if (ViewBag.posttype == "Stolen")
-        {
-            <div class="www">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { placeholder = "What was stolen?", @id = "Description", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br>
-            <div class="www">
-                @Html.DropDownList("CategoryID", null, new { @class = "simpleformfield" })
-                @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br>
-            <div class="www">
-                @Html.EditorFor(model => model.LostLocation, new { htmlAttributes = new { placeholder = "Where was it stolen from?", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br />
-            <div class="www">
-                <input type="text" name="FoundDate" id="FoundDate" value="@placeholder" class="placeholder simpleformfield" />
-
-                @Html.ValidationMessageFor(model => model.FoundDate, "", new { @class = "text-danger datefield", type = "date" })
-            </div>
-            <br>
-            <br />
-            <div class="www">
-
-                @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { placeholder = "Serial #", @id = "SerialNumber", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
-            </div>
-            <br /><br />
-            <div class="www">
-                @Html.EditorFor(model => model.AdditionalNotes, new { htmlAttributes = new { placeholder = "ex. color, model, distinct markins, etc?", @id = "Notes", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
-            </div>
-            <br>
-            <br />
-            <div class="www">
-                @Html.EditorFor(model => model.ItemReward, new { htmlAttributes = new { placeholder = "Reward amount: minimum 20", @class = "simpleformfield" } })
-                @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
-            </div>
-
-        }
+                </div>
 
 
-        <label for="files" class="custom-file-upload" style="padding:5px;">
-            Upload Image File
-        </label>
-        <input type="file" class="custom-file-upload" name="files" id="files" accept=".jpg,.jpeg,.png" file-upload />
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="reward" class="form-control validate" name="ItemReward" value="@itemreward">
+                    <label for="notes">Item Reward Rounded to ($)</label>
+                    @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
+                </div>
+            }
+            if (ViewBag.posttype == "Found")
+            {
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="itemdescription" class="form-control validate" name="Description" value="@Model.Description">
+                    <label for="itemdescription" class="label">Description</label>
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="md-form elegantformcontrol">
+                    @Html.DropDownList("CategoryID", null, new { @id = "itemcategory", @class = "browser-default custom-select" })
+                    @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
+                </div>
 
 
-        <div class="alert alert-danger d-none">File Could Not Be Uploaded</div>
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="itemlostlocation" class="form-control validate" name="LostLocation" value="@Model.LostLocation">
+                    <label for="itemlostlocation">Found Location</label>
+                    @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="md-form elegantformcontrol">
+                    <input style="font-family:14px;" type="text" class="form-control validate" name="FoundDate" id="FoundDate" value="@placeholder" />
 
 
-        <a name="in-form"></a>
+                </div>
+                <div class="md-form mb-4">
+                    <textarea id="notes" class="md-textarea form-control validate" rows="1" name="AdditionalNotes" value="@Model.AdditionalNotes">@Model.AdditionalNotes</textarea>
+                    <label for="notes">Additional Notes</label>
+                    @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
 
-        <div class="www-nobottom">
-            <div img-preview class="thumbnail" style="display:none">
-                <img class="img-fluid" target-img />
-                <div class="caption">
-                    <a href="#in-form" onclick="ClearPreview()"><i class="fas fa-trash"></i> </a>
-                    <p img-description></p>
+                </div>
+                <input type="hidden" value="20" name="ItemReward" />
+
+            }
+            if (ViewBag.posttype == "Stolen")
+            {
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="itemdescription" class="form-control validate" name="Description" value="@Model.Description">
+                    <label for="itemdescription" class="label">Description</label>
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="md-form elegantformcontrol">
+                    @Html.DropDownList("CategoryID", null, new { @id = "itemcategory", @class = "browser-default custom-select" })
+                    @Html.ValidationMessageFor(model => model.PostTypeID, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="itemlostlocation" class="form-control validate" name="LostLocation" value="@Model.LostLocation">
+                    <label for="itemlostlocation">Found Location</label>
+                    @Html.ValidationMessageFor(model => model.LostLocation, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="serialnumber" class="form-control validate" name="SerialNumber" value="@Model.SerialNumber">
+                    <label for="serialnumber">Serial Number</label>
+                    @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="md-form elegantformcontrol">
+                    <input style="font-family:14px;" type="text" class="form-control validate" name="FoundDate" id="FoundDate" value="@placeholder" />
+
+
+                </div>
+                <div class="md-form mb-4">
+                    <textarea id="notes" class="md-textarea form-control validate" rows="1" name="AdditionalNotes" value="">@Model.AdditionalNotes</textarea>
+                    <label for="notes">Additional Notes</label>
+                    @Html.ValidationMessageFor(model => model.AdditionalNotes, "", new { @class = "text-danger" })
+                </div>
+                <div class="md-form elegantformcontrol">
+                    <input type="text" id="reward" class="form-control validate" name="ItemReward" value="@itemreward">
+                    <label for="notes">Item Reward Rounded to ($)</label>
+                    @Html.ValidationMessageFor(model => model.ItemReward, "", new { @class = "text-danger" })
+                </div>
+            }
+            <label for="files" class="custom-file-upload" style="padding:5px;">
+                Upload Image File
+            </label>
+            <input type="file" class="custom-file-upload" name="files" id="files" accept=".jpg,.jpeg,.png" file-upload />
+
+
+            <div class="alert alert-danger d-none">File Could Not Be Uploaded</div>
+
+
+            <a name="in-form"></a>
+
+            <div>
+                <div img-preview class="thumbnail" style="display:none">
+                    <img class="img-fluid" target-img />
+                    <div class="caption">
+                        <a href="#in-form" onclick="ClearPreview()"><i class="fas fa-trash"></i> </a>
+                        <p img-description></p>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-        @Html.HiddenFor(item => item.OwnerUserEmail)
-        @Html.HiddenFor(item => item.UserId)
-        @Html.HiddenFor(item => item.LocationID)
-        @Html.HiddenFor(item => item.Country)
-        @Html.HiddenFor(item => item.City)
-        @Html.HiddenFor(item => item.PostTypeID)
-        <input type="hidden" id="UpdatedActionsFileUpload" name="UpdatedActionsFileUpload" value="none" />
+            @Html.HiddenFor(item => item.OwnerUserEmail)
+            @Html.HiddenFor(item => item.UserId)
+            @Html.HiddenFor(item => item.LocationID)
+            @Html.HiddenFor(item => item.Country)
+            @Html.HiddenFor(item => item.City)
+            @Html.HiddenFor(item => item.PostTypeID)
+            <input type="hidden" id="UpdatedActionsFileUpload" name="UpdatedActionsFileUpload" value="none" />
 
 
 
-        <input type="hidden" value="@ViewBag.Province" name="province" />
-        <input type="hidden" value="@ViewBag.PostType" name="posttypefilter" />
+            <input type="hidden" value="@ViewBag.Province" name="province" />
+            <input type="hidden" value="@ViewBag.PostType" name="posttypefilter" />
 
 
-        @*<span class="btn btn-default btn-file">
-                Browse <input type="file">
-            </span>*@
 
+            <button id="createform" class="btn btn-outline-info btn-rounded  my-1 waves-effect z-depth-0" type="submit" style="border-radius: 24px;">Submit</button>
 
-        <div class="www">
-            <input id="createform" type="submit" class="btn btn-info" value="Submit">
-        </div>
-        <br>
-        <br />
-        @Html.DisplayText("You must login to post")
-    }
+            <br>
+            <br />
+            @Html.DisplayText("You must login to post")
+
+        }
+    </div>
 </div>
 
+
+
+
+
+
+@section MetaContent
+{
+
+    <link href="@Url.Content("~/Content/mdb/mdb.min.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/mdb/mdb.min.css" rel="stylesheet" />
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        }*@
+
+}

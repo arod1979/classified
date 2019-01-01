@@ -1,5 +1,4 @@
-﻿
-@model List<RegistrationPractice.Models.ViewModels.Region_LocationListing>
+﻿@*@model List<RegistrationPractice.Models.ViewModels.Region_LocationListing>*@
 @{
     ViewBag.Title = "AwolR.Com";
 }
@@ -17,39 +16,73 @@
 <h1 class="lfs">Select Your City</h1>
 
 
+@*<nav class="navbar navbar-expand-md navbar-dark bg-lightblue">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">*@
 
 
-<div class="cities">
+<select id="countryname" name="country">
+    <option>Canada</option>
+    <option>USA</option>
+</select>
 
-    @foreach (RegistrationPractice.Models.ViewModels.Region_LocationListing region_locationlisting in Model)
-    {
+<input type="text" id="citysearch" name="citysearch" />
+<div class="container" id="searchresults">
 
-        <ul class="citieslist">
-            <b>@region_locationlisting.region</b>
-            @foreach (RegistrationPractice.Models.ViewModels.LocationListing item in region_locationlisting.locationlistings)
-            {
-
-                <li>
-                    @Html.ActionLink(item.city, String.Format("{0}/{1}/CityIndex/{2}",
-                    item.country, item.regionabbreviation, item.city))
-                </li>
-            }
-        </ul>
-    }
+    <div id="flexresults" class="d-flex flex-row flex-wrap bg-light"></div>
 
 </div>
 
 
-@*}
-    else if (ViewBag.country == "USA")
-    {
 
 
 
-        <br />
-        <br />
 
-        <img src="~/pictures/colors2-usa-fys.png" class="countryimage" />
-        <h1>Coming Soon!</h1>
-    }*@
+@*<div class="cities">
+
+        @foreach (RegistrationPractice.Models.ViewModels.Region_LocationListing region_locationlisting in Model)
+        {
+
+            <ul class="citieslist">
+                <b>@region_locationlisting.region</b>
+                @foreach (RegistrationPractice.Models.ViewModels.LocationListing item in region_locationlisting.locationlistings)
+                {
+
+                    <li>
+                        @Html.ActionLink(item.city, String.Format("{0}/{1}/CityIndex/{2}",
+                        item.country, item.regionabbreviation, item.city))
+                    </li>
+                }
+            </ul>
+        }
+
+    </div>*@
+
+
+@*<div class="container">
+        <div class="row">
+
+            @foreach (RegistrationPractice.Models.ViewModels.Region_LocationListing region_locationlisting in Model)
+            {
+
+                <b>@region_locationlisting.region</b>
+
+                <div class="col-sm-3 d-flex fullwidth">
+                    @foreach (RegistrationPractice.Models.ViewModels.LocationListing item in region_locationlisting.locationlistings)
+                    {
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink(item.city, String.Format("{0}/{1}/CityIndex/{2}",
+                                item.country, item.regionabbreviation, item.city))
+                            </li>
+                        </ul>
+                    }
+
+
+                </div>
+
+            }
+        </div>
+    </div>*@
+
 

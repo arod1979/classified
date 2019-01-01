@@ -226,7 +226,7 @@ namespace RegistrationPractice.Controllers
                 int skip = (p - 1) * itemsperpage;
 
 
-                items = items.OrderBy(item => item.CreationDate).Skip(skip).Take(totalimagescurrentpage);
+                items = items.OrderByDescending(item => item.CreationDate).Skip(skip).Take(totalimagescurrentpage);
 
                 //------------------------- 
                 //items needed to render _PostCards
@@ -235,17 +235,7 @@ namespace RegistrationPractice.Controllers
                 ViewBag.paging = p;
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter.ToLower());
                 //--------------------------
-
                 ViewBag.detailsview = true;
-
-
-                //if (System.Web.HttpContext.Current.Session["UserId"] == null)
-                //{
-                //    string useremail = (string)System.Web.HttpContext.Current.Session["UserEmail"];
-                //    var user = await _userManager.FindByEmailAsync(useremail);
-                //    var userid = user.Id;
-                //    System.Web.HttpContext.Current.Session["UserId"] = userid;
-                //}
                 ViewBag.BrowsingUserId = (string)System.Web.HttpContext.Current.Session["UserId"];
 
                 if (Request.IsAjaxRequest())
@@ -268,10 +258,11 @@ namespace RegistrationPractice.Controllers
             return View("start");
         }
 
-        // GET: Items
         [AllowAnonymous]
-        public ViewResult CountryIndex(CityListing cityListing, string countryname = "canada")
+        public JsonResult LoadCities(CityListing cityListing, string countryname = "", string searchquery = "")
         {
+            List<LocationListing> cities = null;
+            loggerwrapper.PickAndExecuteLogging("got to loadcities");
             countryname = countryname.ToLower();
             List<string> regions = null;
             List<LocationListing> locationListings = null;
@@ -284,50 +275,65 @@ namespace RegistrationPractice.Controllers
             {
                 ViewBag.country = "USA";
             }
-            if (CityListing.region_locationlist_dictionary.ContainsKey(countryname.ToUpper()))
-            {
-                region_LocationListings = CityListing.region_locationlist_dictionary[countryname.ToUpper()];
-            }
-            else
-            {
-                regions = (cityListing.GetRegions(countryname));
-                foreach (string region in regions)
-                {
-                    Region_LocationListing region_LocationListing = new Region_LocationListing();
-                    region_LocationListing.region = region;
-                    locationListings = cityListing.GetCities(region);
-                    region_LocationListing.locationlistings = locationListings;
-                    region_LocationListings.Add(region_LocationListing);
-                }
+            //if (CityListing.region_locationlist_dictionary.ContainsKey(countryname.ToUpper()))
+            //{
+            //    region_LocationListings = CityListing.region_locationlist_dictionary[countryname.ToUpper()];
 
-                try
-                {
-
-                    string devicetype = HttpContext.Request.Cookies["device-type"].Value;
-                    if (HttpContext.Request.Cookies["device-type"] != null &&
-                    devicetype == "mobile")
-                    {
-                        region_LocationListings = region_LocationListings.OrderByDescending(r => r.locationlistings.Count).ToList();
-                        loggerwrapper.PickAndExecuteLogging("Sorted Country for Mobile");
-
-                    }
-                    else
-                    {
-                        region_LocationListings = region_LocationListings.OrderBy(r => r.locationlistings.Count).ToList();
-                        loggerwrapper.PickAndExecuteLogging("Sorted Country Non-Mobile");
-
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    loggerwrapper.PickAndExecuteLogging("Error Country Index. Cannot Order Cities");
-
-                }
-            }
+            //}
 
 
-            return View(region_LocationListings);
+
+
+            cities = cityListing.GetCities(countryname, searchquery);
+
+            //regions = (cityListing.GetRegions(countryname));
+            //foreach (string region in regions)
+            //{
+            //    Region_LocationListing region_LocationListing = new Region_LocationListing();
+            //    region_LocationListing.region = region;
+            //    locationListings = cityListing.GetCities(region);
+            //    region_LocationListing.locationlistings = locationListings;
+            //    region_LocationListings.Add(region_LocationListing);
+            //}
+
+            //try
+            //{
+
+            //    string devicetype = HttpContext.Request.Cookies["device-type"].Value;
+            //    if (HttpContext.Request.Cookies["device-type"] != null &&
+            //    devicetype == "mobile")
+            //    {
+            //        region_LocationListings = region_LocationListings.OrderByDescending(r => r.locationlistings.Count).ToList();
+            //        loggerwrapper.PickAndExecuteLogging("Sorted Country for Mobile");
+
+            //    }
+            //    else
+            //    {
+            //        region_LocationListings = region_LocationListings.OrderBy(r => r.locationlistings.Count).ToList();
+            //        loggerwrapper.PickAndExecuteLogging("Sorted Country Non-Mobile");
+
+            //    }
+
+            //}
+            //catch (Exception e)
+            //{
+            //    loggerwrapper.PickAndExecuteLogging("Error Country Index. Cannot Order Cities");
+
+            //}
+            //}
+
+            return Json(cities, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        // GET: Items
+        [AllowAnonymous]
+        public ActionResult CountryIndex()
+        {
+            loggerwrapper.PickAndExecuteLogging("got to loadcities");
+
+            return View();
         }
 
         // GET: Items/Details/5
@@ -335,7 +341,6 @@ namespace RegistrationPractice.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Details(int? state)
         {
-
 
             string a = null;
             if (RouteData.Values["state"] != null)
@@ -444,7 +449,6 @@ namespace RegistrationPractice.Controllers
                 item.Country = country;
                 item.City = city;
                 item.LocationID = constants.GetCityPrimaryKey(city);
-
                 switch (posttypefilter)
                 {
                     case "Stolen":
@@ -524,6 +528,7 @@ namespace RegistrationPractice.Controllers
         {
             try
             {
+
                 string province = formcollection["province"];
                 string posttypefilter = formcollection["posttypefilter"];
                 string foundate = formcollection["FoundDate"];

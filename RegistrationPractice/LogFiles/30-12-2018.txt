@@ -74,3 +74,203 @@
   :
   :Sorted Country Non-Mobile
 -------------------------------
+1:31:09 PM December 30, 2018
+  :
+  :Error Country Index. Cannot Order Cities
+-------------------------------
+1:42:00 PM December 30, 2018
+  :
+  :Error Country Index. Cannot Order Cities
+-------------------------------
+1:45:22 PM December 30, 2018
+  :
+  :Error Country Index. Cannot Order Cities
+-------------------------------
+1:55:42 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+1:56:00 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+2:07:01 PM December 30, 2018
+  :
+  :Account.ExternalLoginCallBack(): unable to get loginInfo
+-------------------------------
+2:07:16 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+2:11:11 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+2:11:54 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+2:20:57 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+2:30:28 PM December 30, 2018
+  :
+  :Error Country Index. Cannot Order Cities
+-------------------------------
+2:46:32 PM December 30, 2018
+  :
+  :Error Country Index. Cannot Order Cities
+-------------------------------
+2:57:18 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+2:59:17 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:01:55 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:02:24 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:04:54 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:05:22 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:08:30 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:08:57 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:11:42 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:13:04 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:14:18 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:15:17 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:15:48 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:16:28 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:17:23 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:18:17 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:20:35 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:20:54 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:21:18 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:21:47 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:22:00 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+3:23:38 PM December 30, 2018
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__14.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 460
+-------------------------------
+5:39:41 PM December 30, 2018
+  :
+  :Error Country Index. Cannot Order Cities
+-------------------------------
+5:53:37 PM December 30, 2018
+  :
+  :Error Country Index. Cannot Order Cities
+-------------------------------
+6:12:19 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+6:12:40 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+6:15:39 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+6:17:29 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------
+6:21:52 PM December 30, 2018
+  :
+  :path
+-------------------------------
+6:24:59 PM December 30, 2018
+  :
+  :path
+-------------------------------
+6:26:44 PM December 30, 2018
+  :
+  :path
+-------------------------------
+6:28:08 PM December 30, 2018
+  :
+  :Sorted Country Non-Mobile
+-------------------------------

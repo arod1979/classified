@@ -33,6 +33,7 @@ input.captcha {
 }
 
 .elegantformcontrol {
+    font-size: 14px;
 }
 
 .dropdown-submenu {
@@ -259,7 +260,7 @@ h7 {
 .www-nobottom {
     margin: 1px 1px 1px 1px;
     border-radius: 5px;
-    background-color: rgb(153, 213, 255);
+    /*background-color: rgb(153, 213, 255);*/
     border-top: 2px solid #eee;
 }
 
@@ -274,6 +275,26 @@ h1.city {
 li.extrapadding {
     padding-top: 5px;
 }
+
+
+/*Country display*/
+
+.navbar-fixed-top .btn-group-merge {
+    margin-left: -5px;
+}
+
+    .navbar-fixed-top .btn-group-merge:first-child {
+        margin-left: 0;
+    }
+
+    .navbar-fixed-top .btn-group-merge .btn {
+        border-radius: 0 4px 4px 0;
+    }
+
+    .navbar-fixed-top .btn-group-merge:first-child .btn {
+        border-radius: 4px 0 0 4px;
+    }
+
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*Mobile display*/

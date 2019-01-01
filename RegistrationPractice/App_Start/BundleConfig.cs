@@ -47,7 +47,8 @@ namespace RegistrationPractice
                       "~/Scripts/userscript/button.js",
                       "~/Scripts/userscript/PreviewImage.js",
                       "~/Scripts/userscript/token.js",
-                      "~/Scripts/userscript/paging.js"
+                      "~/Scripts/userscript/paging.js",
+                      "~/Scripts/userscript/Search.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/screen").Include(

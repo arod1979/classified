@@ -370,6 +370,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstraploginform\elegantloginform.css" />
+    <Content Include="Content\datagrid.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -471,6 +472,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\userscript\adresponse.js" />
     <Content Include="Scripts\userscript\Screen.js" />
+    <Content Include="Scripts\userscript\Search.js" />
     <Content Include="Scripts\userscript\token.js" />
     <Content Include="Scripts\userscript\emailcontroller.js" />
     <Content Include="Scripts\esm\popper-utils.js" />

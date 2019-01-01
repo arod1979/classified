@@ -28,22 +28,22 @@
 
         <h1>Edit Form</h1>
         <div class="www">
-            <b> @Model.PostType.PostTypeText </b>
+            <b>Post Type:</b> @Model.PostType.PostTypeText
         </div>
         if (Model.SerialNumber != null)
         {
             <div class="www">
-                <b>Serial: @Model.EmailRelayAddress</b>
+                <b>Serial#</b>@Model.EmailRelayAddress
             </div>
         }
         <div class="www">
-            <b>@Model.Category.CategoryText </b>
+            <b>Category: </b>@Model.Category.CategoryText
         </div>
         <div class="www">
-            <b> @Model.City </b>
+            <b>City: </b>@Model.City
         </div>
         <div class="www">
-            <b>@Model.LostLocation </b>
+            <b>Lost Location: </b>@Model.LostLocation
         </div>
         <div class="www">
             <label>Reward</label>
