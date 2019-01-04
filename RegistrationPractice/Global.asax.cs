@@ -55,6 +55,7 @@ namespace RegistrationPractice
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
             //GlobalFilters.Filters.Add(new ValidateAntiForgeryTokenOnAllPosts());
+            GlobalFilters.Filters.Add(new RequireHttpsAttribute());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
             IFilterProvider[] providers = FilterProviders.Providers.ToArray();

@@ -39,6 +39,7 @@ namespace RegistrationPractice.Controllers
         private RegistrationPractice.Classes.Globals.Constants constants;
         private LoggerWrapper loggerwrapper;
 
+
         public ItemsController(Classes.Globals.Constants constants, LoggerWrapper loggerwrapper, ApplicationUserManager userManager)
         {
 
