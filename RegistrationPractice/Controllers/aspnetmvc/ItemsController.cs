@@ -703,6 +703,8 @@ namespace RegistrationPractice.Controllers
 
                     if (files != null)
                     {
+                        var saveditem = db.Items.Where(i => i.Id == item.Id).ToList()[0];
+                        bool success = io.DeleteImage(saveditem.imageURL);
                         string imageUrl;
                         string result = io.SaveImage(files, out imageUrl);
                         item.imageURL = imageUrl;
