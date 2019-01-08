@@ -273,9 +273,6 @@ h7 {
     max-width: 80px;
 }
 
-h1.city {
-    text-decoration: underline;
-}
 
 li.extrapadding {
     padding-top: 5px;
@@ -385,6 +382,18 @@ li.extrapadding {
         color: #333;
     }
 
+    hi.citylinked {
+        border-radius: 20px;
+        margin-left: 0;
+        margin-right: 0;
+        background-color: yellow;
+        border-bottom: 6px solid #eee;
+        border-top: 6px solid #333;
+        color: #333;
+        text-decoration: underline;
+        cursor: default;
+    }
+
     h1.lfs {
         border-radius: 20px;
         margin-left: 0%;
@@ -478,6 +487,18 @@ li.extrapadding {
         border-bottom: 6px solid #eee;
         border-top: 6px solid #333;
         color: #333;
+    }
+
+    h1.citylinked {
+        border-radius: 20px;
+        margin-left: 25%;
+        margin-right: 25%;
+        background-color: yellow;
+        border-bottom: 6px solid #eee;
+        border-top: 6px solid #333;
+        color: #333;
+        text-decoration: underline;
+        cursor: default;
     }
 }
 

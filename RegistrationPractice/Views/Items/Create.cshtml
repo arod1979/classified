@@ -6,11 +6,16 @@
     ViewBag.Title = "Create";
     string itemreward = Model.ItemReward.ToString();
 
+    //get region
+    string currenturl = Request.Url.PathAndQuery;
+    //string substr = currenturl.Substring(0, currenturl.ToUpper().IndexOf("/CITYINDEX"));
+    //string substrb = substr;
+    //string region = substrb.Substring(substr.Length - 2, 2);
 }
 
 
 
-<h1 class="city">@ViewBag.city_province</h1>
+@*<a href=@String.Format("/Items/{Country/{Region}/CityIndex/{City}", Model.Country, region, Model.Country) ;*@<h1 class="citylinked">@ViewBag.city_province</h1>
 <div class="card elegantformwidth mx-auto">
     <h5 class="card-header white-text text-center py-4" style="background-color: #99D5FF;">
         <strong>@ViewBag.posttype Form</strong>

@@ -262,6 +262,10 @@ namespace RegistrationPractice.Controllers
         [AllowAnonymous]
         public JsonResult LoadCities(CityListing cityListing, string countryname = "", string searchquery = "")
         {
+            if (String.IsNullOrEmpty(searchquery) || String.IsNullOrWhiteSpace(searchquery))
+            {
+                return Json(new EmptyResult(), JsonRequestBehavior.AllowGet);
+            }
             List<LocationListing> cities = null;
             loggerwrapper.PickAndExecuteLogging("got to loadcities");
             countryname = countryname.ToLower();

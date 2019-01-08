@@ -18,7 +18,7 @@
 
         ViewBag.Title = "AwolR City Index";
 
-        <h1 class="city" onclick="window.history.back();">@ViewBag.city_province</h1>
+        <h1 class="city">@ViewBag.city_province</h1>
         <h1 class="lfs">Lost</h1>
         <div class="text">
             <ul>
@@ -60,7 +60,7 @@
     else
     {
         ViewBag.Title = ViewBag.city + " Listings";
-        <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city" onclick="window.history.back();"><h1 class="city">@ViewBag.city_province</h1></a>
+        <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
         <input type="text" class="itemsearchbox" name="search_or_post" placeholder="Search" maxlength="30">
         <input type="submit" class="search-button" value="Search">
         <div class="form-check">

@@ -17,23 +17,25 @@
             contentType: "html",
             url: "/Items/LoadCities?countryname=" + country + "&searchquery=" + searchvalue,
             success: function (result) {
-                if (result.length != 0) {
-                    $("#flexresults").html("");
-                    $.each(result, function (index, value) {
+                //if (typeof result.length === "undefined" || result.length === 0) {
+                //    $("#flexresults").html("");
+                //}
+                //else {
+                $("#flexresults").html("");
+                $.each(result, function (index, value) {
 
-                        //$("#citieslist").append("<li><a href=/items/" + value.country + "/" +
-                        //    value.regionabbreviation + "/" + "cityindex/" + value.city + ">" + value.city + "</a></li>");
-
-
-                        $("#flexresults").append('<div class="p-2 my-flex-item">' + "<a href=" + "/items/" + value.country + "/" +
-                            value.regionabbreviation + "/" + "cityindex/" + encodeURI(value.city) + ">" + value.city + "</a></div");
-
-                    });
+                    //$("#citieslist").append("<li><a href=/items/" + value.country + "/" +
+                    //    value.regionabbreviation + "/" + "cityindex/" + value.city + ">" + value.city + "</a></li>");
 
 
-                }
-                else
-                    console.log("no search results")
+                    $("#flexresults").append('<div class="p-2 my-flex-item">' + "<a href=" + "/items/" + value.country + "/" +
+                        value.regionabbreviation + "/" + "cityindex/" + encodeURI(value.city) + ">" + value.city + "</a></div");
+
+                });
+
+
+                //}
+
             },
             error: function fail(data, status) {
                 console.log('Request failed.  Returned status of',
