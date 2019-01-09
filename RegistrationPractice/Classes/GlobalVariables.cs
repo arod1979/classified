@@ -129,7 +129,7 @@ namespace RegistrationPractice.Classes.Globals
         public int GetCityPrimaryKey(string city)
         {
 
-            return db.Locations.Where(loc => loc.LocationText == city).SingleOrDefault().Id;
+            return db.Locations.Where(loc => loc.Location_Country == city).SingleOrDefault().Id;
         }
 
         public static string[] posttypes = { "lost", "Lost", "stolen", "Stolen", "found", "Found" };
@@ -178,7 +178,7 @@ namespace RegistrationPractice.Classes.Globals
                         (l, c) => new { l, c })
                         .Where(z => z.c.CountryText == country)
                         .Where(p => p.l.LocationText.ToLower().Contains(query.ToLower()))
-                        .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.LocationText, regionabbreviation = res.c.RegionAbbreviation })
+                        .Select(res => new LocationListing { country = res.c.CountryText, city = res.l.Location_Country, regionabbreviation = res.c.RegionAbbreviation })
                         .OrderBy(l => l.city)
                         .ToList();
             }

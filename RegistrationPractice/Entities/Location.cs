@@ -16,6 +16,8 @@ namespace RegistrationPractice.Entities
         [DisplayName("Location")]
         public string LocationText { get; set; }
 
+        public string Location_Country { get; set; }
+
         public ICollection<Post> Posts { get; set; }
 
         public Country Country { get; set; }

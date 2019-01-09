@@ -519,6 +519,12 @@ namespace RegistrationPractice.Controllers
         }
 
         [AllowAnonymous]
+        public ActionResult TermsAndConditions()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             return View();

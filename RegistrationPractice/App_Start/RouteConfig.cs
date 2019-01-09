@@ -17,7 +17,7 @@ namespace RegistrationPractice
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Items", action = "start" }
+                defaults: new { controller = "Items", action = "CountryIndex" }
             );
 
             routes.MapRoute(

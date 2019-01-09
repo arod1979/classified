@@ -9,12 +9,6 @@
       <Apply>Destination</Apply>
       <XPath></XPath>
     </MsDeploySkipRules>
-    <MsDeploySkipRules Include="SkipELMAHFolderFiles">
-      <SkipAction></SkipAction>
-      <ObjectName>filePath</ObjectName>
-      <AbsolutePath>$(_DestinationContentPath)\\logfiles\\.*</AbsolutePath>
-      <Apply>Destination</Apply>
-      <XPath></XPath>
-    </MsDeploySkipRules>
+
   </ItemGroup>
 </Project>

@@ -422,7 +422,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="css\bootstrap.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -597,6 +597,7 @@
     <Content Include="Views\Items\Stats.cshtml" />
     <Content Include="Views\Stack\Create.cshtml" />
     <Content Include="Views\Items\Report.cshtml" />
+    <Content Include="Views\Account\TermsAndConditions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -614,6 +615,7 @@
     <Folder Include="Areas\admin\Controllers\" />
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Content\bootstrap4\" />
+    <Folder Include="favicons\" />
     <Folder Include="logfiles\" />
   </ItemGroup>
   <ItemGroup>

@@ -135,7 +135,9 @@ namespace RegistrationPractice.Controllers
             ViewBag.country = country;
             ViewBag.province = province;
             ViewBag.city = city;
-            ViewBag.city_province = string.Format("{0},{1}", city, province);
+            ViewBag.metadescription = String.Format("{0}:Lost, Found, and Stolen Classifieds", city);
+            //ViewBag.city_province = string.Format("{0},{1}", city, province);
+            ViewBag.city_province = city;
             if (posttypefilter != null)
                 ViewBag.PostType = textInfo.ToTitleCase(posttypefilter);
             HttpCookie mycookie = new HttpCookie("returnurl");
@@ -149,6 +151,7 @@ namespace RegistrationPractice.Controllers
             IQueryable<Item> items = null;
             if (posttypefilter != null)
             {
+
                 if (!RegistrationPractice.Classes.Globals.Constants.posttypes.Contains(posttypefilter))
                 {
                     ViewBag.Message = "Invalid Search Type";
@@ -159,11 +162,11 @@ namespace RegistrationPractice.Controllers
                 posttypefilter = posttypefilter.ToLower();
                 ViewBag.detailsview = true;
                 ////var items = db.Items.Include(i => i.Category).Include(i => i.Location);
-                var cityid = db.Locations.SingleOrDefault(lo => lo.LocationText == city).Id;
+                var cityid = db.Locations.SingleOrDefault(lo => lo.Location_Country == city).Id;
                 var dbid = constants.Getdbidbyposttype(posttypefilter);
                 items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => (si.PostTypeID == dbid && si.HideItem == false) && si.LocationID == cityid) select (Item)si);
 
-
+                ViewBag.metadescription = String.Format("{0} {1} classifieds", city, posttypefilter);
                 if (posttypefilter == "stolen")
                 {
                     items = items.Include("PostType").Include("Category").Include("Location").Where(si => si.PostTypeID == constants.stolendbid);
@@ -443,7 +446,8 @@ namespace RegistrationPractice.Controllers
             Item item = new Item();
             try
             {
-                ViewBag.city_province = string.Format("{0},{1}", city, province);
+                //ViewBag.city_province = string.Format("{0},{1}", city, province);
+                ViewBag.city_province = city;
                 ViewBag.Province = province;
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
 
@@ -537,7 +541,7 @@ namespace RegistrationPractice.Controllers
                 string province = formcollection["province"];
                 string posttypefilter = formcollection["posttypefilter"];
                 string foundate = formcollection["FoundDate"];
-                ViewBag.city_province = string.Format("{0},{1}", item.City, province);
+                //ViewBag.city_province = string.Format("{0},{1}", item.City, province);
 
                 if ((System.DateTime.Now - item.FoundDate).Days < 500)
                     ViewBag.RemoveDatePlaceholder = item.FoundDate.ToShortDateString();
@@ -597,7 +601,8 @@ namespace RegistrationPractice.Controllers
                 imageproblem:
 
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
-                ViewBag.city_province = string.Format("{0},{1}", item.City, province);
+                //ViewBag.city_province = string.Format("{0},{1}", item.City, province);
+                ViewBag.city_province = item.City;
                 ViewBag.Province = province;
 
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
