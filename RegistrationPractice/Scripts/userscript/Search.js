@@ -28,7 +28,7 @@
                     //    value.regionabbreviation + "/" + "cityindex/" + value.city + ">" + value.city + "</a></li>");
 
 
-                    $("#flexresults").append('<div class="p-2 my-flex-item">' + "<a href=" + "/items/" + value.country + "/" +
+                    $("#flexresults").append('<div class="p-2 my-flex-item">' + "<a href=" + "/items/" + encodeURI(value.country) + "/" +
                         value.regionabbreviation + "/" + "cityindex/" + encodeURI(value.city) + ">" + value.city + "</a></div");
 
                 });

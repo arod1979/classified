@@ -754,15 +754,17 @@ namespace RegistrationPractice.Controllers
         }
 
         // GET: Items/Delete/5
-        public async Task<ActionResult> Deleted(int? id)
+        public ActionResult Deleted(int? id)
         {
             return View();
         }
 
         [AllowAnonymous]
-        public async Task<ActionResult> Report(int? id)
+        public ActionResult Report(int? id, string returnUrl)
         {
             ViewBag.PostInfo = String.Format("https://awolr.com/Items/Details?state=" + id);
+
+            ViewBag.returnUrl = returnUrl;
             return View();
         }
 
@@ -772,6 +774,7 @@ namespace RegistrationPractice.Controllers
         {
             string body = formcollection["postinfo"];
             string reason = formcollection["message"];
+            string returnUrl = formcollection["returnurl"];
             body = body + "\n\n" + reason;
             if (!this.IsCaptchaValid(""))
             {
@@ -798,12 +801,16 @@ namespace RegistrationPractice.Controllers
 
 
                 await client.SendMailAsync("admin@awolr.com", "contact@awolr.com", "Post Report", body);
-                return RedirectToAction("start");
+                int ampcharacter = returnUrl.IndexOf("&");
+                returnUrl = returnUrl.Substring(0, ampcharacter);
+                return Redirect(returnUrl);
             }
             catch (Exception e)
             {
                 loggerwrapper.PickAndExecuteLogging("Could not report posting. Error " + e.ToString());
-                return RedirectToAction("start");
+                int ampcharacter = returnUrl.IndexOf("&");
+                returnUrl = returnUrl.Substring(0, ampcharacter);
+                return Redirect(returnUrl);
             }
         }
 

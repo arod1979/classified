@@ -301,6 +301,17 @@ li.extrapadding {
 /*---------------------------------------------------------------------------------------------------------*/
 /*Mobile display*/
 @media screen and (max-width: 480px) {
+
+    .compass {
+        display: block;
+        cursor: default;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+    }
+
     div.www > input.btn {
         width: 40%
     }
@@ -407,6 +418,16 @@ li.extrapadding {
 
 
 @media screen and (min-width: 601px) {
+
+    .compass {
+        display: block;
+        cursor: default;
+        margin-top: 60px;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+    }
 
     .search-button {
         width: 10% !important;
