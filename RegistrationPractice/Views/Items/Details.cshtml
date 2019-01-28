@@ -6,11 +6,11 @@
 
 @section MetaContent
 {
-    <meta property="og:title" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
+    <meta property="og:title" content="@ViewBag.PostType Item" />
     <meta property="og:url" content="https://www.awolr.com/Items/details/?state=@Model.Id" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
-    <meta property="og:image:secure_url" content="@Model.PostType.PostTypeText Item:@Model.Description - @Model.Description. awolr.com. " />
+    <meta property="og:description" content="@Model.Description" />
+    <meta property="og:image:secure_url" content="" />
 
     @if (Model.imageURL != null)
     {
@@ -94,7 +94,7 @@
 
                     <a href="#@dat" data-toggle="collapse">
                         <i class="icon-action fa fa-chevron-down"></i>
-                        <p>Contact Poster</p>
+                        <p>Contact Anonymously</p>
                     </a>
 
                     <div id="@messagesent" style="display:none; color:green">Message Queued</div>

@@ -11,11 +11,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindet">
     <title>@ViewBag.Title</title>
+
     @if (ViewBag.metadescription != null)
     {
         <meta name="description" content="@ViewBag.metadescription" />
+    }
+    else
+    {
+        <meta name="description" content="Lost, Stolen, And Found Classified Online Site for Canada and the USA" />
     }
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/css1")

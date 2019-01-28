@@ -378,7 +378,8 @@ namespace RegistrationPractice.Controllers
             try
             {
                 await db.SaveChangesAsync();
-                ViewBag.PostType = item.PostType;
+                ViewBag.PostType = textInfo.ToTitleCase(item.PostType.PostTypeText);
+
                 return View(item);
             }
             catch (Exception e)
