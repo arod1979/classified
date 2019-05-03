@@ -1,0 +1,190 @@
+2:24:26 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:45:48 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:46:31 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:46:41 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:46:43 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:46:44 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:46:45 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:46:45 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:46:46 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:46:52 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:23 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:36 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:37 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:38 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:38 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:38 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:39 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:39 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:39 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:47:48 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:52:25 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:57:39 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:58:41 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:59:04 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:01:56 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:00 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:05 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:06 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:07 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:07 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:08 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:09 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:09 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:10 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:21 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:08:22 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:09:27 PM April 28, 2019
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.Globals.Constants.GetCityPrimaryKey(String city) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\GlobalVariables.cs:line 132
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__15.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 464
+-------------------------------
+3:09:40 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:20 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:22 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:23 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:24 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:24 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:25 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:25 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:26 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:10:27 PM April 28, 2019
+  :
+  :got to loadcities
+-------------------------------

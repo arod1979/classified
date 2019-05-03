@@ -11,10 +11,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="@Request.Url.AbsoluteUri" />
-
-
-
+    <meta name="robots" content="noindex">
     <title>@ViewBag.Title</title>
     @if (ViewBag.metadescription != null)
     {
@@ -138,9 +135,6 @@
             @Html.ActionLink("Privacy", "Privacy", "Account", null, new { @class = "headertext" }) |
             @Html.ActionLink("Contact Us", "Contact", "Account", null, new { @class = "headertext" }) |
             @Html.ActionLink("Terms & Conditions", "TermsAndConditions", "Account", null, new { @class = "headertext" })
-            <a href="Blog">Blog</a>
-            @Html.ActionLink("Winnipeg Listings", "Items", "Start", null, null)
-            @Html.ActionLink("Other Canadian and US Cities", "Items", "CountryIndex", null, null)
         </div>
 
 

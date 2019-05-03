@@ -1,25 +1,12 @@
-﻿
-
-@using System.Web;
+﻿@using System.Web;
 @using Microsoft.AspNet.Identity
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="@Request.Url.AbsoluteUri" />
-
-
-
     <title>@ViewBag.Title</title>
-    @if (ViewBag.metadescription != null)
-    {
-        <meta name="description" content="@ViewBag.metadescription" />
-    }
+    <meta name="robots" content="noindex">
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/css1")
     @Scripts.Render("~/bundles/modernizr")
@@ -61,8 +48,6 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-
     <div id="mainscreen" class="d-flex flex-column h-100">
         <nav class="navbar navbar-expand-md navbar-dark bg-lightblue">
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
@@ -70,20 +55,17 @@
                     @if (Request.IsAuthenticated)
                     {
                         var User = String.Empty;
-
                         if (System.Web.HttpContext.Current.Session["UserEmail"] != null)
                         {
                             User = System.Web.HttpContext.Current.Session["UserEmail"].ToString();
                         }
-
-
-                        <li>@Html.ActionLink("User Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "headertext" })&nbsp&nbsp</li>
+                        //     <li>@Html.ActionLink("User Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "headertext" })&nbsp&nbsp</li>
                         <li>@Html.ActionLink(User + ":UserPosts", "UserPosts", "Items", null, new { @class = "headertext" })</li>
                     }
                 </ul>
             </div>
             <div class="mx-auto order-0">
-                <a class="navbar-brand mx-auto awolr-logo" href="/Items/Start">AwolR</a>
+                <a class="navbar-brand mx-auto awolr-logo" href="/Items/Start">Winnipeg Lost & Found</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -96,84 +78,39 @@
                         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right headertext" }))
                         {
                             @Html.AntiForgeryToken()
-
-
-
                             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-
-
-
                         }
                     }
                     else
                     {
                         <li>@Html.ActionLink("Register", "Register", "Account", null, new { id = "registerLink", @class = "headertext" })&nbsp;&nbsp;</li>
-
                         <li>@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink", @class = "headertext" })</li>
                     }
                 </ul>
             </div>
         </nav>
-
-
-
-
         <img src="~/pictures/logoSmallFile.png" class="compass" onclick="window.history.back();" />
-
-
-
-
         <div class="container body-content h-100 flex-grow-1">
             @RenderBody()
-
-
         </div>
         <div class="bottom-footer">
-
-
-
-
-
             @Html.ActionLink("FAQ", "FAQ", "Account", null, new { @class = "headertext" }) |
             @Html.ActionLink("Privacy", "Privacy", "Account", null, new { @class = "headertext" }) |
             @Html.ActionLink("Contact Us", "Contact", "Account", null, new { @class = "headertext" }) |
             @Html.ActionLink("Terms & Conditions", "TermsAndConditions", "Account", null, new { @class = "headertext" })
-            <a href="Blog">Blog</a>
-            @Html.ActionLink("Winnipeg Listings", "Items", "Start", null, null)
-            @Html.ActionLink("Other Canadian and US Cities", "Items", "CountryIndex", null, null)
         </div>
-
-
     </div>
-
-
-
-
     <!-- jQuery library -->
     @Scripts.Render("~/bundles/jquery")
-
     <!-- Popper -->
-
-
-
-
     @Scripts.Render("~/bundles/jqueryunobtrusive")
-
     @Scripts.Render("~/bundles/jqueryui")
-
-
     @Scripts.Render("~/bundles/admin")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/mdb")
-
     @RenderSection("scripts", required: false)
     @*<link href="~/Content/mdb/mdb.min.css" rel="stylesheet" />*@<link href="~/Content/mdb/mdb.min.css" rel="stylesheet" />
-
-
-
     <form id="__AjaxAntiForgeryForm" action="#" method="post">@Html.AntiForgeryToken()</form>
-
-
 </body>
 </html>
 

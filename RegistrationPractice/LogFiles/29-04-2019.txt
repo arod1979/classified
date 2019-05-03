@@ -1,0 +1,46 @@
+12:53:23 PM April 29, 2019
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.Globals.Constants.GetCityPrimaryKey(String city) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\GlobalVariables.cs:line 132
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__15.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 464
+-------------------------------
+12:54:02 PM April 29, 2019
+  :
+  :Could Not Filter By posttype
+-------------------------------
+12:54:14 PM April 29, 2019
+  :
+  :Could Not Filter By posttype
+-------------------------------
+12:55:07 PM April 29, 2019
+  :
+  :Could Not Filter By posttype
+-------------------------------
+1:03:39 PM April 29, 2019
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.Globals.Constants.GetCityPrimaryKey(String city) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\GlobalVariables.cs:line 132
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__15.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 464
+-------------------------------
+1:04:37 PM April 29, 2019
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.Globals.Constants.GetCityPrimaryKey(String city) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\GlobalVariables.cs:line 132
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__15.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 464
+-------------------------------
+1:08:16 PM April 29, 2019
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.Globals.Constants.GetCityPrimaryKey(String city) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\GlobalVariables.cs:line 132
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__15.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 464
+-------------------------------
+1:15:07 PM April 29, 2019
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.Globals.Constants.GetCityPrimaryKey(String city) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\GlobalVariables.cs:line 132
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__15.MoveNext() in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Controllers\aspnetmvc\ItemsController.cs:line 464
+-------------------------------
+1:37:10 PM April 29, 2019
+  :
+  :Could Not Filter By posttype
+-------------------------------

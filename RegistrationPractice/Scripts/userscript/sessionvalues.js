@@ -9,6 +9,7 @@
                         console.log('User\'s Location Data is ', response.country.name);
                         console.log('User\'s Country', response.country);
                         window.location.href = "/Items/CountryIndex/?countryname=" + response.country.name;
+                        window.location.href = "/Items/CountryIndex/?countryname=" + encodeURI(Winnipeg, MB);
                     },
 
                     function fail(data, status) {

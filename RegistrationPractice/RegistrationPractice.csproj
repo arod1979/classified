@@ -598,6 +598,8 @@
     <Content Include="Views\Stack\Create.cshtml" />
     <Content Include="Views\Items\Report.cshtml" />
     <Content Include="Views\Account\TermsAndConditions.cshtml" />
+    <Content Include="Views\Shared\_JumbotronNoIndex.cshtml" />
+    <Content Include="Views\Account\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
