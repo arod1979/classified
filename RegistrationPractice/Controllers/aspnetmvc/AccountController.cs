@@ -116,9 +116,12 @@ namespace RegistrationPractice.Controllers
                     System.Web.HttpContext.Current.Session["UserEmail"] = currentUserEmail;
                     var userid = UserManager.FindByEmail(model.Email);
                     System.Web.HttpContext.Current.Session["UserId"] = userId;
-
                     //allan rodkin
-                    return RedirectToLocal(returnUrl);
+                    if (returnUrl != null)
+                        return RedirectToLocal(returnUrl);
+                    else
+                        return RedirectToAction("Start", "Items", null);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -426,8 +429,10 @@ namespace RegistrationPractice.Controllers
             {
                 case SignInStatus.Success:
                     //allan rodkin
-
-                    return RedirectToLocal(returnUrl);
+                    if (returnUrl != null)
+                        return RedirectToLocal(returnUrl);
+                    else
+                        return RedirectToAction("Start", "Items", null);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -490,7 +495,7 @@ namespace RegistrationPractice.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session.Add("CurrentUserEmail", "");
             //allan rodkin
-            return RedirectToAction("countryindex", "items");
+            return RedirectToAction("start", "items");
         }
 
         public ActionResult LogOff(string url)

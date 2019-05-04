@@ -16,10 +16,10 @@
     if (ViewBag.detailsview == false)
     {
 
-        ViewBag.Title = "Have your items gone awolr? Winnipeg Lost Found & Found Stolen Classified. Post, Share, Communicate anonymously, Retrieve Your Items. Winnipeg's foremost online lost and found";
+        ViewBag.Title = String.Format("{0}:Lost, Found, and Stolen Classifieds", city);
 
         <h1 class="city">@ViewBag.city_province</h1>
-        <h1 class="lfs">Lost</h1>
+        <h2 class="lfs">Lost</h2>
         <div class="text">
             <ul>
                 <li>
@@ -32,7 +32,7 @@
             </ul>
         </div>
 
-        <h1 class="lfs">Found</h1>
+        <h2 class="lfs">Found</h2>
         <div class="text">
             <ul>
                 <li>
@@ -45,7 +45,7 @@
         </div>
 
 
-        <h1 class="lfs">Stolen</h1>
+        <h2 class="lfs">Stolen</h2>
         <div class="text">
             <ul>
                 <li>

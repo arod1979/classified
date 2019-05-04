@@ -135,7 +135,7 @@ namespace RegistrationPractice.Controllers
             ViewBag.country = country;
             ViewBag.province = province;
             ViewBag.city = city;
-            ViewBag.metadescription = String.Format("{0}:Lost, Found, and Stolen Classifieds", city);
+            ViewBag.metadescription = "Have your items gone awolr? Winnipeg Lost Found & Found Stolen Classified. Post, Share, Communicate anonymously, Retrieve Your Items. Winnipeg's foremost online lost and found";
             //ViewBag.city_province = string.Format("{0},{1}", city, province);
             ViewBag.city_province = city;
             if (posttypefilter != null)
@@ -259,7 +259,7 @@ namespace RegistrationPractice.Controllers
         public ViewResult Start()
         {
 
-            return View("start");
+            return View();
         }
 
         [AllowAnonymous]

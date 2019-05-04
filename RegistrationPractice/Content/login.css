@@ -242,6 +242,12 @@ h1 {
     font-size: 25px;
 }
 
+h2 {
+    font-size: 25px;
+}
+
+
+
 h7 {
     font-size: 8px;
 }
@@ -441,7 +447,7 @@ li.extrapadding {
         padding: 9px 15px 15px 15px;
     }
 
-    h1.lfs {
+    h2.lfs {
         border-radius: 20px;
         margin-left: 25%;
         margin-right: 25%;
