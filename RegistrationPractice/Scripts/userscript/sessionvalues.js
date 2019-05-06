@@ -9,14 +9,14 @@
                         console.log('User\'s Location Data is ', response.country.name);
                         console.log('User\'s Country', response.country);
 
-                        window.location.href = "/Items/Canada/MB/CityIndex/" + encodeURI("Winnipeg, MB");
+                        window.location.href = "/Items/Canada/MB/CityIndex/Winnipeg-MB";
                     },
 
                     function fail(data, status) {
                         //alert(data.country);
                         console.log('Request failed.  Returned status of',
                             status);
-                        window.location.href = "/Items/Canada/MB/CityIndex/" + encodeURI("Winnipeg, MB");
+                        window.location.href = "/Items/Canada/MB/CityIndex/Winnipeg-MB";
                     }
                 );
         }
