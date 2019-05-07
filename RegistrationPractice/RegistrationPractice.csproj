@@ -304,6 +304,7 @@
     <Compile Include="Classes\IO.cs" />
     <Compile Include="Classes\LoggerWrapper.cs" />
     <Compile Include="Classes\LogToFile.cs" />
+    <Compile Include="Classes\ManageURL.cs" />
     <Compile Include="Classes\ProfanityFilter.cs" />
     <Compile Include="Classes\ReadCookies.cs" />
     <Compile Include="Classes\Session.cs" />

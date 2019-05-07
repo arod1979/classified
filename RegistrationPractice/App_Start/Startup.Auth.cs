@@ -124,6 +124,8 @@ namespace RegistrationPractice
 
                 container.Register<RegistrationPractice.Classes.LoggerWrapper>(Lifestyle.Scoped);
 
+                container.Register<RegistrationPractice.Classes.ManageURL>(Lifestyle.Scoped);
+
                 container.Register<IO_Operations>(Lifestyle.Scoped);
 
 

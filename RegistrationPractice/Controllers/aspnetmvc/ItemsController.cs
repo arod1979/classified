@@ -38,9 +38,9 @@ namespace RegistrationPractice.Controllers
         public static bool testing = false;
         private RegistrationPractice.Classes.Globals.Constants constants;
         private LoggerWrapper loggerwrapper;
+        private ManageURL manageURL;
 
-
-        public ItemsController(Classes.Globals.Constants constants, LoggerWrapper loggerwrapper, ApplicationUserManager userManager)
+        public ItemsController(Classes.ManageURL _manageUrl, Classes.Globals.Constants constants, LoggerWrapper loggerwrapper, ApplicationUserManager userManager)
         {
 
             if (System.Web.HttpContext.Current == null)
@@ -57,12 +57,9 @@ namespace RegistrationPractice.Controllers
             this._userManager = userManager;
             this.loggerwrapper = loggerwrapper;
             this.constants = constants;
+            this.manageURL = _manageUrl;
             loggerwrapper.testingmode = false;
         }
-
-
-
-
 
         public async Task<ActionResult> UserPosts()
         {
@@ -82,50 +79,6 @@ namespace RegistrationPractice.Controllers
         }
 
 
-        //[AllowAnonymous]
-        //public async Task<ActionResult> Index(string categoryfilter, string SearchTerm, int? LocationId, int? CategoryId, int? PostTypeId, string cancel)
-
-        //{
-        //    var items = db.Items.Include(i => i.Category).Include(i => i.Location);
-        //    if (string.IsNullOrEmpty(cancel))
-        //    {
-
-        //        if (!String.IsNullOrEmpty(SearchTerm))
-
-        //        {
-        //            items = items.Where(i => i.Description.ToUpper().Contains(SearchTerm.ToUpper())
-        //            || i.AdditionalNotes.ToUpper().Contains(SearchTerm.ToUpper())
-        //        );
-        //        }
-
-        //        if (LocationId.HasValue)
-        //        {
-
-
-        //            items = from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist;
-        //            int count = (from itemlist in items.Where(i => i.LocationID == LocationId) select itemlist).Count();
-
-        //        }
-
-        //        if (PostTypeId.HasValue)
-        //        {
-        //            items = from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist;
-        //            int count = (from itemlist in items.Where(i => i.PostTypeID == PostTypeId) select itemlist).Count();
-        //        }
-
-        //        if (categoryfilter != null)
-        //        {
-        //            items = items.Where(i => i.CategoryID == CategoryId);
-        //        }
-        //    }
-
-
-        //    ViewBag.CategoryID = new SelectList(db.Categories, "Id", "CategoryText");
-        //    ViewBag.LocationID = new SelectList(db.Locations, "Id", "LocationText");
-        //    ViewBag.PostTypeID = new SelectList(db.PostTypes, "Id", "PostTypeText");
-        //    return View(await items.ToListAsync());
-        //}
-
 
         // GET: Items
         [AllowAnonymous]
@@ -136,8 +89,8 @@ namespace RegistrationPractice.Controllers
             ViewBag.province = province;
             ViewBag.city = city;
             ViewBag.metadescription = "Have your items gone awolr? Winnipeg Lost Found & Found Stolen Classified. Post, Share, Communicate anonymously, Retrieve Your Items. Winnipeg's foremost online lost and found";
-            //ViewBag.city_province = string.Format("{0},{1}", city, province);
-            ViewBag.city_province = city;
+            string commadelimitedcity = ViewBag.city_province = this.manageURL.createcommaseperatedcity(city);
+
             if (posttypefilter != null)
                 ViewBag.PostType = textInfo.ToTitleCase(posttypefilter);
             HttpCookie mycookie = new HttpCookie("returnurl");
@@ -161,8 +114,8 @@ namespace RegistrationPractice.Controllers
 
                 posttypefilter = posttypefilter.ToLower();
                 ViewBag.detailsview = true;
-                ////var items = db.Items.Include(i => i.Category).Include(i => i.Location);
-                var cityid = db.Locations.SingleOrDefault(lo => lo.Location_Country == city).Id;
+
+                var cityid = db.Locations.SingleOrDefault(lo => lo.Location_Country == commadelimitedcity).Id;
                 var dbid = constants.Getdbidbyposttype(posttypefilter);
                 items = (from si in db.Items.Include("PostType").Include("Category").Include("Location").Where(si => (si.PostTypeID == dbid && si.HideItem == false) && si.LocationID == cityid) select (Item)si);
 
@@ -283,52 +236,10 @@ namespace RegistrationPractice.Controllers
             {
                 ViewBag.country = "USA";
             }
-            //if (CityListing.region_locationlist_dictionary.ContainsKey(countryname.ToUpper()))
-            //{
-            //    region_LocationListings = CityListing.region_locationlist_dictionary[countryname.ToUpper()];
-
-            //}
-
-
 
 
             cities = cityListing.GetCities(countryname, searchquery);
 
-            //regions = (cityListing.GetRegions(countryname));
-            //foreach (string region in regions)
-            //{
-            //    Region_LocationListing region_LocationListing = new Region_LocationListing();
-            //    region_LocationListing.region = region;
-            //    locationListings = cityListing.GetCities(region);
-            //    region_LocationListing.locationlistings = locationListings;
-            //    region_LocationListings.Add(region_LocationListing);
-            //}
-
-            //try
-            //{
-
-            //    string devicetype = HttpContext.Request.Cookies["device-type"].Value;
-            //    if (HttpContext.Request.Cookies["device-type"] != null &&
-            //    devicetype == "mobile")
-            //    {
-            //        region_LocationListings = region_LocationListings.OrderByDescending(r => r.locationlistings.Count).ToList();
-            //        loggerwrapper.PickAndExecuteLogging("Sorted Country for Mobile");
-
-            //    }
-            //    else
-            //    {
-            //        region_LocationListings = region_LocationListings.OrderBy(r => r.locationlistings.Count).ToList();
-            //        loggerwrapper.PickAndExecuteLogging("Sorted Country Non-Mobile");
-
-            //    }
-
-            //}
-            //catch (Exception e)
-            //{
-            //    loggerwrapper.PickAndExecuteLogging("Error Country Index. Cannot Order Cities");
-
-            //}
-            //}
 
             return Json(cities, JsonRequestBehavior.AllowGet);
 
@@ -446,18 +357,14 @@ namespace RegistrationPractice.Controllers
             Item item = new Item();
             try
             {
-                //ViewBag.city_province = string.Format("{0},{1}", city, province);
-                ViewBag.city_province = city;
+                string commadelimitedcity = ViewBag.city_province = this.manageURL.createcommaseperatedcity(city);
                 ViewBag.Province = province;
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
-
                 posttypefilter = textInfo.ToTitleCase(posttypefilter);
-
                 ViewBag.PostType = textInfo.ToTitleCase(posttypefilter);
-
                 item.Country = country;
-                item.City = city;
-                item.LocationID = constants.GetCityPrimaryKey(city);
+                item.LocationID = constants.GetCityPrimaryKey(commadelimitedcity);
+                item.City = commadelimitedcity;
                 switch (posttypefilter)
                 {
                     case "Stolen":
@@ -541,7 +448,11 @@ namespace RegistrationPractice.Controllers
                 string province = formcollection["province"];
                 string posttypefilter = formcollection["posttypefilter"];
                 string foundate = formcollection["FoundDate"];
-                //ViewBag.city_province = string.Format("{0},{1}", item.City, province);
+                if (!item.City.Contains(","))
+                {
+                    ViewBag.city_province = this.manageURL.createcommaseperatedcity(item.City);
+                }
+
 
                 if ((System.DateTime.Now - item.FoundDate).Days < 500)
                     ViewBag.RemoveDatePlaceholder = item.FoundDate.ToShortDateString();
@@ -602,7 +513,7 @@ namespace RegistrationPractice.Controllers
 
                 ViewBag.CategoryID = this.GetCategorySelectList(posttypefilter, item);
                 //ViewBag.city_province = string.Format("{0},{1}", item.City, province);
-                ViewBag.city_province = item.City;
+
                 ViewBag.Province = province;
 
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;

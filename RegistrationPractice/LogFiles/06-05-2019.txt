@@ -1,0 +1,668 @@
+12:02:42 PM May 6, 2019
+  :
+  :System.ArgumentOutOfRangeException: Index and length must refer to a location within the string.
+Parameter name: length
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at RegistrationPractice.Controllers.ItemsController.<Create>d__15.MoveNext()
+-------------------------------
+12:41:13 PM May 6, 2019
+  :
+  :Could Not Filter By posttype
+-------------------------------
+12:41:55 PM May 6, 2019
+  :
+  :System.NullReferenceException: Object reference not set to an instance of an object.
+   at RegistrationPractice.Classes.IO_Operations.DeleteImage(String imageurl) in D:\visualstudio\RegistrationPractice - Copy\RegistrationPractice\Classes\IO.cs:line 75
+-------------------------------
+12:42:04 PM May 6, 2019
+  :
+  :Deleted - could not check role
+-------------------------------
+12:42:22 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+12:42:33 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+12:42:34 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+12:42:34 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+12:42:35 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+12:42:36 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+12:42:36 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+12:42:37 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:11:49 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:06 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:09 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:09 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:12 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:12 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:20 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:21 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:23 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:23 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:24 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:24 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:24 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:24 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:24 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:13:25 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:17:17 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:47 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:49 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:52 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:53 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:53 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:53 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:53 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:53 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:18:58 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:19:02 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:19:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:19:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:19:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:19:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:07 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:11 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:12 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:12 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:12 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:32 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:37 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:37 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:36:37 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:28 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:33 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:33 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:33 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:33 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:34 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:34 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:34 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:36 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:39 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:39 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:39 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:39 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:44 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:46 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:46 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:51 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:57 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:58 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:58 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:58 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:59 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:59 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:59 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:59 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:59 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:37:59 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:00 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:00 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:00 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:00 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:00 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:08 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:08 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:08 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:38:58 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:39:01 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:39:01 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:39:02 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:39:02 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:40:53 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:40:58 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:40:58 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:01 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:04 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:06 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:07 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:35 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:41:51 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:34 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:36 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:39 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+1:42:40 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:42 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:45 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:46 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:46 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:28:46 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:30:48 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:30:52 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:30:52 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:30:53 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:30:53 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:32:17 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:32:22 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:32:22 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:32:23 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:32:23 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:32:23 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:00 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:03 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+2:33:04 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:15 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:22 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:22 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:22 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:22 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:23 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:25 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:25 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
+3:26:25 PM May 6, 2019
+  :
+  :got to loadcities
+-------------------------------
