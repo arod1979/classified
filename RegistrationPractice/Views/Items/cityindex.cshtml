@@ -16,8 +16,8 @@
     if (ViewBag.detailsview == false)
     {
 
-        ViewBag.Title = String.Format("{0}:Lost, Found, and Stolen Classifieds", city);
-
+        ViewBag.Title = String.Format("Lost And Found In {0}", ViewBag.city);
+        ViewBag.metadescription = String.Format("Lost And Found In {0}:", ViewBag.city);
         <h1 class="city">@ViewBag.city_province</h1>
         <h2 class="lfs">Lost</h2>
         <div class="text">
@@ -59,7 +59,8 @@
     }
     else
     {
-        ViewBag.Title = ViewBag.city + " Listings";
+        ViewBag.Title = "Lost and Found In " + ViewBag.city + " " + ViewBag.PostType + " Listings";
+        ViewBag.metadescription = "Lost and Found In " + ViewBag.city + " " + ViewBag.PostType + " Listings";
         <a href="/Items/@ViewBag.country/@ViewBag.province/cityindex/@ViewBag.city"><h1 class="city">@ViewBag.city_province</h1></a>
         <input type="text" class="itemsearchbox" name="search_or_post" placeholder="Search" maxlength="30">
         <input type="submit" class="search-button" value="Search">
